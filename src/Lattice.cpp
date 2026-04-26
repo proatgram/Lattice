@@ -26,8 +26,6 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
             project.value()->Parse(YAML::Dump(it->second));
         }
     }
-
-
 }
 
 auto Lattice::Lattice::AddProject(const std::string &identifier) -> std::optional<std::shared_ptr<Project>> {
@@ -39,7 +37,11 @@ auto Lattice::Lattice::AddProject(const std::string &identifier) -> std::optiona
     return {};
 }
 
-auto Lattice::Lattice::GetProject(const std::string &identifier) -> std::shared_ptr<Project> {
-    return m_projects.at(identifier);
+auto Lattice::Lattice::GetProject(const std::string &identifier) -> std::optional<std::shared_ptr<Project>> {
+    try {
+        return m_projects.at(identifier);
+    } catch (const std::out_of_range &ex) {
+        return {};
+    }
 }
 

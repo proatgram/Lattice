@@ -1,0 +1,41 @@
+include:
+  - "someDir"
+  - "someFile"
+
+project:
+  lattice:
+    description: "Another build system for C++ based solely on configuration files."
+    homepage: "https://github.com/proatgram/lattice"
+    version: 0.1
+    requires:
+      - libcurl:
+          version: ">=8"
+          provider: "pkg-config"
+          optional: true
+
+lattice:
+  binary:
+    Lattice:
+      output_name: "lattice"
+      sources: ["src/main.cpp"]
+      dependencies:
+        private: [lattice::libcurl, lattice::Plugins]
+    SomeOtherBinary:
+      sources: ["src/other/main.cpp"]
+  module:
+    Plugins:
+      units:
+        export:
+          - "modules/Plugins.cppm"
+      sources:
+        - "src/modules/Plugins.cpp"
+      dependencies:
+        public: [lattice::Utils]
+  library:
+    Utils:
+      type: static
+      sources: ["src/Utils.cpp"]
+      headers:
+        public:
+          - "include/Utils.hpp"
+

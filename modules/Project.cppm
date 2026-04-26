@@ -28,14 +28,10 @@ export namespace Lattice {
             auto Build() -> void final;
             auto Parse(const std::string &parsableString) -> void final;
 
-            auto GetProjectObjects() const -> std::vector<std::shared_ptr<Object>>;
-
         private:
             std::string m_description;
             std::string m_version;
 
             std::optional<std::string> m_homepageUrl;
-
-            inline static std::vector<std::shared_ptr<Object>> m_projectObjects{};
     };
 }  // export namespace Lattice

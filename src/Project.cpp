@@ -54,10 +54,6 @@ auto Project::GetProperties() const -> std::bitset<8> {
     return properties;
 }
 
-auto Project::GetProjectObjects() const -> std::vector<std::shared_ptr<Object>> {
-    return m_projectObjects;
-}
-
 auto Project::Build() -> void {
 
 }
