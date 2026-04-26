@@ -15,7 +15,7 @@ export namespace Lattice {
             auto LoadConfig(const std::filesystem::path configPath) -> void;
 
             auto AddProject(const std::string &identifier) -> std::optional<std::shared_ptr<Project>>;
-            auto GetProject(const std::string &identifier) -> std::shared_ptr<Project>;
+            auto GetProject(const std::string &identifier) -> std::optional<std::shared_ptr<Project>>;
 
         private:
             std::map<std::string, std::shared_ptr<Project>> m_projects;
