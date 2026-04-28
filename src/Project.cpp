@@ -12,10 +12,6 @@ Project::Project(Object::Constructable, const std::string &identifier) :
     
 }
 
-auto Project::Create(const std::string &identifier) -> std::shared_ptr<Project> {
-    return std::make_shared<Project>(Object::Constructable(), identifier);
-}
-
 auto Project::GetIdentifier() const -> std::string {
     return m_identifier;
 }
@@ -58,6 +54,21 @@ auto Project::Build() -> void {
 
 }
 
+auto Project::GetObjects() const -> std::map<std::string, std::shared_ptr<Object>> {
+    return m_objects;
+}
+auto Project::GetObject(const std::string &identifier) const -> std::optional<std::shared_ptr<Object>> {
+    if (!m_objects.contains(identifier)) {
+        return {};
+    }
+
+    return m_objects.at(identifier);
+}
+
+auto Project::AddObject(const std::string &identifier, const std::shared_ptr<Object> &object) -> void {
+    m_objects.insert({identifier, object});
+}
+
 auto Project::Parse(const std::string &parsableString) -> void {
     YAML::Node parsable = YAML::Load(parsableString);
 
@@ -72,4 +83,8 @@ auto Project::Parse(const std::string &parsableString) -> void {
     if (parsable["homepage"]) {
         SetHomepageUrl(parsable["homepage"].as<std::string>());
     }
+}
+
+auto ProjectFactory::Create(const std::string &identifier) -> std::shared_ptr<Project> {
+    return std::make_shared<Project>(Project::Constructable(), identifier);
 }

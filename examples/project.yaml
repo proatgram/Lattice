@@ -1,11 +1,10 @@
 include:
-  - "someDir"
-  - "someFile"
+  - "test.yaml"
 
 project:
   lattice:
     description: "Another build system for C++ based solely on configuration files."
-    homepage: "https://github.com/proatgram/lattice"
+    homepage: "https://github.com/proatgram/Lattice"
     version: 0.1
     requires:
       - libcurl:

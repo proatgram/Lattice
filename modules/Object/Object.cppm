@@ -1,4 +1,5 @@
 export module Lattice.Object;
+export import Lattice.Plugin.IFactory;
 
 import std;
 
@@ -20,10 +21,24 @@ export namespace Lattice {
                 Exportable,
                 Importable,
                 Runnable,
+                Parsable
             };
 
+            /**
+             * @brief Gets the identifier for the object
+             *
+             * @return The object identifier
+             */
             auto GetIdentifier() const -> std::string;
 
+            /**
+             * @brief Gets the properties for the object
+             *
+             * The properties are stored as a bitset with the
+             * bits being of `Properties`.
+             *
+             * @return Bitset for properties.
+             */
             virtual auto GetProperties() const -> std::bitset<8> = 0;
 
         protected:
@@ -38,4 +53,7 @@ export namespace Lattice {
 
             std::string m_identifier;
     };
+
+    template <class Factory>
+    using IObjectFactory = Plugin::IFactory<Factory, Object>;
 }  // export namespace Lattice
