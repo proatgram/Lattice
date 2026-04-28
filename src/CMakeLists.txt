@@ -40,6 +40,11 @@ target_sources(lattice_object
             "${CMAKE_SOURCE_DIR}/modules/Object/Object.cppm"
 )
 
+target_link_libraries(lattice_object
+    PUBLIC
+        lattice::IFactory
+)
+
 add_library(lattice_object_buildable)
 add_library(lattice::Object::Buildable ALIAS lattice_object_buildable)
 
@@ -81,6 +86,35 @@ target_link_libraries(lattice_project
         lattice::Object
         lattice::Object::Buildable
         lattice::Object::Parsable
+        lattice::IFactory
     PRIVATE
         yaml-cpp::yaml-cpp
+)
+
+add_library(lattice_provider)
+add_library(lattice::Provider ALIAS lattice_provider)
+
+target_sources(lattice_provider
+    PRIVATE
+        "${CMAKE_SOURCE_DIR}/src/Provider.cpp"
+    PUBLIC FILE_SET CXX_MODULES
+        BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
+        FILES
+            "${CMAKE_SOURCE_DIR}/modules/Provider.cppm"
+)
+
+target_link_libraries(lattice_provider
+    PUBLIC
+        lattice::Object
+        lattice::IFactory
+)
+
+add_library(lattice_ifactory)
+add_library(lattice::IFactory ALIAS lattice_ifactory)
+
+target_sources(lattice_ifactory
+    PUBLIC FILE_SET CXX_MODULES
+        BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
+        FILES
+            "${CMAKE_SOURCE_DIR}/modules/Plugin/IFactory.cppm"
 )
