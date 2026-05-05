@@ -43,8 +43,8 @@ auto Project::GetHomepageUrl() const -> std::optional<std::string> {
     return m_homepageUrl;
 }
 
-auto Project::GetProperties() const -> std::bitset<8> {
-    std::bitset<8> properties;
+auto Project::GetProperties() const -> std::bitset<Object::TOTAL_PROPERTIES> {
+    std::bitset<Object::TOTAL_PROPERTIES> properties;
     properties.set(std::to_underlying(Object::Properties::Buildable));
 
     return properties;
