@@ -75,7 +75,7 @@ export namespace Lattice {
              */
             auto GetHomepageUrl() const -> std::optional<std::string>;
 
-            auto GetProperties() const -> std::bitset<8> final;
+            auto GetProperties() const -> std::bitset<Object::TOTAL_PROPERTIES> final;
 
             auto Build() -> void final;
 

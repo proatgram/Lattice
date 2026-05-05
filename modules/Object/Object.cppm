@@ -14,6 +14,7 @@ export namespace Lattice {
      */
     class Object {
         public:
+            static constexpr short TOTAL_PROPERTIES = 7;
             enum class Properties {
                 Buildable,
                 Linkable,
@@ -39,7 +40,7 @@ export namespace Lattice {
              *
              * @return Bitset for properties.
              */
-            virtual auto GetProperties() const -> std::bitset<8> = 0;
+            virtual auto GetProperties() const -> std::bitset<TOTAL_PROPERTIES> = 0;
 
         protected:
             struct Constructable{};

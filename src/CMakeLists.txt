@@ -109,6 +109,26 @@ target_link_libraries(lattice_provider
         lattice::IFactory
 )
 
+add_library(lattice_toolchain)
+add_library(lattice::Toolchain ALIAS lattice_toolchain)
+
+target_sources(lattice_toolchain
+    PRIVATE
+        "${CMAKE_SOURCE_DIR}/src/Toolchain.cpp"
+    PUBLIC FILE_SET CXX_MODULES
+        BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
+        FILES
+            "${CMAKE_SOURCE_DIR}/modules/Toolchain.cppm"
+)
+
+target_link_libraries(lattice_toolchain
+    PUBLIC
+        lattice::Object
+        lattice::Object::Parsable
+        lattice::IFactory
+        yaml-cpp::yaml-cpp
+)
+
 add_library(lattice_ifactory)
 add_library(lattice::IFactory ALIAS lattice_ifactory)
 
