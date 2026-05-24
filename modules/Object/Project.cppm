@@ -14,7 +14,7 @@ export namespace Lattice {
      * a project configuration that can be built and parsed from YAML.
      *
      */
-    class Project final : public Object, public Buildable, public Parsable, public std::enable_shared_from_this<Project> {
+    class Project final : public Object, public Buildable, public Parsable {
         public:
             /**
              * @brief Creates a new Project with the given identifier.
@@ -122,11 +122,11 @@ export namespace Lattice {
             friend class ProjectFactory;
     };
 
-    class ProjectFactory : public Plugin::IFactory<ProjectFactory, Project>  {
+    class ProjectFactory final : public IObjectFactory<ProjectFactory>  {
         public:
             inline ProjectFactory(Constructable) {};
 
-            auto Create(const std::string &identifier) -> std::shared_ptr<Project> final;
+            auto Create(const std::string &identifier) -> std::shared_ptr<Object> final;
     };
 
 }  // export namespace Lattice

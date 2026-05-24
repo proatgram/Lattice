@@ -40,6 +40,6 @@ export namespace Lattice {
     /**
      * @brief Abstract factory for a provider
      */
-    template <class Factory>
-    using IProviderFactory = Plugin::IFactory<Factory, Provider>;
+    template <typename Factory>
+    using IProviderFactory = IObjectFactory<Factory>;
 }  // export namespace Lattice

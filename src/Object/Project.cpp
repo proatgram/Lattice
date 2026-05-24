@@ -18,7 +18,7 @@ auto Project::GetIdentifier() const -> std::string {
 
 auto Project::SetDescription(const std::string &description) -> std::shared_ptr<Project> {
     m_description = description;
-    return shared_from_this();
+    return As<Project>().value();
 }
 
 auto Project::GetDescription() const -> std::string {
@@ -27,7 +27,7 @@ auto Project::GetDescription() const -> std::string {
 
 auto Project::SetVersion(const std::string &version) -> std::shared_ptr<Project> {
     m_version = version;
-    return shared_from_this();
+    return As<Project>().value();
 }
 
 auto Project::GetVersion() const -> std::string {
@@ -36,7 +36,7 @@ auto Project::GetVersion() const -> std::string {
 
 auto Project::SetHomepageUrl(const std::string &homepageUrl) -> std::shared_ptr<Project> {
     m_homepageUrl = homepageUrl;
-    return shared_from_this();
+    return As<Project>().value();
 }
 
 auto Project::GetHomepageUrl() const -> std::optional<std::string> {
@@ -85,6 +85,6 @@ auto Project::Parse(const std::string &parsableString) -> void {
     }
 }
 
-auto ProjectFactory::Create(const std::string &identifier) -> std::shared_ptr<Project> {
-    return std::make_shared<Project>(Project::Constructable(), identifier);
+auto ProjectFactory::Create(const std::string &identifier) -> std::shared_ptr<Object> {
+    return std::make_shared<Project>(Project::Constructable(), identifier)->As<Object>().value();
 }

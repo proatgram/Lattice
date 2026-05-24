@@ -1,7 +1,7 @@
 export module Lattice.Object;
 export import Lattice.Plugin.IFactory;
 
-import std;
+export import std;
 
 export namespace Lattice {
     /**
@@ -12,7 +12,7 @@ export namespace Lattice {
      * (e.g. library object, module object, project object, binary object, etc.)
      *
      */
-    class Object {
+    class Object : public std::enable_shared_from_this<Object> {
         public:
             static constexpr short TOTAL_PROPERTIES = 7;
             enum class Properties {
@@ -42,6 +42,16 @@ export namespace Lattice {
              */
             virtual auto GetProperties() const -> std::bitset<TOTAL_PROPERTIES> = 0;
 
+            template <typename T> requires std::is_base_of_v<Object, T>
+            inline auto As() const -> std::optional<std::shared_ptr<T>> {
+                return std::reinterpret_pointer_cast<T>(shared_from_this());
+            }
+
+            template <typename T> requires std::is_base_of_v<Object, T>
+            inline auto As() -> std::optional<std::shared_ptr<T>> {
+                return std::reinterpret_pointer_cast<T>(shared_from_this());
+            }
+
         protected:
             struct Constructable{};
             /**
@@ -55,6 +65,6 @@ export namespace Lattice {
             std::string m_identifier;
     };
 
-    template <class Factory>
-    using IObjectFactory = Plugin::IFactory<Factory, Object>;
+    template <typename Factory>
+    using IObjectFactory = Plugin::ISingletonFactory<Factory, Object>;
 }  // export namespace Lattice
