@@ -5,6 +5,8 @@ module;
 
 module Lattice;
 
+import Lattice.Registry;
+
 auto LoadIncludes(const std::string &include, const std::filesystem::path &workingDirectory) -> std::vector<YAML::Node> {
     // Include can either be:
     //  - Directory
@@ -44,20 +46,14 @@ auto LoadIncludes(const std::string &include, const std::filesystem::path &worki
 
 
 Lattice::Lattice::Lattice(Lattice::Constructable) {
-    RegisterObjectFactory("project", [](const std::string &identifier) -> std::shared_ptr<Object> {return std::reinterpret_pointer_cast<Object>(ProjectFactory::GetInstance()->Create(identifier));});
+    auto err = Registry<std::shared_ptr<Plugin::IFactory<Object>>>::GetInstance()->Register("project", ProjectFactory::GetInstance());
+    if (!err)
+        throw std::runtime_error("Irrecoverable error: Built in object type \"factory\" failed to register. This is a bug.");
 }
 
 auto Lattice::Lattice::GetInstance() -> std::shared_ptr<Lattice> {
     static std::shared_ptr<Lattice> instance = std::make_shared<Lattice>(Constructable());
     return instance;
-}
-
-auto Lattice::Lattice::RegisterObjectFactory(const std::string &identifier, const std::function<std::shared_ptr<Object>(const std::string &)> factoryFunction) -> void {
-    if (m_objectFactories.contains(identifier)) {
-        return;
-    }
-
-    m_objectFactories[identifier] = factoryFunction;
 }
 
 auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> void {
@@ -110,12 +106,12 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
 
                     // If we have an object factory for a given object defined,
                     // we create the object using the given object factory.
-                    if (m_objectFactories.contains(projectObjectType)) {
+                    if (auto objectFactory = Registry<std::shared_ptr<Plugin::IFactory<Object>>>::GetInstance()->Query(projectObjectType); objectFactory.has_value()) {
                         for (YAML::const_iterator object = objectNodes.begin(); object != objectNodes.end(); object++) {
                             std::string objectIdentifier = object->first.as<std::string>();
                             std::string objectConfig = YAML::Dump(object->second);
 
-                            std::shared_ptr<Object> newObject = m_objectFactories[projectObjectType](objectIdentifier);
+                            std::shared_ptr<Object> newObject = objectFactory.value()->Create(objectIdentifier);
                             // If the object supports parsing (a good object type should!) we provide it parsable info.
                             if(newObject->GetProperties().test(std::to_underlying(Object::Properties::Parsable))) {
                                 std::shared_ptr<Parsable> parsableObject = std::reinterpret_pointer_cast<Parsable>(newObject);
@@ -127,12 +123,12 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
                         }
                     }
                 }
-            } else if (m_objectFactories.contains(objectType)) {
+            } else if (auto objectFactory = Registry<std::shared_ptr<Plugin::IFactory<Object>>>::GetInstance()->Query(objectType); objectFactory.has_value()) {
                 // Meanwhile here, we can define global objects
                 for (YAML::const_iterator objectEntry = objectYAML.begin(); objectEntry != objectYAML.end(); ++objectEntry) {
                     // If we have an object factory for a given object defined,
                     // we create the object using the given object factory.
-                    std::shared_ptr<Object> newObject = m_objectFactories[objectType](objectEntry->first.as<std::string>());
+                    std::shared_ptr<Object> newObject = objectFactory.value()->Create(objectEntry->first.as<std::string>());
                     if (newObject->GetProperties().test(std::to_underlying(Object::Properties::Parsable))) {
                         std::shared_ptr<Parsable> parsableObject = std::reinterpret_pointer_cast<Parsable>(newObject);
                         parsableObject->Parse(YAML::Dump(objectEntry->second));
@@ -145,11 +141,12 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
 }
 
 auto Lattice::Lattice::AddProject(const std::string &identifier) -> std::optional<std::shared_ptr<Project>> {
-    if (!m_objectFactories.contains("project")) {
+    auto projectFactory = Registry<std::shared_ptr<Plugin::IFactory<Object>>>::GetInstance()->Query("project");
+    if (!projectFactory.has_value()) {
         return {};
     }
 
-    auto [it, inserted] = m_projects.insert({identifier, std::reinterpret_pointer_cast<Project>(m_objectFactories["project"](identifier))});
+    auto [it, inserted] = m_projects.insert({identifier, std::reinterpret_pointer_cast<Project>(projectFactory.value()->Create(identifier))});
     if (inserted) {
         return it->second;
     }

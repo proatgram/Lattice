@@ -5,6 +5,7 @@ export import std;
 export import Lattice.Object;
 export import Lattice.Object.Parsable;
 export import Lattice.Plugin.IFactory;
+export import Lattice.Tooling.Compiler;
 
 export namespace Lattice {
     /**
@@ -134,6 +135,14 @@ export namespace Lattice {
              */
             auto GetTargetTriple() const -> std::string;
 
+            /**
+             * @brief Gets the compiler instance or creates one for this toolchain.
+             *
+             * @return an instance to the compiler configured for this toolchain.
+             *
+             */
+            auto GetCompiler() const -> std::optional<std::shared_ptr<Tooling::ICompiler>>;
+
         private:
             std::string m_compilerName;
             std::filesystem::path m_compilerPath;
@@ -154,9 +163,9 @@ export namespace Lattice {
             friend class ToolchainFactory;
     };
 
-    class ToolchainFactory : public Plugin::IFactory<ToolchainFactory, Toolchain> {
+    class ToolchainFactory : public IObjectFactory<ToolchainFactory> {
         public:
-            auto Create(const std::string &identifier) -> std::shared_ptr<Toolchain> final;
+            auto Create(const std::string &identifier) -> std::shared_ptr<Object> final;
 
             auto CreateDefault() -> std::shared_ptr<Toolchain>;
     };

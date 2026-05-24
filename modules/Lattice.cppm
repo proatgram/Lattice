@@ -2,6 +2,7 @@ export module Lattice;
 export import std;
 
 export import Lattice.Project;
+export import Lattice.Tooling.Compiler;
 
 export namespace Lattice {
     /**

@@ -4,6 +4,8 @@ module;
 
 module Lattice.Toolchain;
 
+import Lattice.Registry;
+
 using namespace Lattice;
 
 Toolchain::Toolchain(Constructable, const std::string &identifier) :
@@ -136,8 +138,21 @@ auto Toolchain::GetTargetTriple() const -> std::string {
     return std::format("{}-{}-{}-{}", m_targetArchitecture, m_targetVendor, m_targetOS, m_targetABI);
 }
 
-auto ToolchainFactory::Create(const std::string &identifier) -> std::shared_ptr<Toolchain> {
-    return std::make_shared<Toolchain>(Toolchain::Constructable(), identifier);
+auto Toolchain::GetCompiler() const -> std::optional<std::shared_ptr<Tooling::ICompiler>> {
+    auto compilerFactory = Registry<std::shared_ptr<Plugin::IFactory<Tooling::ICompiler>>>::GetInstance()->Query(m_compilerName);
+
+    if (compilerFactory.has_value()) {
+        std::shared_ptr<Tooling::ICompiler> compiler = compilerFactory.value()->Create(GetTargetTriple());
+        // TODO: Configure compiler for toolchain
+
+        return compiler;
+    }
+
+    return {};
+}
+
+auto ToolchainFactory::Create(const std::string &identifier) -> std::shared_ptr<Object> {
+    return std::make_shared<Toolchain>(Toolchain::Constructable(), identifier)->As<Object>().value();
 }
 
 auto ToolchainFactory::CreateDefault() -> std::shared_ptr<Toolchain> {
