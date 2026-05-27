@@ -14,6 +14,7 @@ target_link_libraries(lattice_tooling_compiler
     PUBLIC
         lattice::Tooling::Configuration
         lattice::IFactory
+        lattice::System::Command
 )
 
 add_library(lattice_tooling_configuration)
@@ -27,3 +28,4 @@ target_sources(lattice_tooling_configuration
         FILES
             "${CMAKE_SOURCE_DIR}/modules/Tooling/Configuration.cppm"
 )
+
