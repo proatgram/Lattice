@@ -185,11 +185,20 @@ auto Process::Spawn(const Command &command) -> std::expected<std::shared_ptr<Pro
         char *argv[argc];
 
         std::string exec = command.GetExecutable();
-        std::vector<std::string> args = command.GetArguments();
-        argv[0] = exec.data();
-        argv[argc] = nullptr;
+        const std::vector<std::string>& args = command.GetArguments();
+
+        // Get the new argv for the new process ready.
+        // First, by convention the 0th index is the name of the exec.
+        argv[0] = new char[exec.size() + 1];
+        std::strcpy(argv[0], exec.c_str());
+
+        // By convention, the last element in the list needs to be nullptr.
+        argv[argc - 1] = nullptr;
+
+        // Copies the actual arguments into the new process argv.
         for (std::size_t i = 1; i < argc - 1; i++) {
-            argv[i] = args[i - 1].data();
+            argv[i] = new char[args[i - 1].size() + 1];
+            std::strcpy(argv[i], args[i-1].c_str());
         }
 
         if (command.GetEnvironments().empty()) {
@@ -200,28 +209,39 @@ auto Process::Spawn(const Command &command) -> std::expected<std::shared_ptr<Pro
             }
         } else {
             std::size_t environCount{0};
+
+            // Figure out how many environment vars are defined.
             while (environ[environCount]) {
                 environCount++;
             }
 
-            char **envp = new char*[environCount + command.GetEnvironments().size() + 1];
+            // Copy the defined to our own list
+            char *envp[environCount + command.GetEnvironments().size() + 1];
             for (std::size_t i = 0; i < environCount; i++) {
                 envp[i] = strdup(environ[i]);
             }
 
+            // Add the requested environment vars to the list
             std::size_t count{0};
             for (std::unordered_map<std::string, std::string>::const_iterator it = std::cbegin(command.GetEnvironments()); it != std::cend(command.GetEnvironments()); ++it) {
-                envp[environCount + count] = strdup(std::format("{}={}", it->first, it->second).c_str());
+                std::string envFormatted = std::format("{}={}", it->first, it->second); 
+                envp[environCount + count] = new char[envFormatted.size() + 1];
+                std::strcpy(envp[environCount + count], envFormatted.c_str());
                 count++;
             }
 
+            // List must be null-terminated.
             envp[environCount + command.GetEnvironments().size()] = nullptr;
 
+            // Launch with our env.
             if (execvpe(command.GetExecutable().c_str(), argv, envp) == -1) {
                 std::cerr << std::strerror(errno) << std::endl;
                 exit(EXIT_FAILURE);
             }
         }
+
+        // In both cases, it's fine to not release the memory, as we just exit if we can't replace the process map with the new one.
+        // The memory gets released anyway so :3
     }
 
     process->m_startTime.store(std::chrono::steady_clock::now());
