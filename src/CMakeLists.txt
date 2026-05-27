@@ -7,6 +7,7 @@ target_link_libraries(lattice
     PUBLIC
         argparse::argparse
         lattice::Lattice
+        lattice::System::Process
 )
 
 add_library(lattice_lattice)
@@ -43,3 +44,4 @@ target_sources(lattice_registry
 add_subdirectory(Object)
 add_subdirectory(Plugin)
 add_subdirectory(Tooling)
+add_subdirectory(System)

@@ -2,6 +2,7 @@ export module Lattice.Tooling.Compiler;
 
 export import Lattice.Tooling.Configuration;
 export import Lattice.Plugin.IFactory;
+export import Lattice.System.Command;
 
 export import std;
 
@@ -211,8 +212,6 @@ export namespace Lattice::Tooling {
              */
             virtual auto CreateConfiguration() const -> CompilerConfiguration;
 
-            // TODO: Create Command class
-
             /**
              * @brief Returns a `Command` instance tailored for this compiler.
              *
@@ -225,7 +224,7 @@ export namespace Lattice::Tooling {
              *
              * @return A tailored `Command` instance for this compiler and the configuration given.
              */
-            virtual auto CreateCommand(const CompilerConfiguration &configuration) const -> void;
+            virtual auto CreateCommand(const CompilerConfiguration &configuration) const -> System::Command;
     };
 
     template <typename Factory>
