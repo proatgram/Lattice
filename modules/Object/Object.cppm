@@ -44,12 +44,12 @@ export namespace Lattice {
 
             template <typename T> requires std::is_base_of_v<Object, T>
             inline auto As() const -> std::optional<std::shared_ptr<T>> {
-                return std::reinterpret_pointer_cast<T>(shared_from_this());
+                return std::dynamic_pointer_cast<T>(shared_from_this());
             }
 
             template <typename T> requires std::is_base_of_v<Object, T>
             inline auto As() -> std::optional<std::shared_ptr<T>> {
-                return std::reinterpret_pointer_cast<T>(shared_from_this());
+                return std::dynamic_pointer_cast<T>(shared_from_this());
             }
 
         protected:

@@ -1,5 +1,6 @@
 include:
   - "test.yaml"
+  - "toolchain.yaml"
 
 project:
   lattice:

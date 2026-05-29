@@ -29,26 +29,5 @@ export namespace Lattice {
              * @param configPath The path to the configuration file.
              */
             auto LoadConfig(const std::filesystem::path configPath) -> void;
-
-            /**
-             * @brief Adds a project with the given identifier.
-             *
-             * @param identifier The project identifier.
-             * @return Optional shared pointer to the project, or nullopt if project already exists.
-             */
-            auto AddProject(const std::string &identifier) -> std::optional<std::shared_ptr<Project>>;
-
-            /**
-             * @brief Gets a project by its identifier.
-             *
-             * @param identifier The project identifier.
-             * @return Optional shared pointer to the project, or nullopt if not found.
-             */
-            auto GetProject(const std::string &identifier) -> std::optional<std::shared_ptr<Project>>;
-
-        private:
-            std::map<std::string, std::shared_ptr<Project>> m_projects;
-            std::map<std::string, std::function<std::shared_ptr<Object>(const std::string &)>> m_objectFactories;
-
     };
 }  // export namespace Lattice

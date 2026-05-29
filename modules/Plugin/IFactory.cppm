@@ -29,13 +29,13 @@ export namespace Lattice::Plugin {
         protected:
             struct Constructable {};
         public:
-            using BaseFactory = IFactory<T>;
+            using FactoryType = IFactory<T>;
             /**
              * @brief Gets the factory instance
              *
              * @return Shared pointer to the factory instance
              */
-            inline static auto GetInstance() -> std::shared_ptr<IFactory<T>> {
+            inline static auto GetInstance() -> std::shared_ptr<IFactory<T>> requires std::is_constructible_v<Factory, Constructable> {
                 static std::shared_ptr<Factory> instance = std::make_shared<Factory>(Constructable());
 
                 return instance;

@@ -7,7 +7,6 @@ target_link_libraries(lattice
     PUBLIC
         argparse::argparse
         lattice::Lattice
-        lattice::System::Process
 )
 
 add_library(lattice_lattice)
@@ -26,8 +25,10 @@ target_link_libraries(lattice_lattice
     PRIVATE
         lattice::Registry
         lattice::Object
-        lattice::Project
+        lattice::Object::Project
         lattice::Tooling::Compiler
+        lattice::Object::Toolchain
+        lattice::Object::Library
         yaml-cpp::yaml-cpp
 )
 

@@ -1,5 +1,7 @@
 export module Lattice.Object.Buildable;
 
+import std;
+
 export namespace Lattice {
     /**
      * @brief Provides a base class for objects that can be built.
@@ -22,6 +24,8 @@ export namespace Lattice {
              */
             virtual auto Build() -> void = 0;
 
-        private:
+        protected:
+
+            std::optional<std::string> m_toolchainId;
     };
 }  // export namespace Lattice::Object
