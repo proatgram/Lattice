@@ -1,5 +1,5 @@
 module;
-export module Lattice.Toolchain;
+export module Lattice.Object.Toolchain;
 
 export import std;
 export import Lattice.Object;
@@ -165,6 +165,8 @@ export namespace Lattice {
 
     class ToolchainFactory : public IObjectFactory<ToolchainFactory> {
         public:
+            inline ToolchainFactory(Constructable) {}
+
             auto Create(const std::string &identifier) -> std::shared_ptr<Object> final;
 
             auto CreateDefault() -> std::shared_ptr<Toolchain>;

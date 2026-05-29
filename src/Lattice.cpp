@@ -7,6 +7,9 @@ module Lattice;
 
 import Lattice.Registry;
 
+import Lattice.Object.Toolchain;
+import Lattice.Object.Library;
+
 auto LoadIncludes(const std::string &include, const std::filesystem::path &workingDirectory) -> std::vector<YAML::Node> {
     // Include can either be:
     //  - Directory
@@ -46,9 +49,17 @@ auto LoadIncludes(const std::string &include, const std::filesystem::path &worki
 
 
 Lattice::Lattice::Lattice(Lattice::Constructable) {
-    auto err = Registry<std::shared_ptr<Plugin::IFactory<Object>>>::GetInstance()->Register("project", ProjectFactory::GetInstance());
-    if (!err)
+    auto ok = Registry<std::shared_ptr<ProjectFactory::FactoryType>>::GetInstance()->Register("project", ProjectFactory::GetInstance());
+    if (!ok)
         throw std::runtime_error("Irrecoverable error: Built in object type \"factory\" failed to register. This is a bug.");
+
+    ok = Registry<std::shared_ptr<ToolchainFactory::FactoryType>>::GetInstance()->Register("toolchain", ToolchainFactory::GetInstance());
+    if (!ok)
+        throw std::runtime_error("Irrecoverable error: Built in object type \"toolchain\" failed to register. This is a bug.");
+
+    ok = Registry<std::shared_ptr<LibraryFactory::FactoryType>>::GetInstance()->Register("library", LibraryFactory::GetInstance());
+    if (!ok)
+        throw std::runtime_error("Irrecoverable error: Built in object type \"library\" failed to register. This is a bug.");
 }
 
 auto Lattice::Lattice::GetInstance() -> std::shared_ptr<Lattice> {
@@ -77,12 +88,17 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
             }
 
             for (YAML::const_iterator it = projects.begin(); it != projects.end(); ++it) {
-                std::optional<std::shared_ptr<Project>> project = AddProject(it->first.as<std::string>());
-                if (!project.has_value()) {
+                std::expected<std::reference_wrapper<std::shared_ptr<Project>>, std::string> project =
+                    Registry<std::shared_ptr<Project>>::GetInstance()->
+                        Register(
+                                it->first.as<std::string>(),
+                                ProjectFactory::GetInstance()->Create(it->first.as<std::string>())->As<Project>().value());
+
+                if (!project) {
                     throw std::runtime_error(std::format("Error parsing configurations: Project \"{}\" was defined more than once.", it->first.as<std::string>()));
                 }
 
-                project.value()->Parse(YAML::Dump(it->second));
+                project.value().get()->Parse(YAML::Dump(it->second));
             }
         }
     }
@@ -97,7 +113,7 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
             YAML::Node objectYAML = it->second;
             if (objectType == "project") {
                 continue; // Already handled project objects
-            } else if (m_projects.contains(objectType)) {
+            } else if (Registry<std::shared_ptr<Project>>::GetInstance()->Contains(objectType)) {
                 // We're defining project-level objects here
                 // Loop through the object types defined in the project
                 for (YAML::const_iterator projectObjects = objectYAML.begin(); projectObjects != objectYAML.end(); projectObjects++) {
@@ -119,7 +135,7 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
                             }
 
                             // Finally, add it to the project-local object store  
-                            m_projects[objectType]->AddObject(objectIdentifier, newObject);
+                            Registry<std::shared_ptr<Project>>::GetInstance()->Query(objectType).value()->AddObject(objectIdentifier, newObject);
                         }
                     }
                 }
@@ -139,26 +155,3 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
         }
     }
 }
-
-auto Lattice::Lattice::AddProject(const std::string &identifier) -> std::optional<std::shared_ptr<Project>> {
-    auto projectFactory = Registry<std::shared_ptr<Plugin::IFactory<Object>>>::GetInstance()->Query("project");
-    if (!projectFactory.has_value()) {
-        return {};
-    }
-
-    auto [it, inserted] = m_projects.insert({identifier, std::reinterpret_pointer_cast<Project>(projectFactory.value()->Create(identifier))});
-    if (inserted) {
-        return it->second;
-    }
-
-    return {};
-}
-
-auto Lattice::Lattice::GetProject(const std::string &identifier) -> std::optional<std::shared_ptr<Project>> {
-    try {
-        return m_projects.at(identifier);
-    } catch (const std::out_of_range &ex) {
-        return {};
-    }
-}
-

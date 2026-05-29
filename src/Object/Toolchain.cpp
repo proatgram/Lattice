@@ -2,7 +2,7 @@ module;
 
 #include <yaml-cpp/yaml.h>
 
-module Lattice.Toolchain;
+module Lattice.Object.Toolchain;
 
 import Lattice.Registry;
 

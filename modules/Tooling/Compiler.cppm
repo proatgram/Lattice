@@ -3,6 +3,7 @@ export module Lattice.Tooling.Compiler;
 export import Lattice.Tooling.Configuration;
 export import Lattice.Plugin.IFactory;
 export import Lattice.System.Command;
+export import Lattice.Object;
 
 export import std;
 
@@ -178,7 +179,12 @@ export namespace Lattice::Tooling {
 
             template <typename T> requires ConstIterable<T>
             inline auto AddSources(const T &sources) -> CompilerConfiguration& {
-
+                if (m_configStore.contains(SOURCES_KEY) && m_configStore.at(SOURCES_KEY).has_value() && m_configStore.at(SOURCES_KEY).type() == typeid(std::list<std::filesystem::path>)) {
+                    std::list<std::filesystem::path>& srcs = std::any_cast<std::list<std::filesystem::path>&>(m_configStore.at(SOURCES_KEY));
+                    srcs.insert(std::end(srcs), std::cbegin(sources), std::cend(sources));
+                } else {
+                    m_configStore[SOURCES_KEY] = std::list<std::filesystem::path>(std::cbegin(sources), std::cend(sources));
+                }
             }
 
             friend class ICompiler;
@@ -208,9 +214,11 @@ export namespace Lattice::Tooling {
              * Implementing this function allows you to return a custom and tailored
              * configuration implementation specifically for a specific compiler.
              *
+             * Additionally, passing in an object type allows the compiler to handle building the command and configuration for that object.
+             *
              * @return A default `CompilerConfiguration` instance for this compiler.
              */
-            virtual auto CreateConfiguration() const -> CompilerConfiguration;
+            virtual auto CreateConfiguration(std::optional<std::shared_ptr<Object>> obj = std::nullopt) const -> CompilerConfiguration;
 
             /**
              * @brief Returns a `Command` instance tailored for this compiler.

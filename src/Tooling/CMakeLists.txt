@@ -13,6 +13,7 @@ target_sources(lattice_tooling_compiler
 target_link_libraries(lattice_tooling_compiler
     PUBLIC
         lattice::Tooling::Configuration
+        lattice::Object
         lattice::IFactory
         lattice::System::Command
 )

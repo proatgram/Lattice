@@ -43,13 +43,13 @@ export namespace Lattice {
              *
              * @return A `std::expected` containing an expected value of `void`, or unexpected value of `std::string` telling what happened.
              */
-            inline auto Register(const Key &key, const Val &value) -> std::expected<void, std::string> {
+            inline auto Register(const Key &key, const Val &value) -> std::expected<std::reference_wrapper<Val>, std::string> {
                 if (m_registeryStore.contains(key))
                     return std::unexpected("Key already exists in Registry.");
 
                 m_registeryStore[key] = value;
 
-                return {};
+                return std::expected<std::reference_wrapper<Val>, std::string>{m_registeryStore[key]};
             }
 
             /**
