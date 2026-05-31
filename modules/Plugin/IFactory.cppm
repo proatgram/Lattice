@@ -21,7 +21,7 @@ export namespace Lattice::Plugin {
              *
              * @return Shared pointer to the factoried object
              */
-            virtual auto Create(const std::string &identifier) -> std::shared_ptr<T> = 0;
+            virtual auto Create(const std::string &identifier, const std::optional<std::string> &objectData = std::nullopt) -> std::shared_ptr<T> = 0;
     };
 
     template <typename Factory, typename T>

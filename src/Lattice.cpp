@@ -8,7 +8,7 @@ module Lattice;
 import Lattice.Registry;
 
 import Lattice.Object.Toolchain;
-import Lattice.Object.Library;
+import Lattice.Object.ILibrary;
 
 auto LoadIncludes(const std::string &include, const std::filesystem::path &workingDirectory) -> std::vector<YAML::Node> {
     // Include can either be:
@@ -57,7 +57,7 @@ Lattice::Lattice::Lattice(Lattice::Constructable) {
     if (!ok)
         throw std::runtime_error("Irrecoverable error: Built in object type \"toolchain\" failed to register. This is a bug.");
 
-    ok = Registry<std::shared_ptr<LibraryFactory::FactoryType>>::GetInstance()->Register("library", LibraryFactory::GetInstance());
+    ok = Registry<std::shared_ptr<ILibraryFactory::FactoryType>>::GetInstance()->Register("library", ILibraryFactory::GetInstance());
     if (!ok)
         throw std::runtime_error("Irrecoverable error: Built in object type \"library\" failed to register. This is a bug.");
 }
@@ -92,21 +92,15 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
                     Registry<std::shared_ptr<Project>>::GetInstance()->
                         Register(
                                 it->first.as<std::string>(),
-                                ProjectFactory::GetInstance()->Create(it->first.as<std::string>())->As<Project>().value());
+                                ProjectFactory::GetInstance()->Create(it->first.as<std::string>(), it->second.as<std::string>())->As<Project>().value());
 
                 if (!project) {
                     throw std::runtime_error(std::format("Error parsing configurations: Project \"{}\" was defined more than once.", it->first.as<std::string>()));
                 }
-
-                project.value().get()->Parse(YAML::Dump(it->second));
             }
         }
     }
 
-    // We put objects in here that are needed by something but haven't been defined yet,
-    // and remove them once they are defined. Easy way to get lazy dependency checking.
-    // guess what? TODO:)
-    std::vector<std::string> requiredObjects;
     for (const YAML::Node config : configs) {
         for (YAML::const_iterator it = config.begin(); it != config.end(); ++it) {
             std::string objectType = it->first.as<std::string>();
@@ -127,12 +121,7 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
                             std::string objectIdentifier = object->first.as<std::string>();
                             std::string objectConfig = YAML::Dump(object->second);
 
-                            std::shared_ptr<Object> newObject = objectFactory.value()->Create(objectIdentifier);
-                            // If the object supports parsing (a good object type should!) we provide it parsable info.
-                            if(newObject->GetProperties().test(std::to_underlying(Object::Properties::Parsable))) {
-                                std::shared_ptr<Parsable> parsableObject = std::reinterpret_pointer_cast<Parsable>(newObject);
-                                parsableObject->Parse(objectConfig);
-                            }
+                            std::shared_ptr<Object> newObject = objectFactory.value()->Create(objectIdentifier, objectConfig);
 
                             // Finally, add it to the project-local object store  
                             Registry<std::shared_ptr<Project>>::GetInstance()->Query(objectType).value()->AddObject(objectIdentifier, newObject);
@@ -144,12 +133,7 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
                 for (YAML::const_iterator objectEntry = objectYAML.begin(); objectEntry != objectYAML.end(); ++objectEntry) {
                     // If we have an object factory for a given object defined,
                     // we create the object using the given object factory.
-                    std::shared_ptr<Object> newObject = objectFactory.value()->Create(objectEntry->first.as<std::string>());
-                    if (newObject->GetProperties().test(std::to_underlying(Object::Properties::Parsable))) {
-                        std::shared_ptr<Parsable> parsableObject = std::reinterpret_pointer_cast<Parsable>(newObject);
-                        parsableObject->Parse(YAML::Dump(objectEntry->second));
-                        // TODO: Add to global objects in global scope
-                    }
+                    std::shared_ptr<Object> newObject = objectFactory.value()->Create(objectEntry->first.as<std::string>(), YAML::Dump(objectEntry->second));
                 }
             } 
         }

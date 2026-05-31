@@ -3,7 +3,6 @@ export module Lattice.Object.Toolchain;
 
 export import std;
 export import Lattice.Object;
-export import Lattice.Object.Parsable;
 export import Lattice.Plugin.IFactory;
 export import Lattice.Tooling.Compiler;
 
@@ -15,14 +14,12 @@ export namespace Lattice {
      * target ABI, Arch, and OS for the toolchain.
      *
      */
-    class Toolchain : public Object, public Parsable {
+    class Toolchain : public Object {
         public:
             Toolchain(Constructable, const std::string &identifier);
 
             auto GetProperties() const -> std::bitset<Object::TOTAL_PROPERTIES> final;
 
-            auto Parse(const std::string &parsable) -> void final;
-            
             /**
              * @brief Gets the compiler name.
              *
@@ -167,7 +164,7 @@ export namespace Lattice {
         public:
             inline ToolchainFactory(Constructable) {}
 
-            auto Create(const std::string &identifier) -> std::shared_ptr<Object> final;
+            auto Create(const std::string &identifier, const std::optional<std::string> &objectData) -> std::shared_ptr<Object> final;
 
             auto CreateDefault() -> std::shared_ptr<Toolchain>;
     };

@@ -31,7 +31,6 @@ target_link_libraries(lattice_object_project
     PUBLIC
         lattice::Object
         lattice::Object::Properties::Buildable
-        lattice::Object::Properties::Parsable
         lattice::IFactory
     PRIVATE
         yaml-cpp::yaml-cpp
@@ -70,7 +69,6 @@ target_sources(lattice_object_toolchain
 target_link_libraries(lattice_object_toolchain
     PUBLIC
         lattice::Object
-        lattice::Object::Properties::Parsable
         lattice::IFactory
         lattice::Tooling::Compiler
         lattice::Registry
@@ -82,18 +80,18 @@ add_library(lattice::Object::Library ALIAS lattice_object_library)
 
 target_sources(lattice_object_library
     PRIVATE
-    "${CMAKE_SOURCE_DIR}/src/Object/Library.cpp"
+    "${CMAKE_SOURCE_DIR}/src/Object/ILibrary.cpp"
     PUBLIC FILE_SET CXX_MODULES
         BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
         FILES
-        "${CMAKE_SOURCE_DIR}/modules/Object/Library.cppm"
+        "${CMAKE_SOURCE_DIR}/modules/Object/ILibrary.cppm"
 )
 
 target_link_libraries(lattice_object_library
     PUBLIC
         lattice::Object
-        lattice::Object::Properties::Parsable
         lattice::Object::Properties::Buildable
+        lattice::Object::Properties::LanguageIdentifiable
 
         lattice::IFactory
         lattice::Registry
@@ -103,6 +101,5 @@ target_link_libraries(lattice_object_library
 
         yaml-cpp::yaml-cpp
 )
-
 
 add_subdirectory(Properties)

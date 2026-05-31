@@ -14,7 +14,7 @@ export namespace Lattice {
      */
     class Object : public std::enable_shared_from_this<Object> {
         public:
-            static constexpr short TOTAL_PROPERTIES = 7;
+            static constexpr short TOTAL_PROPERTIES = 8;
             enum class Properties {
                 Buildable,
                 Linkable,
@@ -22,7 +22,8 @@ export namespace Lattice {
                 Exportable,
                 Importable,
                 Runnable,
-                Parsable
+                Parsable,
+                LanguageIdentifiable
             };
 
             /**

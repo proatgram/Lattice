@@ -2,7 +2,6 @@ export module Lattice.Project;
 
 export import Lattice.Object;
 export import Lattice.Object.Buildable;
-export import Lattice.Object.Parsable;
 export import Lattice.Plugin.IFactory;
 import std;
 
@@ -14,7 +13,7 @@ export namespace Lattice {
      * a project configuration that can be built and parsed from YAML.
      *
      */
-    class Project final : public Object, public Buildable, public Parsable {
+    class Project final : public Object, public Buildable {
         public:
             /**
              * @brief Creates a new Project with the given identifier.
@@ -103,14 +102,6 @@ export namespace Lattice {
              */
             auto AddObject(const std::string &identifier, const std::shared_ptr<Object> &object) -> void;
 
-            /**
-             * @brief Parses the project from a YAML string.
-             *
-             * @param parsableString The YAML string to parse.
-             * @return Void.
-             */
-            auto Parse(const std::string &parsableString) -> void final;
-
         private:
             std::string m_description;
             std::string m_version;
@@ -126,7 +117,7 @@ export namespace Lattice {
         public:
             inline ProjectFactory(Constructable) {};
 
-            auto Create(const std::string &identifier) -> std::shared_ptr<Object> final;
+            auto Create(const std::string &identifier, const std::optional<std::string> &objectData) -> std::shared_ptr<Object> final;
     };
 
 }  // export namespace Lattice

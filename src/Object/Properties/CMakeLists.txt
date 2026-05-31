@@ -10,14 +10,12 @@ target_sources(lattice_object_properties_buildable
             "${CMAKE_SOURCE_DIR}/modules/Object/Properties/Buildable.cppm"
 )
 
-add_library(lattice_object_properties_parsable)
-add_library(lattice::Object::Properties::Parsable ALIAS lattice_object_properties_parsable)
+add_library(lattice_object_properties_languageidentifiable)
+add_library(lattice::Object::Properties::LanguageIdentifiable ALIAS lattice_object_properties_languageidentifiable)
 
-target_sources(lattice_object_properties_parsable
-    PUBLIC
-        "${CMAKE_SOURCE_DIR}/src/Object/Properties/Parsable.cpp"
+target_sources(lattice_object_properties_languageidentifiable
     PUBLIC FILE_SET CXX_MODULES
         BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
         FILES
-            "${CMAKE_SOURCE_DIR}/modules/Object/Properties/Parsable.cppm"
+        "${CMAKE_SOURCE_DIR}/modules/Object/Properties/LanguageIdentifiable.cppm"
 )

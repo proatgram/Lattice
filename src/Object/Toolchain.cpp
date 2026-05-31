@@ -18,74 +18,6 @@ auto Toolchain::GetProperties() const -> std::bitset<Object::TOTAL_PROPERTIES> {
     return properties;
 }
 
-auto Toolchain::Parse(const std::string &parsable) -> void {
-    YAML::Node config = YAML::Load(parsable);
-
-    /* Check for invalid or missing object properties */
-    if (!config["compiler"])
-        throw std::runtime_error("Error: required `compiler` field isn't present.");
-
-    if (!config["languages"] || !config["languages"].IsSequence())
-        throw std::runtime_error("Error: required `languages` field isn't present or is malformed.");
-
-    if (!config["paths"] || !config["paths"]["compiler"])
-        throw std::runtime_error("Error: required `paths:compiler` field isn't present.");
-
-    /* Load object properties into object */
-    m_compilerName = config["compiler"].as<std::string>();
-    m_compilerPath = config["paths"]["compiler"].as<std::string>();
-    
-    // Languages
-    for (std::size_t i = 0; i < config["languages"].size(); i++) {
-        m_languages.push_back(config["languages"][i].as<std::string>());
-    }
-
-    // Include paths
-    if (config["paths"]["system_include_paths"]) {
-        if (!config["paths"]["system_include_paths"].IsSequence())
-            throw std::runtime_error("Error: toolchain property `system_include_paths` is malformed. (should be a sequence)");
-
-        for (std::size_t i = 0; i < config["paths"]["system_include_paths"].size(); i++) {
-            m_defaultSystemIncludes.emplace_back(config["paths"]["system_include_paths"][i].as<std::string>());
-        }
-    }
-    
-    // Library paths
-    if (config["paths"]["library_paths"]) {
-        if (!config["paths"]["library_paths"].IsSequence())
-            throw std::runtime_error("Error: toolchain property `library_paths` is malformed. (should be a sequence)");
-
-        for (std::size_t i = 0; i < config["paths"]["library_paths"].size(); i++) {
-            m_defaultLibraryPaths.emplace_back(config["paths"]["library_paths"][i].as<std::string>());
-        }
-    }
-
-    // Flags
-    if (config["flags"]) {
-        // Compiler flags
-        if (config["flags"]["compiler"]) {
-            if (!config["flags"]["compiler"].IsSequence())
-                throw std::runtime_error("Error: toolchain property `flags:compiler` is malformed. (should be a sequence)");
-
-            for (std::size_t i = 0; i < config["flags"]["compiler"].size(); i++) {
-                m_defaultCompilerFlags.push_back(config["flags"]["compiler"][i].as<std::string>());
-            }
-        }
-
-        // Linker flags
-        if (config["flags"]["linker"]) {
-            if (!config["flags"]["linker"].IsSequence())
-                throw std::runtime_error("Error: toolchain property `flags:linker` is malformed. (should be a sequence)");
-
-            for (std::size_t i = 0; i < config["flags"]["linker"].size(); i++) {
-                m_defaultLinkerFlags.push_back(config["flags"]["linker"][i].as<std::string>());
-            }
-        }
-    }
-
-    // TODO: populate other properties using `Compiler`
-}
-
 auto Toolchain::GetCompilerName() const -> std::string {
     return m_compilerName;
 }
@@ -151,8 +83,82 @@ auto Toolchain::GetCompiler() const -> std::optional<std::shared_ptr<Tooling::IC
     return {};
 }
 
-auto ToolchainFactory::Create(const std::string &identifier) -> std::shared_ptr<Object> {
-    return std::make_shared<Toolchain>(Toolchain::Constructable(), identifier)->As<Object>().value();
+auto ToolchainFactory::Create(const std::string &identifier, const std::optional<std::string> &objectData) -> std::shared_ptr<Object> {
+    YAML::Node config;
+
+    try {
+        config = YAML::Load(objectData.value_or(""));
+    } catch (const YAML::ParserException &err) {
+        throw std::runtime_error(std::format("Failed to create toolchain {}: Toolchain configuration is malformed: {}", identifier, err.what()));
+    }
+
+    /* Check for invalid or missing object properties */
+    if (!config["compiler"])
+        throw std::runtime_error("Error: required `compiler` field isn't present.");
+
+    if (!config["languages"] || !config["languages"].IsSequence())
+        throw std::runtime_error("Error: required `languages` field isn't present or is malformed.");
+
+    if (!config["paths"] || !config["paths"]["compiler"])
+        throw std::runtime_error("Error: required `paths:compiler` field isn't present.");
+
+    std::shared_ptr<Toolchain> toolchain = std::make_shared<Toolchain>(Toolchain::Constructable(), identifier);
+
+    /* Load object properties into object */
+    toolchain->m_compilerName = config["compiler"].as<std::string>();
+    toolchain->m_compilerPath = config["paths"]["compiler"].as<std::string>();
+    
+    // Languages
+    for (std::size_t i = 0; i < config["languages"].size(); i++) {
+        toolchain->m_languages.push_back(config["languages"][i].as<std::string>());
+    }
+
+    // Include paths
+    if (config["paths"]["system_includes"]) {
+        if (!config["paths"]["system_includes"].IsSequence())
+            throw std::runtime_error("Error: toolchain property `system_includes` is malformed. (should be a sequence)");
+
+
+        for (std::size_t i = 0; i < config["paths"]["system_includes"].size(); i++) {
+            toolchain->m_defaultSystemIncludes.emplace_back(config["paths"]["system_include_paths"][i].as<std::string>());
+        }
+    }
+    
+    // Library paths
+    if (config["paths"]["library_paths"]) {
+        if (!config["paths"]["library_paths"].IsSequence())
+            throw std::runtime_error("Error: toolchain property `library_paths` is malformed. (should be a sequence)");
+
+        for (std::size_t i = 0; i < config["paths"]["library_paths"].size(); i++) {
+            toolchain->m_defaultLibraryPaths.emplace_back(config["paths"]["library_paths"][i].as<std::string>());
+        }
+    }
+
+    // Flags
+    if (config["flags"]) {
+        // Compiler flags
+        if (config["flags"]["compiler"]) {
+            if (!config["flags"]["compiler"].IsSequence())
+                throw std::runtime_error("Error: toolchain property `flags:compiler` is malformed. (should be a sequence)");
+
+            for (std::size_t i = 0; i < config["flags"]["compiler"].size(); i++) {
+                toolchain->m_defaultCompilerFlags.push_back(config["flags"]["compiler"][i].as<std::string>());
+            }
+        }
+
+        // Linker flags
+        if (config["flags"]["linker"]) {
+            if (!config["flags"]["linker"].IsSequence())
+                throw std::runtime_error("Error: toolchain property `flags:linker` is malformed. (should be a sequence)");
+
+            for (std::size_t i = 0; i < config["flags"]["linker"].size(); i++) {
+                toolchain->m_defaultLinkerFlags.push_back(config["flags"]["linker"][i].as<std::string>());
+            }
+        }
+    }
+
+    // TODO: populate other properties using `Compiler`
+    return toolchain;
 }
 
 auto ToolchainFactory::CreateDefault() -> std::shared_ptr<Toolchain> {

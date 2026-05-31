@@ -69,22 +69,27 @@ auto Project::AddObject(const std::string &identifier, const std::shared_ptr<Obj
     m_objects.insert({identifier, object});
 }
 
-auto Project::Parse(const std::string &parsableString) -> void {
-    YAML::Node parsable = YAML::Load(parsableString);
+auto ProjectFactory::Create(const std::string &identifier, const std::optional<std::string> &objectData) -> std::shared_ptr<Object> {
+    YAML::Node config;
+    try {
+        config = YAML::Load(objectData.value_or(""));
+    } catch (const YAML::ParserException &err) {
+        throw std::runtime_error(std::format("Failed to create project {}: Project configuration is malformed: {}", identifier, err.what()));
+    }
 
-    if (parsable["version"]) {
-        SetVersion(parsable["version"].as<std::string>());
+    std::shared_ptr<Project> project = std::make_shared<Project>(Project::Constructable{}, identifier);
+
+    if (config["version"]) {
+        project->m_version = config["version"].as<std::string>();
     }
     
-    if (parsable["description"]) {
-        SetDescription(parsable["description"].as<std::string>());
+    if (config["description"]) {
+        project->m_description = config["description"].as<std::string>();
     }
     
-    if (parsable["homepage"]) {
-        SetHomepageUrl(parsable["homepage"].as<std::string>());
+    if (config["homepage"]) {
+        project->m_homepageUrl = config["homepage"].as<std::string>();
     }
-}
 
-auto ProjectFactory::Create(const std::string &identifier) -> std::shared_ptr<Object> {
-    return std::make_shared<Project>(Project::Constructable(), identifier)->As<Object>().value();
+    return project;
 }
