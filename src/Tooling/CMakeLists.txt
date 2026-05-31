@@ -29,4 +29,3 @@ target_sources(lattice_tooling_configuration
         FILES
             "${CMAKE_SOURCE_DIR}/modules/Tooling/Configuration.cppm"
 )
-
