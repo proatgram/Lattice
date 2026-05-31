@@ -22,9 +22,9 @@ auto ILibrary::GetProperties() const -> std::bitset<Object::TOTAL_PROPERTIES> {
 auto ILibrary::Build() -> void {
 
     // Obtains a toolchain if it can.
-    std::optional<std::shared_ptr<Toolchain>> toolchain = Registry<std::shared_ptr<Toolchain>>::GetInstance()->Query(m_toolchainId.value_or("default"));
+    std::optional<std::shared_ptr<Toolchain>> toolchain = Registry<std::shared_ptr<Toolchain>>::GetInstance()->Query(GetToolchainId().value_or("default"));
     if (!toolchain)
-        throw std::runtime_error(std::format("Failed to query toolchain {} for library object \"{}\".", m_toolchainId.value_or("default"), m_identifier));
+        throw std::runtime_error(std::format("Failed to query toolchain {} for library object \"{}\".", GetToolchainId().value_or("default"), m_identifier));
 
     // Obtains a compiler from said toolchain if it can.
     std::optional<std::shared_ptr<Tooling::ICompiler>> compiler = toolchain.value()->GetCompiler();

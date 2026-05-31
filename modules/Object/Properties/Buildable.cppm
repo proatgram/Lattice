@@ -13,19 +13,29 @@ export namespace Lattice {
     class Buildable {
         public:
             /**
-             * @brief Default constructor for Buildable.
-             */
-            Buildable() = default;
-
-            /**
              * @brief Builds the buildable object.
              *
              * @return Void.
              */
             virtual auto Build() -> void = 0;
 
-        protected:
+            /**
+             * @brief Gets the toolchain ID for this buildable object.
+             *
+             * @return Optional string containing nothing or the toolchainId.
+             */
+            auto GetToolchainId() const -> std::optional<std::string>;
 
+        protected:
+            /**
+             * @brief Sets the toolchain ID
+             *
+             * @param[in] toolchainId The Toolchain ID
+             *
+             */
+            auto SetToolchainId(const std::string &toolchainId) -> void;
+
+        private:
             std::optional<std::string> m_toolchainId;
     };
 }  // export namespace Lattice::Object

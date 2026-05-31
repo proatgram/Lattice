@@ -12,8 +12,20 @@ export namespace Lattice {
         public:
             ILibrary(Constructable, const std::string &identifier);
 
+            /**
+             * @brief Default build implementation.
+             *
+             * If your library implementation is something simple, then you
+             * can probably use the default implementation.
+             */
             auto Build() -> void override;
             
+            /**
+             * @brief Gets the default ILibrary properties.
+             *
+             * If your library implementation is something simple, then you
+             * can probably use the default implementation.
+             */
             auto GetProperties() const -> std::bitset<TOTAL_PROPERTIES> override;
 
         protected:
