@@ -26,7 +26,6 @@ target_link_libraries(lattice_lattice
         lattice::Registry
         lattice::Object
         lattice::Object::Project
-        lattice::Tooling::Compiler
         lattice::Object::Toolchain
         lattice::Object::Library
         yaml-cpp::yaml-cpp

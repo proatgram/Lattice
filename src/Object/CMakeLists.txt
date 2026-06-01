@@ -70,7 +70,7 @@ target_link_libraries(lattice_object_toolchain
     PUBLIC
         lattice::Object
         lattice::IFactory
-        lattice::Tooling::Compiler
+        lattice::Tooling::ICompiler
         lattice::Registry
         yaml-cpp::yaml-cpp
 )
@@ -96,7 +96,7 @@ target_link_libraries(lattice_object_library
         lattice::IFactory
         lattice::Registry
         lattice::Object::Toolchain
-        lattice::Tooling::Compiler
+        lattice::Tooling::ICompiler
         lattice::System::Process
 
         yaml-cpp::yaml-cpp

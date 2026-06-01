@@ -7,10 +7,11 @@ export import Lattice.Object;
 
 export import std;
 
-template <typename T>
+template <typename T, typename V>
 concept ConstIterable = requires (T type) {
     { std::cbegin(type) };
     { std::cend(type) };
+    requires std::is_same_v<typename T::value_type, V>;
 };
 
 export namespace Lattice::Tooling {
@@ -57,7 +58,7 @@ export namespace Lattice::Tooling {
              *
              * @return Instance to self.
              */
-            template <typename T> requires ConstIterable<T>
+            template <typename T> requires ConstIterable<T, std::string>
             inline auto SetArguments(const T &args) -> CompilerConfiguration& {
                 m_configStore[ARGUMENTS_KEY] = std::vector<std::string>(std::cbegin(args), std::cend(args));
 
@@ -89,7 +90,7 @@ export namespace Lattice::Tooling {
              *
              * @return Instance to self.
              */
-            template <typename T> requires ConstIterable<T>
+            template <typename T> requires ConstIterable<T, std::string>
             inline auto AddArguments(const T &args) -> CompilerConfiguration& {
                 if (m_configStore.contains(ARGUMENTS_KEY) && m_configStore.at(ARGUMENTS_KEY).has_value() && m_configStore.at(ARGUMENTS_KEY).type() == typeid(std::vector<std::string>)) {
                     std::vector<std::string> &currentArgs = std::any_cast<std::vector<std::string>&>(m_configStore.at(ARGUMENTS_KEY));
@@ -145,7 +146,7 @@ export namespace Lattice::Tooling {
              *
              * @return Instance to self.
              */
-            template <typename T> requires ConstIterable<T>
+            template <typename T> requires ConstIterable<T, std::filesystem::path>
             inline auto SetSources(const T &sources) -> CompilerConfiguration& {
                 m_configStore[SOURCES_KEY] = std::list<std::filesystem::path>(std::cbegin(sources), std::cend(sources));
 
@@ -177,7 +178,7 @@ export namespace Lattice::Tooling {
              * @return Instance to self.
              */
 
-            template <typename T> requires ConstIterable<T>
+            template <typename T> requires ConstIterable<T, std::filesystem::path>
             inline auto AddSources(const T &sources) -> CompilerConfiguration& {
                 if (m_configStore.contains(SOURCES_KEY) && m_configStore.at(SOURCES_KEY).has_value() && m_configStore.at(SOURCES_KEY).type() == typeid(std::list<std::filesystem::path>)) {
                     std::list<std::filesystem::path>& srcs = std::any_cast<std::list<std::filesystem::path>&>(m_configStore.at(SOURCES_KEY));
@@ -216,9 +217,11 @@ export namespace Lattice::Tooling {
              *
              * Additionally, passing in an object type allows the compiler to handle building the command and configuration for that object.
              *
+             * @param[in] obj An optional object to use to configure the configuration. 
+             *
              * @return A default `CompilerConfiguration` instance for this compiler.
              */
-            virtual auto CreateConfiguration(std::optional<std::shared_ptr<Object>> obj = std::nullopt) const -> CompilerConfiguration;
+            virtual auto CreateConfiguration(const std::optional<std::shared_ptr<Object>> &obj = std::nullopt) const -> CompilerConfiguration;
 
             /**
              * @brief Returns a `Command` instance tailored for this compiler.
@@ -229,6 +232,8 @@ export namespace Lattice::Tooling {
              * Implementing this function allows you to return a custom and tailored
              * `Command` implementation specifically for a specific compiler, allowing you
              * to specify and manage how a compiler is called.
+             *
+             * @param[in] configuration The compiler configuration to use to create the command.
              *
              * @return A tailored `Command` instance for this compiler and the configuration given.
              */
