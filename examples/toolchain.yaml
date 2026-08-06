@@ -1,10 +1,10 @@
 toolchain:
-  default:
+  g++:
     compiler: g++
     languages: [c, cxx]
     paths:
       sysroot: / # If not specified, not given to the compiler.
-      compiler: /usr/bin/gcc # If not specified, Lattice will try to find it for you.
+      compiler: /usr/bin/g++ # If not specified, Lattice will try to find it for you.
       system_includes:
         - "/usr/include"
       library:

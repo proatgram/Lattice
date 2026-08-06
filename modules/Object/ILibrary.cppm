@@ -33,7 +33,7 @@ export namespace Lattice {
             friend class ILibraryFactory;
     };
 
-    class ILibraryFactory : public IObjectFactory<ILibraryFactory> {
+    class ILibraryFactory final : public IObjectFactory<ILibraryFactory> {
         public:
             inline ILibraryFactory(Constructable) {}
 
@@ -41,5 +41,5 @@ export namespace Lattice {
     };
 
     template <typename Factory>
-    class LibraryFactory : public Plugin::ISingletonFactory<Factory, ILibrary>, public LanguageIdentifiable {};
+    class LibraryFactory : public Plugin::ISingletonFactory<Factory, ILibrary>, public virtual LanguageIdentifiable {protected: using LanguageIdentifiable::SetSupportedLanguages; using LanguageIdentifiable::AddSupportedLanguages;};
 }  // export namespace Lattice

@@ -54,31 +54,32 @@ target_link_libraries(lattice_object_provider
         lattice::IFactory
 )
 
-add_library(lattice_object_toolchain)
-add_library(lattice::Object::Toolchain ALIAS lattice_object_toolchain)
+add_library(lattice_object_itoolchain)
+add_library(lattice::Object::IToolchain ALIAS lattice_object_itoolchain)
 
-target_sources(lattice_object_toolchain
+target_sources(lattice_object_itoolchain
     PRIVATE
-        "${CMAKE_SOURCE_DIR}/src/Object/Toolchain.cpp"
+        "${CMAKE_SOURCE_DIR}/src/Object/IToolchain.cpp"
     PUBLIC FILE_SET CXX_MODULES
         BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
         FILES
-            "${CMAKE_SOURCE_DIR}/modules/Object/Toolchain.cppm"
+            "${CMAKE_SOURCE_DIR}/modules/Object/IToolchain.cppm"
 )
 
-target_link_libraries(lattice_object_toolchain
+target_link_libraries(lattice_object_itoolchain
     PUBLIC
         lattice::Object
         lattice::IFactory
+        lattice::Object::Properties::LanguageIdentifiable
         lattice::Tooling::ICompiler
         lattice::Registry
         yaml-cpp::yaml-cpp
 )
 
-add_library(lattice_object_library)
-add_library(lattice::Object::Library ALIAS lattice_object_library)
+add_library(lattice_object_ilibrary)
+add_library(lattice::Object::ILibrary ALIAS lattice_object_ilibrary)
 
-target_sources(lattice_object_library
+target_sources(lattice_object_ilibrary
     PRIVATE
     "${CMAKE_SOURCE_DIR}/src/Object/ILibrary.cpp"
     PUBLIC FILE_SET CXX_MODULES
@@ -87,7 +88,7 @@ target_sources(lattice_object_library
         "${CMAKE_SOURCE_DIR}/modules/Object/ILibrary.cppm"
 )
 
-target_link_libraries(lattice_object_library
+target_link_libraries(lattice_object_ilibrary
     PUBLIC
         lattice::Object
         lattice::Object::Properties::Buildable
@@ -95,9 +96,10 @@ target_link_libraries(lattice_object_library
 
         lattice::IFactory
         lattice::Registry
-        lattice::Object::Toolchain
+        lattice::Object::IToolchain
         lattice::Tooling::ICompiler
         lattice::System::Process
+        lattice::Object::Project
 
         yaml-cpp::yaml-cpp
 )

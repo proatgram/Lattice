@@ -14,6 +14,8 @@ add_library(lattice_object_properties_languageidentifiable)
 add_library(lattice::Object::Properties::LanguageIdentifiable ALIAS lattice_object_properties_languageidentifiable)
 
 target_sources(lattice_object_properties_languageidentifiable
+    PUBLIC
+    "${CMAKE_SOURCE_DIR}/src/Object/Properties/LanguageIdentifiable.cpp"
     PUBLIC FILE_SET CXX_MODULES
         BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
         FILES

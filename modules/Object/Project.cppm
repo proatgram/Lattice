@@ -110,6 +110,9 @@ export namespace Lattice {
 
             std::map<std::string, std::shared_ptr<Object>> m_objects;
 
+        protected:
+            using Buildable::SetToolchainId;
+
             friend class ProjectFactory;
     };
 
