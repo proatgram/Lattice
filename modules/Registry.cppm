@@ -1,3 +1,5 @@
+module;
+#include <ranges>
 export module Lattice.Registry;
 
 export import std;
@@ -94,6 +96,15 @@ export namespace Lattice {
              */
             inline auto Contains(const Key &key) const -> bool {
                 return m_registeryStore.contains(key);
+            }
+
+            /**
+             * @brief Gets all of the values.
+             *
+             * @return A `std::list<Val>` of all the values in the registry.
+             */
+            inline auto All() const -> auto {
+                return m_registeryStore | std::views::values;
             }
             
         private:

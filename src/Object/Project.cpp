@@ -91,5 +91,8 @@ auto ProjectFactory::Create(const std::string &identifier, const std::optional<s
         project->m_homepageUrl = config["homepage"].as<std::string>();
     }
 
+    // Projects can have an optional default toolchain.
+    project->SetToolchainId(config["default_toolchain"].as<std::string>("default"));
+
     return project;
 }
