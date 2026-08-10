@@ -2,10 +2,17 @@ add_library(lattice_artifact)
 add_library(lattice::Artifact ALIAS lattice_artifact)
 
 target_sources(lattice_artifact
+    PRIVATE
+    "${CMAKE_SOURCE_DIR}/src/Artifacts/Artifact.cpp"
     PUBLIC FILE_SET CXX_MODULES
         BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
         FILES
             "${CMAKE_SOURCE_DIR}/modules/Artifacts/Artifact.cppm"
+)
+
+target_link_libraries(lattice_artifact
+    PUBLIC
+        lattice::Object
 )
 
 add_library(lattice_artifact_compiledobject)

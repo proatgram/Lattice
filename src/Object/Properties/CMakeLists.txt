@@ -26,8 +26,6 @@ add_library(lattice_object_properties_linkable)
 add_library(lattice::Object::Properties::Linkable ALIAS lattice_object_properties_linkable)
 
 target_sources(lattice_object_properties_linkable
-    PUBLIC
-        "${CMAKE_SOURCE_DIR}/src/Object/Properties/Linkable.cpp"
     PUBLIC FILE_SET CXX_MODULES
         BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
         FILES
@@ -36,5 +34,40 @@ target_sources(lattice_object_properties_linkable
 
 target_link_libraries(lattice_object_properties_linkable
     PUBLIC
+        lattice::Object
+)
+
+add_library(lattice_object_properties_artifactprovider)
+add_library(lattice::Object::Properties::ArtifactProvider ALIAS lattice_object_properties_artifactprovider)
+
+target_sources(lattice_object_properties_artifactprovider
+    PUBLIC
+        "${CMAKE_SOURCE_DIR}/src/Object/Properties/ArtifactProvider.cpp"
+    PUBLIC FILE_SET CXX_MODULES
+        BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
+        FILES
+        "${CMAKE_SOURCE_DIR}/modules/Object/Properties/ArtifactProvider.cppm"
+)
+
+target_link_libraries(lattice_object_properties_artifactprovider
+    PUBLIC
         lattice::Artifact
+)
+
+add_library(lattice_object_properties_hastoolchain)
+add_library(lattice::Object::Properties::HasToolchain ALIAS lattice_object_properties_hastoolchain)
+
+target_sources(lattice_object_properties_hastoolchain
+    PUBLIC
+        "${CMAKE_SOURCE_DIR}/src/Object/Properties/HasToolchain.cpp"
+    PUBLIC FILE_SET CXX_MODULES
+        BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
+        FILES
+        "${CMAKE_SOURCE_DIR}/modules/Object/Properties/HasToolchain.cppm"
+)
+
+target_link_libraries(lattice_object_properties_hastoolchain
+    PUBLIC
+        lattice::Object::IToolchain
+        lattice::Registry
 )

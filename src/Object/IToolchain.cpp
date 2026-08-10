@@ -13,7 +13,6 @@ IToolchain::IToolchain(Constructable, const std::string &identifier) :
 
 auto IToolchain::GetProperties() const -> std::bitset<Object::TOTAL_PROPERTIES> {
     std::bitset<Object::TOTAL_PROPERTIES> properties;
-    properties.set(std::to_underlying(Object::Properties::Parsable));
 
     return properties;
 }

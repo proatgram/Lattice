@@ -14,12 +14,7 @@ export namespace Lattice {
 
             auto GetFilePath() const -> std::filesystem::path;
 
-            auto GetSource() const -> std::shared_ptr<const Object>;
-            auto GetSource() -> std::shared_ptr<Object>;
-    
         private:
             std::filesystem::path m_filePath;
-
-            std::shared_ptr<Object> m_source;
     };
 }  // export namespace Lattice

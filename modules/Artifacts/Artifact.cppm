@@ -2,6 +2,8 @@ export module Lattice.Artifact;
 
 import std;
 
+export import Lattice.Object;
+
 export namespace Lattice {
     class Artifact {
         public:
@@ -14,5 +16,11 @@ export namespace Lattice {
             inline auto As() const -> const T& {
                 return dynamic_cast<const T&>(*this);
             }
+
+            auto GetSourceObject() const -> std::shared_ptr<const Object>;
+            auto GetSourceObject() -> std::shared_ptr<Object>;
+
+        private:
+            std::shared_ptr<Object> m_sourceObject;
     };
 }  // export namespace Lattice
