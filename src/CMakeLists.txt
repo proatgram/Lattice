@@ -41,8 +41,17 @@ target_sources(lattice_registry
             "${CMAKE_SOURCE_DIR}/modules/Registry.cppm"
 )
 
+add_library(lattice_ifactory)
+add_library(lattice::IFactory ALIAS lattice_ifactory)
+
+target_sources(lattice_ifactory
+    PUBLIC FILE_SET CXX_MODULES
+        BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
+        FILES
+            "${CMAKE_SOURCE_DIR}/modules/IFactory.cppm"
+)
+
 add_subdirectory(Object)
-add_subdirectory(Plugin)
 add_subdirectory(Tooling)
 add_subdirectory(System)
 add_subdirectory(Artifacts)

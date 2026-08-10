@@ -91,15 +91,12 @@ target_sources(lattice_object_ilibrary
 target_link_libraries(lattice_object_ilibrary
     PUBLIC
         lattice::Object
-        lattice::Object::Properties::Buildable
+        lattice::Object::Project
         lattice::Object::Properties::LanguageIdentifiable
+        lattice::Object::Properties::HasToolchain
 
         lattice::IFactory
         lattice::Registry
-        lattice::Object::IToolchain
-        lattice::Tooling::ICompiler
-        lattice::System::Process
-        lattice::Object::Project
 
         yaml-cpp::yaml-cpp
 )
