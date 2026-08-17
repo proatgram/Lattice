@@ -28,6 +28,7 @@ target_link_libraries(lattice_lattice
         lattice::Object::Project
         lattice::Object::IToolchain
         lattice::Object::ILibrary
+        lattice::Object::Resolver
         yaml-cpp::yaml-cpp
 )
 

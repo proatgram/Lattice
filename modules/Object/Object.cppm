@@ -1,9 +1,11 @@
 export module Lattice.Object;
+
 export import Lattice.Plugin.IFactory;
+export import Lattice.Object.Capabilities.ICapability;
 
 export import std;
 
-export namespace Lattice {
+export namespace Lattice::Object {
     /**
      * @brief Represents any object defined in a lattice config.
      *
@@ -14,17 +16,7 @@ export namespace Lattice {
      */
     class Object : public std::enable_shared_from_this<Object> {
         public:
-            static constexpr short TOTAL_PROPERTIES = 7;
-            enum class Properties {
-                Buildable,
-                Linkable,
-                Includable,
-                Exportable,
-                Importable,
-                Runnable,
-                LanguageIdentifiable
-            };
-
+            virtual ~Object() = default;
             /**
              * @brief Gets the identifier for the object
              *
@@ -33,14 +25,18 @@ export namespace Lattice {
             auto GetIdentifier() const -> std::string;
 
             /**
-             * @brief Gets the properties for the object
+             * @brief Gets the Capabilities for the object
              *
-             * The properties are stored as a bitset with the
-             * bits being of `Properties`.
-             *
-             * @return Bitset for properties.
+             * @return Optional Capability representation of this Object.
              */
-            virtual auto GetProperties() const -> std::bitset<TOTAL_PROPERTIES> = 0;
+            template <typename T> requires std::is_base_of_v<Capabilities::ICapability, T>
+            inline auto GetCapability() -> std::optional<std::shared_ptr<T>> {
+                std::shared_ptr<T> capability = std::dynamic_pointer_cast<T>(shared_from_this());
+                if (!capability)
+                    return {};
+
+                return capability;
+            }
 
             template <typename T> requires std::is_base_of_v<Object, T>
             inline auto As() const -> std::optional<std::shared_ptr<T>> {
@@ -61,10 +57,9 @@ export namespace Lattice {
              */
             Object(Constructable, const std::string &identifier);
 
-
             std::string m_identifier;
     };
 
     template <typename Factory>
     using IObjectFactory = Plugin::ISingletonFactory<Factory, Object>;
-}  // export namespace Lattice
+}  // export namespace Lattice::Object

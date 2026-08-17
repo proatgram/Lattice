@@ -221,7 +221,7 @@ export namespace Lattice::Tooling {
              *
              * @return A default `CompilerConfiguration` instance for this compiler.
              */
-            virtual auto CreateConfiguration(const std::optional<std::shared_ptr<Object>> &obj = std::nullopt) const -> CompilerConfiguration;
+            virtual auto CreateConfiguration(const std::optional<std::shared_ptr<Lattice::Object::Object>> &obj = std::nullopt) const -> CompilerConfiguration;
 
             /**
              * @brief Returns a `Command` instance tailored for this compiler.

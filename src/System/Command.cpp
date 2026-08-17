@@ -17,7 +17,7 @@ auto Command::GetArguments() const -> const std::vector<std::string>& {
     return m_arguments;
 }
 
-auto Command::SetArguments(const std::initializer_list<std::string> &arguments) -> Command& {
+auto Command::SetArguments(const std::vector<std::string> &arguments) -> Command& {
     m_arguments = arguments;
     return *this;
 }
@@ -52,7 +52,7 @@ auto Command::GetEnvironments() const -> const std::unordered_map<std::string, s
     return m_environmentVariables;
 }
 
-auto Command::SetEnvironments(const std::initializer_list<std::pair<const std::string, std::string>> &environmentVariables) -> Command& {
+auto Command::SetEnvironments(const std::unordered_map<std::string, std::string> &environmentVariables) -> Command& {
     m_environmentVariables = environmentVariables;
 
     return *this;

@@ -17,10 +17,10 @@ export namespace Lattice {
                 return dynamic_cast<const T&>(*this);
             }
 
-            auto GetSourceObject() const -> std::shared_ptr<const Object>;
-            auto GetSourceObject() -> std::shared_ptr<Object>;
+            auto GetSourceObject() const -> std::shared_ptr<const Object::Object>;
+            auto GetSourceObject() -> std::shared_ptr<Object::Object>;
 
         private:
-            std::shared_ptr<Object> m_sourceObject;
+            std::shared_ptr<Object::Object> m_sourceObject;
     };
 }  // export namespace Lattice

@@ -1,10 +1,12 @@
-export module Lattice.Object.Linkable;
+export module Lattice.Object.Capabilities.Linkable;
 
 export import std;
 
 export import Lattice.Object;
 
-export namespace Lattice {
+import Lattice.Object.Capabilities.ICapability;
+
+export namespace Lattice::Object::Capabilities {
     /**
      * @brief Provides a base class for objects that can be linked.
      *
@@ -12,8 +14,10 @@ export namespace Lattice {
      * that have a link process.
      *
      */
-    class Linkable {
+    class Linkable : public ICapability {
         public:
+            virtual ~Linkable() = default;
+
             /**
              * @brief Links the linkable object to another.
              *
@@ -21,4 +25,4 @@ export namespace Lattice {
              */
             virtual auto Link(const std::shared_ptr<Object> &object) -> void = 0;
     };
-}  // export namespace Lattice
+}  // export namespace Lattice::Object::Capabilities

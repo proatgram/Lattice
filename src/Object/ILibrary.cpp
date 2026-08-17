@@ -7,8 +7,9 @@ module Lattice.Object.ILibrary;
 import Lattice.Registry;
 import Lattice.Object.IToolchain;
 import Lattice.Project;
+import Lattice.Object.Resolver;
 
-using namespace Lattice;
+using namespace Lattice::Object;
 
 ILibrary::ILibrary(Constructable, const std::string &identifier) : Object(Object::Constructable(), identifier) {}
 
@@ -30,8 +31,8 @@ auto ILibraryFactory::Create(const std::string &identifier, const std::optional<
     //  2. The toolchain isn't capable of making a factory for ILibrary (does not Provide ILibraryFactory).
 
     std::string defaultToolchainId;
-    std::shared_ptr<Project> parentProject = Registry<std::shared_ptr<Project>>::GetInstance()->Query(config["LATTICE_PRIVATE"]["parent_project"].as<std::string>("NO_PARENT_PROJECT")).value_or(nullptr);
-    if (parentProject)
+    std::shared_ptr<Lattice::Object::Project> parentProject = Registry<std::shared_ptr<Lattice::Object::Project>>::GetInstance()->Query(config["LATTICE_PRIVATE"]["parent_project"].as<std::string>("NO_PARENT_PROJECT")).value_or(nullptr);
+    if (parentProject) {}
         defaultToolchainId = parentProject->GetToolchainId().value_or("default");
 
     std::string toolchainId = config["toolchain"].as<std::string>(defaultToolchainId);
@@ -56,6 +57,35 @@ auto ILibraryFactory::Create(const std::string &identifier, const std::optional<
     // Now we can add global library properties to the created object.
     if (auto library = libraryObject->As<ILibrary>().value_or(nullptr); library) {
         library->SetToolchainId(toolchainId);
+
+        if (parentProject) {
+            library->SetOwningProject(parentProject);
+        }
+
+        if (config["dependencies"]) {
+            if (config["dependencies"]["public"]) {
+                for (const YAML::Node dependencyIdentifier : config["dependencies"]["public"]) {
+                    library->AddDependency({
+                        ILibrary::Visibility::Public,
+                        Resolver::Create({
+                            dependencyIdentifier.as<std::string>("unknown@unknown"),
+                            library
+                        })
+                    });
+                }
+            }
+            if (config["dependencies"]["private"]) {
+                for (const YAML::Node dependencyIdentifier : config["dependencies"]["private"]) {
+                    library->AddDependency({
+                        ILibrary::Visibility::Private,
+                        Resolver::Create({
+                            dependencyIdentifier.as<std::string>("unknown@unknown"),
+                            library
+                        })
+                    });
+                }
+            }
+        }
     } else {
         throw std::runtime_error(std::format("Failed to create library {}: Unexpected error when downcasting from Object to ILibrary. This is a bug and shouldn't happen. (where: {})", identifier, __PRETTY_FUNCTION__));
     }

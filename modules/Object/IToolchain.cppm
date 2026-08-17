@@ -4,10 +4,9 @@ export module Lattice.Object.IToolchain;
 export import std;
 export import Lattice.Object;
 export import Lattice.Plugin.IFactory;
-export import Lattice.Tooling.Compiler;
-export import Lattice.Object.LanguageIdentifiable;
+export import Lattice.Object.Capabilities.LanguageIdentifiable;
 
-export namespace Lattice {
+export namespace Lattice::Object {
     /**
      * @brief Represents a toolchain.
      *
@@ -15,7 +14,7 @@ export namespace Lattice {
      * target ABI, Arch, and OS for the toolchain.
      *
      */
-    class IToolchain : public Object, public LanguageIdentifiable {
+    class IToolchain : public Object, public Capabilities::LanguageIdentifiable {
         public:
             IToolchain(Constructable, const std::string &identifier);
 
@@ -43,8 +42,6 @@ export namespace Lattice {
             inline auto Get() const -> std::optional<T> {
                 return std::nullopt;
             }
-
-            auto GetProperties() const -> std::bitset<Object::TOTAL_PROPERTIES> final;
 
             /**
              * @brief Gets the target OS that this toolchain builds for.
@@ -110,5 +107,5 @@ export namespace Lattice {
     };
 
     template <typename Factory>
-    class ToolchainFactory : public Plugin::ISingletonFactory<Factory, IToolchain>, public virtual LanguageIdentifiable {protected: using LanguageIdentifiable::SetSupportedLanguages; using LanguageIdentifiable::AddSupportedLanguages;};
-}  // export namespace Lattice
+    class ToolchainFactory : public Plugin::ISingletonFactory<Factory, IToolchain>, public virtual Capabilities::LanguageIdentifiable {protected: using Capabilities::LanguageIdentifiable::SetSupportedLanguages; using Capabilities::LanguageIdentifiable::AddSupportedLanguages;};
+}  // export namespace Lattice::Object

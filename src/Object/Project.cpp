@@ -4,7 +4,7 @@ module;
 
 module Lattice.Project;
 
-using namespace Lattice;
+using namespace Lattice::Object;
 
 Project::Project(Object::Constructable, const std::string &identifier) :
     Object(Object::Constructable(), identifier)
@@ -41,13 +41,6 @@ auto Project::SetHomepageUrl(const std::string &homepageUrl) -> std::shared_ptr<
 
 auto Project::GetHomepageUrl() const -> std::optional<std::string> {
     return m_homepageUrl;
-}
-
-auto Project::GetProperties() const -> std::bitset<Object::TOTAL_PROPERTIES> {
-    std::bitset<Object::TOTAL_PROPERTIES> properties;
-    properties.set(std::to_underlying(Object::Properties::Buildable));
-
-    return properties;
 }
 
 auto Project::Build() -> void {

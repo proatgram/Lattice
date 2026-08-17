@@ -1,6 +1,6 @@
-module Lattice.Object.LanguageIdentifiable;
+module Lattice.Object.Capabilities.LanguageIdentifiable;
 
-using namespace Lattice;
+using namespace Lattice::Object::Capabilities;
 
 LanguageIdentifiable::LanguageIdentifiable(const std::list<std::string> &supportedLanguages) : m_supportedLanguages(supportedLanguages) {}
 

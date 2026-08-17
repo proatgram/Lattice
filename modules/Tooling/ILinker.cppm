@@ -122,7 +122,7 @@ export namespace Lattice::Tooling {
              *
              * @return A default `LinkerConfiguration` instance for this linker.
              */
-            virtual auto CreateConfiguration(const std::optional<std::shared_ptr<::Lattice::Object>> &obj = std::nullopt) const -> LinkerConfiguration; 
+            virtual auto CreateConfiguration(const std::optional<std::shared_ptr<::Lattice::Object::Object>> &obj = std::nullopt) const -> LinkerConfiguration; 
 
             /**
              * @brief Returns a `Command` instance tailored for this linker.

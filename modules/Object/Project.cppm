@@ -1,11 +1,11 @@
 export module Lattice.Project;
 
 export import Lattice.Object;
-export import Lattice.Object.Buildable;
+export import Lattice.Object.Capabilities.Buildable;
 export import Lattice.Plugin.IFactory;
 import std;
 
-export namespace Lattice {
+export namespace Lattice::Object {
     /**
      * @brief Represents a software project in the lattice.
      *
@@ -13,7 +13,7 @@ export namespace Lattice {
      * a project configuration that can be built and parsed from YAML.
      *
      */
-    class Project final : public Object, public Buildable {
+    class Project final : public Object, public Capabilities::Buildable {
         public:
             /**
              * @brief Creates a new Project with the given identifier.
@@ -74,8 +74,6 @@ export namespace Lattice {
              */
             auto GetHomepageUrl() const -> std::optional<std::string>;
 
-            auto GetProperties() const -> std::bitset<Object::TOTAL_PROPERTIES> final;
-
             auto Build() -> void final;
 
             /**
@@ -123,4 +121,4 @@ export namespace Lattice {
             auto Create(const std::string &identifier, const std::optional<std::string> &objectData) -> std::shared_ptr<Object> final;
     };
 
-}  // export namespace Lattice
+}  // export namespace Lattice::Object

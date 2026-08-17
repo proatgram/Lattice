@@ -6,16 +6,10 @@ module Lattice.Object.IToolchain;
 
 import Lattice.Registry;
 
-using namespace Lattice;
+using namespace Lattice::Object;
 
 IToolchain::IToolchain(Constructable, const std::string &identifier) :
     Object(Object::Constructable(), identifier) {}
-
-auto IToolchain::GetProperties() const -> std::bitset<Object::TOTAL_PROPERTIES> {
-    std::bitset<Object::TOTAL_PROPERTIES> properties;
-
-    return properties;
-}
 
 auto IToolchain::GetTargetOS() const -> std::string {
     return m_targetOS;
@@ -55,7 +49,7 @@ auto IToolchainFactory::Create(const std::string &identifier, const std::optiona
     std::shared_ptr<Plugin::IFactory<IToolchain>> toolchainImplFactory{nullptr};
 
     for (std::shared_ptr<Plugin::IFactory<IToolchain>> toolchain : toolchainImplFactories) {
-        std::shared_ptr<LanguageIdentifiable> languageIdentifiable = std::dynamic_pointer_cast<LanguageIdentifiable>(toolchain);
+        std::shared_ptr<Capabilities::LanguageIdentifiable> languageIdentifiable = std::dynamic_pointer_cast<Capabilities::LanguageIdentifiable>(toolchain);
         
         if (!languageIdentifiable)
             // toolchainImplFactory remains nullptr, will error

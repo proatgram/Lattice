@@ -31,7 +31,7 @@ export namespace Lattice {
              *
              * @return An optional shared pointer to an object
              */
-            virtual auto Query(const std::string &identifier) const -> std::optional<std::shared_ptr<Lattice::Object>> = 0;
+            virtual auto Query(const std::string &identifier) const -> std::optional<std::shared_ptr<Object::Object>> = 0;
 
         private:
             std::string m_providerName;
@@ -41,5 +41,5 @@ export namespace Lattice {
      * @brief Abstract factory for a provider
      */
     template <typename Factory>
-    using IProviderFactory = IObjectFactory<Factory>;
+    using IProviderFactory = Object::IObjectFactory<Factory>;
 }  // export namespace Lattice
