@@ -1,8 +1,8 @@
-module Lattice.Object.HasToolchain;
+module Lattice.Object.Capabilities.HasToolchain;
 
 import Lattice.Registry;
 
-using namespace Lattice;
+using namespace Lattice::Object::Capabilities;
 
 auto HasToolchain::GetToolchain() -> std::shared_ptr<IToolchain> {
     if (m_toolchain)

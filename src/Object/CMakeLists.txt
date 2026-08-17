@@ -13,6 +13,7 @@ target_sources(lattice_object
 target_link_libraries(lattice_object
     PUBLIC
         lattice::IFactory
+        lattice::Object::Capabilities::ICapability
 )
 
 add_library(lattice_object_project)
@@ -30,7 +31,7 @@ target_sources(lattice_object_project
 target_link_libraries(lattice_object_project
     PUBLIC
         lattice::Object
-        lattice::Object::Properties::Buildable
+        lattice::Object::Capabilities::Buildable
         lattice::IFactory
     PRIVATE
         yaml-cpp::yaml-cpp
@@ -70,8 +71,10 @@ target_link_libraries(lattice_object_itoolchain
     PUBLIC
         lattice::Object
         lattice::IFactory
-        lattice::Object::Properties::LanguageIdentifiable
-        lattice::Tooling::ICompiler
+        lattice::Object::Capabilities::LanguageIdentifiable
+
+    PRIVATE
+
         lattice::Registry
         yaml-cpp::yaml-cpp
 )
@@ -91,14 +94,38 @@ target_sources(lattice_object_ilibrary
 target_link_libraries(lattice_object_ilibrary
     PUBLIC
         lattice::Object
-        lattice::Object::Project
-        lattice::Object::Properties::LanguageIdentifiable
-        lattice::Object::Properties::HasToolchain
+        lattice::Object::Capabilities::LanguageIdentifiable
+        lattice::Object::Capabilities::ProjectIdentifiable
+        lattice::Object::Capabilities::HasToolchain
+        lattice::Object::Capabilities::HasDependencies
 
         lattice::IFactory
+
+    PRIVATE
         lattice::Registry
 
         yaml-cpp::yaml-cpp
 )
 
-add_subdirectory(Properties)
+add_library(lattice_object_resolver)
+add_library(lattice::Object::Resolver ALIAS lattice_object_resolver)
+
+target_sources(lattice_object_resolver
+    PRIVATE
+    "${CMAKE_SOURCE_DIR}/src/Object/Resolver.cpp"
+    PUBLIC FILE_SET CXX_MODULES
+        BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
+        FILES
+        "${CMAKE_SOURCE_DIR}/modules/Object/Resolver.cppm"
+)
+
+target_link_libraries(lattice_object_resolver
+    PUBLIC
+        lattice::Object
+    PRIVATE
+        lattice::Registry
+        lattice::Object::Capabilities::ProjectIdentifiable
+)
+
+
+add_subdirectory(Capabilities)

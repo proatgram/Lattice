@@ -3,12 +3,14 @@ export module Lattice.Object.ILibrary;
 export import std;
 
 export import Lattice.Object;
-export import Lattice.Object.LanguageIdentifiable;
-export import Lattice.Object.HasToolchain;
+export import Lattice.Object.Capabilities.LanguageIdentifiable;
+export import Lattice.Object.Capabilities.ProjectIdentifiable;
+export import Lattice.Object.Capabilities.HasToolchain;
+export import Lattice.Object.Capabilities.HasDependencies;
 export import Lattice.Plugin.IFactory;
 
-export namespace Lattice {
-    class ILibrary : public Object, public LanguageIdentifiable, public HasToolchain {
+export namespace Lattice::Object {
+    class ILibrary : public Object, public Capabilities::LanguageIdentifiable, public Capabilities::ProjectIdentifiable, public Capabilities::HasToolchain, public Capabilities::HasDependencies {
         public:
             ILibrary(Constructable, const std::string &identifier);
 
@@ -25,5 +27,5 @@ export namespace Lattice {
     };
 
     template <typename Factory>
-    class LibraryFactory : public Plugin::ISingletonFactory<Factory, ILibrary>, public virtual LanguageIdentifiable {protected: using LanguageIdentifiable::SetSupportedLanguages; using LanguageIdentifiable::AddSupportedLanguages;};
-}  // export namespace Lattice
+    class LibraryFactory : public Plugin::ISingletonFactory<Factory, ILibrary>, public virtual Capabilities::LanguageIdentifiable {protected: using Capabilities::LanguageIdentifiable::SetSupportedLanguages; using Capabilities::LanguageIdentifiable::AddSupportedLanguages;};
+}  // export namespace Lattice::Object

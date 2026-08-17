@@ -1,6 +1,6 @@
 module Lattice.Object;
 
-using namespace Lattice;
+using namespace Lattice::Object;
 
 Object::Object(Constructable, const std::string &identifier) : m_identifier(identifier) {}
 

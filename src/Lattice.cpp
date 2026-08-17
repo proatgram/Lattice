@@ -9,6 +9,7 @@ import Lattice.Registry;
 
 import Lattice.Object.IToolchain;
 import Lattice.Object.ILibrary;
+import Lattice.Object.Resolver;
 
 auto LoadIncludes(const std::string &include, const std::filesystem::path &workingDirectory) -> std::vector<YAML::Node> {
     // Include can either be:
@@ -49,15 +50,15 @@ auto LoadIncludes(const std::string &include, const std::filesystem::path &worki
 
 
 Lattice::Lattice::Lattice(Lattice::Constructable) {
-    auto ok = Registry<std::shared_ptr<ProjectFactory::FactoryType>>::GetInstance()->Register("project", ProjectFactory::GetInstance());
+    auto ok = Registry<std::shared_ptr<Object::ProjectFactory::FactoryType>>::GetInstance()->Register("project", Object::ProjectFactory::GetInstance());
     if (!ok)
         throw std::runtime_error("Irrecoverable error: Built in object type \"factory\" failed to register. This is a bug.");
 
-    ok = Registry<std::shared_ptr<IToolchainFactory::FactoryType>>::GetInstance()->Register("toolchain", IToolchainFactory::GetInstance());
+    ok = Registry<std::shared_ptr<Object::IToolchainFactory::FactoryType>>::GetInstance()->Register("toolchain", Object::IToolchainFactory::GetInstance());
     if (!ok)
         throw std::runtime_error("Irrecoverable error: Built in object type \"toolchain\" failed to register. This is a bug.");
 
-    ok = Registry<std::shared_ptr<ILibraryFactory::FactoryType>>::GetInstance()->Register("library", ILibraryFactory::GetInstance());
+    ok = Registry<std::shared_ptr<Object::ILibraryFactory::FactoryType>>::GetInstance()->Register("library", Object::ILibraryFactory::GetInstance());
     if (!ok)
         throw std::runtime_error("Irrecoverable error: Built in object type \"library\" failed to register. This is a bug.");
 }
@@ -87,12 +88,12 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
                 throw std::runtime_error(std::format("Error parsing configurations: \"project:\" is ill-formed."));
 
             for (YAML::const_iterator it = projects.begin(); it != projects.end(); ++it) {
-                std::expected<std::reference_wrapper<std::shared_ptr<Project>>, std::string> project =
-                    Registry<std::shared_ptr<Project>>::GetInstance()->
+                std::expected<std::reference_wrapper<std::shared_ptr<Object::Project>>, std::string> project =
+                    Registry<std::shared_ptr<Object::Project>>::GetInstance()->
                         Register(
                                 it->first.as<std::string>(),
-                                Registry<std::shared_ptr<ProjectFactory::FactoryType>>::GetInstance()->Query("project").value()->Create(
-                                    it->first.as<std::string>(), YAML::Dump(it->second))->As<Project>().value());
+                                Registry<std::shared_ptr<Object::ProjectFactory::FactoryType>>::GetInstance()->Query("project").value()->Create(
+                                    it->first.as<std::string>(), YAML::Dump(it->second))->As<Object::Project>().value());
 
                 if (!project)
                     // TODO: Get file-level tracking for this.
@@ -111,12 +112,12 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
                 std::string toolchainId = it->first.as<std::string>("undefined");
                 std::string toolchainConfig = YAML::Dump(it->second);
                 
-                std::expected<std::reference_wrapper<std::shared_ptr<IToolchain>>, std::string> toolchain =
-                    Registry<std::shared_ptr<IToolchain>>::GetInstance()->
+                std::expected<std::reference_wrapper<std::shared_ptr<Object::IToolchain>>, std::string> toolchain =
+                    Registry<std::shared_ptr<Object::IToolchain>>::GetInstance()->
                         Register(
                                 it->first.as<std::string>(),
-                                Registry<std::shared_ptr<IToolchainFactory::FactoryType>>::GetInstance()->Query("toolchain").value()->Create(
-                                    it->first.as<std::string>(), YAML::Dump(it->second))->As<IToolchain>().value());
+                                Registry<std::shared_ptr<Object::IToolchainFactory::FactoryType>>::GetInstance()->Query("toolchain").value()->Create(
+                                    it->first.as<std::string>(), YAML::Dump(it->second))->As<Object::IToolchain>().value());
                 if (!toolchain)
                     // TODO: Get file-level tracking for this.
                     throw std::runtime_error(std::format("Error parsing configurations: Toolchain \"{}\" was defined more than once.", it->first.as<std::string>()));
@@ -128,9 +129,9 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
         for (YAML::const_iterator it = config.begin(); it != config.end(); ++it) {
             std::string objectType = it->first.as<std::string>();
             YAML::Node objectYAML = it->second;
-            if (objectType == "project") {
+            if (objectType == "project" || objectType == "toolchain") {
                 continue; // Already handled project objects
-            } else if (Registry<std::shared_ptr<Project>>::GetInstance()->Contains(objectType)) {
+            } else if (Registry<std::shared_ptr<Object::Project>>::GetInstance()->Contains(objectType)) {
                 // We're defining project-level objects here
                 // Loop through the object types defined in the project
                 for (YAML::const_iterator projectObjects = objectYAML.begin(); projectObjects != objectYAML.end(); projectObjects++) {
@@ -140,7 +141,7 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
 
                     // If we have an object factory for a given object defined,
                     // we create the object using the given object factory.
-                    if (auto objectFactory = Registry<std::shared_ptr<Plugin::IFactory<Object>>>::GetInstance()->Query(projectObjectType); objectFactory.has_value()) {
+                    if (auto objectFactory = Registry<std::shared_ptr<Plugin::IFactory<Object::Object>>>::GetInstance()->Query(projectObjectType); objectFactory.has_value()) {
                         for (YAML::const_iterator object = objectNodes.begin(); object != objectNodes.end(); object++) {
                             std::string objectIdentifier = object->first.as<std::string>();
                             std::string objectConfig; 
@@ -151,21 +152,42 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
 
                             objectConfig = YAML::Dump(node);
 
-                            std::shared_ptr<Object> newObject = objectFactory.value()->Create(objectIdentifier, objectConfig);
+                            std::shared_ptr<Object::Object> newObject = objectFactory.value()->Create(objectIdentifier, objectConfig);
 
-                            // Finally, add it to the project-local object store  
-                            Registry<std::shared_ptr<Project>>::GetInstance()->Query(objectType).value()->AddObject(objectIdentifier, newObject);
+                            // Add it to the project-local object store  
+                            Registry<std::shared_ptr<Object::Project>>::GetInstance()->Query(objectType).value()->AddObject(objectIdentifier, newObject);
                         }
                     }
                 }
-            } else if (auto objectFactory = Registry<std::shared_ptr<Plugin::IFactory<Object>>>::GetInstance()->Query(objectType); objectFactory.has_value()) {
+            } else if (auto objectFactory = Registry<std::shared_ptr<Plugin::IFactory<Object::Object>>>::GetInstance()->Query(objectType); objectFactory.has_value()) {
                 // Meanwhile here, we can define global objects
                 for (YAML::const_iterator objectEntry = objectYAML.begin(); objectEntry != objectYAML.end(); ++objectEntry) {
                     // If we have an object factory for a given object defined,
                     // we create the object using the given object factory.
-                    std::shared_ptr<Object> newObject = objectFactory.value()->Create(objectEntry->first.as<std::string>(), YAML::Dump(objectEntry->second));
+                    std::shared_ptr<Object::Object> newObject = objectFactory.value()->Create(objectEntry->first.as<std::string>(), YAML::Dump(objectEntry->second));
+
                 }
             } 
         }
     }
+
+    if (auto err = Object::Resolver::TryResolveAll(); !err.has_value()) {
+        std::stringstream errss;
+        for (const auto &[unresolvableId, message] : err.error()) {
+            errss << "Unable to resolve " << unresolvableId << ". Msg: " << message << std::endl;
+        }
+
+        throw std::runtime_error(std::format("Irrecoverable error(s) when attempting to resolve dependencies.\nThe following IDs failed to resolve correctly:\n\n{}", errss.str()));
+    }
+}
+
+auto Lattice::Lattice::GetGlobalObjects() const -> std::map<std::string, std::shared_ptr<Object::Object>> {
+    return m_globalObjects;
+}
+
+auto Lattice::Lattice::GetGlobalObject(const std::string &identifier) const -> std::optional<std::shared_ptr<Object::Object>> {
+    if (m_globalObjects.contains(identifier))
+        return m_globalObjects.at(identifier);
+
+    return {};
 }

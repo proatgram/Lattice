@@ -1,8 +1,10 @@
-export module Lattice.Object.Buildable;
+export module Lattice.Object.Capabilities.Buildable;
 
-import std;
+export import std;
 
-export namespace Lattice {
+import Lattice.Object.Capabilities.ICapability;
+
+export namespace Lattice::Object::Capabilities {
     /**
      * @brief Provides a base class for objects that can be built.
      *
@@ -10,8 +12,10 @@ export namespace Lattice {
      * that have a build process.
      *
      */
-    class Buildable {
+    class Buildable : public ICapability {
         public:
+            virtual ~Buildable() = default;
+
             /**
              * @brief Builds the buildable object.
              *
@@ -38,4 +42,4 @@ export namespace Lattice {
         private:
             std::optional<std::string> m_toolchainId;
     };
-}  // export namespace Lattice::Object
+}  // export namespace Lattice::Object::Capabilities
