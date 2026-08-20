@@ -133,3 +133,19 @@ target_link_libraries(lattice_object_capabilities_projectidentifiable
         lattice::Object::Project
         lattice::Object::Capabilities::ICapability
 )
+
+add_library(lattice_object_capabilities_propagatable)
+add_library(lattice::Object::Capabilities::Propagatable ALIAS lattice_object_capabilities_propagatable)
+
+target_sources(lattice_object_capabilities_propagatable
+    PUBLIC FILE_SET CXX_MODULES
+        BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
+        FILES
+        "${CMAKE_SOURCE_DIR}/modules/Object/Capabilities/Propagatable.cppm"
+)
+
+target_link_libraries(lattice_object_capabilities_propagatable
+    PUBLIC
+        lattice::Object::Capabilities::ICapability
+)
+
