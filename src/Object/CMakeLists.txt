@@ -98,6 +98,7 @@ target_link_libraries(lattice_object_ilibrary
         lattice::Object::Capabilities::ProjectIdentifiable
         lattice::Object::Capabilities::HasToolchain
         lattice::Object::Capabilities::HasDependencies
+        lattice::Object::Capabilities::Propagatable
 
         lattice::IFactory
 
