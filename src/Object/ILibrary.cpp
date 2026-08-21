@@ -33,7 +33,7 @@ auto ILibraryFactory::Create(const std::string &identifier, const std::optional<
     std::string defaultToolchainId;
     std::shared_ptr<Lattice::Object::Project> parentProject = Registry<std::shared_ptr<Lattice::Object::Project>>::GetInstance()->Query(config["LATTICE_PRIVATE"]["parent_project"].as<std::string>("NO_PARENT_PROJECT")).value_or(nullptr);
     if (parentProject) {}
-        defaultToolchainId = parentProject->GetToolchainId().value_or("default");
+        defaultToolchainId = parentProject->GetToolchainId();
 
     std::string toolchainId = config["toolchain"].as<std::string>(defaultToolchainId);
     std::shared_ptr<IToolchain> toolchain = Registry<std::shared_ptr<IToolchain>>::GetInstance()->Query(toolchainId).value_or(nullptr);

@@ -12,8 +12,6 @@ add_library(lattice_object_capabilities_buildable)
 add_library(lattice::Object::Capabilities::Buildable ALIAS lattice_object_capabilities_buildable)
 
 target_sources(lattice_object_capabilities_buildable
-    PUBLIC
-        "${CMAKE_SOURCE_DIR}/src/Object/Capabilities/Buildable.cpp"
     PUBLIC FILE_SET CXX_MODULES
         BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
         FILES
