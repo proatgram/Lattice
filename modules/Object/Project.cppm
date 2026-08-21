@@ -2,6 +2,7 @@ export module Lattice.Project;
 
 export import Lattice.Object;
 export import Lattice.Object.Capabilities.Buildable;
+export import Lattice.Object.Capabilities.HasToolchain;
 export import Lattice.Plugin.IFactory;
 import std;
 
@@ -13,7 +14,7 @@ export namespace Lattice::Object {
      * a project configuration that can be built and parsed from YAML.
      *
      */
-    class Project final : public Object, public Capabilities::Buildable {
+    class Project final : public Object, public Capabilities::Buildable, public Capabilities::HasToolchain {
         public:
             /**
              * @brief Creates a new Project with the given identifier.
@@ -109,7 +110,8 @@ export namespace Lattice::Object {
             std::map<std::string, std::shared_ptr<Object>> m_objects;
 
         protected:
-            using Buildable::SetToolchainId;
+            using Capabilities::HasToolchain::SetToolchainId;
+            using Capabilities::HasToolchain::SetToolchain;
 
             friend class ProjectFactory;
     };

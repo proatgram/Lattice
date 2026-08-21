@@ -32,7 +32,9 @@ target_link_libraries(lattice_object_project
     PUBLIC
         lattice::Object
         lattice::Object::Capabilities::Buildable
+        lattice::Object::Capabilities::HasToolchain
         lattice::IFactory
+
     PRIVATE
         yaml-cpp::yaml-cpp
 )
