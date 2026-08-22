@@ -7,11 +7,11 @@ export import Lattice.Object.Capabilities.LanguageIdentifiable;
 export import Lattice.Object.Capabilities.ProjectIdentifiable;
 export import Lattice.Object.Capabilities.HasToolchain;
 export import Lattice.Object.Capabilities.HasDependencies;
-export import Lattice.Object.Capabilities.Propagatable;
+export import Lattice.Object.Capabilities.HasProperties;
 export import Lattice.Plugin.IFactory;
 
 export namespace Lattice::Object {
-    class ILibrary : public Object, public Capabilities::LanguageIdentifiable, public Capabilities::ProjectIdentifiable, public Capabilities::HasToolchain, public Capabilities::HasDependencies, public Capabilities::Propagatable {
+    class ILibrary : public Object, public Capabilities::LanguageIdentifiable, public Capabilities::ProjectIdentifiable, public Capabilities::HasToolchain, public Capabilities::HasDependencies, public Capabilities::HasProperties {
         public:
             ILibrary(Constructable, const std::string &identifier);
 

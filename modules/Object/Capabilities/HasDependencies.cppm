@@ -26,9 +26,10 @@ export namespace Lattice::Object::Capabilities {
             auto GetPublicDependencies() const -> std::list<std::shared_ptr<Object>>;
 
         protected:
-            enum class Visibility { Public, Private };
 
             struct Dependency {
+                enum class Visibility { Public, Private };
+
                 Visibility visibility;
 
                 std::shared_ptr<Resolver> resolver;
