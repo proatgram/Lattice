@@ -2,8 +2,7 @@ export module Lattice.Object.Capabilities.ArtifactProvider;
 
 export import std;
 
-export import Lattice.Artifact;
-
+import Lattice.Object.Properties.IProperty;
 import Lattice.Object.Capabilities.ICapability;
 
 export namespace Lattice::Object::Capabilities {
@@ -11,25 +10,21 @@ export namespace Lattice::Object::Capabilities {
         public:
             virtual ~ArtifactProvider() = default;
 
-            template <typename Callable> requires std::is_invocable_r_v<bool, Callable, const Artifact&>
-            inline auto GetArtifacts(const std::optional<Callable> predicate = {}) const -> std::list<Artifact> {
-                if (!predicate)
-                    return m_artifacts;
-
-                std::list<Artifact> satisfied;
-
-                for (const Artifact &artifact : m_artifacts) {
-                    if (Callable(artifact)) {
-                        satisfied.push_back(artifact);
-                    }
+            template <typename T> requires std::is_base_of_v<Properties::IProperty, T>
+            inline auto GetArtifacts() const -> std::optional<std::shared_ptr<Properties::IProperty>> {
+                try {
+                    return m_artifacts.at(typeid(T));
+                } catch (const std::out_of_range &err) {
+                    return {};
                 }
-
-                return satisfied;
             }
         private:
-            auto AddArtifact(const Artifact &artifact) -> void;
+            template <typename T> requires std::is_base_of_v<Properties::IProperty, T>
+            inline auto AddArtifact(const std::shared_ptr<T> &artifact) -> void {
+                m_artifacts[typeid(T)] = artifact;
+            }
 
         protected:
-            std::list<Artifact> m_artifacts;
+            std::map<std::type_index, std::shared_ptr<Properties::IProperty>> m_artifacts;
     };
 }  // export namespace Lattice::Object::Capabilities

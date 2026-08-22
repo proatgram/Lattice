@@ -56,4 +56,3 @@ target_sources(lattice_ifactory
 add_subdirectory(Object)
 add_subdirectory(Tooling)
 add_subdirectory(System)
-add_subdirectory(Artifacts)
