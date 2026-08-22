@@ -110,6 +110,35 @@ target_link_libraries(lattice_object_ilibrary
         yaml-cpp::yaml-cpp
 )
 
+add_library(lattice_object_ibinary)
+add_library(lattice::Object::IBinary ALIAS lattice_object_ibinary)
+
+target_sources(lattice_object_ibinary
+    PRIVATE
+    "${CMAKE_SOURCE_DIR}/src/Object/IBinary.cpp"
+    PUBLIC FILE_SET CXX_MODULES
+        BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
+        FILES
+        "${CMAKE_SOURCE_DIR}/modules/Object/IBinary.cppm"
+)
+
+target_link_libraries(lattice_object_ibinary
+    PUBLIC
+        lattice::Object
+        lattice::Object::Capabilities::LanguageIdentifiable
+        lattice::Object::Capabilities::ProjectIdentifiable
+        lattice::Object::Capabilities::HasToolchain
+        lattice::Object::Capabilities::HasDependencies
+        lattice::Object::Capabilities::HasProperties
+
+        lattice::IFactory
+
+    PRIVATE
+        lattice::Registry
+
+        yaml-cpp::yaml-cpp
+)
+
 add_library(lattice_object_resolver)
 add_library(lattice::Object::Resolver ALIAS lattice_object_resolver)
 

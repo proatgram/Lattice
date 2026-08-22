@@ -9,6 +9,7 @@ import Lattice.Registry;
 
 import Lattice.Object.IToolchain;
 import Lattice.Object.ILibrary;
+import Lattice.Object.IBinary;
 import Lattice.Object.Resolver;
 
 auto LoadIncludes(const std::string &include, const std::filesystem::path &workingDirectory) -> std::vector<YAML::Node> {
@@ -61,6 +62,10 @@ Lattice::Lattice::Lattice(Lattice::Constructable) {
     ok = Registry<std::shared_ptr<Object::ILibraryFactory::FactoryType>>::GetInstance()->Register("library", Object::ILibraryFactory::GetInstance());
     if (!ok)
         throw std::runtime_error("Irrecoverable error: Built in object type \"library\" failed to register. This is a bug.");
+
+    ok = Registry<std::shared_ptr<Object::IBinaryFactory::FactoryType>>::GetInstance()->Register("binary", Object::IBinaryFactory::GetInstance());
+    if (!ok)
+        throw std::runtime_error("Irrecoverable error: Built in object type \"binary\" failed to register. This is a bug.");
 }
 
 auto Lattice::Lattice::GetInstance() -> std::shared_ptr<Lattice> {
