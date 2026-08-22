@@ -100,7 +100,7 @@ target_link_libraries(lattice_object_ilibrary
         lattice::Object::Capabilities::ProjectIdentifiable
         lattice::Object::Capabilities::HasToolchain
         lattice::Object::Capabilities::HasDependencies
-        lattice::Object::Capabilities::Propagatable
+        lattice::Object::Capabilities::HasProperties
 
         lattice::IFactory
 
@@ -132,3 +132,4 @@ target_link_libraries(lattice_object_resolver
 
 
 add_subdirectory(Capabilities)
+add_subdirectory(Properties)

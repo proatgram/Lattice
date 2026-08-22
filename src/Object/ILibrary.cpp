@@ -66,7 +66,7 @@ auto ILibraryFactory::Create(const std::string &identifier, const std::optional<
             if (config["dependencies"]["public"]) {
                 for (const YAML::Node dependencyIdentifier : config["dependencies"]["public"]) {
                     library->AddDependency({
-                        ILibrary::Visibility::Public,
+                        ILibrary::Dependency::Visibility::Public,
                         Resolver::Create({
                             dependencyIdentifier.as<std::string>("unknown@unknown"),
                             library
@@ -77,7 +77,7 @@ auto ILibraryFactory::Create(const std::string &identifier, const std::optional<
             if (config["dependencies"]["private"]) {
                 for (const YAML::Node dependencyIdentifier : config["dependencies"]["private"]) {
                     library->AddDependency({
-                        ILibrary::Visibility::Private,
+                        ILibrary::Dependency::Visibility::Private,
                         Resolver::Create({
                             dependencyIdentifier.as<std::string>("unknown@unknown"),
                             library

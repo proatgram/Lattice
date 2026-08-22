@@ -1,7 +1,7 @@
 
 # Lattice
 
-Another build system for C++. This one is built to be:
+Another build system written in C++. This one is built to be:
  - Simple: Easy YAML configuration files.
  - Fast: Heiarchical object system and caching
  - Extendable: Native plugins
@@ -34,7 +34,7 @@ lattice:
       output_name: "lattice"
       sources: ["src/main.cpp"]
       dependencies:
-        private: [lattice::libcurl, lattice::Plugins]
+        private: [libcurl@lattice, Plugins]
     SomeOtherBinary:
       sources: ["src/other/main.cpp"]
   module:

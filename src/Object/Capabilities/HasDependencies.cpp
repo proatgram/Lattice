@@ -7,7 +7,7 @@ using namespace Lattice::Object::Capabilities;
 auto HasDependencies::GetPublicDependencies() const -> std::list<std::shared_ptr<Object>> {
     return std::ranges::to<std::list<std::shared_ptr<Object>>>(
         m_dependencies | std::views::filter([](const Dependency &dep) -> bool {
-            return dep.visibility == Visibility::Public;
+            return dep.visibility == Dependency::Visibility::Public;
         })
         | std::views::transform([](const Dependency &dep) -> auto {
             if (!dep.resolver->IsResolved())
@@ -21,7 +21,7 @@ auto HasDependencies::GetPublicDependencies() const -> std::list<std::shared_ptr
 auto HasDependencies::GetPrivateDependencies() const -> std::list<std::shared_ptr<Object>> {
     return std::ranges::to<std::list<std::shared_ptr<Object>>>(
         m_dependencies | std::views::filter([](const Dependency &dep) -> bool {
-            return dep.visibility == Visibility::Private;
+            return dep.visibility == Dependency::Visibility::Private;
         })
         | std::views::transform([](const Dependency &dep) -> auto {
             if (!dep.resolver->IsResolved())
