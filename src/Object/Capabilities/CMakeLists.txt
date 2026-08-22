@@ -61,8 +61,6 @@ add_library(lattice_object_capabilities_artifactprovider)
 add_library(lattice::Object::Capabilities::ArtifactProvider ALIAS lattice_object_capabilities_artifactprovider)
 
 target_sources(lattice_object_capabilities_artifactprovider
-    PUBLIC
-        "${CMAKE_SOURCE_DIR}/src/Object/Capabilities/ArtifactProvider.cpp"
     PUBLIC FILE_SET CXX_MODULES
         BASE_DIRS "${CMAKE_SOURCE_DIR}/modules"
         FILES
@@ -71,7 +69,7 @@ target_sources(lattice_object_capabilities_artifactprovider
 
 target_link_libraries(lattice_object_capabilities_artifactprovider
     PUBLIC
-        lattice::Artifact
+        lattice::Object::Properties::IProperty
         lattice::Object::Capabilities::ICapability
 )
 

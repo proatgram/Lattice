@@ -17,6 +17,7 @@ export namespace Lattice::Object {
     class IToolchain : public Object, public Capabilities::LanguageIdentifiable {
         public:
             IToolchain(Constructable, const std::string &identifier);
+            virtual ~IToolchain() = default;
 
             /**
              * @brief Checks if the Toolchain provides a feature.

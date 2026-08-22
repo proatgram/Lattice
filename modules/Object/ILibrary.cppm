@@ -14,6 +14,7 @@ export namespace Lattice::Object {
     class ILibrary : public Object, public Capabilities::LanguageIdentifiable, public Capabilities::ProjectIdentifiable, public Capabilities::HasToolchain, public Capabilities::HasDependencies, public Capabilities::HasProperties {
         public:
             ILibrary(Constructable, const std::string &identifier);
+            virtual ~ILibrary() = default;
 
         protected:
 
