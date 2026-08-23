@@ -1,8 +1,8 @@
-export module Lattice.Plugin.IFactory;
+export module Lattice.IFactory;
 
 import std;
 
-export namespace Lattice::Plugin {
+export namespace Lattice {
     /**
      * @brief An abstract factory class
      *
@@ -41,4 +41,4 @@ export namespace Lattice::Plugin {
                 return instance;
             }
     };
-}  // export namespace Lattice::Plugin
+}  // export namespace Lattice

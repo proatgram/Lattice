@@ -3,7 +3,7 @@ export module Lattice.Project;
 export import Lattice.Object;
 export import Lattice.Object.Capabilities.Buildable;
 export import Lattice.Object.Capabilities.HasToolchain;
-export import Lattice.Plugin.IFactory;
+export import Lattice.IFactory;
 import std;
 
 export namespace Lattice::Object {

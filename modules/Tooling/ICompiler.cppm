@@ -1,7 +1,7 @@
 export module Lattice.Tooling.Compiler;
 
 export import Lattice.Tooling.Configuration;
-export import Lattice.Plugin.IFactory;
+export import Lattice.IFactory;
 export import Lattice.System.Command;
 export import Lattice.Object;
 
@@ -241,6 +241,6 @@ export namespace Lattice::Tooling {
     };
 
     template <typename Factory>
-    using ICompilerFactory = Plugin::ISingletonFactory<Factory, ICompiler>;
+    using ICompilerFactory = ISingletonFactory<Factory, ICompiler>;
 
 }  // export namespace Lattice::Tooling

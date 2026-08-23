@@ -11,6 +11,7 @@ import Lattice.Object.IToolchain;
 import Lattice.Object.ILibrary;
 import Lattice.Object.IBinary;
 import Lattice.Object.Resolver;
+import Lattice.Plugins.Loader;
 
 auto LoadIncludes(const std::string &include, const std::filesystem::path &workingDirectory) -> std::vector<YAML::Node> {
     // Include can either be:
@@ -51,6 +52,8 @@ auto LoadIncludes(const std::string &include, const std::filesystem::path &worki
 
 
 Lattice::Lattice::Lattice(Lattice::Constructable) {
+    Plugins::Loader::GetInstance()->LoadDirectory();
+
     auto ok = Registry<std::shared_ptr<Object::ProjectFactory::FactoryType>>::GetInstance()->Register("project", Object::ProjectFactory::GetInstance());
     if (!ok)
         throw std::runtime_error("Irrecoverable error: Built in object type \"factory\" failed to register. This is a bug.");
@@ -146,7 +149,7 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
 
                     // If we have an object factory for a given object defined,
                     // we create the object using the given object factory.
-                    if (auto objectFactory = Registry<std::shared_ptr<Plugin::IFactory<Object::Object>>>::GetInstance()->Query(projectObjectType); objectFactory.has_value()) {
+                    if (auto objectFactory = Registry<std::shared_ptr<IFactory<Object::Object>>>::GetInstance()->Query(projectObjectType); objectFactory.has_value()) {
                         for (YAML::const_iterator object = objectNodes.begin(); object != objectNodes.end(); object++) {
                             std::string objectIdentifier = object->first.as<std::string>();
                             std::string objectConfig; 
@@ -164,7 +167,7 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
                         }
                     }
                 }
-            } else if (auto objectFactory = Registry<std::shared_ptr<Plugin::IFactory<Object::Object>>>::GetInstance()->Query(objectType); objectFactory.has_value()) {
+            } else if (auto objectFactory = Registry<std::shared_ptr<IFactory<Object::Object>>>::GetInstance()->Query(objectType); objectFactory.has_value()) {
                 // Meanwhile here, we can define global objects
                 for (YAML::const_iterator objectEntry = objectYAML.begin(); objectEntry != objectYAML.end(); ++objectEntry) {
                     // If we have an object factory for a given object defined,

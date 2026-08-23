@@ -2,7 +2,7 @@ export module Lattice.Provider;
 
 import std;
 export import Lattice.Object;
-export import Lattice.Plugin.IFactory;
+export import Lattice.IFactory;
 
 export namespace Lattice {
     /**

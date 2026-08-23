@@ -8,7 +8,7 @@ export import Lattice.Object.Capabilities.ProjectIdentifiable;
 export import Lattice.Object.Capabilities.HasToolchain;
 export import Lattice.Object.Capabilities.HasDependencies;
 export import Lattice.Object.Capabilities.HasProperties;
-export import Lattice.Plugin.IFactory;
+export import Lattice.IFactory;
 
 export namespace Lattice::Object {
     class ILibrary : public Object, public Capabilities::LanguageIdentifiable, public Capabilities::ProjectIdentifiable, public Capabilities::HasToolchain, public Capabilities::HasDependencies, public Capabilities::HasProperties {
@@ -29,5 +29,5 @@ export namespace Lattice::Object {
     };
 
     template <typename Factory>
-    class LibraryFactory : public Plugin::ISingletonFactory<Factory, ILibrary>, public virtual Capabilities::LanguageIdentifiable {protected: using Capabilities::LanguageIdentifiable::SetSupportedLanguages; using Capabilities::LanguageIdentifiable::AddSupportedLanguages;};
+    class LibraryFactory : public ISingletonFactory<Factory, ILibrary>, public virtual Capabilities::LanguageIdentifiable {protected: using Capabilities::LanguageIdentifiable::SetSupportedLanguages; using Capabilities::LanguageIdentifiable::AddSupportedLanguages;};
 }  // export namespace Lattice::Object
