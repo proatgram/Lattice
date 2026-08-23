@@ -1,6 +1,6 @@
 export module Lattice.Object;
 
-export import Lattice.Plugin.IFactory;
+export import Lattice.IFactory;
 export import Lattice.Object.Capabilities.ICapability;
 
 export import std;
@@ -61,5 +61,5 @@ export namespace Lattice::Object {
     };
 
     template <typename Factory>
-    using IObjectFactory = Plugin::ISingletonFactory<Factory, Object>;
+    using IObjectFactory = ISingletonFactory<Factory, Object>;
 }  // export namespace Lattice::Object

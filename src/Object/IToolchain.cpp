@@ -45,10 +45,10 @@ auto IToolchainFactory::Create(const std::string &identifier, const std::optiona
     // If there are multiple matches, we run through a try catch for each and see
     // which works. If none work, propogate error.
 
-    auto toolchainImplFactories = Registry<std::shared_ptr<Plugin::IFactory<IToolchain>>>::GetInstance()->All();
-    std::shared_ptr<Plugin::IFactory<IToolchain>> toolchainImplFactory{nullptr};
+    auto toolchainImplFactories = Registry<std::shared_ptr<IFactory<IToolchain>>>::GetInstance()->All();
+    std::shared_ptr<IFactory<IToolchain>> toolchainImplFactory{nullptr};
 
-    for (std::shared_ptr<Plugin::IFactory<IToolchain>> toolchain : toolchainImplFactories) {
+    for (std::shared_ptr<IFactory<IToolchain>> toolchain : toolchainImplFactories) {
         std::shared_ptr<Capabilities::LanguageIdentifiable> languageIdentifiable = std::dynamic_pointer_cast<Capabilities::LanguageIdentifiable>(toolchain);
         
         if (!languageIdentifiable)

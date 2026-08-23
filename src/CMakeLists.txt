@@ -23,6 +23,7 @@ target_sources(lattice_lattice
 
 target_link_libraries(lattice_lattice
     PRIVATE
+        lattice::Plugins::Loader
         lattice::Registry
         lattice::Object
         lattice::Object::Project
@@ -56,3 +57,4 @@ target_sources(lattice_ifactory
 add_subdirectory(Object)
 add_subdirectory(Tooling)
 add_subdirectory(System)
+add_subdirectory(Plugins)

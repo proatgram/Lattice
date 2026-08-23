@@ -3,7 +3,7 @@ export module Lattice.Object.IToolchain;
 
 export import std;
 export import Lattice.Object;
-export import Lattice.Plugin.IFactory;
+export import Lattice.IFactory;
 export import Lattice.Object.Capabilities.LanguageIdentifiable;
 
 export namespace Lattice::Object {
@@ -108,5 +108,5 @@ export namespace Lattice::Object {
     };
 
     template <typename Factory>
-    class ToolchainFactory : public Plugin::ISingletonFactory<Factory, IToolchain>, public virtual Capabilities::LanguageIdentifiable {protected: using Capabilities::LanguageIdentifiable::SetSupportedLanguages; using Capabilities::LanguageIdentifiable::AddSupportedLanguages;};
+    class ToolchainFactory : public ISingletonFactory<Factory, IToolchain>, public virtual Capabilities::LanguageIdentifiable {protected: using Capabilities::LanguageIdentifiable::SetSupportedLanguages; using Capabilities::LanguageIdentifiable::AddSupportedLanguages;};
 }  // export namespace Lattice::Object

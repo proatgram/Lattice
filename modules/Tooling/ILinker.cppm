@@ -2,7 +2,7 @@ export module Lattice.Tooling.ILinker;
 
 export import Lattice.Tooling.Configuration;
 export import Lattice.System.Command;
-export import Lattice.Plugin.IFactory;
+export import Lattice.IFactory;
 export import Lattice.Object;
 
 export import std;
@@ -142,6 +142,6 @@ export namespace Lattice::Tooling {
     };
 
     template <typename Factory>
-    using ILinkerFactory = Plugin::ISingletonFactory<Factory, ILinker>;
+    using ILinkerFactory = ISingletonFactory<Factory, ILinker>;
 
 }  // export namespace Lattice::Tooling
