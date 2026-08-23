@@ -28,27 +28,27 @@ auto Loader::GetInstance() -> std::shared_ptr<Loader> {
 auto Loader::LoadFile(const std::filesystem::path &file) -> PluginInstance {
     if (!std::filesystem::exists(file) || !std::filesystem::is_regular_file(file))
         throw std::runtime_error(std::format("Failed to load plugin at {}: Not a regular file.", file.string()));
-    
+
     GetPluginInstanceFunc_t loaderFunction{nullptr};
 
 #ifdef __linux__
     // Shouldn't need dlclose I don't think since the plugins will be loaded
     // for the duration of program runtime.
-    void *handle = dlopen(file.c_str(), RTLD_GLOBAL | RTLD_LAZY);
+    void *handle = dlopen(file.c_str(), RTLD_LAZY | RTLD_GLOBAL);
 
     if (!handle)
         throw std::runtime_error(std::format("Failed to load plugin at {}: Failed to dlopen file.", file.string()));
 #endif
 
-   loaderFunction = (GetPluginInstanceFunc_t)dlsym(handle, "GetPluginInstance");  
-   if (!loaderFunction)
-       throw std::runtime_error(std::format("Failed to load plugin at {}: Failed to find symbol void(GetPluginInstance(void)).", file.string()));
+    loaderFunction = (GetPluginInstanceFunc_t)dlsym(handle, "GetPluginInstance");  
+    if (!loaderFunction)
+        throw std::runtime_error(std::format("Failed to load plugin at {}: Failed to find symbol void(GetPluginInstance(void)).", file.string()));
 
-   PluginInstance pluginInstance = loaderFunction();
+    PluginInstance pluginInstance = loaderFunction();
 
-   m_loadedPlugins.push_back(pluginInstance);
+    m_loadedPlugins.push_back(pluginInstance);
 
-   return pluginInstance;
+    return pluginInstance;
 }
 
 auto Loader::LoadDirectory(const std::list<std::filesystem::path> &directories) -> std::list<PluginInstance> {
@@ -65,7 +65,6 @@ auto Loader::LoadDirectory(const std::list<std::filesystem::path> &directories) 
         for (const std::filesystem::path &file : std::filesystem::recursive_directory_iterator(directory)) {
             if (std::filesystem::is_directory(file))
                 continue;
-
             loaded.push_back(LoadFile(file));
         }
     }
@@ -75,4 +74,11 @@ auto Loader::LoadDirectory(const std::list<std::filesystem::path> &directories) 
 
 auto Loader::GetLoadedPlugins() const -> std::list<PluginInstance> {
     return m_loadedPlugins;
+}
+
+auto Loader::InitializeAllLoaded() const -> void {
+    for (const PluginInstance &plugin : m_loadedPlugins) {
+        if (plugin.Initialize)
+            plugin.Initialize();
+    }
 }

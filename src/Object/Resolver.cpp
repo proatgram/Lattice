@@ -42,7 +42,7 @@ auto Resolver::TryResolve() -> std::expected<void, std::string> {
     // Check if the object has '@' pointing to a project
     if (fullIdentifier.contains('@') && fullIdentifier.find_first_of('@') != fullIdentifier.size() - 1) {
         std::string projectId = fullIdentifier.substr(fullIdentifier.find_first_of('@') + 1);
-        if (auto project = Registry<std::shared_ptr<Project>>::GetInstance()->Query(projectId).value_or(nullptr); project) {
+        if (auto project = Registry::GetInstance()->Query<std::shared_ptr<Project>>(projectId).value_or(nullptr); project) {
             std::string rawObjectId = fullIdentifier.substr(0, fullIdentifier.find_first_of('@'));
 
             if (resolvedObject = project->GetObject(rawObjectId).value_or(nullptr); resolvedObject) {

@@ -3,17 +3,19 @@ export module Lattice.Plugins.Plugin;
 export import std;
 
 export namespace Lattice::Plugins {
-    extern "C" {
+        struct PluginVersionSupport {
+            const char *targetedLatticeVersion{nullptr};
+        };
+
         struct PluginInstance {
-            using InitializeFunc_t = void(*)();
-            using GetIDFunc_t = const char* (*)();
-            using GetTargettedVersionFunc_t = const char* (*)();
+            using InitializeFunc_t = void(*)(void);
+            using GetIDFunc_t = const char* (*)(void);
+            using GetPluginVersionSupportFunc_t = PluginVersionSupport (*)(void);
 
             InitializeFunc_t Initialize{nullptr};
             GetIDFunc_t GetID{nullptr};
-            GetTargettedVersionFunc_t GetTargettedVersion{nullptr};
+            GetPluginVersionSupportFunc_t GetPluginVersionSupport{nullptr};
         };
 
-        using GetPluginInstanceFunc_t = PluginInstance (*)();
-    }
+        using GetPluginInstanceFunc_t = PluginInstance (*)(void);
 }  // export namespace Lattice::Plugins

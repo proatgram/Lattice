@@ -8,31 +8,24 @@ export namespace Lattice {
     /**
      * @brief A simple registry.
      *
-     * A registry is a singleton defined by it's key and value types,
-     * obtained by calling `GetInstance()` on the registry with the templated values.
+     * A registry is a singleton, obtained by calling `GetInstance()` on the registry.
+     * The registry can have contain elements of any type, but the key is always a string.
      *
      * A Registry element is unique and forceful. If you try to register something that
      * already exists, it will not overwrite it, and will give an error.
-     *
-     * @tparam Val Value type
-     * @tparam Key Key type
      */
-    template <typename Val, typename Key = std::string>
     class Registry {
         struct Constructable {};
         public:
-            Registry<Val, Key>(Constructable) {}
+            Registry(Constructable);
 
             /**
              * @brief Gets the instance for the registry.
              *
              * @return A shared_ptr to the Registry instance.
              */
-            inline static auto GetInstance() -> std::shared_ptr<Registry<Val, Key>> {
-                static std::shared_ptr<Registry<Val, Key>> instance = std::make_shared<Registry<Val, Key>>(Constructable());
+            static auto GetInstance() -> std::shared_ptr<Registry>;
 
-                return instance;
-            }
 
             /**
              * @brief Registers a value with a specific key.
@@ -43,15 +36,32 @@ export namespace Lattice {
              * @param[in] key The key for the addition.
              * @param[in] value The value to add.
              *
+             * @tparam Val Value type
+             *
              * @return A `std::expected` containing an expected value of `void`, or unexpected value of `std::string` telling what happened.
              */
-            inline auto Register(const Key &key, const Val &value) -> std::expected<std::reference_wrapper<Val>, std::string> {
-                if (m_registeryStore.contains(key))
-                    return std::unexpected("Key already exists in Registry.");
-
-                m_registeryStore[key] = value;
-
-                return std::expected<std::reference_wrapper<Val>, std::string>{m_registeryStore[key]};
+            template <typename Val>
+            inline auto Register(const std::string &key, const Val &value) -> std::expected<std::reference_wrapper<Val>, std::string> {
+                std::type_index typeKey = typeid(std::map<std::string, Val>);
+                
+                if (m_registryStore.contains(typeKey)) {
+                    auto &map = std::any_cast<std::map<std::string, Val>&>(m_registryStore.at(typeKey));
+                    
+                    if (map.contains(key))
+                        return std::unexpected("Key already exists in Registry.");
+                    
+                    map[key] = value;
+                } else {
+                    m_registryStore[typeKey] = std::map<std::string, Val>{{key, value}};
+                }
+                
+                auto &map = std::any_cast<std::map<std::string, Val>&>(m_registryStore.at(typeKey));
+                auto it = map.find(key);
+                
+                if (it == map.end())
+                    return std::unexpected("Failed to register: key not found after insertion.");
+                
+                return std::reference_wrapper<Val>(it->second);
             }
 
             /**
@@ -63,13 +73,18 @@ export namespace Lattice {
              *
              * @param[in] key The key to remove.
              *
+             * @tparam Val Value type
+             *
              * @return A `std::expected` containing an expected value of `void`, or unexpected value of `std::string` telling what happened.
              */
-            inline auto Unregister(const Key &key) -> std::expected<void, std::string> {
-                if (!m_registeryStore.contains(key))
-                    return std::unexpected("Key doesn't exist in Registry,");
+            template <typename Val>
+            inline auto Unregister(const std::string &key) -> std::expected<void, std::string> {
+                if (!m_registryStore.contains(typeid(std::map<std::string, Val>)))
+                    return std::unexpected("std::string doesn't exist in Registry,");
 
-                m_registeryStore.erase(key);
+                std::any_cast<std::map<std::string, Val>>(m_registryStore[typeid(std::map<std::string, Val>)]).erase(key);
+                if (std::any_cast<std::map<std::string, Val>>(m_registryStore[typeid(std::map<std::string, Val>)]).empty())
+                    m_registryStore.erase(typeid(std::map<std::string, Val>));
 
                 return {};
             }
@@ -79,12 +94,20 @@ export namespace Lattice {
              *
              * @param[in] key The key to query for.
              *
+             * @tparam Val Value type
+             *
              * @return A `std::optional` containing the value for the key, or nothing if it wasn't found.
              */
-            inline auto Query(const Key &key) const -> std::optional<Val> {
-                typename std::map<Key, Val>::const_iterator it = m_registeryStore.find(key);
+            template <typename Val>
+            inline auto Query(const std::string &key) const -> std::optional<Val> {
+                if (!m_registryStore.contains(typeid(std::map<std::string, Val>)))
+                    return {};
 
-                return (it != std::cend(m_registeryStore) ? std::optional<Val>{it->second} : std::optional<Val>{std::nullopt});
+                std::map<std::string, Val> registry = std::any_cast<std::map<std::string, Val>>(m_registryStore.at(typeid(std::map<std::string, Val>)));
+
+                typename std::map<std::string, Val>::const_iterator it = registry.find(key);
+
+                return (it != std::cend(registry) ? std::optional<Val>{it->second} : std::optional<Val>{std::nullopt});
             }
 
             /**
@@ -92,22 +115,34 @@ export namespace Lattice {
              *
              * @param[in] key The key to check for.
              *
+             * @tparam Val Value type
+             *
              * @return `true` if found, `false` if not.
              */
-            inline auto Contains(const Key &key) const -> bool {
-                return m_registeryStore.contains(key);
+            template <typename Val>
+            inline auto Contains(const std::string &key) const -> bool {
+                if (!m_registryStore.contains(typeid(std::map<std::string, Val>)))
+                    return false;
+
+                return std::any_cast<std::map<std::string, Val>>(m_registryStore.at(typeid(std::map<std::string, Val>))).contains(key);
             }
 
             /**
              * @brief Gets all of the values.
              *
+             * @tparam Val Value type
+             *
              * @return A `std::list<Val>` of all the values in the registry.
              */
+            template <typename Val>
             inline auto All() const -> auto {
-                return m_registeryStore | std::views::values;
+                if (!m_registryStore.contains(typeid(std::map<std::string, Val>)))
+                    return std::map<std::string, Val>{} | std::views::values;
+
+                return std::any_cast<std::map<std::string, Val>>(m_registryStore.at(typeid(std::map<std::string, Val>))) | std::views::values;
             }
-            
+
         private:
-            std::map<Key, Val> m_registeryStore;
+            std::map<std::type_index, std::any> m_registryStore;
     };
 }  // export namespace Lattice

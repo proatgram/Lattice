@@ -13,7 +13,7 @@ export namespace Lattice {
     template <typename T>
     class IFactory {
         public:
-            virtual ~IFactory<T>() = default;
+            virtual ~IFactory() = default;
             /**
              * @brief Creates an object from the factory
              *

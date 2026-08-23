@@ -31,12 +31,12 @@ auto ILibraryFactory::Create(const std::string &identifier, const std::optional<
     //  2. The toolchain isn't capable of making a factory for ILibrary (does not Provide ILibraryFactory).
 
     std::string defaultToolchainId;
-    std::shared_ptr<Lattice::Object::Project> parentProject = Registry<std::shared_ptr<Lattice::Object::Project>>::GetInstance()->Query(config["LATTICE_PRIVATE"]["parent_project"].as<std::string>("NO_PARENT_PROJECT")).value_or(nullptr);
+    std::shared_ptr<Lattice::Object::Project> parentProject = Registry::GetInstance()->Query<std::shared_ptr<Lattice::Object::Project>>(config["LATTICE_PRIVATE"]["parent_project"].as<std::string>("NO_PARENT_PROJECT")).value_or(nullptr);
     if (parentProject) {}
         defaultToolchainId = parentProject->GetToolchainId();
 
     std::string toolchainId = config["toolchain"].as<std::string>(defaultToolchainId);
-    std::shared_ptr<IToolchain> toolchain = Registry<std::shared_ptr<IToolchain>>::GetInstance()->Query(toolchainId).value_or(nullptr);
+    std::shared_ptr<IToolchain> toolchain = Registry::GetInstance()->Query<std::shared_ptr<IToolchain>>(toolchainId).value_or(nullptr);
     if (!toolchain)
         throw std::runtime_error(std::format("Failed to create library {}: Toolchain {} requested but isn't defined.", identifier, toolchainId));
     if (!toolchain->Provides<std::shared_ptr<ILibraryFactory>>())
