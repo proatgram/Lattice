@@ -9,7 +9,7 @@ auto main(int argc, char *argv[]) -> int {
 
     std::shared_ptr<Lattice::Lattice> lattice = Lattice::Lattice::GetInstance();
 
-    lattice->LoadConfig("examples/project.yaml");
+    lattice->LoadConfig("examples/config/project.yaml");
 
     return 0;
 }

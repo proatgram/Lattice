@@ -16,3 +16,4 @@ find_package(argparse REQUIRED)
 find_package(yaml-cpp REQUIRED)
 
 add_subdirectory(src)
+add_subdirectory("examples/plugin")
