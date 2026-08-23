@@ -1,16 +1,8 @@
 export module ExamplePlugin;
 
 import Lattice.Plugins.Plugin;
+import Lattice.Registry;
 
-extern "C" {
-    auto GetPluginId() -> const char* {
-        return "Example Plugin";
-    }
-
-    auto GetPluginInstance() -> Lattice::Plugins::PluginInstance {
-        return Lattice::Plugins::PluginInstance{
-            .GetID = &GetPluginId
-        };
-    }
-
+export extern "C" {
+    auto GetPluginInstance() -> Lattice::Plugins::PluginInstance;
 }

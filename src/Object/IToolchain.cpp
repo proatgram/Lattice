@@ -45,7 +45,7 @@ auto IToolchainFactory::Create(const std::string &identifier, const std::optiona
     // If there are multiple matches, we run through a try catch for each and see
     // which works. If none work, propogate error.
 
-    auto toolchainImplFactories = Registry<std::shared_ptr<IFactory<IToolchain>>>::GetInstance()->All();
+    auto toolchainImplFactories = Registry::GetInstance()->All<std::shared_ptr<IFactory<IToolchain>>>();
     std::shared_ptr<IFactory<IToolchain>> toolchainImplFactory{nullptr};
 
     for (std::shared_ptr<IFactory<IToolchain>> toolchain : toolchainImplFactories) {

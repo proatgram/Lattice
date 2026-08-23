@@ -9,17 +9,16 @@ export import std;
 export import Lattice.Plugins.Plugin;
 
 #ifdef _WIN32
-    static constexpr std::string_view system_plugin_directory = "C:\\Program Files\\Common Files\\lattice\\plugins\\;
-    static constexpr std::string_view local_plugin_directory = "%appdata%\\lattice\\plugins\\";
+    inline constexpr std::string_view system_plugin_directory = "C:\\Program Files\\Common Files\\lattice\\plugins\\";
+    inline constexpr std::string_view local_plugin_directory = "{}\\lattice\\plugins\\";
 #else
 #ifdef __linux__
-    static constexpr std::string_view system_plugin_directory = "/usr/lib/lattice/plugins";
-    static constexpr std::string_view local_plugin_directory = "{}/.local/lib/lattice/plugins";
+    inline constexpr std::string_view system_plugin_directory = "/usr/lib/lattice/plugins";
+    inline constexpr std::string_view local_plugin_directory = "{}/.local/lib/lattice/plugins";
 #else
-    static constexpr std::string_view system_plugin_directory = "{}/Library/Application Support/lattice/plugins/";
-    static constexpr std::string_view local_plugin_directory = "/Library/Application Support/lattice/plugins/";
+    inline constexpr std::string_view system_plugin_directory = "/Library/Application Support/lattice/plugins/";
+    inline constexpr std::string_view local_plugin_directory = "{}/Library/Application Support/lattice/plugins/";
 #endif
-
 #endif
 
 export namespace Lattice::Plugins {
@@ -38,6 +37,8 @@ export namespace Lattice::Plugins {
                     system_plugin_directory
                     }
                 ) -> std::list<PluginInstance>;
+
+            auto InitializeAllLoaded() const -> void;
 
             auto GetLoadedPlugins() const -> std::list<PluginInstance>;
 
