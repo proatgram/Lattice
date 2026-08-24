@@ -35,13 +35,8 @@ var searchData=
   ['getsources_32',['GetSources',['../d1/d93/classLattice_1_1Tooling_1_1CompilerConfiguration.html#a5501548ce796baf0eb6c23b1240dca57',1,'Lattice::Tooling::CompilerConfiguration']]],
   ['getstarttime_33',['GetStartTime',['../db/dfc/classLattice_1_1System_1_1Process.html#a6a47f62862e83bda94fbafd238bfb024',1,'Lattice::System::Process']]],
   ['getsupportedlanguages_34',['GetSupportedLanguages',['../d8/db6/classLattice_1_1Object_1_1Capabilities_1_1LanguageIdentifiable.html#a880aa3a48ea02ea3e7d9b5b69b32a2cf',1,'Lattice::Object::Capabilities::LanguageIdentifiable']]],
-  ['gettargetabi_35',['GetTargetABI',['../d3/d7f/classLattice_1_1Object_1_1IToolchain.html#a0c987fe333e14d19f697614fb1b63200',1,'Lattice::Object::IToolchain']]],
-  ['gettargetarchitecture_36',['GetTargetArchitecture',['../d3/d7f/classLattice_1_1Object_1_1IToolchain.html#a08a662ef2c951fbcbe4d9f0b0dca87f2',1,'Lattice::Object::IToolchain']]],
-  ['gettargetos_37',['GetTargetOS',['../d3/d7f/classLattice_1_1Object_1_1IToolchain.html#aa3e7aa1106f3fdda2fc70858b1e9f6cd',1,'Lattice::Object::IToolchain']]],
-  ['gettargettriple_38',['GetTargetTriple',['../d3/d7f/classLattice_1_1Object_1_1IToolchain.html#a34bf276417326bf7924aa5cd34264dbc',1,'Lattice::Object::IToolchain']]],
-  ['gettargetvendor_39',['GetTargetVendor',['../d3/d7f/classLattice_1_1Object_1_1IToolchain.html#ac40ee70359f4e3e27b12d557e05dfaa0',1,'Lattice::Object::IToolchain']]],
-  ['gettoolchain_40',['GetToolchain',['../d6/d22/classLattice_1_1Object_1_1Capabilities_1_1HasToolchain.html#ae4802c1fa1026520fb420d76bce23b36',1,'Lattice::Object::Capabilities::HasToolchain::GetToolchain() const -&gt; std::shared_ptr&lt; const IToolchain &gt;'],['../d6/d22/classLattice_1_1Object_1_1Capabilities_1_1HasToolchain.html#aac4d98087947d3d4d67dc31c26287d36',1,'Lattice::Object::Capabilities::HasToolchain::GetToolchain() -&gt; std::shared_ptr&lt; IToolchain &gt;']]],
-  ['gettoolchainid_41',['GetToolchainId',['../d6/d22/classLattice_1_1Object_1_1Capabilities_1_1HasToolchain.html#a11e2d96b02fdbff2e8ecb55fc6ca7343',1,'Lattice::Object::Capabilities::HasToolchain']]],
-  ['getversion_42',['GetVersion',['../d5/dd0/classLattice_1_1Object_1_1Project.html#a0d8acbafaeac7d72050bce31644bf261',1,'Lattice::Object::Project']]],
-  ['getworkingdirectory_43',['GetWorkingDirectory',['../d4/d72/classLattice_1_1System_1_1Command.html#ad62ab011b061785a865120f4d8c2aa7b',1,'Lattice::System::Command']]]
+  ['gettoolchain_35',['GetToolchain',['../d6/d22/classLattice_1_1Object_1_1Capabilities_1_1HasToolchain.html#ae4802c1fa1026520fb420d76bce23b36',1,'Lattice::Object::Capabilities::HasToolchain::GetToolchain() const -&gt; std::shared_ptr&lt; const IToolchain &gt;'],['../d6/d22/classLattice_1_1Object_1_1Capabilities_1_1HasToolchain.html#aac4d98087947d3d4d67dc31c26287d36',1,'Lattice::Object::Capabilities::HasToolchain::GetToolchain() -&gt; std::shared_ptr&lt; IToolchain &gt;']]],
+  ['gettoolchainid_36',['GetToolchainId',['../d6/d22/classLattice_1_1Object_1_1Capabilities_1_1HasToolchain.html#a11e2d96b02fdbff2e8ecb55fc6ca7343',1,'Lattice::Object::Capabilities::HasToolchain']]],
+  ['getversion_37',['GetVersion',['../d5/dd0/classLattice_1_1Object_1_1Project.html#a0d8acbafaeac7d72050bce31644bf261',1,'Lattice::Object::Project']]],
+  ['getworkingdirectory_38',['GetWorkingDirectory',['../d4/d72/classLattice_1_1System_1_1Command.html#ad62ab011b061785a865120f4d8c2aa7b',1,'Lattice::System::Command']]]
 ];

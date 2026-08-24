@@ -20,17 +20,7 @@ Inheritance diagram for Lattice::Object::IToolchain:\begin{figure}[H]
 {\footnotesize template$<$typename T$>$ }\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1IToolchain_a897ae77001db2257f7a668572bbefadc}{Provides}} () const -\/$>$ bool
 \begin{DoxyCompactList}\small\item\em Checks if the Toolchain provides a feature. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T$>$ }\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1IToolchain_ad6880fddcb4dbc94a62dffc54f695c1e}{Get}} () const -\/$>$ std::\+optional$<$ T $>$
-\begin{DoxyCompactList}\small\item\em Gets a feature from the toolchain. \end{DoxyCompactList}\item 
-auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1IToolchain_aa3e7aa1106f3fdda2fc70858b1e9f6cd}{Get\+Target\+OS}} () const -\/$>$ std::\+string
-\begin{DoxyCompactList}\small\item\em Gets the target OS that this toolchain builds for. \end{DoxyCompactList}\item 
-auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1IToolchain_a08a662ef2c951fbcbe4d9f0b0dca87f2}{Get\+Target\+Architecture}} () const -\/$>$ std::\+string
-\begin{DoxyCompactList}\small\item\em Gets the target Architecture that this toolchain builds for. \end{DoxyCompactList}\item 
-auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1IToolchain_a0c987fe333e14d19f697614fb1b63200}{Get\+Target\+ABI}} () const -\/$>$ std::\+string
-\begin{DoxyCompactList}\small\item\em Gets the target ABI that this toolchain builds for. \end{DoxyCompactList}\item 
-auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1IToolchain_ac40ee70359f4e3e27b12d557e05dfaa0}{Get\+Target\+Vendor}} () const -\/$>$ std::\+string
-\begin{DoxyCompactList}\small\item\em Gets the target Vendor for this toolchain. \end{DoxyCompactList}\item 
-auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1IToolchain_a34bf276417326bf7924aa5cd34264dbc}{Get\+Target\+Triple}} () const -\/$>$ std::\+string
-\begin{DoxyCompactList}\small\item\em Gets the Target information in Triple format. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gets a feature from the toolchain. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Lattice::\+\+Object::\+\+Object}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -52,13 +42,15 @@ requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_
 \item 
 auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1LanguageIdentifiable_a880aa3a48ea02ea3e7d9b5b69b32a2cf}{Get\+Supported\+Languages}} () const -\/$>$ std::\+list$<$ std::\+string $>$
 \begin{DoxyCompactList}\small\item\em Get the supported languages for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Friends}
+\doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classLattice_1_1Object_1_1IToolchain_a242904e53cf14babdb9013533318c2cf}\label{classLattice_1_1Object_1_1IToolchain_a242904e53cf14babdb9013533318c2cf} 
-class {\bfseries IToolchain\+Factory}
+\Hypertarget{classLattice_1_1Object_1_1IToolchain_a3e3484c7fe68d9c8f5b64852e57bd6fe}\label{classLattice_1_1Object_1_1IToolchain_a3e3484c7fe68d9c8f5b64852e57bd6fe} 
+virtual auto {\bfseries Provides\+Impl} (const std::\+type\+\_\+index \&type) const -\/$>$ bool=0
+\item 
+\Hypertarget{classLattice_1_1Object_1_1IToolchain_a37ddd57f6d221ad9fff68861ef5894b7}\label{classLattice_1_1Object_1_1IToolchain_a37ddd57f6d221ad9fff68861ef5894b7} 
+virtual auto {\bfseries Get\+Impl} (const std::\+type\+\_\+index \&type) const -\/$>$ std::\+optional$<$ std::\+any $>$=0
 \end{DoxyCompactItemize}
-\doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Lattice::\+\+Object::\+\+Object}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -73,6 +65,13 @@ auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1LanguageIden
 \begin{DoxyCompactList}\small\item\em Adds a list of supported languages for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\item 
 auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1LanguageIdentifiable_a6f717bb005d6bc1c3273a1c8eedec971}{Add\+Supported\+Language}} (const std::\+string \&supported\+Language) -\/$>$ void
 \begin{DoxyCompactList}\small\item\em Adds a supported language for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1Object_1_1IToolchain_a242904e53cf14babdb9013533318c2cf}\label{classLattice_1_1Object_1_1IToolchain_a242904e53cf14babdb9013533318c2cf} 
+class {\bfseries IToolchain\+Factory}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Lattice::\+\+Object::\+\+Object}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -103,73 +102,6 @@ If the toolchain does not provide this feature, it returns an empty optional.
 
 \begin{DoxyReturn}{Returns}
 The provided feature, or an empty optional. 
-\end{DoxyReturn}
-\Hypertarget{classLattice_1_1Object_1_1IToolchain_a0c987fe333e14d19f697614fb1b63200}\index{Lattice::Object::IToolchain@{Lattice::Object::IToolchain}!GetTargetABI@{GetTargetABI}}
-\index{GetTargetABI@{GetTargetABI}!Lattice::Object::IToolchain@{Lattice::Object::IToolchain}}
-\doxysubsubsection{\texorpdfstring{GetTargetABI()}{GetTargetABI()}}
-{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1IToolchain_a0c987fe333e14d19f697614fb1b63200} 
-auto IToolchain::\+\+Get\+Target\+ABI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+string}
-
-
-
-Gets the target ABI that this toolchain builds for. 
-
-\begin{DoxyReturn}{Returns}
-The \textquotesingle{}Toolchain\textquotesingle{}\textquotesingle{}s target ABI. 
-\end{DoxyReturn}
-\Hypertarget{classLattice_1_1Object_1_1IToolchain_a08a662ef2c951fbcbe4d9f0b0dca87f2}\index{Lattice::Object::IToolchain@{Lattice::Object::IToolchain}!GetTargetArchitecture@{GetTargetArchitecture}}
-\index{GetTargetArchitecture@{GetTargetArchitecture}!Lattice::Object::IToolchain@{Lattice::Object::IToolchain}}
-\doxysubsubsection{\texorpdfstring{GetTargetArchitecture()}{GetTargetArchitecture()}}
-{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1IToolchain_a08a662ef2c951fbcbe4d9f0b0dca87f2} 
-auto IToolchain::\+\+Get\+Target\+Architecture (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+string}
-
-
-
-Gets the target Architecture that this toolchain builds for. 
-
-\begin{DoxyReturn}{Returns}
-The {\ttfamily Toolchain}\textquotesingle{}s target Architecture. 
-\end{DoxyReturn}
-\Hypertarget{classLattice_1_1Object_1_1IToolchain_aa3e7aa1106f3fdda2fc70858b1e9f6cd}\index{Lattice::Object::IToolchain@{Lattice::Object::IToolchain}!GetTargetOS@{GetTargetOS}}
-\index{GetTargetOS@{GetTargetOS}!Lattice::Object::IToolchain@{Lattice::Object::IToolchain}}
-\doxysubsubsection{\texorpdfstring{GetTargetOS()}{GetTargetOS()}}
-{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1IToolchain_aa3e7aa1106f3fdda2fc70858b1e9f6cd} 
-auto IToolchain::\+\+Get\+Target\+OS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+string}
-
-
-
-Gets the target OS that this toolchain builds for. 
-
-\begin{DoxyReturn}{Returns}
-The {\ttfamily Toolchain}\textquotesingle{}s target OS. 
-\end{DoxyReturn}
-\Hypertarget{classLattice_1_1Object_1_1IToolchain_a34bf276417326bf7924aa5cd34264dbc}\index{Lattice::Object::IToolchain@{Lattice::Object::IToolchain}!GetTargetTriple@{GetTargetTriple}}
-\index{GetTargetTriple@{GetTargetTriple}!Lattice::Object::IToolchain@{Lattice::Object::IToolchain}}
-\doxysubsubsection{\texorpdfstring{GetTargetTriple()}{GetTargetTriple()}}
-{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1IToolchain_a34bf276417326bf7924aa5cd34264dbc} 
-auto IToolchain::\+\+Get\+Target\+Triple (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+string}
-
-
-
-Gets the Target information in Triple format. 
-
-Triple format is build from the Architecture, OS, Environment/\+\+ABI, and Vendor. It follows the format of: {\ttfamily arch-\/vendor-\/os-\/env}.
-
-\begin{DoxyReturn}{Returns}
-The Target Triple for the {\ttfamily Toolchain}. 
-\end{DoxyReturn}
-\Hypertarget{classLattice_1_1Object_1_1IToolchain_ac40ee70359f4e3e27b12d557e05dfaa0}\index{Lattice::Object::IToolchain@{Lattice::Object::IToolchain}!GetTargetVendor@{GetTargetVendor}}
-\index{GetTargetVendor@{GetTargetVendor}!Lattice::Object::IToolchain@{Lattice::Object::IToolchain}}
-\doxysubsubsection{\texorpdfstring{GetTargetVendor()}{GetTargetVendor()}}
-{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1IToolchain_ac40ee70359f4e3e27b12d557e05dfaa0} 
-auto Lattice::\+\+Object::\+\+IToolchain::\+\+Get\+Target\+Vendor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$  std::\+string}
-
-
-
-Gets the target Vendor for this toolchain. 
-
-\begin{DoxyReturn}{Returns}
-The {\ttfamily Toolchain}\textquotesingle{}s Vendor 
 \end{DoxyReturn}
 \Hypertarget{classLattice_1_1Object_1_1IToolchain_a897ae77001db2257f7a668572bbefadc}\index{Lattice::Object::IToolchain@{Lattice::Object::IToolchain}!Provides@{Provides}}
 \index{Provides@{Provides}!Lattice::Object::IToolchain@{Lattice::Object::IToolchain}}

@@ -11,22 +11,6 @@ using namespace Lattice::Object;
 IToolchain::IToolchain(Constructable, const std::string &identifier) :
     Object(Object::Constructable(), identifier) {}
 
-auto IToolchain::GetTargetOS() const -> std::string {
-    return m_targetOS;
-}
-
-auto IToolchain::GetTargetArchitecture() const -> std::string {
-    return m_targetArchitecture;
-}
-
-auto IToolchain::GetTargetABI() const -> std::string {
-    return m_targetABI;
-}
-
-auto IToolchain::GetTargetTriple() const -> std::string {
-    return std::format("{}-{}-{}-{}", m_targetArchitecture, m_targetVendor, m_targetOS, m_targetABI);
-}
-
 auto IToolchainFactory::Create(const std::string &identifier, const std::optional<std::string> &objectData) -> std::shared_ptr<Object> {
     YAML::Node config;
 
