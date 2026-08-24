@@ -47,44 +47,6 @@ export namespace Lattice::Object {
                 return {};
             }
 
-            /**
-             * @brief Gets the target OS that this toolchain builds for.
-             *
-             * @return The `Toolchain`'s target OS.
-             */
-            auto GetTargetOS() const -> std::string;
-
-            /**
-             * @brief Gets the target Architecture that this toolchain builds for.
-             *
-             * @return The `Toolchain`'s target Architecture.
-             */
-            auto GetTargetArchitecture() const -> std::string;
-
-            /**
-             * @brief Gets the target ABI that this toolchain builds for.
-             *
-             * @return The 'Toolchain''s target ABI.
-             */
-            auto GetTargetABI() const -> std::string;
-
-            /**
-             * @brief Gets the target Vendor for this toolchain.
-             *
-             * @return The `Toolchain`'s Vendor
-             */
-            auto GetTargetVendor() const -> std::string;
-
-            /**
-             * @brief Gets the Target information in Triple format.
-             *
-             * Triple format is build from the Architecture, OS, Environment/ABI, and Vendor.
-             * It follows the format of: `arch-vendor-os-env`.
-             *
-             * @return The Target Triple for the `Toolchain`.
-             */
-            auto GetTargetTriple() const -> std::string;
-
         protected:
             using LanguageIdentifiable::SetSupportedLanguages;
             using LanguageIdentifiable::AddSupportedLanguage;
