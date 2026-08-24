@@ -21,7 +21,7 @@ auto IBinaryFactory::Create(const std::string &identifier, const std::optional<s
     try {
         config = YAML::Load(objectData.value());
     } catch (const YAML::ParserException &err) {
-        throw std::runtime_error(std::format("Failed to create binary: Library configuration is malformed: {}", err.what()));
+        throw std::runtime_error(std::format("Failed to create binary: Binary configuration is malformed: {}", err.what()));
     }
 
     // IBinary has optional `toolchain` configuration property, and requires that the toolchain
@@ -39,14 +39,14 @@ auto IBinaryFactory::Create(const std::string &identifier, const std::optional<s
     std::shared_ptr<IToolchain> toolchain = Registry::GetInstance()->Query<std::shared_ptr<IToolchain>>(toolchainId).value_or(nullptr);
     if (!toolchain)
         throw std::runtime_error(std::format("Failed to create binary {}: Toolchain {} requested but isn't defined.", identifier, toolchainId));
-    if (!toolchain->Provides<std::shared_ptr<IBinaryFactory>>())
-        throw std::runtime_error(std::format("Failed to create binary {}: Toolchain {} doesn't provide a Library factory.", identifier, toolchainId));
+    if (!toolchain->Provides<std::shared_ptr<IFactory<IBinary>>>())
+        throw std::runtime_error(std::format("Failed to create binary {}: Toolchain {} doesn't provide a Binary factory.", identifier, toolchainId));
 
-    std::optional<std::shared_ptr<IBinaryFactory>> binaryImplFactory = toolchain->Get<std::shared_ptr<IBinaryFactory>>();
+    std::optional<std::shared_ptr<IFactory<IBinary>>> binaryImplFactory = toolchain->Get<std::shared_ptr<IFactory<IBinary>>>();
 
     // If for some reason the toolchain says it provides the factory, but doesn't return one...?
     if (!binaryImplFactory)
-        throw std::runtime_error(std::format("Failed to create binary {}: Toolchain {} doesn't provide a valid Library factory.", identifier, toolchainId));
+        throw std::runtime_error(std::format("Failed to create binary {}: Toolchain {} doesn't provide a valid Binary factory.", identifier, toolchainId));
 
     // Create implemented binary object first
     std::shared_ptr<Object> binaryObject = binaryImplFactory.value().get()->Create(identifier, objectData);
