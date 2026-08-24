@@ -39,10 +39,10 @@ auto ILibraryFactory::Create(const std::string &identifier, const std::optional<
     std::shared_ptr<IToolchain> toolchain = Registry::GetInstance()->Query<std::shared_ptr<IToolchain>>(toolchainId).value_or(nullptr);
     if (!toolchain)
         throw std::runtime_error(std::format("Failed to create library {}: Toolchain {} requested but isn't defined.", identifier, toolchainId));
-    if (!toolchain->Provides<std::shared_ptr<ILibraryFactory>>())
+    if (!toolchain->Provides<std::shared_ptr<IFactory<ILibrary>>>())
         throw std::runtime_error(std::format("Failed to create library {}: Toolchain {} doesn't provide a Library factory.", identifier, toolchainId));
 
-    std::optional<std::shared_ptr<ILibraryFactory>> libraryImplFactory = toolchain->Get<std::shared_ptr<ILibraryFactory>>();
+    std::optional<std::shared_ptr<IFactory<ILibrary>>> libraryImplFactory = toolchain->Get<std::shared_ptr<IFactory<ILibrary>>>();
 
     // If for some reason the toolchain says it provides the factory, but doesn't return one...?
     if (!libraryImplFactory)
