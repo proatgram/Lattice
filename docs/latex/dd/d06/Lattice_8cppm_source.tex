@@ -1,0 +1,30 @@
+\doxysection{Lattice.\+cppm}
+\hypertarget{Lattice_8cppm_source}{}\label{Lattice_8cppm_source}\index{modules/Lattice.cppm@{modules/Lattice.cppm}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{keyword}{export}\ \textcolor{keyword}{module}\ \doxymbox{\hyperlink{module__Lattice}{Lattice}};}
+\DoxyCodeLine{00002\ \textcolor{keyword}{export}\ \textcolor{keyword}{import}\ std;}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{export}\ \textcolor{keyword}{import}\ \doxymbox{\hyperlink{module__Lattice_8Project}{Lattice.Project}};}
+\DoxyCodeLine{00005\ \textcolor{keyword}{export}\ \textcolor{keyword}{import}\ \doxymbox{\hyperlink{module__Lattice_8Object}{Lattice.Object}};}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{export}\ \textcolor{keyword}{namespace\ }Lattice\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classLattice_1_1Lattice_ab919eaed4aaed3e11c4c995bab90d299}{Lattice}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }Constructable\ \{\};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classLattice_1_1Lattice_ab919eaed4aaed3e11c4c995bab90d299}{Lattice}}(Constructable);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{auto}\ GetInstance()\ -\/>\ std::shared\_ptr<Lattice>;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ RegisterObjectFactory(\textcolor{keyword}{const}\ std::string\ \&identifier,\ \textcolor{keyword}{const}\ std::function<std::shared\_ptr<Object::Object>(\textcolor{keyword}{const}\ std::string\ \&)>\ factoryFunction)\ -\/>\ void;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \doxymbox{\hyperlink{classLattice_1_1Lattice_a5c8795b13f2bd344c6cb6857f4b10dbb}{LoadConfig}}(\textcolor{keyword}{const}\ std::filesystem::path\ configPath)\ -\/>\ void;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ GetGlobalObjects()\ \textcolor{keyword}{const}\ -\/>\ std::map<std::string,\ std::shared\_ptr<Object::Object>>;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ GetGlobalObject(\textcolor{keyword}{const}\ std::string\ \&identifier)\ \textcolor{keyword}{const}\ -\/>\ std::optional<std::shared\_ptr<Object::Object>>;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ std::map<std::string,\ std::shared\_ptr<Object::Object>>\ m\_globalObjects;}
+\DoxyCodeLine{00038\ \ \ \ \ \};}
+\DoxyCodeLine{00039\ \}\ \ \textcolor{comment}{//\ export\ namespace\ Lattice}}
+
+\end{DoxyCode}

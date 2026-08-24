@@ -1,0 +1,54 @@
+\doxysection{Lattice::ISingleton\+Factory\texorpdfstring{$<$}{<} Factory, T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classLattice_1_1ISingletonFactory}{}\label{classLattice_1_1ISingletonFactory}\index{Lattice::ISingletonFactory$<$ Factory, T $>$@{Lattice::ISingletonFactory$<$ Factory, T $>$}}
+Inheritance diagram for Lattice::ISingleton\+Factory\texorpdfstring{$<$}{<} Factory, T \texorpdfstring{$>$}{>}:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d2/dea/classLattice_1_1ISingletonFactory}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structLattice_1_1ISingletonFactory_1_1Constructable}{Constructable}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1ISingletonFactory_a5b63f94e493b6434abceaa71067f55f3}\label{classLattice_1_1ISingletonFactory_a5b63f94e493b6434abceaa71067f55f3} 
+using {\bfseries Factory\+Type} = \doxymbox{\hyperlink{classLattice_1_1IFactory}{IFactory}}$<$T$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static auto \doxymbox{\hyperlink{classLattice_1_1ISingletonFactory_a0ffdef1ae5f0e4d6b10f6fa7bdeb4176}{Get\+Instance}} () -\/$>$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1IFactory}{IFactory}}$<$ T $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets the factory instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1IFactory}{Lattice::\+\+IFactory$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual auto \doxymbox{\hyperlink{classLattice_1_1IFactory_af95918a7e57097f819b9f2b06aed2156}{Create}} (const std::\+string \&identifier, const std::\+optional$<$ std::\+string $>$ \&object\+Data=std::\+nullopt) -\/$>$ std::\+shared\+\_\+ptr$<$ T $>$=0
+\begin{DoxyCompactList}\small\item\em Creates an object from the factory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{classLattice_1_1ISingletonFactory_doc-func-members}
+\Hypertarget{classLattice_1_1ISingletonFactory_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1ISingletonFactory_a0ffdef1ae5f0e4d6b10f6fa7bdeb4176}\index{Lattice::ISingletonFactory$<$ Factory, T $>$@{Lattice::ISingletonFactory$<$ Factory, T $>$}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!Lattice::ISingletonFactory$<$ Factory, T $>$@{Lattice::ISingletonFactory$<$ Factory, T $>$}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily \label{classLattice_1_1ISingletonFactory_a0ffdef1ae5f0e4d6b10f6fa7bdeb4176} 
+template$<$typename Factory, typename T$>$ \\
+auto \doxymbox{\hyperlink{classLattice_1_1ISingletonFactory}{Lattice::\+\+ISingleton\+Factory}}$<$ Factory, T $>$::\+\+Get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) -\/$>$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1IFactory}{IFactory}}$<$ T $>$ $>$\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the factory instance. 
+
+\begin{DoxyReturn}{Returns}
+Shared pointer to the factory instance 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+modules/IFactory.\+cppm\end{DoxyCompactItemize}

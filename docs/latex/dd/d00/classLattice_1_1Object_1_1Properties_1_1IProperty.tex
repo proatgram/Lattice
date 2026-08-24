@@ -1,0 +1,62 @@
+\doxysection{Lattice::Object::Properties::IProperty Class Reference}
+\hypertarget{classLattice_1_1Object_1_1Properties_1_1IProperty}{}\label{classLattice_1_1Object_1_1Properties_1_1IProperty}\index{Lattice::Object::Properties::IProperty@{Lattice::Object::Properties::IProperty}}
+
+
+Represents a property that can be propogated up from different objects.  
+
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1Object_1_1Properties_1_1IProperty_abac3662638c6a1b5e679c67659f858b2}\label{classLattice_1_1Object_1_1Properties_1_1IProperty_abac3662638c6a1b5e679c67659f858b2} 
+enum class {\bfseries Visibility} \{ {\bfseries Public}
+, {\bfseries Private}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1Object_1_1Properties_1_1IProperty_ae1e7dbe83cd1c2afa9f3658dbf0bf362}\label{classLattice_1_1Object_1_1Properties_1_1IProperty_ae1e7dbe83cd1c2afa9f3658dbf0bf362} 
+{\bfseries IProperty} (Visibility visibility)
+\item 
+\Hypertarget{classLattice_1_1Object_1_1Properties_1_1IProperty_a1c9c6d96b99f65665a9fb67bd8924aea}\label{classLattice_1_1Object_1_1Properties_1_1IProperty_a1c9c6d96b99f65665a9fb67bd8924aea} 
+auto {\bfseries Get\+Visibility} () const -\/$>$ Visibility
+\item 
+virtual auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty_ab988463d04766e5eff171be4f45f168b}{operator+}} (const IProperty \&rhs) -\/$>$ IProperty \&=0
+\begin{DoxyCompactList}\small\item\em Additive propogation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a property that can be propogated up from different objects. 
+
+\label{classLattice_1_1Object_1_1Properties_1_1IProperty_doc-func-members}
+\Hypertarget{classLattice_1_1Object_1_1Properties_1_1IProperty_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1Object_1_1Properties_1_1IProperty_ab988463d04766e5eff171be4f45f168b}\index{Lattice::Object::Properties::IProperty@{Lattice::Object::Properties::IProperty}!operator+@{operator+}}
+\index{operator+@{operator+}!Lattice::Object::Properties::IProperty@{Lattice::Object::Properties::IProperty}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Properties_1_1IProperty_ab988463d04766e5eff171be4f45f168b} 
+virtual auto Lattice::\+\+Object::\+\+Properties::\+\+IProperty::\+operator+ (\begin{DoxyParamCaption}\item[{const IProperty \&}]{rhs}{}\end{DoxyParamCaption}) -\/$>$  IProperty \&\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Additive propogation. 
+
+The use of this operator overload allows properties to truly be propogated.
+
+Valid implementations of this method should add all components of the Property rhs to itself, and return a reference to {\ttfamily this}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em rhs} & Another property to inherit from.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classLattice_1_1Object_1_1Properties_1_1IProperty}{IProperty}\& 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+modules/\+\+Object/\+\+Properties/IProperty.\+cppm\item 
+src/\+\+Object/\+\+Properties/IProperty.\+cpp\end{DoxyCompactItemize}

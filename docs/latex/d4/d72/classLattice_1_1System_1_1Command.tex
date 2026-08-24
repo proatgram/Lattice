@@ -1,0 +1,227 @@
+\doxysection{Lattice::System::Command Class Reference}
+\hypertarget{classLattice_1_1System_1_1Command}{}\label{classLattice_1_1System_1_1Command}\index{Lattice::System::Command@{Lattice::System::Command}}
+
+
+A \doxylink{classLattice_1_1System_1_1Command}{Command} that can be ran on the host system.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Command_ae7f7ae8a9823efd5d3b4824a0fffeffc}{Get\+Executable}} () const -\/$>$ std::\+string
+\begin{DoxyCompactList}\small\item\em Gets the executable for the \doxylink{classLattice_1_1System_1_1Command}{Command}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Command_abb40ea3337bb4d7ea1b2339818813615}{Set\+Executable}} (const std::\+string \&executable) -\/$>$ Command \&
+\begin{DoxyCompactList}\small\item\em Sets the executable for the \doxylink{classLattice_1_1System_1_1Command}{Command}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Command_a97907d7c40a1de76b10ea36ad749946c}{Get\+Arguments}} () const -\/$>$ const std::\+vector$<$ std::\+string $>$ \&
+\begin{DoxyCompactList}\small\item\em Gets the \doxylink{classLattice_1_1System_1_1Command}{Command}\textquotesingle{}s Argument list. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Command_a47f1b7eef8d4d58dbae45cbddcacad0a}{Set\+Arguments}} (const std::\+vector$<$ std::\+string $>$ \&arguments) -\/$>$ Command \&
+\begin{DoxyCompactList}\small\item\em Sets the \doxylink{classLattice_1_1System_1_1Command}{Command}\textquotesingle{}s Argument list. \end{DoxyCompactList}\item 
+\Hypertarget{classLattice_1_1System_1_1Command_accd6a629cc4144ddf9001eb52cd06834}\label{classLattice_1_1System_1_1Command_accd6a629cc4144ddf9001eb52cd06834} 
+{\footnotesize template$<$typename T$>$ \newline
+requires \doxymbox{\hyperlink{conceptConstIterable}{Const\+Iterable}}$<$T$>$}\\auto {\bfseries Set\+Arguments} (const T \&arguments) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1System_1_1Command}{Command}} \&
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Command_a4bfaf09d5639f9b17cc8cb43ff8fd783}{Add\+Argument}} (const std::\+string \&argument) -\/$>$ Command \&
+\begin{DoxyCompactList}\small\item\em Adds an Argument to the \doxylink{classLattice_1_1System_1_1Command}{Command}\textquotesingle{}s Argument list. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Command_a3f7f7abf9d2c48fc5cfae014792b04d0}{Get\+Command\+Line}} () const -\/$>$ std::\+string
+\begin{DoxyCompactList}\small\item\em Gets the command-\/line for the \doxylink{classLattice_1_1System_1_1Command}{Command}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Command_ad62ab011b061785a865120f4d8c2aa7b}{Get\+Working\+Directory}} () const -\/$>$ std::\+optional$<$ std::\+filesystem::\+path $>$
+\begin{DoxyCompactList}\small\item\em Get an optional working directory for the \doxylink{classLattice_1_1System_1_1Command}{Command}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Command_af480aecb94077306375d57fd265d3cbb}{Set\+Working\+Directory}} (const std::\+filesystem::\+path \&working\+Directory) -\/$>$ Command \&
+\begin{DoxyCompactList}\small\item\em Sets the optional working directory for the \doxylink{classLattice_1_1System_1_1Command}{Command}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Command_aa525f729144e83e5524ce0065ed896a4}{Get\+Environments}} () const -\/$>$ const std::\+unordered\+\_\+map$<$ std::\+string, std::\+string $>$ \&
+\begin{DoxyCompactList}\small\item\em Gets the environment variables for the \doxylink{classLattice_1_1System_1_1Command}{Command}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Command_a6596c7277cc1e3926ee80cf19b4210ba}{Set\+Environments}} (const std::\+unordered\+\_\+map$<$ std::\+string, std::\+string $>$ \&environment\+Variables) -\/$>$ Command \&
+\begin{DoxyCompactList}\small\item\em Sets the environment variables for the \doxylink{classLattice_1_1System_1_1Command}{Command}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Command_a7297d2534dc9fb5f7ea50ef2185bc6e4}{Add\+Environments}} (const std::\+string \&key, const std::\+string \&value) -\/$>$ Command \&
+\begin{DoxyCompactList}\small\item\em Adds an environment variable to the \doxylink{classLattice_1_1System_1_1Command}{Command}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxylink{classLattice_1_1System_1_1Command}{Command} that can be ran on the host system. 
+
+\label{classLattice_1_1System_1_1Command_doc-func-members}
+\Hypertarget{classLattice_1_1System_1_1Command_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1System_1_1Command_a4bfaf09d5639f9b17cc8cb43ff8fd783}\index{Lattice::System::Command@{Lattice::System::Command}!AddArgument@{AddArgument}}
+\index{AddArgument@{AddArgument}!Lattice::System::Command@{Lattice::System::Command}}
+\doxysubsubsection{\texorpdfstring{AddArgument()}{AddArgument()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Command_a4bfaf09d5639f9b17cc8cb43ff8fd783} 
+auto Command::\+\+Add\+Argument (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{argument}{}\end{DoxyParamCaption}) -\/$>$ Command \&}
+
+
+
+Adds an Argument to the \doxylink{classLattice_1_1System_1_1Command}{Command}\textquotesingle{}s Argument list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em argument} & The argument.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \doxylink{classLattice_1_1System_1_1Command}{Command} instance for chaining. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Command_a7297d2534dc9fb5f7ea50ef2185bc6e4}\index{Lattice::System::Command@{Lattice::System::Command}!AddEnvironments@{AddEnvironments}}
+\index{AddEnvironments@{AddEnvironments}!Lattice::System::Command@{Lattice::System::Command}}
+\doxysubsubsection{\texorpdfstring{AddEnvironments()}{AddEnvironments()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Command_a7297d2534dc9fb5f7ea50ef2185bc6e4} 
+auto Command::\+\+Add\+Environments (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{, }\item[{const std::\+string \&}]{value}{}\end{DoxyParamCaption}) -\/$>$ Command \&}
+
+
+
+Adds an environment variable to the \doxylink{classLattice_1_1System_1_1Command}{Command}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em key} & The environment key \\
+\hline
+\doxymbox{\texttt{in}}  & {\em value} & The value of the environment variable.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \doxylink{classLattice_1_1System_1_1Command}{Command} instance for chaining. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Command_a97907d7c40a1de76b10ea36ad749946c}\index{Lattice::System::Command@{Lattice::System::Command}!GetArguments@{GetArguments}}
+\index{GetArguments@{GetArguments}!Lattice::System::Command@{Lattice::System::Command}}
+\doxysubsubsection{\texorpdfstring{GetArguments()}{GetArguments()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Command_a97907d7c40a1de76b10ea36ad749946c} 
+auto Command::\+\+Get\+Arguments (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ const std::\+vector$<$ std::\+string $>$ \&}
+
+
+
+Gets the \doxylink{classLattice_1_1System_1_1Command}{Command}\textquotesingle{}s Argument list. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing all of the arguments in order for the \doxylink{classLattice_1_1System_1_1Command}{Command}. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Command_a3f7f7abf9d2c48fc5cfae014792b04d0}\index{Lattice::System::Command@{Lattice::System::Command}!GetCommandLine@{GetCommandLine}}
+\index{GetCommandLine@{GetCommandLine}!Lattice::System::Command@{Lattice::System::Command}}
+\doxysubsubsection{\texorpdfstring{GetCommandLine()}{GetCommandLine()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Command_a3f7f7abf9d2c48fc5cfae014792b04d0} 
+auto Command::\+\+Get\+Command\+Line (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+string}
+
+
+
+Gets the command-\/line for the \doxylink{classLattice_1_1System_1_1Command}{Command}. 
+
+This is the full, parsed, output that will be ran on the system.
+
+\begin{DoxyReturn}{Returns}
+The full command-\/line. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Command_aa525f729144e83e5524ce0065ed896a4}\index{Lattice::System::Command@{Lattice::System::Command}!GetEnvironments@{GetEnvironments}}
+\index{GetEnvironments@{GetEnvironments}!Lattice::System::Command@{Lattice::System::Command}}
+\doxysubsubsection{\texorpdfstring{GetEnvironments()}{GetEnvironments()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Command_aa525f729144e83e5524ce0065ed896a4} 
+auto Command::\+\+Get\+Environments (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ const std::\+unordered\+\_\+map$<$ std::\+string, std::\+string $>$ \&}
+
+
+
+Gets the environment variables for the \doxylink{classLattice_1_1System_1_1Command}{Command}. 
+
+\begin{DoxyReturn}{Returns}
+An unordered map of \{env, value\} for the environment variables. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Command_ae7f7ae8a9823efd5d3b4824a0fffeffc}\index{Lattice::System::Command@{Lattice::System::Command}!GetExecutable@{GetExecutable}}
+\index{GetExecutable@{GetExecutable}!Lattice::System::Command@{Lattice::System::Command}}
+\doxysubsubsection{\texorpdfstring{GetExecutable()}{GetExecutable()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Command_ae7f7ae8a9823efd5d3b4824a0fffeffc} 
+auto Command::\+\+Get\+Executable (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+string}
+
+
+
+Gets the executable for the \doxylink{classLattice_1_1System_1_1Command}{Command}. 
+
+\begin{DoxyReturn}{Returns}
+The executable string. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Command_ad62ab011b061785a865120f4d8c2aa7b}\index{Lattice::System::Command@{Lattice::System::Command}!GetWorkingDirectory@{GetWorkingDirectory}}
+\index{GetWorkingDirectory@{GetWorkingDirectory}!Lattice::System::Command@{Lattice::System::Command}}
+\doxysubsubsection{\texorpdfstring{GetWorkingDirectory()}{GetWorkingDirectory()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Command_ad62ab011b061785a865120f4d8c2aa7b} 
+auto Command::\+\+Get\+Working\+Directory (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+optional$<$ std::\+filesystem::\+path $>$}
+
+
+
+Get an optional working directory for the \doxylink{classLattice_1_1System_1_1Command}{Command}. 
+
+\begin{DoxyReturn}{Returns}
+An optional path to the working directory. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Command_a47f1b7eef8d4d58dbae45cbddcacad0a}\index{Lattice::System::Command@{Lattice::System::Command}!SetArguments@{SetArguments}}
+\index{SetArguments@{SetArguments}!Lattice::System::Command@{Lattice::System::Command}}
+\doxysubsubsection{\texorpdfstring{SetArguments()}{SetArguments()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Command_a47f1b7eef8d4d58dbae45cbddcacad0a} 
+auto Command::\+\+Set\+Arguments (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ std::\+string $>$ \&}]{arguments}{}\end{DoxyParamCaption}) -\/$>$ Command \&}
+
+
+
+Sets the \doxylink{classLattice_1_1System_1_1Command}{Command}\textquotesingle{}s Argument list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em arguments} & The Arguments for the \doxylink{classLattice_1_1System_1_1Command}{Command}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \doxylink{classLattice_1_1System_1_1Command}{Command} instance for chaining. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Command_a6596c7277cc1e3926ee80cf19b4210ba}\index{Lattice::System::Command@{Lattice::System::Command}!SetEnvironments@{SetEnvironments}}
+\index{SetEnvironments@{SetEnvironments}!Lattice::System::Command@{Lattice::System::Command}}
+\doxysubsubsection{\texorpdfstring{SetEnvironments()}{SetEnvironments()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Command_a6596c7277cc1e3926ee80cf19b4210ba} 
+auto Command::\+\+Set\+Environments (\begin{DoxyParamCaption}\item[{const std::\+unordered\+\_\+map$<$ std::\+string, std::\+string $>$ \&}]{environment\+Variables}{}\end{DoxyParamCaption}) -\/$>$ Command \&}
+
+
+
+Sets the environment variables for the \doxylink{classLattice_1_1System_1_1Command}{Command}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em environment\+Variables} & An unordered map of \{env, value\} for the \doxylink{classLattice_1_1System_1_1Command}{Command}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \doxylink{classLattice_1_1System_1_1Command}{Command} instance for chaining. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Command_abb40ea3337bb4d7ea1b2339818813615}\index{Lattice::System::Command@{Lattice::System::Command}!SetExecutable@{SetExecutable}}
+\index{SetExecutable@{SetExecutable}!Lattice::System::Command@{Lattice::System::Command}}
+\doxysubsubsection{\texorpdfstring{SetExecutable()}{SetExecutable()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Command_abb40ea3337bb4d7ea1b2339818813615} 
+auto Command::\+\+Set\+Executable (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{executable}{}\end{DoxyParamCaption}) -\/$>$ Command \&}
+
+
+
+Sets the executable for the \doxylink{classLattice_1_1System_1_1Command}{Command}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em executable} & The executable for the \doxylink{classLattice_1_1System_1_1Command}{Command}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \doxylink{classLattice_1_1System_1_1Command}{Command} instance for chaining. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Command_af480aecb94077306375d57fd265d3cbb}\index{Lattice::System::Command@{Lattice::System::Command}!SetWorkingDirectory@{SetWorkingDirectory}}
+\index{SetWorkingDirectory@{SetWorkingDirectory}!Lattice::System::Command@{Lattice::System::Command}}
+\doxysubsubsection{\texorpdfstring{SetWorkingDirectory()}{SetWorkingDirectory()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Command_af480aecb94077306375d57fd265d3cbb} 
+auto Command::\+\+Set\+Working\+Directory (\begin{DoxyParamCaption}\item[{const std::\+filesystem::\+path \&}]{working\+Directory}{}\end{DoxyParamCaption}) -\/$>$ Command \&}
+
+
+
+Sets the optional working directory for the \doxylink{classLattice_1_1System_1_1Command}{Command}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em working\+Directory} & The new working directory for the \doxylink{classLattice_1_1System_1_1Command}{Command}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \doxylink{classLattice_1_1System_1_1Command}{Command} instance for chaining. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+modules/\+\+System/Command.\+cppm\item 
+src/\+\+System/Command.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,89 @@
+\doxysection{Lattice::Object::Library\+Factory\texorpdfstring{$<$}{<} Factory \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classLattice_1_1Object_1_1LibraryFactory}{}\label{classLattice_1_1Object_1_1LibraryFactory}\index{Lattice::Object::LibraryFactory$<$ Factory $>$@{Lattice::Object::LibraryFactory$<$ Factory $>$}}
+Inheritance diagram for Lattice::Object::Library\+Factory\texorpdfstring{$<$}{<} Factory \texorpdfstring{$>$}{>}:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.857143cm]{db/ddc/classLattice_1_1Object_1_1LibraryFactory}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1LibraryFactory_af068847bba90ccd00a260bb3ebc92cfc}{Set\+Supported\+Languages}} (const std::\+list$<$ std::\+string $>$ \&supported\+Languages) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Sets the list of supported languages for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1LibraryFactory_a8b318652fab16335cf44f87ec08a7f5f}{Add\+Supported\+Languages}} (const std::\+list$<$ std::\+string $>$ \&supported\+Languages) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Adds a list of supported languages for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1LanguageIdentifiable}{Lattice::\+\+Object::\+\+Capabilities::\+\+Language\+Identifiable}}}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1LanguageIdentifiable_af068847bba90ccd00a260bb3ebc92cfc}{Set\+Supported\+Languages}} (const std::\+list$<$ std::\+string $>$ \&supported\+Languages) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Sets the list of supported languages for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1LanguageIdentifiable_a8b318652fab16335cf44f87ec08a7f5f}{Add\+Supported\+Languages}} (const std::\+list$<$ std::\+string $>$ \&supported\+Languages) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Adds a list of supported languages for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1LanguageIdentifiable_a6f717bb005d6bc1c3273a1c8eedec971}{Add\+Supported\+Language}} (const std::\+string \&supported\+Language) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Adds a supported language for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \doxymbox{\hyperlink{classLattice_1_1ISingletonFactory}{Lattice::\+\+ISingleton\+Factory$<$ Factory, ILibrary $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+using {\bfseries Factory\+Type}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1IFactory}{Lattice::\+\+IFactory$<$ ILibrary $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual auto \doxymbox{\hyperlink{classLattice_1_1IFactory_af95918a7e57097f819b9f2b06aed2156}{Create}} (const std::\+string \&identifier, const std::\+optional$<$ std::\+string $>$ \&object\+Data=std::\+nullopt) -\/$>$ std::\+shared\+\_\+ptr$<$ ILibrary $>$=0
+\begin{DoxyCompactList}\small\item\em Creates an object from the factory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1LanguageIdentifiable}{Lattice::\+\+Object::\+\+Capabilities::\+\+Language\+Identifiable}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Language\+Identifiable} (const std::\+list$<$ std::\+string $>$ \&supported\+Languages)
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1LanguageIdentifiable_a880aa3a48ea02ea3e7d9b5b69b32a2cf}{Get\+Supported\+Languages}} () const -\/$>$ std::\+list$<$ std::\+string $>$
+\begin{DoxyCompactList}\small\item\em Get the supported languages for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1ISingletonFactory}{Lattice::\+\+ISingleton\+Factory$<$ Factory, ILibrary $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+static auto \doxymbox{\hyperlink{classLattice_1_1ISingletonFactory_a0ffdef1ae5f0e4d6b10f6fa7bdeb4176}{Get\+Instance}} () -\/$>$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1IFactory}{IFactory}}$<$ ILibrary $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets the factory instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{classLattice_1_1Object_1_1LibraryFactory_doc-func-members}
+\Hypertarget{classLattice_1_1Object_1_1LibraryFactory_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1Object_1_1LibraryFactory_a8b318652fab16335cf44f87ec08a7f5f}\index{Lattice::Object::LibraryFactory$<$ Factory $>$@{Lattice::Object::LibraryFactory$<$ Factory $>$}!AddSupportedLanguages@{AddSupportedLanguages}}
+\index{AddSupportedLanguages@{AddSupportedLanguages}!Lattice::Object::LibraryFactory$<$ Factory $>$@{Lattice::Object::LibraryFactory$<$ Factory $>$}}
+\doxysubsubsection{\texorpdfstring{AddSupportedLanguages()}{AddSupportedLanguages()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1LibraryFactory_a8b318652fab16335cf44f87ec08a7f5f} 
+template$<$typename Factory$>$ \\
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1LanguageIdentifiable_a8b318652fab16335cf44f87ec08a7f5f}{Language\+Identifiable::\+\+Add\+Supported\+Languages}} (\begin{DoxyParamCaption}\item[{const std::\+list$<$ std::\+string $>$ \&}]{supported\+Languages}{}\end{DoxyParamCaption}) -\/$>$ void\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Adds a list of supported languages for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em supported\+Languages\+[in]} & List of supported languages. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classLattice_1_1Object_1_1LibraryFactory_af068847bba90ccd00a260bb3ebc92cfc}\index{Lattice::Object::LibraryFactory$<$ Factory $>$@{Lattice::Object::LibraryFactory$<$ Factory $>$}!SetSupportedLanguages@{SetSupportedLanguages}}
+\index{SetSupportedLanguages@{SetSupportedLanguages}!Lattice::Object::LibraryFactory$<$ Factory $>$@{Lattice::Object::LibraryFactory$<$ Factory $>$}}
+\doxysubsubsection{\texorpdfstring{SetSupportedLanguages()}{SetSupportedLanguages()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1LibraryFactory_af068847bba90ccd00a260bb3ebc92cfc} 
+template$<$typename Factory$>$ \\
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1LanguageIdentifiable_af068847bba90ccd00a260bb3ebc92cfc}{Language\+Identifiable::\+\+Set\+Supported\+Languages}} (\begin{DoxyParamCaption}\item[{const std::\+list$<$ std::\+string $>$ \&}]{supported\+Languages}{}\end{DoxyParamCaption}) -\/$>$ void\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Sets the list of supported languages for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em supported\+Languages\+[in]} & List of supported languages. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+modules/\+\+Object/ILibrary.\+cppm\end{DoxyCompactItemize}

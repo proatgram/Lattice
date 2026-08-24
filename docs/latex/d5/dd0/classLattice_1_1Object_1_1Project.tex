@@ -1,0 +1,335 @@
+\doxysection{Lattice::Object::Project Class Reference}
+\hypertarget{classLattice_1_1Object_1_1Project}{}\label{classLattice_1_1Object_1_1Project}\index{Lattice::Object::Project@{Lattice::Object::Project}}
+
+
+Represents a software project in the lattice.  
+
+
+Inheritance diagram for Lattice::Object::Project:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.204725cm]{d5/dd0/classLattice_1_1Object_1_1Project}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_ab40535a4e8f2000c4f286ab64b91aa18}{Project}} (\doxymbox{\hyperlink{structLattice_1_1Object_1_1Object_1_1Constructable}{Constructable}}, const std::\+string \&identifier)
+\begin{DoxyCompactList}\small\item\em Creates a new \doxylink{classLattice_1_1Object_1_1Project}{Project} with the given identifier. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_a768f6dcc6bbdf97c7e040976a8701c77}{Get\+Identifier}} () const -\/$>$ std::\+string
+\begin{DoxyCompactList}\small\item\em Gets the project identifier. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_a1f766dc42053d1afe339bf9376b986f9}{Set\+Description}} (const std::\+string \&description) -\/$>$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_ab40535a4e8f2000c4f286ab64b91aa18}{Project}} $>$
+\begin{DoxyCompactList}\small\item\em Sets the project description. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_ae1d3cb2c240723e1ef6cc8504e952389}{Get\+Description}} () const -\/$>$ std::\+string
+\begin{DoxyCompactList}\small\item\em Gets the project description. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_a38115665daa3e594907e92dc5c082cbe}{Set\+Version}} (const std::\+string \&version) -\/$>$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_ab40535a4e8f2000c4f286ab64b91aa18}{Project}} $>$
+\begin{DoxyCompactList}\small\item\em Sets the project version. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_a0d8acbafaeac7d72050bce31644bf261}{Get\+Version}} () const -\/$>$ std::\+string
+\begin{DoxyCompactList}\small\item\em Gets the project version. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_abdf5ce246c6ab21f9a09c959f1fafee3}{Set\+Homepage\+Url}} (const std::\+string \&homepage\+Url) -\/$>$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_ab40535a4e8f2000c4f286ab64b91aa18}{Project}} $>$
+\begin{DoxyCompactList}\small\item\em Sets the project homepage URL. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_a0b73a63c6809dcb5b4e2971f59d10300}{Get\+Homepage\+Url}} () const -\/$>$ std::\+optional$<$ std::\+string $>$
+\begin{DoxyCompactList}\small\item\em Gets the project homepage URL. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_a1d0d2f4a9c22c2d87a242ea58c38d749}{Build}} () -\/$>$ void final
+\begin{DoxyCompactList}\small\item\em Builds the buildable object. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_acc8b7660d5e5e1a106a2065c12a12084}{Get\+Objects}} () const -\/$>$ std::\+map$<$ std::\+string, std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021}{Object}} $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets the objects owned by this project. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_ab180fad645ad6f058a98254debc49738}{Get\+Object}} (const std::\+string \&identifier) const -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021}{Object}} $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets an object owned by this project. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_a837b4863a41db14c76ec39016c983da1}{Add\+Object}} (const std::\+string \&identifier, const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021}{Object}} $>$ \&object) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Adds an object to this project. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Lattice::\+\+Object::\+\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_aa7ab36eee0dd3df8685af53c9bfc9b86}{Get\+Identifier}} () const -\/$>$ std::\+string
+\begin{DoxyCompactList}\small\item\em Gets the identifier for the object. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1ICapability}{Capabilities::\+\+ICapability}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a67f6e881e3facb7ee245e9871094be76}{Get\+Capability}} () -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets the Capabilities for the object. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021}{Object}}, T$>$}\\auto {\bfseries As} () const -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$
+\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021}{Object}}, T$>$}\\auto {\bfseries As} () -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasToolchain}{Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Toolchain}}}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasToolchain_ae4802c1fa1026520fb420d76bce23b36}{Get\+Toolchain}} () const -\/$>$ std::\+shared\+\_\+ptr$<$ const \doxymbox{\hyperlink{classLattice_1_1Object_1_1IToolchain}{IToolchain}} $>$
+\begin{DoxyCompactList}\small\item\em Gets the toolchain associated with this \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasToolchain_aac4d98087947d3d4d67dc31c26287d36}{Get\+Toolchain}} () -\/$>$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1IToolchain}{IToolchain}} $>$
+\begin{DoxyCompactList}\small\item\em Gets the toolchain associated with this \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasToolchain_a11e2d96b02fdbff2e8ecb55fc6ca7343}{Get\+Toolchain\+Id}} () const -\/$>$ std::\+string
+\begin{DoxyCompactList}\small\item\em Gets the Toolchain ID that is associated with this \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_a12014ee11ff60a4d2d18a5191dfa9200}{Set\+Toolchain\+Id}} (const std::\+string \&toolchain\+Id) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Sets the Toolchain ID for the associated \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_abefc0fce32b7bb2369d59877f13230c1}{Set\+Toolchain}} (const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1IToolchain}{IToolchain}} $>$ \&toolchain) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Sets the \doxylink{classLattice_1_1Object_1_1IToolchain}{IToolchain} for the associated \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Lattice::\+\+Object::\+\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021}{Object}} (\doxymbox{\hyperlink{structLattice_1_1Object_1_1Object_1_1Constructable}{Constructable}}, const std::\+string \&identifier)
+\begin{DoxyCompactList}\small\item\em Creates an object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasToolchain}{Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Toolchain}}}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasToolchain_abefc0fce32b7bb2369d59877f13230c1}{Set\+Toolchain}} (const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1IToolchain}{IToolchain}} $>$ \&toolchain) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Sets the \doxylink{classLattice_1_1Object_1_1IToolchain}{IToolchain} for the associated \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasToolchain_a12014ee11ff60a4d2d18a5191dfa9200}{Set\+Toolchain\+Id}} (const std::\+string \&toolchain\+Id) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Sets the Toolchain ID for the associated \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1Object_1_1Project_abecbe16a06e55b8c46ba24f5c28a5633}\label{classLattice_1_1Object_1_1Project_abecbe16a06e55b8c46ba24f5c28a5633} 
+class {\bfseries Project\+Factory}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Lattice::\+\+Object::\+\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string {\bfseries m\+\_\+identifier}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a software project in the lattice. 
+
+This class inherits from \doxylink{classLattice_1_1Object_1_1Object}{Object}, Buildable, and Parsable to provide a project configuration that can be built and parsed from YAML. 
+
+\label{classLattice_1_1Object_1_1Project_doc-constructors}
+\Hypertarget{classLattice_1_1Object_1_1Project_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classLattice_1_1Object_1_1Project_ab40535a4e8f2000c4f286ab64b91aa18}\index{Lattice::Object::Project@{Lattice::Object::Project}!Project@{Project}}
+\index{Project@{Project}!Lattice::Object::Project@{Lattice::Object::Project}}
+\doxysubsubsection{\texorpdfstring{Project()}{Project()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Project_ab40535a4e8f2000c4f286ab64b91aa18} 
+Project::\+\+Project (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structLattice_1_1Object_1_1Object_1_1Constructable}{Object::\+\+Constructable}}}]{}{, }\item[{const std::\+string \&}]{identifier}{}\end{DoxyParamCaption})}
+
+
+
+Creates a new \doxylink{classLattice_1_1Object_1_1Project}{Project} with the given identifier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em identifier} & The project identifier. \\
+\hline
+\end{DoxyParams}
+
+
+\label{classLattice_1_1Object_1_1Project_doc-func-members}
+\Hypertarget{classLattice_1_1Object_1_1Project_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1Object_1_1Project_a837b4863a41db14c76ec39016c983da1}\index{Lattice::Object::Project@{Lattice::Object::Project}!AddObject@{AddObject}}
+\index{AddObject@{AddObject}!Lattice::Object::Project@{Lattice::Object::Project}}
+\doxysubsubsection{\texorpdfstring{AddObject()}{AddObject()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Project_a837b4863a41db14c76ec39016c983da1} 
+auto Project::\+\+Add\+Object (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{identifier}{, }\item[{const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021}{Object}} $>$ \&}]{object}{}\end{DoxyParamCaption}) -\/$>$ void}
+
+
+
+Adds an object to this project. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & object identifier \\
+\hline
+{\em The} & object \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classLattice_1_1Object_1_1Project_a1d0d2f4a9c22c2d87a242ea58c38d749}\index{Lattice::Object::Project@{Lattice::Object::Project}!Build@{Build}}
+\index{Build@{Build}!Lattice::Object::Project@{Lattice::Object::Project}}
+\doxysubsubsection{\texorpdfstring{Build()}{Build()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Project_a1d0d2f4a9c22c2d87a242ea58c38d749} 
+auto Project::\+\+Build (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) -\/$>$  void\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [virtual]}}
+
+
+
+Builds the buildable object. 
+
+\begin{DoxyReturn}{Returns}
+Void. 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1Buildable_ae280a9231ede7a9c017f9f813d35486e}{Lattice::\+\+Object::\+\+Capabilities::\+\+Buildable}}.
+
+\Hypertarget{classLattice_1_1Object_1_1Project_ae1d3cb2c240723e1ef6cc8504e952389}\index{Lattice::Object::Project@{Lattice::Object::Project}!GetDescription@{GetDescription}}
+\index{GetDescription@{GetDescription}!Lattice::Object::Project@{Lattice::Object::Project}}
+\doxysubsubsection{\texorpdfstring{GetDescription()}{GetDescription()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Project_ae1d3cb2c240723e1ef6cc8504e952389} 
+auto Project::\+\+Get\+Description (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+string}
+
+
+
+Gets the project description. 
+
+\begin{DoxyReturn}{Returns}
+The project description. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Project_a0b73a63c6809dcb5b4e2971f59d10300}\index{Lattice::Object::Project@{Lattice::Object::Project}!GetHomepageUrl@{GetHomepageUrl}}
+\index{GetHomepageUrl@{GetHomepageUrl}!Lattice::Object::Project@{Lattice::Object::Project}}
+\doxysubsubsection{\texorpdfstring{GetHomepageUrl()}{GetHomepageUrl()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Project_a0b73a63c6809dcb5b4e2971f59d10300} 
+auto Project::\+\+Get\+Homepage\+Url (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+optional$<$ std::\+string $>$}
+
+
+
+Gets the project homepage URL. 
+
+\begin{DoxyReturn}{Returns}
+Optional homepage URL, or nullopt if not set. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Project_a768f6dcc6bbdf97c7e040976a8701c77}\index{Lattice::Object::Project@{Lattice::Object::Project}!GetIdentifier@{GetIdentifier}}
+\index{GetIdentifier@{GetIdentifier}!Lattice::Object::Project@{Lattice::Object::Project}}
+\doxysubsubsection{\texorpdfstring{GetIdentifier()}{GetIdentifier()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Project_a768f6dcc6bbdf97c7e040976a8701c77} 
+auto Project::\+\+Get\+Identifier (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+string}
+
+
+
+Gets the project identifier. 
+
+\begin{DoxyReturn}{Returns}
+Shared pointer to self for chaining. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Project_ab180fad645ad6f058a98254debc49738}\index{Lattice::Object::Project@{Lattice::Object::Project}!GetObject@{GetObject}}
+\index{GetObject@{GetObject}!Lattice::Object::Project@{Lattice::Object::Project}}
+\doxysubsubsection{\texorpdfstring{GetObject()}{GetObject()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Project_ab180fad645ad6f058a98254debc49738} 
+auto Project::\+\+Get\+Object (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{identifier}{}\end{DoxyParamCaption}) const -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021}{Object}} $>$ $>$}
+
+
+
+Gets an object owned by this project. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em An} & object identifier\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Shared pointer \doxylink{classLattice_1_1Object_1_1Object}{Object} wrapped in an optional, or nullopt if not set. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Project_acc8b7660d5e5e1a106a2065c12a12084}\index{Lattice::Object::Project@{Lattice::Object::Project}!GetObjects@{GetObjects}}
+\index{GetObjects@{GetObjects}!Lattice::Object::Project@{Lattice::Object::Project}}
+\doxysubsubsection{\texorpdfstring{GetObjects()}{GetObjects()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Project_acc8b7660d5e5e1a106a2065c12a12084} 
+auto Project::\+\+Get\+Objects (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+map$<$ std::\+string, std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021}{Object}} $>$ $>$}
+
+
+
+Gets the objects owned by this project. 
+
+\begin{DoxyReturn}{Returns}
+A map with the objects. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Project_a0d8acbafaeac7d72050bce31644bf261}\index{Lattice::Object::Project@{Lattice::Object::Project}!GetVersion@{GetVersion}}
+\index{GetVersion@{GetVersion}!Lattice::Object::Project@{Lattice::Object::Project}}
+\doxysubsubsection{\texorpdfstring{GetVersion()}{GetVersion()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Project_a0d8acbafaeac7d72050bce31644bf261} 
+auto Project::\+\+Get\+Version (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+string}
+
+
+
+Gets the project version. 
+
+\begin{DoxyReturn}{Returns}
+The project version. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Project_a1f766dc42053d1afe339bf9376b986f9}\index{Lattice::Object::Project@{Lattice::Object::Project}!SetDescription@{SetDescription}}
+\index{SetDescription@{SetDescription}!Lattice::Object::Project@{Lattice::Object::Project}}
+\doxysubsubsection{\texorpdfstring{SetDescription()}{SetDescription()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Project_a1f766dc42053d1afe339bf9376b986f9} 
+auto Project::\+\+Set\+Description (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{description}{}\end{DoxyParamCaption}) -\/$>$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_ab40535a4e8f2000c4f286ab64b91aa18}{Project}} $>$}
+
+
+
+Sets the project description. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em description} & The description string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Shared pointer to self for chaining. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Project_abdf5ce246c6ab21f9a09c959f1fafee3}\index{Lattice::Object::Project@{Lattice::Object::Project}!SetHomepageUrl@{SetHomepageUrl}}
+\index{SetHomepageUrl@{SetHomepageUrl}!Lattice::Object::Project@{Lattice::Object::Project}}
+\doxysubsubsection{\texorpdfstring{SetHomepageUrl()}{SetHomepageUrl()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Project_abdf5ce246c6ab21f9a09c959f1fafee3} 
+auto Project::\+\+Set\+Homepage\+Url (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{homepage\+Url}{}\end{DoxyParamCaption}) -\/$>$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_ab40535a4e8f2000c4f286ab64b91aa18}{Project}} $>$}
+
+
+
+Sets the project homepage URL. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em homepage\+Url} & The homepage URL. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Shared pointer to self for chaining. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Project_abefc0fce32b7bb2369d59877f13230c1}\index{Lattice::Object::Project@{Lattice::Object::Project}!SetToolchain@{SetToolchain}}
+\index{SetToolchain@{SetToolchain}!Lattice::Object::Project@{Lattice::Object::Project}}
+\doxysubsubsection{\texorpdfstring{SetToolchain()}{SetToolchain()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Project_abefc0fce32b7bb2369d59877f13230c1} 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasToolchain_abefc0fce32b7bb2369d59877f13230c1}{Has\+Toolchain::\+\+Set\+Toolchain}} (\begin{DoxyParamCaption}\item[{const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1IToolchain}{IToolchain}} $>$ \&}]{toolchain}{}\end{DoxyParamCaption}) -\/$>$ void\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Sets the \doxylink{classLattice_1_1Object_1_1IToolchain}{IToolchain} for the associated \doxylink{classLattice_1_1Object_1_1Object}{Object}. 
+
+Setting this will updated the Toolchain ID of this Capability.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em toolchain} & The \doxylink{classLattice_1_1Object_1_1IToolchain}{IToolchain} to set for this \doxylink{classLattice_1_1Object_1_1Object}{Object}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classLattice_1_1Object_1_1Project_a12014ee11ff60a4d2d18a5191dfa9200}\index{Lattice::Object::Project@{Lattice::Object::Project}!SetToolchainId@{SetToolchainId}}
+\index{SetToolchainId@{SetToolchainId}!Lattice::Object::Project@{Lattice::Object::Project}}
+\doxysubsubsection{\texorpdfstring{SetToolchainId()}{SetToolchainId()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Project_a12014ee11ff60a4d2d18a5191dfa9200} 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasToolchain_a12014ee11ff60a4d2d18a5191dfa9200}{Has\+Toolchain::\+\+Set\+Toolchain\+Id}} (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{toolchain\+Id}{}\end{DoxyParamCaption}) -\/$>$ void\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Sets the Toolchain ID for the associated \doxylink{classLattice_1_1Object_1_1Object}{Object}. 
+
+Setting this will attempt to update the \doxylink{classLattice_1_1Object_1_1IToolchain}{IToolchain} instance associated with the \doxylink{classLattice_1_1Object_1_1Object}{Object}. If the Toolchain ID is invalid the \doxylink{classLattice_1_1Object_1_1IToolchain}{IToolchain} instance will be {\ttfamily nullptr}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em toolchain\+Id} & The Toolchain ID to set for this \doxylink{classLattice_1_1Object_1_1Object}{Object}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classLattice_1_1Object_1_1Project_a38115665daa3e594907e92dc5c082cbe}\index{Lattice::Object::Project@{Lattice::Object::Project}!SetVersion@{SetVersion}}
+\index{SetVersion@{SetVersion}!Lattice::Object::Project@{Lattice::Object::Project}}
+\doxysubsubsection{\texorpdfstring{SetVersion()}{SetVersion()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Project_a38115665daa3e594907e92dc5c082cbe} 
+auto Project::\+\+Set\+Version (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{version}{}\end{DoxyParamCaption}) -\/$>$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project_ab40535a4e8f2000c4f286ab64b91aa18}{Project}} $>$}
+
+
+
+Sets the project version. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em version} & The version string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Shared pointer to self for chaining. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+modules/\+\+Object/Project.\+cppm\item 
+src/\+\+Object/Project.\+cpp\end{DoxyCompactItemize}

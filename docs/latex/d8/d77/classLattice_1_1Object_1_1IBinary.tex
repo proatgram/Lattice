@@ -1,0 +1,127 @@
+\doxysection{Lattice::Object::IBinary Class Reference}
+\hypertarget{classLattice_1_1Object_1_1IBinary}{}\label{classLattice_1_1Object_1_1IBinary}\index{Lattice::Object::IBinary@{Lattice::Object::IBinary}}
+Inheritance diagram for Lattice::Object::IBinary:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.200000cm]{d8/d77/classLattice_1_1Object_1_1IBinary}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1Object_1_1IBinary_afc3a3a33a6566c96b3aa2ddfc5070eac}\label{classLattice_1_1Object_1_1IBinary_afc3a3a33a6566c96b3aa2ddfc5070eac} 
+{\bfseries IBinary} (\doxymbox{\hyperlink{structLattice_1_1Object_1_1Object_1_1Constructable}{Constructable}}, const std::\+string \&identifier)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Lattice::\+\+Object::\+\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_aa7ab36eee0dd3df8685af53c9bfc9b86}{Get\+Identifier}} () const -\/$>$ std::\+string
+\begin{DoxyCompactList}\small\item\em Gets the identifier for the object. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1ICapability}{Capabilities::\+\+ICapability}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a67f6e881e3facb7ee245e9871094be76}{Get\+Capability}} () -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets the Capabilities for the object. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021}{Object}}, T$>$}\\auto {\bfseries As} () const -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$
+\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021}{Object}}, T$>$}\\auto {\bfseries As} () -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1ProjectIdentifiable}{Lattice::\+\+Object::\+\+Capabilities::\+\+Project\+Identifiable}}}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1ProjectIdentifiable_ac183036a4b12694bb07b66653b408d79}{Get\+Owning\+Project}} () const -\/$>$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project}{Project}} $>$
+\begin{DoxyCompactList}\small\item\em Obtains the project that owns the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasToolchain}{Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Toolchain}}}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasToolchain_ae4802c1fa1026520fb420d76bce23b36}{Get\+Toolchain}} () const -\/$>$ std::\+shared\+\_\+ptr$<$ const \doxymbox{\hyperlink{classLattice_1_1Object_1_1IToolchain}{IToolchain}} $>$
+\begin{DoxyCompactList}\small\item\em Gets the toolchain associated with this \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasToolchain_aac4d98087947d3d4d67dc31c26287d36}{Get\+Toolchain}} () -\/$>$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1IToolchain}{IToolchain}} $>$
+\begin{DoxyCompactList}\small\item\em Gets the toolchain associated with this \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasToolchain_a11e2d96b02fdbff2e8ecb55fc6ca7343}{Get\+Toolchain\+Id}} () const -\/$>$ std::\+string
+\begin{DoxyCompactList}\small\item\em Gets the Toolchain ID that is associated with this \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies}{Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Dependencies}}}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies_ad9891cdf30141c0cb579c9fbe498caf5}{Get\+Public\+Dependencies}} () const -\/$>$ std::\+list$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Object}} $>$ $>$
+\begin{DoxyCompactList}\small\item\em Obtains the public dependencies for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties}{Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Properties}}}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a61c7987ef909cdff0c2dcdbd830d58af}{Get\+Public\+Property}} () const -\/$>$ std::\+optional$<$ const std::\+shared\+\_\+ptr$<$ const T $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets a Public Property if it exists within the Property store. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a74ff07d61950e5bf507c04020200e9e9}{Get\+Public\+Property}} () -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets a Public Property if it exists within the Property store. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a59ca2154d7f0d655ef9dbc7765bb09ad}{Has\+Public\+Property}} () const -\/$>$ bool
+\begin{DoxyCompactList}\small\item\em Checks if a Public Property exists within the Property store. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1Object_1_1IBinary_ac851f4c60da3349acf896012ecbc9e8f}\label{classLattice_1_1Object_1_1IBinary_ac851f4c60da3349acf896012ecbc9e8f} 
+class {\bfseries IBinary\+Factory}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Lattice::\+\+Object::\+\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021}{Object}} (\doxymbox{\hyperlink{structLattice_1_1Object_1_1Object_1_1Constructable}{Constructable}}, const std::\+string \&identifier)
+\begin{DoxyCompactList}\small\item\em Creates an object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1ProjectIdentifiable}{Lattice::\+\+Object::\+\+Capabilities::\+\+Project\+Identifiable}}}
+\begin{DoxyCompactItemize}
+\item 
+auto {\bfseries Set\+Owning\+Project} (const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Project}{Project}} $>$ \&owning\+Project) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Sets the project that owns the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasToolchain}{Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Toolchain}}}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasToolchain_abefc0fce32b7bb2369d59877f13230c1}{Set\+Toolchain}} (const std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1IToolchain}{IToolchain}} $>$ \&toolchain) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Sets the \doxylink{classLattice_1_1Object_1_1IToolchain}{IToolchain} for the associated \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasToolchain_a12014ee11ff60a4d2d18a5191dfa9200}{Set\+Toolchain\+Id}} (const std::\+string \&toolchain\+Id) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Sets the Toolchain ID for the associated \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies}{Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Dependencies}}}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies_a76f7a5da10e231bf5edfc99c19a90814}{Get\+Private\+Dependencies}} () const -\/$>$ std::\+list$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Object}} $>$ $>$
+\begin{DoxyCompactList}\small\item\em Obtains the private dependencies for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies_a54df47fff2069d16d0d9832795b1c3ac}{Get\+All\+Dependencies}} () const -\/$>$ std::\+list$<$ \doxymbox{\hyperlink{structLattice_1_1Object_1_1Capabilities_1_1HasDependencies_1_1Dependency}{Dependency}} $>$
+\begin{DoxyCompactList}\small\item\em Obtains all of the dependencies for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\item 
+auto {\bfseries Add\+Dependency} (const \doxymbox{\hyperlink{structLattice_1_1Object_1_1Capabilities_1_1HasDependencies_1_1Dependency}{Dependency}} \&dependency) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Adds a dependency. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties}{Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Properties}}}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_abc3cb3602bf5d68b2d8d5f546d1d3f24}{Add\+Property}} (const std::\+shared\+\_\+ptr$<$ T $>$ \&property) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Adds a Property to the internal Property store. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_ae977a011ea2d98f136a9d5c819d70dda}{Get\+Private\+Property}} () const -\/$>$ std::\+optional$<$ const std::\+shared\+\_\+ptr$<$ const T $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets a Private Property if it exists within the Property store. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_ab0b8ad9bf3daf4a804cce2141e81b08e}{Get\+Private\+Property}} () -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets a Private Property if it exists within the Property store. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a2aaa3313121a3ea23191121e8972903e}{Has\+Private\+Property}} () const -\/$>$ bool
+\begin{DoxyCompactList}\small\item\em Checks if a Private Property exists within the Property store. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a1c097adb4f8d169f19d0b1f47c9250fc}{Get\+Property}} () const -\/$>$ std::\+optional$<$ const std::\+shared\+\_\+ptr$<$ const T $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets a Private Property if it exists within the Property store. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a37fc14fd6fe517af3332acc435ff2bfd}{Get\+Property}} () -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets a Private Property if it exists within the Property store. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_aec1e7612ad0806374097297a61c1e9e0}{Has\+Property}} () const -\/$>$ bool
+\begin{DoxyCompactList}\small\item\em Checks if a Property exists within the Property store. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Lattice::\+\+Object::\+\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string {\bfseries m\+\_\+identifier}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+modules/\+\+Object/IBinary.\+cppm\item 
+src/\+\+Object/IBinary.\+cpp\end{DoxyCompactItemize}

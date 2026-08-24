@@ -1,0 +1,336 @@
+\doxysection{Lattice::Tooling::Compiler\+Configuration Class Reference}
+\hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration}{}\label{classLattice_1_1Tooling_1_1CompilerConfiguration}\index{Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}}
+
+
+\doxylink{classLattice_1_1Tooling_1_1Configuration}{Configuration} for a compiler implementation.  
+
+
+Inheritance diagram for Lattice::Tooling::Compiler\+Configuration:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d1/d93/classLattice_1_1Tooling_1_1CompilerConfiguration}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_add7356b6a871381d69a5df49fe03bbc4}\label{classLattice_1_1Tooling_1_1CompilerConfiguration_add7356b6a871381d69a5df49fe03bbc4} 
+{\bfseries Compiler\+Configuration} (\doxymbox{\hyperlink{structLattice_1_1Tooling_1_1Configuration_1_1Constructable}{Compiler\+Configuration::\+\+Constructable}})
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration_ae74b990018eb0feaf647a234c1820e65}{Get\+Arguments}} () const -\/$>$ std::\+vector$<$ std::\+string $>$
+\begin{DoxyCompactList}\small\item\em Gets the compiler arguments. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration_a2d1282eb8920e1c3111301082f4e9dd0}{Set\+Arguments}} (const std::\+initializer\+\_\+list$<$ std::\+string $>$ \&args) -\/$>$ Compiler\+Configuration \&
+\begin{DoxyCompactList}\small\item\em Sets the compiler argument list. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires \doxymbox{\hyperlink{conceptConstIterable}{Const\+Iterable}}$<$T, std::\+string$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration_a9985ae3390f872607e80ead3d7eef5e3}{Set\+Arguments}} (const T \&args) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration}{Compiler\+Configuration}} \&
+\begin{DoxyCompactList}\small\item\em Sets the compiler argument list. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration_a5a953cbe13060c93cc5490222d5d6e2b}{Add\+Argument}} (const std::\+string \&arg) -\/$>$ Compiler\+Configuration \&
+\begin{DoxyCompactList}\small\item\em Adds a compiler argument. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration_adc416495f720b286de5f63415068cce5}{Add\+Arguments}} (const std::\+initializer\+\_\+list$<$ std::\+string $>$ \&args) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration}{Compiler\+Configuration}} \&
+\begin{DoxyCompactList}\small\item\em Adds compiler arguments. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires \doxymbox{\hyperlink{conceptConstIterable}{Const\+Iterable}}$<$T, std::\+string$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration_a69f8f1fc51c4332d5c8e6dfe30d14d78}{Add\+Arguments}} (const T \&args) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration}{Compiler\+Configuration}} \&
+\begin{DoxyCompactList}\small\item\em Adds compiler arguments. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration_ae0199753816ab1d5b6e07802f6777f44}{Get\+Output}} () const -\/$>$ std::\+optional$<$ std::\+string $>$
+\begin{DoxyCompactList}\small\item\em Gets the output name that the compiler will output to. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration_ad71ede0c87453b0f6f7c662389879232}{Set\+Output}} (const std::\+string \&output\+Name) -\/$>$ Compiler\+Configuration \&
+\begin{DoxyCompactList}\small\item\em Sets the output name that the compiler will output to. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration_a5501548ce796baf0eb6c23b1240dca57}{Get\+Sources}} () const -\/$>$ std::\+list$<$ std::\+filesystem::\+path $>$
+\begin{DoxyCompactList}\small\item\em Gets the current sources list that the compiler will compile. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration_a6e9a5f20bdb2183bcb6eac73954b8e68}{Set\+Sources}} (const std::\+initializer\+\_\+list$<$ std::\+filesystem::\+path $>$ \&sources) -\/$>$ Compiler\+Configuration \&
+\begin{DoxyCompactList}\small\item\em Sets the compiler sources list. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires \doxymbox{\hyperlink{conceptConstIterable}{Const\+Iterable}}$<$T, std::\+filesystem::\+path$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration_a69251d5436441b506718fb1849093d40}{Set\+Sources}} (const T \&sources) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration}{Compiler\+Configuration}} \&
+\begin{DoxyCompactList}\small\item\em Sets the compiler sources list. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration_a6fd02d6040c53a44d96b6d44fef33a9e}{Add\+Source}} (const std::\+filesystem::\+path \&source) -\/$>$ Compiler\+Configuration \&
+\begin{DoxyCompactList}\small\item\em Adds a compiler source. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration_ab1602743678f591e2d4599c04d3506b1}{Add\+Sources}} (const std::\+initializer\+\_\+list$<$ std::\+filesystem::\+path $>$ \&sources) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration}{Compiler\+Configuration}} \&
+\begin{DoxyCompactList}\small\item\em Adds compiler sources. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires \doxymbox{\hyperlink{conceptConstIterable}{Const\+Iterable}}$<$T, std::\+filesystem::\+path$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration_a755b68cfa917b503f7e33b2719a86b52}{Add\+Sources}} (const T \&sources) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration}{Compiler\+Configuration}} \&
+\begin{DoxyCompactList}\small\item\em Adds to the compiler sources list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_a88be40ffd6982abe4025425a0888c982}\label{classLattice_1_1Tooling_1_1CompilerConfiguration_a88be40ffd6982abe4025425a0888c982} 
+static constexpr std::\+string {\bfseries ARGUMENTS\+\_\+\+KEY} = "{}arguments"{}
+\item 
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_ac8d2f561795f60a46429989ee48683b5}\label{classLattice_1_1Tooling_1_1CompilerConfiguration_ac8d2f561795f60a46429989ee48683b5} 
+static constexpr std::\+string {\bfseries OUTPUT\+\_\+\+KEY} = "{}output"{}
+\item 
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_a4b699f461b833cb7932ae9455ad4bcf1}\label{classLattice_1_1Tooling_1_1CompilerConfiguration_a4b699f461b833cb7932ae9455ad4bcf1} 
+static constexpr std::\+string {\bfseries SOURCES\+\_\+\+KEY} = "{}sources"{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_a8f371987729b851b1629da2e797aded2}\label{classLattice_1_1Tooling_1_1CompilerConfiguration_a8f371987729b851b1629da2e797aded2} 
+class {\bfseries ICompiler}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classLattice_1_1Tooling_1_1Configuration}{Configuration} for a compiler implementation. 
+
+\label{classLattice_1_1Tooling_1_1CompilerConfiguration_doc-func-members}
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_a5a953cbe13060c93cc5490222d5d6e2b}\index{Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}!AddArgument@{AddArgument}}
+\index{AddArgument@{AddArgument}!Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}}
+\doxysubsubsection{\texorpdfstring{AddArgument()}{AddArgument()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1CompilerConfiguration_a5a953cbe13060c93cc5490222d5d6e2b} 
+auto Compiler\+Configuration::\+\+Add\+Argument (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{arg}{}\end{DoxyParamCaption}) -\/$>$ Compiler\+Configuration \&}
+
+
+
+Adds a compiler argument. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em arg} & A compiler argument.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance to self. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_adc416495f720b286de5f63415068cce5}\index{Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}!AddArguments@{AddArguments}}
+\index{AddArguments@{AddArguments}!Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}}
+\doxysubsubsection{\texorpdfstring{AddArguments()}{AddArguments()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1CompilerConfiguration_adc416495f720b286de5f63415068cce5} 
+auto Lattice::\+\+Tooling::\+\+Compiler\+Configuration::\+\+Add\+Arguments (\begin{DoxyParamCaption}\item[{const std::\+initializer\+\_\+list$<$ std::\+string $>$ \&}]{args}{}\end{DoxyParamCaption}) -\/$>$  \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration}{Compiler\+Configuration}} \&}
+
+
+
+Adds compiler arguments. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em args} & An initializer list containing the arguments to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance to self. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_a69f8f1fc51c4332d5c8e6dfe30d14d78}\index{Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}!AddArguments@{AddArguments}}
+\index{AddArguments@{AddArguments}!Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}}
+\doxysubsubsection{\texorpdfstring{AddArguments()}{AddArguments()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1CompilerConfiguration_a69f8f1fc51c4332d5c8e6dfe30d14d78} 
+template$<$typename T$>$ \newline
+requires \doxymbox{\hyperlink{conceptConstIterable}{Const\+Iterable}}$<$T, std::\+string$>$\\
+auto Lattice::\+\+Tooling::\+\+Compiler\+Configuration::\+\+Add\+Arguments (\begin{DoxyParamCaption}\item[{const T \&}]{args}{}\end{DoxyParamCaption}) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration}{Compiler\+Configuration}} \&\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds compiler arguments. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em args} & Any type sypporting const iteration by std::\+cbegin and std::\+cend.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance to self. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_a6fd02d6040c53a44d96b6d44fef33a9e}\index{Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}!AddSource@{AddSource}}
+\index{AddSource@{AddSource}!Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}}
+\doxysubsubsection{\texorpdfstring{AddSource()}{AddSource()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1CompilerConfiguration_a6fd02d6040c53a44d96b6d44fef33a9e} 
+auto Compiler\+Configuration::\+\+Add\+Source (\begin{DoxyParamCaption}\item[{const std::\+filesystem::\+path \&}]{source}{}\end{DoxyParamCaption}) -\/$>$ Compiler\+Configuration \&}
+
+
+
+Adds a compiler source. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em source} & A path to a source file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance to self. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_ab1602743678f591e2d4599c04d3506b1}\index{Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}!AddSources@{AddSources}}
+\index{AddSources@{AddSources}!Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}}
+\doxysubsubsection{\texorpdfstring{AddSources()}{AddSources()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1CompilerConfiguration_ab1602743678f591e2d4599c04d3506b1} 
+auto Lattice::\+\+Tooling::\+\+Compiler\+Configuration::\+\+Add\+Sources (\begin{DoxyParamCaption}\item[{const std::\+initializer\+\_\+list$<$ std::\+filesystem::\+path $>$ \&}]{sources}{}\end{DoxyParamCaption}) -\/$>$  \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration}{Compiler\+Configuration}} \&}
+
+
+
+Adds compiler sources. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em sources} & An initializer list containing the sources to add.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance to self. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_a755b68cfa917b503f7e33b2719a86b52}\index{Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}!AddSources@{AddSources}}
+\index{AddSources@{AddSources}!Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}}
+\doxysubsubsection{\texorpdfstring{AddSources()}{AddSources()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1CompilerConfiguration_a755b68cfa917b503f7e33b2719a86b52} 
+template$<$typename T$>$ \newline
+requires \doxymbox{\hyperlink{conceptConstIterable}{Const\+Iterable}}$<$T, std::\+filesystem::\+path$>$\\
+auto Lattice::\+\+Tooling::\+\+Compiler\+Configuration::\+\+Add\+Sources (\begin{DoxyParamCaption}\item[{const T \&}]{sources}{}\end{DoxyParamCaption}) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration}{Compiler\+Configuration}} \&\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds to the compiler sources list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em sources} & Any type sypporting const iteration by std::\+cbegin and std::\+cend.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance to self. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_ae74b990018eb0feaf647a234c1820e65}\index{Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}!GetArguments@{GetArguments}}
+\index{GetArguments@{GetArguments}!Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}}
+\doxysubsubsection{\texorpdfstring{GetArguments()}{GetArguments()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1CompilerConfiguration_ae74b990018eb0feaf647a234c1820e65} 
+auto Compiler\+Configuration::\+\+Get\+Arguments (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+vector$<$ std::\+string $>$}
+
+
+
+Gets the compiler arguments. 
+
+\begin{DoxyReturn}{Returns}
+Vector of compiler arguments. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_ae0199753816ab1d5b6e07802f6777f44}\index{Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}!GetOutput@{GetOutput}}
+\index{GetOutput@{GetOutput}!Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}}
+\doxysubsubsection{\texorpdfstring{GetOutput()}{GetOutput()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1CompilerConfiguration_ae0199753816ab1d5b6e07802f6777f44} 
+auto Compiler\+Configuration::\+\+Get\+Output (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+optional$<$ std::\+string $>$}
+
+
+
+Gets the output name that the compiler will output to. 
+
+\begin{DoxyReturn}{Returns}
+An optional string, containing a value if the output is set. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_a5501548ce796baf0eb6c23b1240dca57}\index{Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}!GetSources@{GetSources}}
+\index{GetSources@{GetSources}!Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}}
+\doxysubsubsection{\texorpdfstring{GetSources()}{GetSources()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1CompilerConfiguration_a5501548ce796baf0eb6c23b1240dca57} 
+auto Compiler\+Configuration::\+\+Get\+Sources (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+list$<$ std::\+filesystem::\+path $>$}
+
+
+
+Gets the current sources list that the compiler will compile. 
+
+\begin{DoxyReturn}{Returns}
+A list of paths to each source. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_a2d1282eb8920e1c3111301082f4e9dd0}\index{Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}!SetArguments@{SetArguments}}
+\index{SetArguments@{SetArguments}!Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}}
+\doxysubsubsection{\texorpdfstring{SetArguments()}{SetArguments()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1CompilerConfiguration_a2d1282eb8920e1c3111301082f4e9dd0} 
+auto Compiler\+Configuration::\+\+Set\+Arguments (\begin{DoxyParamCaption}\item[{const std::\+initializer\+\_\+list$<$ std::\+string $>$ \&}]{args}{}\end{DoxyParamCaption}) -\/$>$ Compiler\+Configuration \&}
+
+
+
+Sets the compiler argument list. 
+
+This function will erase the current set of arguments and replace them with these.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em args} & An initializer list containing the arguments to set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance to self. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_a9985ae3390f872607e80ead3d7eef5e3}\index{Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}!SetArguments@{SetArguments}}
+\index{SetArguments@{SetArguments}!Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}}
+\doxysubsubsection{\texorpdfstring{SetArguments()}{SetArguments()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1CompilerConfiguration_a9985ae3390f872607e80ead3d7eef5e3} 
+template$<$typename T$>$ \newline
+requires \doxymbox{\hyperlink{conceptConstIterable}{Const\+Iterable}}$<$T, std::\+string$>$\\
+auto Lattice::\+\+Tooling::\+\+Compiler\+Configuration::\+\+Set\+Arguments (\begin{DoxyParamCaption}\item[{const T \&}]{args}{}\end{DoxyParamCaption}) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration}{Compiler\+Configuration}} \&\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the compiler argument list. 
+
+This function will erase the current set of arguments and replace them with these.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em args} & Any type supporting const iteration by std::\+cbegin and std::\+cend.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance to self. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_ad71ede0c87453b0f6f7c662389879232}\index{Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}!SetOutput@{SetOutput}}
+\index{SetOutput@{SetOutput}!Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}}
+\doxysubsubsection{\texorpdfstring{SetOutput()}{SetOutput()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1CompilerConfiguration_ad71ede0c87453b0f6f7c662389879232} 
+auto Compiler\+Configuration::\+\+Set\+Output (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{output\+Name}{}\end{DoxyParamCaption}) -\/$>$ Compiler\+Configuration \&}
+
+
+
+Sets the output name that the compiler will output to. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em output\+Name} & The new output name.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance to self. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_a6e9a5f20bdb2183bcb6eac73954b8e68}\index{Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}!SetSources@{SetSources}}
+\index{SetSources@{SetSources}!Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}}
+\doxysubsubsection{\texorpdfstring{SetSources()}{SetSources()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1CompilerConfiguration_a6e9a5f20bdb2183bcb6eac73954b8e68} 
+auto Compiler\+Configuration::\+\+Set\+Sources (\begin{DoxyParamCaption}\item[{const std::\+initializer\+\_\+list$<$ std::\+filesystem::\+path $>$ \&}]{sources}{}\end{DoxyParamCaption}) -\/$>$ Compiler\+Configuration \&}
+
+
+
+Sets the compiler sources list. 
+
+This function will erase the current set of sources and replace them with these.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em sources} & An initializer list containing the sources to set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance to self. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1CompilerConfiguration_a69251d5436441b506718fb1849093d40}\index{Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}!SetSources@{SetSources}}
+\index{SetSources@{SetSources}!Lattice::Tooling::CompilerConfiguration@{Lattice::Tooling::CompilerConfiguration}}
+\doxysubsubsection{\texorpdfstring{SetSources()}{SetSources()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1CompilerConfiguration_a69251d5436441b506718fb1849093d40} 
+template$<$typename T$>$ \newline
+requires \doxymbox{\hyperlink{conceptConstIterable}{Const\+Iterable}}$<$T, std::\+filesystem::\+path$>$\\
+auto Lattice::\+\+Tooling::\+\+Compiler\+Configuration::\+\+Set\+Sources (\begin{DoxyParamCaption}\item[{const T \&}]{sources}{}\end{DoxyParamCaption}) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1CompilerConfiguration}{Compiler\+Configuration}} \&\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the compiler sources list. 
+
+This function will erase the current set of sources and replace them with these.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em sources} & Any type sypporting const iteration by std::\+cbegin and std::\+cend.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance to self. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+modules/\+\+Tooling/ICompiler.\+cppm\item 
+src/\+\+Tooling/ICompiler.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,139 @@
+\doxysection{Lattice::Tooling::Linker\+Configuration Class Reference}
+\hypertarget{classLattice_1_1Tooling_1_1LinkerConfiguration}{}\label{classLattice_1_1Tooling_1_1LinkerConfiguration}\index{Lattice::Tooling::LinkerConfiguration@{Lattice::Tooling::LinkerConfiguration}}
+
+
+Configration for a linker implementation.  
+
+
+Inheritance diagram for Lattice::Tooling::Linker\+Configuration:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{df/d7e/classLattice_1_1Tooling_1_1LinkerConfiguration}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration_a5cdab94bd2f62822e2acab9d247ea97f}{Get\+Linkable\+Files}} () const -\/$>$ std::\+list$<$ std::\+filesystem::\+path $>$
+\begin{DoxyCompactList}\small\item\em Gets a list of files that are linkable. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration_a58fc6a256308baed233a371d5c2858d6}{Set\+Linkable\+Files}} (const std::\+initializer\+\_\+list$<$ std::\+filesystem::\+path $>$ \&files) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration}{Linker\+Configuration}} \&
+\begin{DoxyCompactList}\small\item\em Sets the list of files that are linkable. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires \doxymbox{\hyperlink{conceptConstIterable}{Const\+Iterable}}$<$T, std::\+filesystem::\+path$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration_a8eca7cf640dfe0776e2c70efe8dcb9a1}{Set\+Linkable\+Files}} (const T \&files) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration}{Linker\+Configuration}} \&
+\begin{DoxyCompactList}\small\item\em Sets the linkbale files list. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires \doxymbox{\hyperlink{conceptConstIterable}{Const\+Iterable}}$<$T, std::\+string$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration_a704e80ad5cd9dfe5fbec9657d663f502}{Add\+Linkable\+Files}} (const T \&files) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration}{Linker\+Configuration}} \&
+\begin{DoxyCompactList}\small\item\em Adds to the linkable files list. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration_aa63d07ab272e56e7adf698cfaa830b4f}{Add\+Linkable\+File}} (const std::\+filesystem::\+path \&file) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration}{Linker\+Configuration}} \&
+\begin{DoxyCompactList}\small\item\em Adds to the linkable files list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1Tooling_1_1LinkerConfiguration_aa0ea28b91d7b39369200b1f72459221b}\label{classLattice_1_1Tooling_1_1LinkerConfiguration_aa0ea28b91d7b39369200b1f72459221b} 
+static constexpr std::\+string {\bfseries LINKABLE\+\_\+\+FILES\+\_\+\+KEY} = "{}files"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Configration for a linker implementation. 
+
+\label{classLattice_1_1Tooling_1_1LinkerConfiguration_doc-func-members}
+\Hypertarget{classLattice_1_1Tooling_1_1LinkerConfiguration_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1Tooling_1_1LinkerConfiguration_aa63d07ab272e56e7adf698cfaa830b4f}\index{Lattice::Tooling::LinkerConfiguration@{Lattice::Tooling::LinkerConfiguration}!AddLinkableFile@{AddLinkableFile}}
+\index{AddLinkableFile@{AddLinkableFile}!Lattice::Tooling::LinkerConfiguration@{Lattice::Tooling::LinkerConfiguration}}
+\doxysubsubsection{\texorpdfstring{AddLinkableFile()}{AddLinkableFile()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1LinkerConfiguration_aa63d07ab272e56e7adf698cfaa830b4f} 
+auto Linker\+Configuration::\+\+Add\+Linkable\+File (\begin{DoxyParamCaption}\item[{const std::\+filesystem::\+path \&}]{file}{}\end{DoxyParamCaption}) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration}{Linker\+Configuration}} \&}
+
+
+
+Adds to the linkable files list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em file} & A path to a linkable file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance to self. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1LinkerConfiguration_a704e80ad5cd9dfe5fbec9657d663f502}\index{Lattice::Tooling::LinkerConfiguration@{Lattice::Tooling::LinkerConfiguration}!AddLinkableFiles@{AddLinkableFiles}}
+\index{AddLinkableFiles@{AddLinkableFiles}!Lattice::Tooling::LinkerConfiguration@{Lattice::Tooling::LinkerConfiguration}}
+\doxysubsubsection{\texorpdfstring{AddLinkableFiles()}{AddLinkableFiles()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1LinkerConfiguration_a704e80ad5cd9dfe5fbec9657d663f502} 
+template$<$typename T$>$ \newline
+requires \doxymbox{\hyperlink{conceptConstIterable}{Const\+Iterable}}$<$T, std::\+string$>$\\
+auto Lattice::\+\+Tooling::\+\+Linker\+Configuration::\+\+Add\+Linkable\+Files (\begin{DoxyParamCaption}\item[{const T \&}]{files}{}\end{DoxyParamCaption}) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration}{Linker\+Configuration}} \&\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds to the linkable files list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em args} & Any type sypporting const iteration by std::\+cbegin and std::\+cend.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance to self. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1LinkerConfiguration_a5cdab94bd2f62822e2acab9d247ea97f}\index{Lattice::Tooling::LinkerConfiguration@{Lattice::Tooling::LinkerConfiguration}!GetLinkableFiles@{GetLinkableFiles}}
+\index{GetLinkableFiles@{GetLinkableFiles}!Lattice::Tooling::LinkerConfiguration@{Lattice::Tooling::LinkerConfiguration}}
+\doxysubsubsection{\texorpdfstring{GetLinkableFiles()}{GetLinkableFiles()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1LinkerConfiguration_a5cdab94bd2f62822e2acab9d247ea97f} 
+auto Linker\+Configuration::\+\+Get\+Linkable\+Files (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+list$<$ std::\+filesystem::\+path $>$}
+
+
+
+Gets a list of files that are linkable. 
+
+\begin{DoxyReturn}{Returns}
+A list of paths to linkable files. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1LinkerConfiguration_a58fc6a256308baed233a371d5c2858d6}\index{Lattice::Tooling::LinkerConfiguration@{Lattice::Tooling::LinkerConfiguration}!SetLinkableFiles@{SetLinkableFiles}}
+\index{SetLinkableFiles@{SetLinkableFiles}!Lattice::Tooling::LinkerConfiguration@{Lattice::Tooling::LinkerConfiguration}}
+\doxysubsubsection{\texorpdfstring{SetLinkableFiles()}{SetLinkableFiles()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1LinkerConfiguration_a58fc6a256308baed233a371d5c2858d6} 
+auto Linker\+Configuration::\+\+Set\+Linkable\+Files (\begin{DoxyParamCaption}\item[{const std::\+initializer\+\_\+list$<$ std::\+filesystem::\+path $>$ \&}]{files}{}\end{DoxyParamCaption}) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration}{Linker\+Configuration}} \&}
+
+
+
+Sets the list of files that are linkable. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em files} & An initializer list of file paths.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance to self. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1LinkerConfiguration_a8eca7cf640dfe0776e2c70efe8dcb9a1}\index{Lattice::Tooling::LinkerConfiguration@{Lattice::Tooling::LinkerConfiguration}!SetLinkableFiles@{SetLinkableFiles}}
+\index{SetLinkableFiles@{SetLinkableFiles}!Lattice::Tooling::LinkerConfiguration@{Lattice::Tooling::LinkerConfiguration}}
+\doxysubsubsection{\texorpdfstring{SetLinkableFiles()}{SetLinkableFiles()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1LinkerConfiguration_a8eca7cf640dfe0776e2c70efe8dcb9a1} 
+template$<$typename T$>$ \newline
+requires \doxymbox{\hyperlink{conceptConstIterable}{Const\+Iterable}}$<$T, std::\+filesystem::\+path$>$\\
+auto Lattice::\+\+Tooling::\+\+Linker\+Configuration::\+\+Set\+Linkable\+Files (\begin{DoxyParamCaption}\item[{const T \&}]{files}{}\end{DoxyParamCaption}) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration}{Linker\+Configuration}} \&\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the linkbale files list. 
+
+This function will erase the current set of linkable files and replace them with these.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em args} & Any type supporting const iteration by std::\+cbegin and std::\+cend.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Instance to self. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+modules/\+\+Tooling/ILinker.\+cppm\item 
+src/\+\+Tooling/ILinker.\+cpp\end{DoxyCompactItemize}

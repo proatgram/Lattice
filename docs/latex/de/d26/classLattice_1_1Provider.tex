@@ -1,0 +1,61 @@
+\doxysection{Lattice::Provider Class Reference}
+\hypertarget{classLattice_1_1Provider}{}\label{classLattice_1_1Provider}\index{Lattice::Provider@{Lattice::Provider}}
+
+
+Represents a dependency provider.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1Provider_a7c6827e9c1c6dcf2f7250e17e6ba959e}\label{classLattice_1_1Provider_a7c6827e9c1c6dcf2f7250e17e6ba959e} 
+{\bfseries Provider} (const std::\+string \&provider\+Name)
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Provider_a03d68d3c6b13fb4483fd6b5ab42b1986}{Get\+Name}} () const -\/$>$ std::\+string
+\begin{DoxyCompactList}\small\item\em Gets the providers name. \end{DoxyCompactList}\item 
+virtual auto \doxymbox{\hyperlink{classLattice_1_1Provider_adc7269905de29a86c1ec49f72d6c5524}{Query}} (const std::\+string \&identifier) const -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Object::\+\+Object}} $>$ $>$=0
+\begin{DoxyCompactList}\small\item\em Query for a target through the provider. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a dependency provider. 
+
+This class represents an abstract dependency provider that can be extended from to provide sources for dependencies used in projects. 
+
+\label{classLattice_1_1Provider_doc-func-members}
+\Hypertarget{classLattice_1_1Provider_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1Provider_a03d68d3c6b13fb4483fd6b5ab42b1986}\index{Lattice::Provider@{Lattice::Provider}!GetName@{GetName}}
+\index{GetName@{GetName}!Lattice::Provider@{Lattice::Provider}}
+\doxysubsubsection{\texorpdfstring{GetName()}{GetName()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Provider_a03d68d3c6b13fb4483fd6b5ab42b1986} 
+auto Provider::\+\+Get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+string}
+
+
+
+Gets the providers name. 
+
+\begin{DoxyReturn}{Returns}
+The providers name. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Provider_adc7269905de29a86c1ec49f72d6c5524}\index{Lattice::Provider@{Lattice::Provider}!Query@{Query}}
+\index{Query@{Query}!Lattice::Provider@{Lattice::Provider}}
+\doxysubsubsection{\texorpdfstring{Query()}{Query()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Provider_adc7269905de29a86c1ec49f72d6c5524} 
+virtual auto Lattice::\+\+Provider::\+\+Query (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{identifier}{}\end{DoxyParamCaption}) const -\/$>$  std::\+optional$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Object::\+\+Object}} $>$ $>$\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Query for a target through the provider. 
+
+The structure of the object returned (if any at all) is completely dependent on the provider implementation.
+
+\begin{DoxyReturn}{Returns}
+An optional shared pointer to an object 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+modules/\+\+Object/Provider.\+cppm\item 
+src/\+\+Object/Provider.\+cpp\end{DoxyCompactItemize}

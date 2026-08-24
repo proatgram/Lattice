@@ -1,0 +1,58 @@
+\doxysection{Lattice::IFactory\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classLattice_1_1IFactory}{}\label{classLattice_1_1IFactory}\index{Lattice::IFactory$<$ T $>$@{Lattice::IFactory$<$ T $>$}}
+
+
+An abstract factory class.  
+
+
+Inheritance diagram for Lattice::IFactory\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.958904cm]{d3/d5a/classLattice_1_1IFactory}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual auto \doxymbox{\hyperlink{classLattice_1_1IFactory_af95918a7e57097f819b9f2b06aed2156}{Create}} (const std::\+string \&identifier, const std::\+optional$<$ std::\+string $>$ \&object\+Data=std::\+nullopt) -\/$>$ std::\+shared\+\_\+ptr$<$ T $>$=0
+\begin{DoxyCompactList}\small\item\em Creates an object from the factory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Lattice::\+\+IFactory$<$ T $>$}
+An abstract factory class. 
+
+This abstract class can be inherited from in order to create a factory for any other class. The factory pattern is used significantly in this project to add functionality. 
+
+\label{classLattice_1_1IFactory_doc-func-members}
+\Hypertarget{classLattice_1_1IFactory_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1IFactory_af95918a7e57097f819b9f2b06aed2156}\index{Lattice::IFactory$<$ T $>$@{Lattice::IFactory$<$ T $>$}!Create@{Create}}
+\index{Create@{Create}!Lattice::IFactory$<$ T $>$@{Lattice::IFactory$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{classLattice_1_1IFactory_af95918a7e57097f819b9f2b06aed2156} 
+template$<$typename T$>$ \\
+virtual auto \doxymbox{\hyperlink{classLattice_1_1IFactory}{Lattice::\+\+IFactory}}$<$ T $>$::\+\+Create (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{identifier}{, }\item[{const std::\+optional$<$ std::\+string $>$ \&}]{object\+Data}{ = {\ttfamily std::nullopt}}\end{DoxyParamCaption}) -\/$>$  std::\+shared\+\_\+ptr$<$ T $>$\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Creates an object from the factory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Identifier} & for the factory creation\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Shared pointer to the factoried object 
+\end{DoxyReturn}
+
+
+Implemented in \doxymbox{\hyperlink{classLattice_1_1Object_1_1IBinaryFactory_a190fe33e8d00f11cec1a845b9c0a3c3f}{Lattice::\+\+Object::\+\+IBinary\+Factory}}, \doxymbox{\hyperlink{classLattice_1_1Object_1_1ILibraryFactory_afe4c8fdcbc616d696beee7c4a620c7c6}{Lattice::\+\+Object::\+\+ILibrary\+Factory}}, \doxymbox{\hyperlink{classLattice_1_1Object_1_1IToolchainFactory_a29a6945beff81d12c8e26f71f1bff8fa}{Lattice::\+\+Object::\+\+IToolchain\+Factory}}, and \doxymbox{\hyperlink{classLattice_1_1Object_1_1ProjectFactory_a45caf56c90850eb0c52cbee28ff04806}{Lattice::\+\+Object::\+\+Project\+Factory}}.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+modules/IFactory.\+cppm\end{DoxyCompactItemize}

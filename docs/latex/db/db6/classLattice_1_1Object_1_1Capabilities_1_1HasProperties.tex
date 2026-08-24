@@ -1,0 +1,261 @@
+\doxysection{Lattice::Object::Capabilities::Has\+Properties Class Reference}
+\hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasProperties}{}\label{classLattice_1_1Object_1_1Capabilities_1_1HasProperties}\index{Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}}
+
+
+Provides the capability for inheriting Objects to propogate properties.  
+
+
+Inheritance diagram for Lattice::Object::Capabilities::Has\+Properties:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{db/db6/classLattice_1_1Object_1_1Capabilities_1_1HasProperties}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a61c7987ef909cdff0c2dcdbd830d58af}{Get\+Public\+Property}} () const -\/$>$ std::\+optional$<$ const std::\+shared\+\_\+ptr$<$ const T $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets a Public Property if it exists within the Property store. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a74ff07d61950e5bf507c04020200e9e9}{Get\+Public\+Property}} () -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets a Public Property if it exists within the Property store. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a59ca2154d7f0d655ef9dbc7765bb09ad}{Has\+Public\+Property}} () const -\/$>$ bool
+\begin{DoxyCompactList}\small\item\em Checks if a Public Property exists within the Property store. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_abc3cb3602bf5d68b2d8d5f546d1d3f24}{Add\+Property}} (const std::\+shared\+\_\+ptr$<$ T $>$ \&property) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Adds a Property to the internal Property store. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_ae977a011ea2d98f136a9d5c819d70dda}{Get\+Private\+Property}} () const -\/$>$ std::\+optional$<$ const std::\+shared\+\_\+ptr$<$ const T $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets a Private Property if it exists within the Property store. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_ab0b8ad9bf3daf4a804cce2141e81b08e}{Get\+Private\+Property}} () -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets a Private Property if it exists within the Property store. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a2aaa3313121a3ea23191121e8972903e}{Has\+Private\+Property}} () const -\/$>$ bool
+\begin{DoxyCompactList}\small\item\em Checks if a Private Property exists within the Property store. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a1c097adb4f8d169f19d0b1f47c9250fc}{Get\+Property}} () const -\/$>$ std::\+optional$<$ const std::\+shared\+\_\+ptr$<$ const T $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets a Private Property if it exists within the Property store. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a37fc14fd6fe517af3332acc435ff2bfd}{Get\+Property}} () -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets a Private Property if it exists within the Property store. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_aec1e7612ad0806374097297a61c1e9e0}{Has\+Property}} () const -\/$>$ bool
+\begin{DoxyCompactList}\small\item\em Checks if a Property exists within the Property store. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides the capability for inheriting Objects to propogate properties. 
+
+\label{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_doc-func-members}
+\Hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_abc3cb3602bf5d68b2d8d5f546d1d3f24}\index{Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}!AddProperty@{AddProperty}}
+\index{AddProperty@{AddProperty}!Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}}
+\doxysubsubsection{\texorpdfstring{AddProperty()}{AddProperty()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_abc3cb3602bf5d68b2d8d5f546d1d3f24} 
+template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$\\
+auto Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Properties::\+\+Add\+Property (\begin{DoxyParamCaption}\item[{const std::\+shared\+\_\+ptr$<$ T $>$ \&}]{property}{}\end{DoxyParamCaption}) -\/$>$ void\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Adds a Property to the internal Property store. 
+
+If a property that is being added already exists in the store, it will be added to that existing property.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em property} & The property to add \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_ab0b8ad9bf3daf4a804cce2141e81b08e}\index{Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}!GetPrivateProperty@{GetPrivateProperty}}
+\index{GetPrivateProperty@{GetPrivateProperty}!Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}}
+\doxysubsubsection{\texorpdfstring{GetPrivateProperty()}{GetPrivateProperty()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_ab0b8ad9bf3daf4a804cce2141e81b08e} 
+template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$\\
+auto Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Properties::\+\+Get\+Private\+Property (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Gets a Private Property if it exists within the Property store. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \`{}\+T\`{}} & A sub-\/class of IProperty.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+A std::\+shared\+\_\+ptr to the Property if it exists, std::\+nullopt if it doesn\textquotesingle{}t. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_ae977a011ea2d98f136a9d5c819d70dda}\index{Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}!GetPrivateProperty@{GetPrivateProperty}}
+\index{GetPrivateProperty@{GetPrivateProperty}!Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}}
+\doxysubsubsection{\texorpdfstring{GetPrivateProperty()}{GetPrivateProperty()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_ae977a011ea2d98f136a9d5c819d70dda} 
+template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$\\
+auto Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Properties::\+\+Get\+Private\+Property (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+optional$<$ const std::\+shared\+\_\+ptr$<$ const T $>$ $>$\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Gets a Private Property if it exists within the Property store. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \`{}\+T\`{}} & A sub-\/class of IProperty.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+A std::\+shared\+\_\+ptr to the Property if it exists, std::\+nullopt if it doesn\textquotesingle{}t. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a37fc14fd6fe517af3332acc435ff2bfd}\index{Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}!GetProperty@{GetProperty}}
+\index{GetProperty@{GetProperty}!Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}}
+\doxysubsubsection{\texorpdfstring{GetProperty()}{GetProperty()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a37fc14fd6fe517af3332acc435ff2bfd} 
+template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$\\
+auto Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Properties::\+\+Get\+Property (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Gets a Private Property if it exists within the Property store. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \`{}\+T\`{}} & A sub-\/class of IProperty.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+A std::\+shared\+\_\+ptr to the Property if it exists, std::\+nullopt if it doesn\textquotesingle{}t. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a1c097adb4f8d169f19d0b1f47c9250fc}\index{Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}!GetProperty@{GetProperty}}
+\index{GetProperty@{GetProperty}!Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}}
+\doxysubsubsection{\texorpdfstring{GetProperty()}{GetProperty()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a1c097adb4f8d169f19d0b1f47c9250fc} 
+template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$\\
+auto Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Properties::\+\+Get\+Property (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+optional$<$ const std::\+shared\+\_\+ptr$<$ const T $>$ $>$\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Gets a Private Property if it exists within the Property store. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \`{}\+T\`{}} & A sub-\/class of IProperty.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+A std::\+shared\+\_\+ptr to the Property if it exists, std::\+nullopt if it doesn\textquotesingle{}t. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a74ff07d61950e5bf507c04020200e9e9}\index{Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}!GetPublicProperty@{GetPublicProperty}}
+\index{GetPublicProperty@{GetPublicProperty}!Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}}
+\doxysubsubsection{\texorpdfstring{GetPublicProperty()}{GetPublicProperty()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a74ff07d61950e5bf507c04020200e9e9} 
+template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$\\
+auto Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Properties::\+\+Get\+Public\+Property (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets a Public Property if it exists within the Property store. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \`{}\+T\`{}} & A sub-\/class of IProperty.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+A std::\+shared\+\_\+ptr to the Property if it exists, std::\+nullopt if it doesn\textquotesingle{}t. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a61c7987ef909cdff0c2dcdbd830d58af}\index{Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}!GetPublicProperty@{GetPublicProperty}}
+\index{GetPublicProperty@{GetPublicProperty}!Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}}
+\doxysubsubsection{\texorpdfstring{GetPublicProperty()}{GetPublicProperty()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a61c7987ef909cdff0c2dcdbd830d58af} 
+template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$\\
+auto Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Properties::\+\+Get\+Public\+Property (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+optional$<$ const std::\+shared\+\_\+ptr$<$ const T $>$ $>$\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets a Public Property if it exists within the Property store. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \`{}\+T\`{}} & A sub-\/class of IProperty.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+A std::\+shared\+\_\+ptr to the Property if it exists, std::\+nullopt if it doesn\textquotesingle{}t. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a2aaa3313121a3ea23191121e8972903e}\index{Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}!HasPrivateProperty@{HasPrivateProperty}}
+\index{HasPrivateProperty@{HasPrivateProperty}!Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}}
+\doxysubsubsection{\texorpdfstring{HasPrivateProperty()}{HasPrivateProperty()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a2aaa3313121a3ea23191121e8972903e} 
+template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$\\
+auto Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Properties::\+\+Has\+Private\+Property (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ bool\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Checks if a Private Property exists within the Property store. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \`{}\+T\`{}} & A sub-\/class of IProperty.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+true if the Property exists, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_aec1e7612ad0806374097297a61c1e9e0}\index{Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}!HasProperty@{HasProperty}}
+\index{HasProperty@{HasProperty}!Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}}
+\doxysubsubsection{\texorpdfstring{HasProperty()}{HasProperty()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_aec1e7612ad0806374097297a61c1e9e0} 
+template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$\\
+auto Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Properties::\+\+Has\+Property (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ bool\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Checks if a Property exists within the Property store. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \`{}\+T\`{}} & A sub-\/class of IProperty.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+true if the Property exists, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a59ca2154d7f0d655ef9dbc7765bb09ad}\index{Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}!HasPublicProperty@{HasPublicProperty}}
+\index{HasPublicProperty@{HasPublicProperty}!Lattice::Object::Capabilities::HasProperties@{Lattice::Object::Capabilities::HasProperties}}
+\doxysubsubsection{\texorpdfstring{HasPublicProperty()}{HasPublicProperty()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Capabilities_1_1HasProperties_a59ca2154d7f0d655ef9dbc7765bb09ad} 
+template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Properties_1_1IProperty}{Properties::\+\+IProperty}}, T$>$\\
+auto Lattice::\+\+Object::\+\+Capabilities::\+\+Has\+Properties::\+\+Has\+Public\+Property (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ bool\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if a Public Property exists within the Property store. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \`{}\+T\`{}} & A sub-\/class of IProperty.\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+true if the Property exists, false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+modules/\+\+Object/\+\+Capabilities/Has\+Properties.\+cppm\end{DoxyCompactItemize}

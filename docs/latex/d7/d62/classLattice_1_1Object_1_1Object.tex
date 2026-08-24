@@ -1,0 +1,109 @@
+\doxysection{Lattice::Object::Object Class Reference}
+\hypertarget{classLattice_1_1Object_1_1Object}{}\label{classLattice_1_1Object_1_1Object}\index{Lattice::Object::Object@{Lattice::Object::Object}}
+
+
+Represents any object defined in a lattice config.  
+
+
+Inheritance diagram for Lattice::Object::Object:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.714286cm]{d7/d62/classLattice_1_1Object_1_1Object}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structLattice_1_1Object_1_1Object_1_1Constructable}{Constructable}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_aa7ab36eee0dd3df8685af53c9bfc9b86}{Get\+Identifier}} () const -\/$>$ std::\+string
+\begin{DoxyCompactList}\small\item\em Gets the identifier for the object. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1ICapability}{Capabilities::\+\+ICapability}}, T$>$}\\auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a67f6e881e3facb7ee245e9871094be76}{Get\+Capability}} () -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets the Capabilities for the object. \end{DoxyCompactList}\item 
+\Hypertarget{classLattice_1_1Object_1_1Object_a3892a97daa98a2069e12171d8b9ac835}\label{classLattice_1_1Object_1_1Object_a3892a97daa98a2069e12171d8b9ac835} 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021}{Object}}, T$>$}\\auto {\bfseries As} () const -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$
+\item 
+\Hypertarget{classLattice_1_1Object_1_1Object_aaada92e8f825e2e960616ed087265181}\label{classLattice_1_1Object_1_1Object_aaada92e8f825e2e960616ed087265181} 
+{\footnotesize template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021}{Object}}, T$>$}\\auto {\bfseries As} () -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021}{Object}} (\doxymbox{\hyperlink{structLattice_1_1Object_1_1Object_1_1Constructable}{Constructable}}, const std::\+string \&identifier)
+\begin{DoxyCompactList}\small\item\em Creates an object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1Object_1_1Object_a96f73e0851caf27565d92921cc352f6c}\label{classLattice_1_1Object_1_1Object_a96f73e0851caf27565d92921cc352f6c} 
+std::\+string {\bfseries m\+\_\+identifier}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents any object defined in a lattice config. 
+
+This class provides a base for any object (configuration section) defined in a set of lattice configs. (e.\+g. library object, module object, project object, binary object, etc.) 
+
+\label{classLattice_1_1Object_1_1Object_doc-constructors}
+\Hypertarget{classLattice_1_1Object_1_1Object_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021}\index{Lattice::Object::Object@{Lattice::Object::Object}!Object@{Object}}
+\index{Object@{Object}!Lattice::Object::Object@{Lattice::Object::Object}}
+\doxysubsubsection{\texorpdfstring{Object()}{Object()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Object_a4ea084aaad283f30aba73b788b01e021} 
+Object::\+\+Object (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structLattice_1_1Object_1_1Object_1_1Constructable}{Constructable}}}]{}{, }\item[{const std::\+string \&}]{identifier}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Creates an object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em identifier} & The object\textquotesingle{}s identifier. \\
+\hline
+\end{DoxyParams}
+
+
+\label{classLattice_1_1Object_1_1Object_doc-func-members}
+\Hypertarget{classLattice_1_1Object_1_1Object_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1Object_1_1Object_a67f6e881e3facb7ee245e9871094be76}\index{Lattice::Object::Object@{Lattice::Object::Object}!GetCapability@{GetCapability}}
+\index{GetCapability@{GetCapability}!Lattice::Object::Object@{Lattice::Object::Object}}
+\doxysubsubsection{\texorpdfstring{GetCapability()}{GetCapability()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Object_a67f6e881e3facb7ee245e9871094be76} 
+template$<$typename T$>$ \newline
+requires std::\+is\+\_\+base\+\_\+of\+\_\+v$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1ICapability}{Capabilities::\+\+ICapability}}, T$>$\\
+auto Lattice::\+\+Object::\+\+Object::\+\+Get\+Capability (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) -\/$>$ std::\+optional$<$ std::\+shared\+\_\+ptr$<$ T $>$ $>$\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the Capabilities for the object. 
+
+\begin{DoxyReturn}{Returns}
+Optional Capability representation of this \doxylink{classLattice_1_1Object_1_1Object}{Object}. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Object_aa7ab36eee0dd3df8685af53c9bfc9b86}\index{Lattice::Object::Object@{Lattice::Object::Object}!GetIdentifier@{GetIdentifier}}
+\index{GetIdentifier@{GetIdentifier}!Lattice::Object::Object@{Lattice::Object::Object}}
+\doxysubsubsection{\texorpdfstring{GetIdentifier()}{GetIdentifier()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Object_aa7ab36eee0dd3df8685af53c9bfc9b86} 
+auto Object::\+\+Get\+Identifier (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+string}
+
+
+
+Gets the identifier for the object. 
+
+\begin{DoxyReturn}{Returns}
+The object identifier 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+modules/\+\+Object/Object.\+cppm\item 
+src/\+\+Object/Object.\+cpp\end{DoxyCompactItemize}

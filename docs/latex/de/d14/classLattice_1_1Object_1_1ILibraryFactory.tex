@@ -1,0 +1,60 @@
+\doxysection{Lattice::Object::ILibrary\+Factory Class Reference}
+\hypertarget{classLattice_1_1Object_1_1ILibraryFactory}{}\label{classLattice_1_1Object_1_1ILibraryFactory}\index{Lattice::Object::ILibraryFactory@{Lattice::Object::ILibraryFactory}}
+Inheritance diagram for Lattice::Object::ILibrary\+Factory:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{de/d14/classLattice_1_1Object_1_1ILibraryFactory}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1Object_1_1ILibraryFactory_a5ae79216f59a1250a347cb2369257cff}\label{classLattice_1_1Object_1_1ILibraryFactory_a5ae79216f59a1250a347cb2369257cff} 
+{\bfseries ILibrary\+Factory} (Constructable)
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1ILibraryFactory_afe4c8fdcbc616d696beee7c4a620c7c6}{Create}} (const std::\+string \&identifier, const std::\+optional$<$ std::\+string $>$ \&object\+Data) -\/$>$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Object}} $>$ final
+\begin{DoxyCompactList}\small\item\em Creates an object from the factory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \doxymbox{\hyperlink{classLattice_1_1ISingletonFactory}{Lattice::\+\+ISingleton\+Factory$<$ Factory, Object $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+using {\bfseries Factory\+Type}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \doxymbox{\hyperlink{classLattice_1_1ISingletonFactory}{Lattice::\+\+ISingleton\+Factory$<$ Factory, Object $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+static auto \doxymbox{\hyperlink{classLattice_1_1ISingletonFactory_a0ffdef1ae5f0e4d6b10f6fa7bdeb4176}{Get\+Instance}} () -\/$>$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1IFactory}{IFactory}}$<$ Object $>$ $>$
+\begin{DoxyCompactList}\small\item\em Gets the factory instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{classLattice_1_1Object_1_1ILibraryFactory_doc-func-members}
+\Hypertarget{classLattice_1_1Object_1_1ILibraryFactory_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1Object_1_1ILibraryFactory_afe4c8fdcbc616d696beee7c4a620c7c6}\index{Lattice::Object::ILibraryFactory@{Lattice::Object::ILibraryFactory}!Create@{Create}}
+\index{Create@{Create}!Lattice::Object::ILibraryFactory@{Lattice::Object::ILibraryFactory}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1ILibraryFactory_afe4c8fdcbc616d696beee7c4a620c7c6} 
+auto ILibrary\+Factory::\+\+Create (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{identifier}{, }\item[{const std::\+optional$<$ std::\+string $>$ \&}]{object\+Data}{}\end{DoxyParamCaption}) -\/$>$  std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Object}} $>$\hspace{0.3cm}{\ttfamily [final]}, {\ttfamily [virtual]}}
+
+
+
+Creates an object from the factory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Identifier} & for the factory creation\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Shared pointer to the factoried object 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classLattice_1_1IFactory_af95918a7e57097f819b9f2b06aed2156}{Lattice::\+\+IFactory$<$ T $>$}}.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+modules/\+\+Object/ILibrary.\+cppm\item 
+src/\+\+Object/ILibrary.\+cpp\end{DoxyCompactItemize}

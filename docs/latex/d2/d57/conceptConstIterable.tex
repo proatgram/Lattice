@@ -1,0 +1,12 @@
+\doxysection{Const\+Iterable Concept Reference}
+\hypertarget{conceptConstIterable}{}\label{conceptConstIterable}\index{ConstIterable@{ConstIterable}}
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\doxymbox{\hyperlink{conceptConstIterable}{ConstIterable}}\ =\ \textcolor{keyword}{requires}\ (T\ type)\ \{}
+\DoxyCodeLine{\ \ \ \ \{\ std::cbegin(type)\ \};}
+\DoxyCodeLine{\ \ \ \ \{\ std::cend(type)\ \};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

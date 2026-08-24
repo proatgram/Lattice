@@ -28,7 +28,7 @@ export namespace Lattice::Object {
              */
             template <typename T>
             inline auto Provides() const -> bool {
-                return false;
+                return ProvidesImpl(typeid(T));
             }
 
             /**
@@ -41,7 +41,10 @@ export namespace Lattice::Object {
              */
             template <typename T>
             inline auto Get() const -> std::optional<T> {
-                return std::nullopt;
+                if (std::optional<std::any> feature = GetImpl(typeid(T)); feature.has_value())
+                    return {std::any_cast<T>(feature.value())};
+
+                return {};
             }
 
             /**
@@ -82,20 +85,20 @@ export namespace Lattice::Object {
              */
             auto GetTargetTriple() const -> std::string;
 
-        private:
-
-            std::string m_targetOS;
-            std::string m_targetArchitecture;
-            std::string m_targetABI;
-            std::string m_targetVendor;
-
         protected:
             using LanguageIdentifiable::SetSupportedLanguages;
             using LanguageIdentifiable::AddSupportedLanguage;
 
+            virtual auto ProvidesImpl(const std::type_index &type) const -> bool = 0;
+            virtual auto GetImpl(const std::type_index &type) const -> std::optional<std::any> = 0;
+
             friend class IToolchainFactory;
 
-
+        private:
+            std::string m_targetOS;
+            std::string m_targetArchitecture;
+            std::string m_targetABI;
+            std::string m_targetVendor;
     };
 
     class IToolchainFactory final : public IObjectFactory<IToolchainFactory> {

@@ -1,0 +1,180 @@
+\doxysection{Lattice::Registry Class Reference}
+\hypertarget{classLattice_1_1Registry}{}\label{classLattice_1_1Registry}\index{Lattice::Registry@{Lattice::Registry}}
+
+
+A simple registry.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1Registry_a446bc430224a79eaa8dfe8590f956d1c}\label{classLattice_1_1Registry_a446bc430224a79eaa8dfe8590f956d1c} 
+{\bfseries Registry} (Constructable)
+\item 
+{\footnotesize template$<$typename Val$>$ }\\auto \doxymbox{\hyperlink{classLattice_1_1Registry_a43d2c1813d4a5625758b5a56c3e88d4d}{Register}} (const std::\+string \&key, const Val \&value) -\/$>$ std::\+expected$<$ std::\+reference\+\_\+wrapper$<$ Val $>$, std::\+string $>$
+\begin{DoxyCompactList}\small\item\em Registers a value with a specific key. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Val$>$ }\\auto \doxymbox{\hyperlink{classLattice_1_1Registry_a062959fbade7311beed67a55cc259bd0}{Unregister}} (const std::\+string \&key) -\/$>$ std::\+expected$<$ void, std::\+string $>$
+\begin{DoxyCompactList}\small\item\em Unregisters a specific key. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Val$>$ }\\auto \doxymbox{\hyperlink{classLattice_1_1Registry_a8379ed767b0d59852e59bfd0e6be8dc2}{Query}} (const std::\+string \&key) const -\/$>$ std::\+optional$<$ Val $>$
+\begin{DoxyCompactList}\small\item\em Queries for a specific key. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Val$>$ }\\auto \doxymbox{\hyperlink{classLattice_1_1Registry_a4c5c82a32af60f1ad7df5045ba933a7b}{Contains}} (const std::\+string \&key) const -\/$>$ bool
+\begin{DoxyCompactList}\small\item\em Checks if a key exists. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Val$>$ }\\auto \doxymbox{\hyperlink{classLattice_1_1Registry_a8e835a4d24cb2b401563bddf253db2c6}{All}} () const -\/$>$ auto
+\begin{DoxyCompactList}\small\item\em Gets all of the values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static auto \doxymbox{\hyperlink{classLattice_1_1Registry_a2c06dba6c8deec4215ce10794aeaf5b4}{Get\+Instance}} () -\/$>$ std::\+shared\+\_\+ptr$<$ Registry $>$
+\begin{DoxyCompactList}\small\item\em Gets the instance for the registry. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A simple registry. 
+
+A registry is a singleton, obtained by calling {\ttfamily \doxylink{classLattice_1_1Registry_a2c06dba6c8deec4215ce10794aeaf5b4}{Get\+Instance()}} on the registry. The registry can have contain elements of any type, but the key is always a string.
+
+A \doxylink{classLattice_1_1Registry}{Registry} element is unique and forceful. If you try to register something that already exists, it will not overwrite it, and will give an error. 
+
+\label{classLattice_1_1Registry_doc-func-members}
+\Hypertarget{classLattice_1_1Registry_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1Registry_a8e835a4d24cb2b401563bddf253db2c6}\index{Lattice::Registry@{Lattice::Registry}!All@{All}}
+\index{All@{All}!Lattice::Registry@{Lattice::Registry}}
+\doxysubsubsection{\texorpdfstring{All()}{All()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Registry_a8e835a4d24cb2b401563bddf253db2c6} 
+template$<$typename Val$>$ \\
+auto Lattice::\+\+Registry::\+\+All (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ auto\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets all of the values. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Val} & Value type\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+A {\ttfamily std::\+list\texorpdfstring{$<$}{<}Val\texorpdfstring{$>$}{>}} of all the values in the registry. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Registry_a4c5c82a32af60f1ad7df5045ba933a7b}\index{Lattice::Registry@{Lattice::Registry}!Contains@{Contains}}
+\index{Contains@{Contains}!Lattice::Registry@{Lattice::Registry}}
+\doxysubsubsection{\texorpdfstring{Contains()}{Contains()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Registry_a4c5c82a32af60f1ad7df5045ba933a7b} 
+template$<$typename Val$>$ \\
+auto Lattice::\+\+Registry::\+\+Contains (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{}\end{DoxyParamCaption}) const -\/$>$ bool\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if a key exists. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em key} & The key to check for.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Val} & Value type\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if found, {\ttfamily false} if not. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Registry_a2c06dba6c8deec4215ce10794aeaf5b4}\index{Lattice::Registry@{Lattice::Registry}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!Lattice::Registry@{Lattice::Registry}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Registry_a2c06dba6c8deec4215ce10794aeaf5b4} 
+auto Registry::\+\+Get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) -\/$>$ std::\+shared\+\_\+ptr$<$ Registry $>$\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the instance for the registry. 
+
+\begin{DoxyReturn}{Returns}
+A shared\+\_\+ptr to the \doxylink{classLattice_1_1Registry}{Registry} instance. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Registry_a8379ed767b0d59852e59bfd0e6be8dc2}\index{Lattice::Registry@{Lattice::Registry}!Query@{Query}}
+\index{Query@{Query}!Lattice::Registry@{Lattice::Registry}}
+\doxysubsubsection{\texorpdfstring{Query()}{Query()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Registry_a8379ed767b0d59852e59bfd0e6be8dc2} 
+template$<$typename Val$>$ \\
+auto Lattice::\+\+Registry::\+\+Query (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{}\end{DoxyParamCaption}) const -\/$>$ std::\+optional$<$ Val $>$\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Queries for a specific key. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em key} & The key to query for.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Val} & Value type\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+A {\ttfamily std::\+optional} containing the value for the key, or nothing if it wasn\textquotesingle{}t found. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Registry_a43d2c1813d4a5625758b5a56c3e88d4d}\index{Lattice::Registry@{Lattice::Registry}!Register@{Register}}
+\index{Register@{Register}!Lattice::Registry@{Lattice::Registry}}
+\doxysubsubsection{\texorpdfstring{Register()}{Register()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Registry_a43d2c1813d4a5625758b5a56c3e88d4d} 
+template$<$typename Val$>$ \\
+auto Lattice::\+\+Registry::\+\+Register (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{, }\item[{const Val \&}]{value}{}\end{DoxyParamCaption}) -\/$>$ std::\+expected$<$ std::\+reference\+\_\+wrapper$<$ Val $>$, std::\+string $>$\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Registers a value with a specific key. 
+
+This method will fail if the given key already exists and return an unexpected value of an error string.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em key} & The key for the addition. \\
+\hline
+\doxymbox{\texttt{in}}  & {\em value} & The value to add.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Val} & Value type\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+A {\ttfamily std::\+expected} containing an expected value of {\ttfamily void}, or unexpected value of {\ttfamily std::\+string} telling what happened. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Registry_a062959fbade7311beed67a55cc259bd0}\index{Lattice::Registry@{Lattice::Registry}!Unregister@{Unregister}}
+\index{Unregister@{Unregister}!Lattice::Registry@{Lattice::Registry}}
+\doxysubsubsection{\texorpdfstring{Unregister()}{Unregister()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Registry_a062959fbade7311beed67a55cc259bd0} 
+template$<$typename Val$>$ \\
+auto Lattice::\+\+Registry::\+\+Unregister (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{key}{}\end{DoxyParamCaption}) -\/$>$ std::\+expected$<$ void, std::\+string $>$\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Unregisters a specific key. 
+
+This method will fail if the given key doesn\textquotesingle{}t exist in the registry and will return an unexpected value giving an error string.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em key} & The key to remove.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Val} & Value type\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+A {\ttfamily std::\+expected} containing an expected value of {\ttfamily void}, or unexpected value of {\ttfamily std::\+string} telling what happened. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+modules/Registry.\+cppm\item 
+src/Registry.\+cpp\end{DoxyCompactItemize}

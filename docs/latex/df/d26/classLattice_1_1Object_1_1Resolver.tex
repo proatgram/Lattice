@@ -1,0 +1,136 @@
+\doxysection{Lattice::Object::Resolver Class Reference}
+\hypertarget{classLattice_1_1Object_1_1Resolver}{}\label{classLattice_1_1Object_1_1Resolver}\index{Lattice::Object::Resolver@{Lattice::Object::Resolver}}
+
+
+Handles dependency resolution.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structLattice_1_1Object_1_1Resolver_1_1Context}{Context}}
+\begin{DoxyCompactList}\small\item\em \doxylink{structLattice_1_1Object_1_1Resolver_1_1Context}{Context} for resolution of a dependency. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1Object_1_1Resolver_aae9f423899e949677b53bb61f007b03f}\label{classLattice_1_1Object_1_1Resolver_aae9f423899e949677b53bb61f007b03f} 
+{\bfseries Resolver} (Constructable, const \doxymbox{\hyperlink{structLattice_1_1Object_1_1Resolver_1_1Context}{Context}} \&resolver\+Context)
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Resolver_a83479052a90c0b2a1f16fc80a74dd2e7}{Try\+Resolve}} () -\/$>$ std::\+expected$<$ void, std::\+string $>$
+\begin{DoxyCompactList}\small\item\em Attempts to resolve this instance. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Resolver_a6270247afab1b77b0e6f8380285e9126}{Is\+Resolved}} () const -\/$>$ bool
+\begin{DoxyCompactList}\small\item\em Returns if this instance has been resolved. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Resolver_ae6f5d0dba597eb03e4ee684c21f004b0}{Get\+Resolved\+Object}} () const -\/$>$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Object}} $>$
+\begin{DoxyCompactList}\small\item\em Obtains the resolved object. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Resolver_adae51ba91d940f8453955a0625103c32}{Get\+Resolver\+Context}} () const -\/$>$ \doxymbox{\hyperlink{structLattice_1_1Object_1_1Resolver_1_1Context}{Context}}
+\begin{DoxyCompactList}\small\item\em Gets the \doxylink{classLattice_1_1Object_1_1Resolver}{Resolver} \doxylink{structLattice_1_1Object_1_1Resolver_1_1Context}{Context}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Resolver_a466c2cc54c8493717bf517918d095070}{Create}} (const \doxymbox{\hyperlink{structLattice_1_1Object_1_1Resolver_1_1Context}{Context}} \&resolver\+Context) -\/$>$ std::\+shared\+\_\+ptr$<$ Resolver $>$
+\begin{DoxyCompactList}\small\item\em Creates a new resolver instance given a context. \end{DoxyCompactList}\item 
+static auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Resolver_a10aba23c8a89973e01c6dc3e6e04c203}{Try\+Resolve\+All}} () -\/$>$ std::\+expected$<$ void, std::\+list$<$ std::\+pair$<$ std::\+string, std::\+string $>$ $>$ $>$
+\begin{DoxyCompactList}\small\item\em Attempts to resolve all available declared dependencies. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles dependency resolution. 
+
+Through the use of instance tracking, \doxylink{classLattice_1_1Object_1_1Resolver}{Resolver} can access every created resolvable entity and attempt to resolve it, making the resolved object accessible directly to the consumer of the dependency. 
+
+\label{classLattice_1_1Object_1_1Resolver_doc-func-members}
+\Hypertarget{classLattice_1_1Object_1_1Resolver_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1Object_1_1Resolver_a466c2cc54c8493717bf517918d095070}\index{Lattice::Object::Resolver@{Lattice::Object::Resolver}!Create@{Create}}
+\index{Create@{Create}!Lattice::Object::Resolver@{Lattice::Object::Resolver}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Resolver_a466c2cc54c8493717bf517918d095070} 
+auto Resolver::\+\+Create (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structLattice_1_1Object_1_1Resolver_1_1Context}{Context}} \&}]{resolver\+Context}{}\end{DoxyParamCaption}) -\/$>$ std::\+shared\+\_\+ptr$<$ Resolver $>$\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Creates a new resolver instance given a context. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em resolver\+Context} & The context for the resolution.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A shared\+\_\+ptr to the created \doxylink{classLattice_1_1Object_1_1Resolver}{Resolver} instance. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Resolver_ae6f5d0dba597eb03e4ee684c21f004b0}\index{Lattice::Object::Resolver@{Lattice::Object::Resolver}!GetResolvedObject@{GetResolvedObject}}
+\index{GetResolvedObject@{GetResolvedObject}!Lattice::Object::Resolver@{Lattice::Object::Resolver}}
+\doxysubsubsection{\texorpdfstring{GetResolvedObject()}{GetResolvedObject()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Resolver_ae6f5d0dba597eb03e4ee684c21f004b0} 
+auto Resolver::\+\+Get\+Resolved\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Object}} $>$}
+
+
+
+Obtains the resolved object. 
+
+If this instance has not been resolved, it will return a nullptr instance of the shared\+\_\+ptr.
+
+\begin{DoxyReturn}{Returns}
+A shared\+\_\+ptr containing the resolved object. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Resolver_adae51ba91d940f8453955a0625103c32}\index{Lattice::Object::Resolver@{Lattice::Object::Resolver}!GetResolverContext@{GetResolverContext}}
+\index{GetResolverContext@{GetResolverContext}!Lattice::Object::Resolver@{Lattice::Object::Resolver}}
+\doxysubsubsection{\texorpdfstring{GetResolverContext()}{GetResolverContext()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Resolver_adae51ba91d940f8453955a0625103c32} 
+auto Resolver::\+\+Get\+Resolver\+Context (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ \doxymbox{\hyperlink{structLattice_1_1Object_1_1Resolver_1_1Context}{Context}}}
+
+
+
+Gets the \doxylink{classLattice_1_1Object_1_1Resolver}{Resolver} \doxylink{structLattice_1_1Object_1_1Resolver_1_1Context}{Context}. 
+
+\begin{DoxyReturn}{Returns}
+The \doxylink{classLattice_1_1Object_1_1Resolver}{Resolver} \doxylink{structLattice_1_1Object_1_1Resolver_1_1Context}{Context}. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Resolver_a6270247afab1b77b0e6f8380285e9126}\index{Lattice::Object::Resolver@{Lattice::Object::Resolver}!IsResolved@{IsResolved}}
+\index{IsResolved@{IsResolved}!Lattice::Object::Resolver@{Lattice::Object::Resolver}}
+\doxysubsubsection{\texorpdfstring{IsResolved()}{IsResolved()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Resolver_a6270247afab1b77b0e6f8380285e9126} 
+auto Resolver::\+\+Is\+Resolved (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ bool}
+
+
+
+Returns if this instance has been resolved. 
+
+\begin{DoxyReturn}{Returns}
+true if this has already been resolved, false if not. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Resolver_a83479052a90c0b2a1f16fc80a74dd2e7}\index{Lattice::Object::Resolver@{Lattice::Object::Resolver}!TryResolve@{TryResolve}}
+\index{TryResolve@{TryResolve}!Lattice::Object::Resolver@{Lattice::Object::Resolver}}
+\doxysubsubsection{\texorpdfstring{TryResolve()}{TryResolve()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Resolver_a83479052a90c0b2a1f16fc80a74dd2e7} 
+auto Resolver::\+\+Try\+Resolve (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) -\/$>$ std::\+expected$<$ void, std::\+string $>$}
+
+
+
+Attempts to resolve this instance. 
+
+\begin{DoxyReturn}{Returns}
+An expected value of void on success. A string containing the reason for resolution failure on fail. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Resolver_a10aba23c8a89973e01c6dc3e6e04c203}\index{Lattice::Object::Resolver@{Lattice::Object::Resolver}!TryResolveAll@{TryResolveAll}}
+\index{TryResolveAll@{TryResolveAll}!Lattice::Object::Resolver@{Lattice::Object::Resolver}}
+\doxysubsubsection{\texorpdfstring{TryResolveAll()}{TryResolveAll()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Resolver_a10aba23c8a89973e01c6dc3e6e04c203} 
+auto Resolver::\+\+Try\+Resolve\+All (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) -\/$>$ std::\+expected$<$ void, std::\+list$<$ std::\+pair$<$ std::\+string, std::\+string $>$ $>$ $>$\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Attempts to resolve all available declared dependencies. 
+
+This function will run through all of the \doxylink{classLattice_1_1Object_1_1Resolver}{Resolver} instances and try to resolve each of them from ID to \doxylink{classLattice_1_1Object_1_1Object}{Object}. It aggrigates a list of dependencies that failed to resolve, and returns it if there are any failures. If there are none, then the default-\/constructed return type is returned to the caller.
+
+\begin{DoxyReturn}{Returns}
+An expected value of void on success. A list containing the \{identifier, reason\} for resolution failure on fail. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+modules/\+\+Object/Resolver.\+cppm\item 
+src/\+\+Object/Resolver.\+cpp\end{DoxyCompactItemize}

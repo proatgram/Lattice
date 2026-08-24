@@ -1,0 +1,88 @@
+\doxysection{Lattice::Object::Capabilities::Has\+Dependencies Class Reference}
+\hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies}{}\label{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies}\index{Lattice::Object::Capabilities::HasDependencies@{Lattice::Object::Capabilities::HasDependencies}}
+
+
+Capability giving an \doxylink{classLattice_1_1Object_1_1Object}{Object} dependency capabilities.  
+
+
+Inheritance diagram for Lattice::Object::Capabilities::Has\+Dependencies:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{d1/d22/classLattice_1_1Object_1_1Capabilities_1_1HasDependencies}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structLattice_1_1Object_1_1Capabilities_1_1HasDependencies_1_1Dependency}{Dependency}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies_ad9891cdf30141c0cb579c9fbe498caf5}{Get\+Public\+Dependencies}} () const -\/$>$ std::\+list$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Object}} $>$ $>$
+\begin{DoxyCompactList}\small\item\em Obtains the public dependencies for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies_a76f7a5da10e231bf5edfc99c19a90814}{Get\+Private\+Dependencies}} () const -\/$>$ std::\+list$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Object}} $>$ $>$
+\begin{DoxyCompactList}\small\item\em Obtains the private dependencies for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies_a54df47fff2069d16d0d9832795b1c3ac}{Get\+All\+Dependencies}} () const -\/$>$ std::\+list$<$ \doxymbox{\hyperlink{structLattice_1_1Object_1_1Capabilities_1_1HasDependencies_1_1Dependency}{Dependency}} $>$
+\begin{DoxyCompactList}\small\item\em Obtains all of the dependencies for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. \end{DoxyCompactList}\item 
+\Hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies_af0b9f94d10dd4b89fc3cdc0f6ab3ee02}\label{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies_af0b9f94d10dd4b89fc3cdc0f6ab3ee02} 
+auto {\bfseries Add\+Dependency} (const \doxymbox{\hyperlink{structLattice_1_1Object_1_1Capabilities_1_1HasDependencies_1_1Dependency}{Dependency}} \&dependency) -\/$>$ void
+\begin{DoxyCompactList}\small\item\em Adds a dependency. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Capability giving an \doxylink{classLattice_1_1Object_1_1Object}{Object} dependency capabilities. 
+
+Inheriting Objects will gain the ability to have dependencies discoverable by the \doxylink{classLattice_1_1Lattice}{Lattice} engine. 
+
+\label{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies_doc-func-members}
+\Hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies_a54df47fff2069d16d0d9832795b1c3ac}\index{Lattice::Object::Capabilities::HasDependencies@{Lattice::Object::Capabilities::HasDependencies}!GetAllDependencies@{GetAllDependencies}}
+\index{GetAllDependencies@{GetAllDependencies}!Lattice::Object::Capabilities::HasDependencies@{Lattice::Object::Capabilities::HasDependencies}}
+\doxysubsubsection{\texorpdfstring{GetAllDependencies()}{GetAllDependencies()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies_a54df47fff2069d16d0d9832795b1c3ac} 
+auto Has\+Dependencies::\+\+Get\+All\+Dependencies (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+list$<$ \doxymbox{\hyperlink{structLattice_1_1Object_1_1Capabilities_1_1HasDependencies_1_1Dependency}{Dependency}} $>$\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Obtains all of the dependencies for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. 
+
+\begin{DoxyReturn}{Returns}
+A list of \doxylink{structLattice_1_1Object_1_1Capabilities_1_1HasDependencies_1_1Dependency}{Dependency} instances. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies_a76f7a5da10e231bf5edfc99c19a90814}\index{Lattice::Object::Capabilities::HasDependencies@{Lattice::Object::Capabilities::HasDependencies}!GetPrivateDependencies@{GetPrivateDependencies}}
+\index{GetPrivateDependencies@{GetPrivateDependencies}!Lattice::Object::Capabilities::HasDependencies@{Lattice::Object::Capabilities::HasDependencies}}
+\doxysubsubsection{\texorpdfstring{GetPrivateDependencies()}{GetPrivateDependencies()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies_a76f7a5da10e231bf5edfc99c19a90814} 
+auto Has\+Dependencies::\+\+Get\+Private\+Dependencies (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+list$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Object}} $>$ $>$\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Obtains the private dependencies for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. 
+
+\begin{DoxyReturn}{Returns}
+A list of shared\+\_\+ptr\textquotesingle{}s to each dependency. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies_ad9891cdf30141c0cb579c9fbe498caf5}\index{Lattice::Object::Capabilities::HasDependencies@{Lattice::Object::Capabilities::HasDependencies}!GetPublicDependencies@{GetPublicDependencies}}
+\index{GetPublicDependencies@{GetPublicDependencies}!Lattice::Object::Capabilities::HasDependencies@{Lattice::Object::Capabilities::HasDependencies}}
+\doxysubsubsection{\texorpdfstring{GetPublicDependencies()}{GetPublicDependencies()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Object_1_1Capabilities_1_1HasDependencies_ad9891cdf30141c0cb579c9fbe498caf5} 
+auto Has\+Dependencies::\+\+Get\+Public\+Dependencies (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+list$<$ std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{Object}} $>$ $>$}
+
+
+
+Obtains the public dependencies for the implementing \doxylink{classLattice_1_1Object_1_1Object}{Object}. 
+
+\begin{DoxyReturn}{Returns}
+A list of shared\+\_\+ptr\textquotesingle{}s to each dependency. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+modules/\+\+Object/\+\+Capabilities/Has\+Dependencies.\+cppm\item 
+src/\+\+Object/\+\+Capabilities/Has\+Dependencies.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,233 @@
+\doxysection{Lattice::System::Process Class Reference}
+\hypertarget{classLattice_1_1System_1_1Process}{}\label{classLattice_1_1System_1_1Process}\index{Lattice::System::Process@{Lattice::System::Process}}
+
+
+Represents a process on the system.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLattice_1_1System_1_1Process_ad271ae39940b03b10b83df2f19312bf7}\label{classLattice_1_1System_1_1Process_ad271ae39940b03b10b83df2f19312bf7} 
+{\bfseries Process} (Constructable)
+\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Process_ab680fabb0f6e0904ef1415ff81201554}{Get\+Exit\+Code}} () const -\/$>$ std::\+optional$<$ int $>$
+\begin{DoxyCompactList}\small\item\em Gets the process exit code. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Process_a6a47f62862e83bda94fbafd238bfb024}{Get\+Start\+Time}} () const -\/$>$ std::\+chrono::\+steady\+\_\+clock::\+time\+\_\+point
+\begin{DoxyCompactList}\small\item\em Obtains the process start time. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Process_a8a3cb5d0f5523b4c7042a35f8005bd78}{Get\+End\+Time}} () const -\/$>$ std::\+optional$<$ std::\+chrono::\+steady\+\_\+clock::\+time\+\_\+point $>$
+\begin{DoxyCompactList}\small\item\em Obtains the process end time if it\textquotesingle{}s finished. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Process_afe2f2ece4a4907c541aba0d89775eea4}{Get\+Execution\+Time}} () const -\/$>$ std::\+optional$<$ std::\+chrono::\+steady\+\_\+clock::\+duration $>$
+\begin{DoxyCompactList}\small\item\em Obtains the process\textquotesingle{} execution time if it\textquotesingle{}s finished. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Process_acf133b31fa25410a628707fda577162f}{Get\+Command}} () const -\/$>$ \doxymbox{\hyperlink{classLattice_1_1System_1_1Command}{Command}}
+\begin{DoxyCompactList}\small\item\em Gets the \doxylink{classLattice_1_1System_1_1Command}{Command} used to execute this process. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Process_ae39fb9996e57f9805744294f6c2995c2}{Wait}} (const std::\+optional$<$ std::\+chrono::\+system\+\_\+clock::\+duration $>$ wait\+Time=std::\+nullopt) const -\/$>$ bool
+\begin{DoxyCompactList}\small\item\em Waits for the process to finish. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Process_a77e26e747362718fecf414088069d189}{Is\+Finished}} () const -\/$>$ bool
+\begin{DoxyCompactList}\small\item\em Checks if the \doxylink{classLattice_1_1System_1_1Process}{Process} is finished. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Process_a9f1212e4b80de6cdc9ed1b50c51549ae}{Request\+Cancel}} () -\/$>$ bool
+\begin{DoxyCompactList}\small\item\em Requests for the \doxylink{classLattice_1_1System_1_1Process}{Process} to cancel. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Process_a82360e170c2a4b5a0b2d9d6f4b527e1e}{Get\+Process\+Std\+Out}} () -\/$>$ std::\+istream \&
+\begin{DoxyCompactList}\small\item\em Gets the process stdout. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Process_a34c201813dd2120f3a0a3bbb5556eb9c}{Get\+Process\+Std\+In}} () -\/$>$ std::\+ostream \&
+\begin{DoxyCompactList}\small\item\em Gets the process stdin. \end{DoxyCompactList}\item 
+auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Process_a4d63edbe7d01e40ec212d2d6debf5a2a}{Get\+Process\+Std\+Err}} () -\/$>$ std::\+istream \&
+\begin{DoxyCompactList}\small\item\em Gets the process stderr. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static auto \doxymbox{\hyperlink{classLattice_1_1System_1_1Process_a9c2c8d9fe212619603cdef81ba495421}{Spawn}} (const \doxymbox{\hyperlink{classLattice_1_1System_1_1Command}{Command}} \&command) -\/$>$ std::\+expected$<$ std::\+shared\+\_\+ptr$<$ Process $>$, std::\+string $>$
+\begin{DoxyCompactList}\small\item\em Spawns a process from a \doxylink{classLattice_1_1System_1_1Command}{Command}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a process on the system. 
+
+Represents a process on the system that can:
+\begin{DoxyItemize}
+\item Be ran
+\item Be waited for
+\item Provide all 3 output streams (out, in, err)
+\item Provide run info (exec time, exit code, \doxylink{classLattice_1_1System_1_1Command}{Command})
+\item Be cancelled. 
+\end{DoxyItemize}
+
+\label{classLattice_1_1System_1_1Process_doc-func-members}
+\Hypertarget{classLattice_1_1System_1_1Process_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1System_1_1Process_acf133b31fa25410a628707fda577162f}\index{Lattice::System::Process@{Lattice::System::Process}!GetCommand@{GetCommand}}
+\index{GetCommand@{GetCommand}!Lattice::System::Process@{Lattice::System::Process}}
+\doxysubsubsection{\texorpdfstring{GetCommand()}{GetCommand()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Process_acf133b31fa25410a628707fda577162f} 
+auto Process::\+\+Get\+Command (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ \doxymbox{\hyperlink{classLattice_1_1System_1_1Command}{Command}}}
+
+
+
+Gets the \doxylink{classLattice_1_1System_1_1Command}{Command} used to execute this process. 
+
+\begin{DoxyReturn}{Returns}
+The \doxylink{classLattice_1_1System_1_1Command}{Command} used to execute this process. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Process_a8a3cb5d0f5523b4c7042a35f8005bd78}\index{Lattice::System::Process@{Lattice::System::Process}!GetEndTime@{GetEndTime}}
+\index{GetEndTime@{GetEndTime}!Lattice::System::Process@{Lattice::System::Process}}
+\doxysubsubsection{\texorpdfstring{GetEndTime()}{GetEndTime()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Process_a8a3cb5d0f5523b4c7042a35f8005bd78} 
+auto Process::\+\+Get\+End\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+optional$<$ std::\+chrono::\+steady\+\_\+clock::\+time\+\_\+point $>$}
+
+
+
+Obtains the process end time if it\textquotesingle{}s finished. 
+
+\begin{DoxyReturn}{Returns}
+A C++ time\+\_\+point representing the ending time for the process if the process is finished. Otherwise std::\+nullopt. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Process_afe2f2ece4a4907c541aba0d89775eea4}\index{Lattice::System::Process@{Lattice::System::Process}!GetExecutionTime@{GetExecutionTime}}
+\index{GetExecutionTime@{GetExecutionTime}!Lattice::System::Process@{Lattice::System::Process}}
+\doxysubsubsection{\texorpdfstring{GetExecutionTime()}{GetExecutionTime()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Process_afe2f2ece4a4907c541aba0d89775eea4} 
+auto Process::\+\+Get\+Execution\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+optional$<$ std::\+chrono::\+steady\+\_\+clock::\+duration $>$}
+
+
+
+Obtains the process\textquotesingle{} execution time if it\textquotesingle{}s finished. 
+
+\begin{DoxyReturn}{Returns}
+A C++ duration representing the execution time for the process if the process is finished. Otherwise std::\+nullopt. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Process_ab680fabb0f6e0904ef1415ff81201554}\index{Lattice::System::Process@{Lattice::System::Process}!GetExitCode@{GetExitCode}}
+\index{GetExitCode@{GetExitCode}!Lattice::System::Process@{Lattice::System::Process}}
+\doxysubsubsection{\texorpdfstring{GetExitCode()}{GetExitCode()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Process_ab680fabb0f6e0904ef1415ff81201554} 
+auto Process::\+\+Get\+Exit\+Code (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+optional$<$ int $>$}
+
+
+
+Gets the process exit code. 
+
+\begin{DoxyReturn}{Returns}
+The exit code if the process is finished. Otherwise std::\+nullopt. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Process_a4d63edbe7d01e40ec212d2d6debf5a2a}\index{Lattice::System::Process@{Lattice::System::Process}!GetProcessStdErr@{GetProcessStdErr}}
+\index{GetProcessStdErr@{GetProcessStdErr}!Lattice::System::Process@{Lattice::System::Process}}
+\doxysubsubsection{\texorpdfstring{GetProcessStdErr()}{GetProcessStdErr()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Process_a4d63edbe7d01e40ec212d2d6debf5a2a} 
+auto Process::\+\+Get\+Process\+Std\+Err (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) -\/$>$ std::\+istream \&}
+
+
+
+Gets the process stderr. 
+
+\begin{DoxyReturn}{Returns}
+istream capable of talking to the process\textquotesingle{} stderr. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Process_a34c201813dd2120f3a0a3bbb5556eb9c}\index{Lattice::System::Process@{Lattice::System::Process}!GetProcessStdIn@{GetProcessStdIn}}
+\index{GetProcessStdIn@{GetProcessStdIn}!Lattice::System::Process@{Lattice::System::Process}}
+\doxysubsubsection{\texorpdfstring{GetProcessStdIn()}{GetProcessStdIn()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Process_a34c201813dd2120f3a0a3bbb5556eb9c} 
+auto Process::\+\+Get\+Process\+Std\+In (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) -\/$>$ std::\+ostream \&}
+
+
+
+Gets the process stdin. 
+
+\begin{DoxyReturn}{Returns}
+ostream capable of talking to the process\textquotesingle{} stdin. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Process_a82360e170c2a4b5a0b2d9d6f4b527e1e}\index{Lattice::System::Process@{Lattice::System::Process}!GetProcessStdOut@{GetProcessStdOut}}
+\index{GetProcessStdOut@{GetProcessStdOut}!Lattice::System::Process@{Lattice::System::Process}}
+\doxysubsubsection{\texorpdfstring{GetProcessStdOut()}{GetProcessStdOut()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Process_a82360e170c2a4b5a0b2d9d6f4b527e1e} 
+auto Process::\+\+Get\+Process\+Std\+Out (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) -\/$>$ std::\+istream \&}
+
+
+
+Gets the process stdout. 
+
+\begin{DoxyReturn}{Returns}
+istream capable of talking to the process\textquotesingle{} stdout. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Process_a6a47f62862e83bda94fbafd238bfb024}\index{Lattice::System::Process@{Lattice::System::Process}!GetStartTime@{GetStartTime}}
+\index{GetStartTime@{GetStartTime}!Lattice::System::Process@{Lattice::System::Process}}
+\doxysubsubsection{\texorpdfstring{GetStartTime()}{GetStartTime()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Process_a6a47f62862e83bda94fbafd238bfb024} 
+auto Process::\+\+Get\+Start\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ std::\+chrono::\+steady\+\_\+clock::\+time\+\_\+point}
+
+
+
+Obtains the process start time. 
+
+\begin{DoxyReturn}{Returns}
+A C++ time\+\_\+point representing the starting time for the process. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Process_a77e26e747362718fecf414088069d189}\index{Lattice::System::Process@{Lattice::System::Process}!IsFinished@{IsFinished}}
+\index{IsFinished@{IsFinished}!Lattice::System::Process@{Lattice::System::Process}}
+\doxysubsubsection{\texorpdfstring{IsFinished()}{IsFinished()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Process_a77e26e747362718fecf414088069d189} 
+auto Process::\+\+Is\+Finished (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const -\/$>$ bool}
+
+
+
+Checks if the \doxylink{classLattice_1_1System_1_1Process}{Process} is finished. 
+
+\begin{DoxyReturn}{Returns}
+true if the \doxylink{classLattice_1_1System_1_1Process}{Process} is finished. false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Process_a9f1212e4b80de6cdc9ed1b50c51549ae}\index{Lattice::System::Process@{Lattice::System::Process}!RequestCancel@{RequestCancel}}
+\index{RequestCancel@{RequestCancel}!Lattice::System::Process@{Lattice::System::Process}}
+\doxysubsubsection{\texorpdfstring{RequestCancel()}{RequestCancel()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Process_a9f1212e4b80de6cdc9ed1b50c51549ae} 
+auto Process::\+\+Request\+Cancel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) -\/$>$ bool}
+
+
+
+Requests for the \doxylink{classLattice_1_1System_1_1Process}{Process} to cancel. 
+
+Requests the polling and execution threads to stop.
+
+\begin{DoxyReturn}{Returns}
+true if the stop request was sent. false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Process_a9c2c8d9fe212619603cdef81ba495421}\index{Lattice::System::Process@{Lattice::System::Process}!Spawn@{Spawn}}
+\index{Spawn@{Spawn}!Lattice::System::Process@{Lattice::System::Process}}
+\doxysubsubsection{\texorpdfstring{Spawn()}{Spawn()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Process_a9c2c8d9fe212619603cdef81ba495421} 
+auto Process::\+\+Spawn (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{classLattice_1_1System_1_1Command}{Command}} \&}]{command}{}\end{DoxyParamCaption}) -\/$>$ std::\+expected$<$ std::\+shared\+\_\+ptr$<$ Process $>$, std::\+string $>$\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Spawns a process from a \doxylink{classLattice_1_1System_1_1Command}{Command}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em command} & The command to execute.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An expected shared\+\_\+ptr to the \doxylink{classLattice_1_1System_1_1Process}{Process} on sucess. An error through a string on failure. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1System_1_1Process_ae39fb9996e57f9805744294f6c2995c2}\index{Lattice::System::Process@{Lattice::System::Process}!Wait@{Wait}}
+\index{Wait@{Wait}!Lattice::System::Process@{Lattice::System::Process}}
+\doxysubsubsection{\texorpdfstring{Wait()}{Wait()}}
+{\footnotesize\ttfamily \label{classLattice_1_1System_1_1Process_ae39fb9996e57f9805744294f6c2995c2} 
+auto Process::\+\+Wait (\begin{DoxyParamCaption}\item[{const std::\+optional$<$ std::\+chrono::\+system\+\_\+clock::\+duration $>$}]{wait\+Time}{ = {\ttfamily std::nullopt}}\end{DoxyParamCaption}) const -\/$>$ bool}
+
+
+
+Waits for the process to finish. 
+
+By specifying the optional {\ttfamily wait\+Time} argument, you can provide a timeout to the wait function.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em wait\+Time} & An optional C++ duration to Wait for until a timeout happens.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the process finished during the Wait. false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+modules/\+\+System/Process.\+cppm\item 
+src/\+\+System/Process.\+cpp\end{DoxyCompactItemize}

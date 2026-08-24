@@ -1,0 +1,77 @@
+\doxysection{Lattice::Tooling::ILinker Class Reference}
+\hypertarget{classLattice_1_1Tooling_1_1ILinker}{}\label{classLattice_1_1Tooling_1_1ILinker}\index{Lattice::Tooling::ILinker@{Lattice::Tooling::ILinker}}
+
+
+Abstract Linker interface.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1ILinker_a4032003d244dc92acc94b41bcbd614d5}{Create\+Configuration}} (const std::\+optional$<$ std::\+shared\+\_\+ptr$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{::\+\+Lattice::\+\+Object::\+\+Object}} $>$ $>$ \&obj=std::\+nullopt) const -\/$>$ \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration}{Linker\+Configuration}}
+\begin{DoxyCompactList}\small\item\em Returns a default configuration for the linker. \end{DoxyCompactList}\item 
+virtual auto \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1ILinker_a310aa08b1cac0692ac3ac95a78802143}{Create\+Command}} (const \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration}{Linker\+Configuration}} \&config) -\/$>$ \doxymbox{\hyperlink{classLattice_1_1System_1_1Command}{System::\+\+Command}}
+\begin{DoxyCompactList}\small\item\em Returns a {\ttfamily Command} instance tailored for this linker. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract Linker interface. 
+
+This class can be extended to add different linkers to \doxylink{classLattice_1_1Lattice}{Lattice}.
+
+Linkers are configured based on how they are called in the command line and how they are configured in \doxylink{classLattice_1_1Lattice}{Lattice} configs and in source. To add a new linker, inherit from this class, and implement the {\ttfamily \doxylink{classLattice_1_1Tooling_1_1ILinker_a310aa08b1cac0692ac3ac95a78802143}{Create\+Command}(..)} method and the {\ttfamily Create\+Configuration(...)} methods to create a method of obtaining your specific linker command calls and configurations. 
+
+\label{classLattice_1_1Tooling_1_1ILinker_doc-func-members}
+\Hypertarget{classLattice_1_1Tooling_1_1ILinker_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLattice_1_1Tooling_1_1ILinker_a310aa08b1cac0692ac3ac95a78802143}\index{Lattice::Tooling::ILinker@{Lattice::Tooling::ILinker}!CreateCommand@{CreateCommand}}
+\index{CreateCommand@{CreateCommand}!Lattice::Tooling::ILinker@{Lattice::Tooling::ILinker}}
+\doxysubsubsection{\texorpdfstring{CreateCommand()}{CreateCommand()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1ILinker_a310aa08b1cac0692ac3ac95a78802143} 
+virtual auto Lattice::\+\+Tooling::\+\+ILinker::\+\+Create\+Command (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration}{Linker\+Configuration}} \&}]{config}{}\end{DoxyParamCaption}) -\/$>$  \doxymbox{\hyperlink{classLattice_1_1System_1_1Command}{System::\+\+Command}}\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns a {\ttfamily Command} instance tailored for this linker. 
+
+This method returns a {\ttfamily Command} object which is used to run a linker given a specific configuration.
+
+Implementing this function allows you to return a custom and tailored {\ttfamily Command} implementation specifically for a specific linker, allowing you to specify and manage how a linker is called.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em configuration} & The linker configuration to use to create the command.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A tailored {\ttfamily Command} instance for this linker and the configuration given. 
+\end{DoxyReturn}
+\Hypertarget{classLattice_1_1Tooling_1_1ILinker_a4032003d244dc92acc94b41bcbd614d5}\index{Lattice::Tooling::ILinker@{Lattice::Tooling::ILinker}!CreateConfiguration@{CreateConfiguration}}
+\index{CreateConfiguration@{CreateConfiguration}!Lattice::Tooling::ILinker@{Lattice::Tooling::ILinker}}
+\doxysubsubsection{\texorpdfstring{CreateConfiguration()}{CreateConfiguration()}}
+{\footnotesize\ttfamily \label{classLattice_1_1Tooling_1_1ILinker_a4032003d244dc92acc94b41bcbd614d5} 
+virtual auto Lattice::\+\+Tooling::\+\+ILinker::\+\+Create\+Configuration (\begin{DoxyParamCaption}\item[{const std::\+optional$<$ std::\+shared\+\_\+ptr$<$\doxymbox{\hyperlink{classLattice_1_1Object_1_1Object}{::\+\+Lattice::\+\+Object::\+\+Object}} $>$ $>$ \&}]{obj}{ = {\ttfamily std::nullopt}}\end{DoxyParamCaption}) const -\/$>$  \doxymbox{\hyperlink{classLattice_1_1Tooling_1_1LinkerConfiguration}{Linker\+Configuration}}\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns a default configuration for the linker. 
+
+This method returns a configuration object used to configure a linker implementation. This is used to create a command instance.
+
+Implementing this function allows you to return a custom and tailored configuration implementation specifically for a specific linker.
+
+Additionally, passing in an object type allows the compiler to handle building the command and configuration for that object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{in}}  & {\em obj} & An optional object to use to configure the configuration.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A default {\ttfamily \doxylink{classLattice_1_1Tooling_1_1LinkerConfiguration}{Linker\+Configuration}} instance for this linker. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+modules/\+\+Tooling/ILinker.\+cppm\end{DoxyCompactItemize}

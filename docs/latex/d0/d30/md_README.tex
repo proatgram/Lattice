@@ -1,0 +1,109 @@
+\chapter{Lattice }
+\hypertarget{md_README}{}\label{md_README}\index{Lattice@{Lattice}}
+\label{md_README_autotoc_md0}%
+\Hypertarget{md_README_autotoc_md0}%
+
+
+Another build system written in C++. This one is built to be:
+\begin{DoxyItemize}
+\item Simple: Easy YAML configuration files.
+\item Fast: Heiarchical object system and caching
+\item Extendable: Native plugins
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md1}{}\doxysection{\texorpdfstring{Usage/\+\+Examples}{Usage/\+\+Examples}}\label{md_README_autotoc_md1}
+\hypertarget{md_README_autotoc_md2}{}\doxysubsection{\texorpdfstring{Configuration}{Configuration}}\label{md_README_autotoc_md2}
+Here\textquotesingle{}s an example configuration file containing a lot of stuff you may use. Don\textquotesingle{}t worry, it may seem like a lot, but it\textquotesingle{}s actually really simple!
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{include:}
+\DoxyCodeLine{\ \ -\/\ "{}someDir"{}}
+\DoxyCodeLine{\ \ -\/\ "{}someFile"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{project:}
+\DoxyCodeLine{\ \ lattice:}
+\DoxyCodeLine{\ \ \ \ description:\ "{}Another\ build\ system\ for\ C++\ based\ solely\ on\ configuration\ files."{}}
+\DoxyCodeLine{\ \ \ \ homepage:\ "{}https://github.com/proatgram/lattice"{}}
+\DoxyCodeLine{\ \ \ \ version:\ 0.1}
+\DoxyCodeLine{\ \ \ \ requires:}
+\DoxyCodeLine{\ \ \ \ \ \ -\/\ libcurl:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ version:\ "{}>=8"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ provider:\ "{}pkg-\/config"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ optional:\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{lattice:}
+\DoxyCodeLine{\ \ binary:}
+\DoxyCodeLine{\ \ \ \ Lattice:}
+\DoxyCodeLine{\ \ \ \ \ \ output\_name:\ "{}lattice"{}}
+\DoxyCodeLine{\ \ \ \ \ \ sources:\ ["{}src/main.cpp"{}]}
+\DoxyCodeLine{\ \ \ \ \ \ dependencies:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ private:\ [libcurl@lattice,\ Plugins]}
+\DoxyCodeLine{\ \ \ \ SomeOtherBinary:}
+\DoxyCodeLine{\ \ \ \ \ \ sources:\ ["{}src/other/main.cpp"{}]}
+\DoxyCodeLine{\ \ module:}
+\DoxyCodeLine{\ \ \ \ Plugins:}
+\DoxyCodeLine{\ \ \ \ \ \ units:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ export:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ -\/\ "{}modules/Plugins.cppm"{}}
+\DoxyCodeLine{\ \ \ \ \ \ sources:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ -\/\ "{}src/modules/Plugins.cpp"{}}
+\DoxyCodeLine{\ \ \ \ \ \ dependencies:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ public:\ [lattice::Utils]}
+\DoxyCodeLine{\ \ library:}
+\DoxyCodeLine{\ \ \ \ Utils:}
+\DoxyCodeLine{\ \ \ \ \ \ type:\ static}
+\DoxyCodeLine{\ \ \ \ \ \ sources:\ ["{}src/Utils.cpp"{}]}
+\DoxyCodeLine{\ \ \ \ \ \ headers:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ public:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ -\/\ "{}include/Utils.hpp"{}}
+
+\end{DoxyCode}
+
+
+For the basics, you first start off by defining a project by putting an entry in the {\ttfamily project:} section. You can define multiple projects in one configuration set. You can then define your project properties in that section. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{project:}
+\DoxyCodeLine{\ \ \ \ yourProject:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \#\ Any\ properties\ here?}
+
+\end{DoxyCode}
+
+
+Second, you define objects that make up that project. An object is tied to a project by defining a section with an identifier the same name as the project. You can then define different objects, whether it be a binary (something you execute), a module (a modern C++ feature, a type of library), a library (something you link to), or something else provided by a plugin, creating a section under that project section with the type of object, and any objects you want to define under that.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yourProject:}
+\DoxyCodeLine{\ \ \ \ binary:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ binaryOne:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \#\ Any\ properties\ here?}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ binaryTwo:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \#\ Any\ properties\ here?}
+\DoxyCodeLine{\ \ \ \ library:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ libraryOne:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \#\ ...}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ libraryTwo:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \#\ ...}
+
+\end{DoxyCode}
+ \hypertarget{md_README_autotoc_md3}{}\doxysubsection{\texorpdfstring{Building}{Building}}\label{md_README_autotoc_md3}
+Now that you have a basic configuration, you can build your project(s), which you can do by running one of these:
+\begin{DoxyItemize}
+\item {\ttfamily lattice build}
+\begin{DoxyItemize}
+\item Builds everything, every project and all targets in each project.
+\end{DoxyItemize}
+\item {\ttfamily lattice build a\+Project\+Name}
+\begin{DoxyItemize}
+\item Builds just the specified project and all of it\textquotesingle{}s targets unless it depends on others.
+\end{DoxyItemize}
+\item {\ttfamily lattice build a\+Project\+Name::\+a\+Buildable\+Object}
+\begin{DoxyItemize}
+\item Builds just one target, unless it depends on others.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md4}{}\doxysubsubsection{\texorpdfstring{Caches}{Caches}}\label{md_README_autotoc_md4}
+Lattice mostly works with caches to build things. When there is no cache present, the first time you run build, it will generate one, and use that cache for the build. If you wish to preload the cache, you can run {\ttfamily lattice cache init}.\hypertarget{md_README_autotoc_md5}{}\doxysubsection{\texorpdfstring{Running}{Running}}\label{md_README_autotoc_md5}
+Running is simple too! If you\textquotesingle{}ve only defined one project and one binary, you can just do {\ttfamily lattice run}. If you\textquotesingle{}ve defined multiple projects, you can do {\ttfamily lattice run project\+Name}. If you define multiple binaries in a project, you must specifiy which one you want to run: {\ttfamily lattice run project\+Name:object\+Name}.\hypertarget{md_README_autotoc_md6}{}\doxysection{\texorpdfstring{Authors}{Authors}}\label{md_README_autotoc_md6}
+
+\begin{DoxyItemize}
+\item \href{https://www.github.com/proatgram}{\texttt{@thetimbrick}} 
+\end{DoxyItemize}
