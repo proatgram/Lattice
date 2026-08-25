@@ -20,7 +20,7 @@ lattice:
       output_name: "lattice"
       sources: ["src/main.cpp"]
       dependencies:
-        private: [libcurl@lattice, Plugins]
+        private: [Utils@lattice]
     SomeOtherBinary:
       sources: ["src/other/main.cpp"]
   module:
@@ -31,7 +31,7 @@ lattice:
       sources:
         - "src/modules/Plugins.cpp"
       dependencies:
-        public: [lattice::Utils]
+        public: [Utils]
   library:
     Utils:
       type: static

@@ -63,13 +63,18 @@ export namespace Lattice::Object {
             std::string m_targetVendor;
     };
 
+    struct ToolchainDefault {
+        std::string toolchainID{};
+        std::set<std::string> fileExtentions{};
+    };
+
     class IToolchainFactory final : public IObjectFactory<IToolchainFactory> {
         public:
             inline IToolchainFactory(Constructable) {}
 
             auto Create(const std::string &identifier, const std::optional<std::string> &objectData) -> std::shared_ptr<Object> final;
 
-            auto CreateDefault() -> std::shared_ptr<IToolchain>;
+            auto TryGetDefault(const std::string &objectData) const -> std::optional<std::shared_ptr<IToolchain>>;
     };
 
     template <typename Factory>
