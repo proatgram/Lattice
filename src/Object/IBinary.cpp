@@ -37,8 +37,16 @@ auto IBinaryFactory::Create(const std::string &identifier, const std::optional<s
 
     std::string toolchainId = config["toolchain"].as<std::string>(defaultToolchainId);
     std::shared_ptr<IToolchain> toolchain = Registry::GetInstance()->Query<std::shared_ptr<IToolchain>>(toolchainId).value_or(nullptr);
-    if (!toolchain)
+
+    if (!toolchain && !toolchainId.empty()) {
         throw std::runtime_error(std::format("Failed to create binary {}: Toolchain {} requested but isn't defined.", identifier, toolchainId));
+    } else if (!toolchain) {
+        toolchain = std::dynamic_pointer_cast<IToolchainFactory>(IToolchainFactory::GetInstance())->TryGetDefault(objectData.value()).value_or(nullptr);
+    }
+
+    if (!toolchain)
+        throw std::runtime_error(std::format("Failed to create binary {}: Unable to obtain a default toolchain.", identifier));
+
     if (!toolchain->Provides<std::shared_ptr<IFactory<IBinary>>>())
         throw std::runtime_error(std::format("Failed to create binary {}: Toolchain {} doesn't provide a Binary factory.", identifier, toolchainId));
 

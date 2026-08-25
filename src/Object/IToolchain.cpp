@@ -67,10 +67,23 @@ auto IToolchainFactory::Create(const std::string &identifier, const std::optiona
     return toolchainObject;
 }
 
-// Will attempt to create a default toolchain based on the project and
-// environment variables.
-auto IToolchainFactory::CreateDefault() -> std::shared_ptr<IToolchain> {
-    // TODO: Implement CreateDefault()
-    
+auto IToolchainFactory::TryGetDefault(const std::string &objectData) const -> std::optional<std::shared_ptr<IToolchain>> {
+    std::list<std::string> deducedExtensions;
+    WalkYAMLNode(objectData, [&deducedExtensions](const std::string &scalar) -> void {
+        if (auto extension = std::filesystem::path(scalar).extension().string(); !extension.empty()) {
+            deducedExtensions.push_back(extension);
+        }
+    });
+
+    for (const ToolchainDefault &toolchainDefault : std::ranges::to<std::list<ToolchainDefault>>(Registry::GetInstance()->All<ToolchainDefault>())) {
+        for (const std::string &deducedExtension : deducedExtensions) {
+            if (toolchainDefault.fileExtentions.contains(deducedExtension)) {
+                std::shared_ptr<IToolchain> toolchain = Registry::GetInstance()->Query<std::shared_ptr<IToolchain>>(toolchainDefault.toolchainID).value_or(nullptr);
+                if (toolchain)
+                    return toolchain;
+            }
+        }
+    }
+
     return {};
 }

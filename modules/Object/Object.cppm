@@ -62,4 +62,6 @@ export namespace Lattice::Object {
 
     template <typename Factory>
     using IObjectFactory = ISingletonFactory<Factory, Object>;
+
+    auto WalkYAMLNode(const std::string &yaml, const std::function<void(const std::string&)> &onScalar) -> void;
 }  // export namespace Lattice::Object

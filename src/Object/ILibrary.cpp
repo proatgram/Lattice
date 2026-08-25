@@ -37,8 +37,15 @@ auto ILibraryFactory::Create(const std::string &identifier, const std::optional<
 
     std::string toolchainId = config["toolchain"].as<std::string>(defaultToolchainId);
     std::shared_ptr<IToolchain> toolchain = Registry::GetInstance()->Query<std::shared_ptr<IToolchain>>(toolchainId).value_or(nullptr);
-    if (!toolchain)
+    if (!toolchain && !toolchainId.empty()) {
         throw std::runtime_error(std::format("Failed to create library {}: Toolchain {} requested but isn't defined.", identifier, toolchainId));
+    } else if (!toolchain) {
+        toolchain = std::dynamic_pointer_cast<IToolchainFactory>(IToolchainFactory::GetInstance())->TryGetDefault(objectData.value()).value_or(nullptr);
+    }
+
+    if (!toolchain)
+        throw std::runtime_error(std::format("Failed to create library {}: Unable to obtain a default toolchain.", identifier));
+
     if (!toolchain->Provides<std::shared_ptr<IFactory<ILibrary>>>())
         throw std::runtime_error(std::format("Failed to create library {}: Toolchain {} doesn't provide a Library factory.", identifier, toolchainId));
 
