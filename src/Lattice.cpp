@@ -12,6 +12,33 @@ import Lattice.Object.ILibrary;
 import Lattice.Object.IBinary;
 import Lattice.Object.Resolver;
 import Lattice.Plugins.Loader;
+import Lattice.Object.BuildGraph;
+
+Lattice::Lattice::Lattice(Lattice::Constructable) {
+    auto ok = Registry::GetInstance()->Register<std::shared_ptr<Object::ProjectFactory::FactoryType>>("project", Object::ProjectFactory::GetInstance());
+    if (!ok)
+        throw std::runtime_error("Irrecoverable error: Built in object type \"factory\" failed to register. This is a bug.");
+
+    ok = Registry::GetInstance()->Register<std::shared_ptr<Object::IToolchainFactory::FactoryType>>("toolchain", Object::IToolchainFactory::GetInstance());
+    if (!ok)
+        throw std::runtime_error("Irrecoverable error: Built in object type \"toolchain\" failed to register. This is a bug.");
+
+    ok = Registry::GetInstance()->Register<std::shared_ptr<Object::ILibraryFactory::FactoryType>>("library", Object::ILibraryFactory::GetInstance());
+    if (!ok)
+        throw std::runtime_error("Irrecoverable error: Built in object type \"library\" failed to register. This is a bug.");
+
+    ok = Registry::GetInstance()->Register<std::shared_ptr<Object::IBinaryFactory::FactoryType>>("binary", Object::IBinaryFactory::GetInstance());
+    if (!ok)
+        throw std::runtime_error("Irrecoverable error: Built in object type \"binary\" failed to register. This is a bug.");
+
+    Plugins::Loader::GetInstance()->LoadDirectory();
+    Plugins::Loader::GetInstance()->InitializeAllLoaded();
+}
+
+auto Lattice::Lattice::GetInstance() -> std::shared_ptr<Lattice> {
+    static std::shared_ptr<Lattice> instance = std::make_shared<Lattice>(Constructable());
+    return instance;
+}
 
 auto LoadIncludes(const std::string &include, const std::filesystem::path &workingDirectory) -> std::vector<YAML::Node> {
     // Include can either be:
@@ -48,33 +75,6 @@ auto LoadIncludes(const std::string &include, const std::filesystem::path &worki
     }
 
     return includeNodes;
-}
-
-
-Lattice::Lattice::Lattice(Lattice::Constructable) {
-    auto ok = Registry::GetInstance()->Register<std::shared_ptr<Object::ProjectFactory::FactoryType>>("project", Object::ProjectFactory::GetInstance());
-    if (!ok)
-        throw std::runtime_error("Irrecoverable error: Built in object type \"factory\" failed to register. This is a bug.");
-
-    ok = Registry::GetInstance()->Register<std::shared_ptr<Object::IToolchainFactory::FactoryType>>("toolchain", Object::IToolchainFactory::GetInstance());
-    if (!ok)
-        throw std::runtime_error("Irrecoverable error: Built in object type \"toolchain\" failed to register. This is a bug.");
-
-    ok = Registry::GetInstance()->Register<std::shared_ptr<Object::ILibraryFactory::FactoryType>>("library", Object::ILibraryFactory::GetInstance());
-    if (!ok)
-        throw std::runtime_error("Irrecoverable error: Built in object type \"library\" failed to register. This is a bug.");
-
-    ok = Registry::GetInstance()->Register<std::shared_ptr<Object::IBinaryFactory::FactoryType>>("binary", Object::IBinaryFactory::GetInstance());
-    if (!ok)
-        throw std::runtime_error("Irrecoverable error: Built in object type \"binary\" failed to register. This is a bug.");
-
-    Plugins::Loader::GetInstance()->LoadDirectory();
-    Plugins::Loader::GetInstance()->InitializeAllLoaded();
-}
-
-auto Lattice::Lattice::GetInstance() -> std::shared_ptr<Lattice> {
-    static std::shared_ptr<Lattice> instance = std::make_shared<Lattice>(Constructable());
-    return instance;
 }
 
 auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> void {
@@ -188,15 +188,10 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
 
         throw std::runtime_error(std::format("Irrecoverable error(s) when attempting to resolve dependencies.\nThe following IDs failed to resolve correctly:\n\n{}", errss.str()));
     }
+
+    m_globalBuildGraph = Object::BuildGraph::Generate();
 }
 
-auto Lattice::Lattice::GetGlobalObjects() const -> std::map<std::string, std::shared_ptr<Object::Object>> {
-    return m_globalObjects;
-}
-
-auto Lattice::Lattice::GetGlobalObject(const std::string &identifier) const -> std::optional<std::shared_ptr<Object::Object>> {
-    if (m_globalObjects.contains(identifier))
-        return m_globalObjects.at(identifier);
-
-    return {};
+auto Lattice::Lattice::GetBuildGraph() const -> std::shared_ptr<Object::BuildGraph> {
+    return m_globalBuildGraph;
 }

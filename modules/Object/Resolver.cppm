@@ -57,7 +57,7 @@ export namespace Lattice::Object {
              * @return An expected value of void on success. A string containing the reason for resolution
              * failure on fail.
              */
-            auto TryResolve() -> std::expected<void, std::string>;
+            auto TryResolve() -> std::expected<std::shared_ptr<Object>, std::string>;
 
             /**
              * @brief Returns if this instance has been resolved.
@@ -84,7 +84,7 @@ export namespace Lattice::Object {
             auto GetResolverContext() const -> Context;
 
         private:
-            static std::list<std::shared_ptr<Resolver>> s_resolvers;
+            static std::map<std::string, std::shared_ptr<Resolver>> s_resolvers;
 
             Context m_resolverContext;
 

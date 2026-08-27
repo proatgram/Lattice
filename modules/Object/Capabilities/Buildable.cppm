@@ -22,5 +22,13 @@ export namespace Lattice::Object::Capabilities {
              * @return Void.
              */
             virtual auto Build() -> void = 0;
+
+            auto IsBuilt() const -> bool;
+
+        protected:
+            auto SetBuilt(bool build = true) -> void;
+
+        private:
+            bool m_built;
     };
 }  // export namespace Lattice::Object::Capabilities
