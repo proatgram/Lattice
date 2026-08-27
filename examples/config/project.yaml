@@ -3,7 +3,7 @@ include:
   - "toolchain.yaml"
 
 project:
-  lattice:
+  Lattice:
     description: "Another build system for C++ based solely on configuration files."
     homepage: "https://github.com/proatgram/Lattice"
     version: 0.1
@@ -14,24 +14,15 @@ project:
           provider: "pkg-config"
           optional: true
 
-lattice:
+Lattice:
   binary:
-    Lattice:
+    lattice:
       output_name: "lattice"
       sources: ["src/main.cpp"]
       dependencies:
-        private: [Utils@lattice]
+        private: [Utils@Lattice, Plugins@Lattice]
     SomeOtherBinary:
       sources: ["src/other/main.cpp"]
-  module:
-    Plugins:
-      units:
-        export:
-          - "modules/Plugins.cppm"
-      sources:
-        - "src/modules/Plugins.cpp"
-      dependencies:
-        public: [Utils]
   library:
     Utils:
       type: static
@@ -39,4 +30,12 @@ lattice:
       headers:
         public:
           - "include/Utils.hpp"
+    Plugins:
+      units:
+        export:
+          - "modules/Plugins.cppm"
+      sources:
+        - "src/modules/Plugins.cpp"
+      dependencies:
+        public: [Utils@Lattice]
 

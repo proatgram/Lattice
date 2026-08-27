@@ -4,6 +4,7 @@ target_sources(lattice_object
         "${PROJECT_SOURCE_DIR}/src/Object/Capabilities/HasDependencies.cpp"
         "${PROJECT_SOURCE_DIR}/src/Object/Capabilities/LanguageIdentifiable.cpp"
         "${PROJECT_SOURCE_DIR}/src/Object/Capabilities/ProjectIdentifiable.cpp"
+        "${PROJECT_SOURCE_DIR}/src/Object/Capabilities/Buildable.cpp"
     PUBLIC FILE_SET CXX_MODULES
         BASE_DIRS "${PROJECT_SOURCE_DIR}/modules"
         FILES

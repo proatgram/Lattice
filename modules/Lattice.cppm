@@ -3,6 +3,7 @@ export import std;
 
 export import Lattice.Project;
 export import Lattice.Object;
+export import Lattice.Object.BuildGraph;
 
 export namespace Lattice {
     /**
@@ -21,8 +22,6 @@ export namespace Lattice {
             Lattice(Constructable);
             static auto GetInstance() -> std::shared_ptr<Lattice>;
 
-            auto RegisterObjectFactory(const std::string &identifier, const std::function<std::shared_ptr<Object::Object>(const std::string &)> factoryFunction) -> void;
-
             /**
              * @brief Loads lattice configurations from a file.
              *
@@ -30,10 +29,15 @@ export namespace Lattice {
              */
             auto LoadConfig(const std::filesystem::path configPath) -> void;
 
-            auto GetGlobalObjects() const -> std::map<std::string, std::shared_ptr<Object::Object>>;
-            auto GetGlobalObject(const std::string &identifier) const -> std::optional<std::shared_ptr<Object::Object>>;
+            /**
+             * @brief Gets the build graph for the entire configuration.
+             *
+             * @return A shared pointer to the build graph.
+             */
+            auto GetBuildGraph() const -> std::shared_ptr<Object::BuildGraph>;
 
         private:
             std::map<std::string, std::shared_ptr<Object::Object>> m_globalObjects;
+            std::shared_ptr<Object::BuildGraph> m_globalBuildGraph;
     };
 }  // export namespace Lattice

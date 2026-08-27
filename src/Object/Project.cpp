@@ -4,6 +4,8 @@ module;
 
 module Lattice.Project;
 
+import Lattice.Object.Resolver;
+
 using namespace Lattice::Object;
 
 Project::Project(Object::Constructable, const std::string &identifier) :
@@ -43,9 +45,7 @@ auto Project::GetHomepageUrl() const -> std::optional<std::string> {
     return m_homepageUrl;
 }
 
-auto Project::Build() -> void {
-
-}
+auto Project::Build() -> void {}
 
 auto Project::GetObjects() const -> std::map<std::string, std::shared_ptr<Object>> {
     return m_objects;
@@ -60,6 +60,10 @@ auto Project::GetObject(const std::string &identifier) const -> std::optional<st
 
 auto Project::AddObject(const std::string &identifier, const std::shared_ptr<Object> &object) -> void {
     m_objects.insert({identifier, object});
+    Resolver::Create({
+        .identifier = identifier,
+        .dependee = shared_from_this()
+    });
 }
 
 auto ProjectFactory::Create(const std::string &identifier, const std::optional<std::string> &objectData) -> std::shared_ptr<Object> {

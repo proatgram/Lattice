@@ -6,6 +6,7 @@ export import Lattice.Object;
 export import Lattice.Object.Resolver;
 
 import Lattice.Object.Capabilities.ICapability;
+import Lattice.Object.BuildGraph;
 
 export namespace Lattice::Object::Capabilities {
     /**
@@ -56,5 +57,7 @@ export namespace Lattice::Object::Capabilities {
 
         private:
             std::list<Dependency> m_dependencies;
+
+            friend class ::Lattice::Object::BuildGraph;
     };
 }  // export namespace Lattice::Object::Capabilities
