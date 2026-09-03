@@ -1,6 +1,7 @@
 module;
 
 #include <filesystem>
+#include <thread>
 #include <yaml-cpp/yaml.h>
 
 module Lattice;
@@ -102,6 +103,7 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
                         it->first.as<std::string>(),
                         Registry::GetInstance()->Query<std::shared_ptr<Object::ProjectFactory::FactoryType>>("project").value()->Create(
                             it->first.as<std::string>(), YAML::Dump(it->second))->As<Object::Project>().value());
+                Object::Resolver::Create({.identifier = it->first.as<std::string>(), .dependee = {}});
 
                 if (!project)
                     // TODO: Get file-level tracking for this.
@@ -188,10 +190,71 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
 
         throw std::runtime_error(std::format("Irrecoverable error(s) when attempting to resolve dependencies.\nThe following IDs failed to resolve correctly:\n\n{}", errss.str()));
     }
-
-    m_globalBuildGraph = Object::BuildGraph::Generate();
 }
 
-auto Lattice::Lattice::GetBuildGraph() const -> std::shared_ptr<Object::BuildGraph> {
-    return m_globalBuildGraph;
+auto Lattice::Lattice::StartBuild(const std::optional<std::list<std::string>> &objects, const std::optional<std::size_t> &numberJobs) -> void {
+    std::shared_ptr<Object::BuildGraph> buildGraph;
+    if (objects) {
+        std::list<std::shared_ptr<Object::Resolver>> resolvers;
+        for (const std::string &objectId : objects.value()) {
+            resolvers.push_back(Object::Resolver::Create({.identifier = objectId, .dependee = {}}));
+        }
+
+        buildGraph = Object::BuildGraph::Generate(resolvers);
+    } else {
+        buildGraph = Object::BuildGraph::Generate();
+    }
+
+    std::map<std::string, std::future<void>> currentJobs;
+    std::map<std::string, std::future<void>> finishedJobs;
+    std::mutex jobsMutex;
+    while (true) {
+        {
+            std::lock_guard<std::mutex> lock(jobsMutex);
+            if (buildGraph->IsCompleted())
+                break;
+        }
+        std::size_t jobs;
+        {
+            std::lock_guard<std::mutex> lock(jobsMutex);
+            jobs = std::min(std::min(buildGraph->GetReady().size(), numberJobs.value_or(1)), numberJobs.value_or(1) - currentJobs.size());
+        }
+        for (int i = 0; i < jobs; i++) {
+            std::list<std::shared_ptr<Object::BuildGraph::DependencyNode>> readyNodes;
+            {
+                std::lock_guard<std::mutex> lock(jobsMutex);
+                readyNodes = buildGraph->GetReady();
+            }
+            for (const std::shared_ptr<Object::BuildGraph::DependencyNode> &node : readyNodes) {
+                {
+                    std::lock_guard<std::mutex> lock(jobsMutex);
+                    if (currentJobs.contains(node->object->GetResolvedObject()->GetIdentifier()) || finishedJobs.contains(node->object->GetResolvedObject()->GetIdentifier()))
+                        continue;
+                }
+                std::lock_guard<std::mutex> lock(jobsMutex);
+                currentJobs[node->object->GetResolvedObject()->GetIdentifier()] = std::async(std::launch::async, [node, &buildGraph, &currentJobs, &finishedJobs, &jobsMutex]() -> void {
+                    std::cout << "Building " << node->object->GetResolvedObject()->GetIdentifier() << "..." <<std::endl;
+                    if (const std::shared_ptr<Object::Capabilities::Buildable> &buildable = node->object->GetResolvedObject()->GetCapability<Object::Capabilities::Buildable>().value_or(nullptr); buildable)
+                        buildable->Build();
+
+
+                    std::lock_guard<std::mutex> lock(jobsMutex);
+                    buildGraph->UpdateBuilt(node);
+                    finishedJobs.insert({node->object->GetResolvedObject()->GetIdentifier(), std::move(currentJobs.extract(node->object->GetResolvedObject()->GetIdentifier()).mapped())});
+                });
+
+                break;
+            }
+        }
+    }
+
+    while (true) {
+        {
+            std::lock_guard<std::mutex> lock(jobsMutex);
+            if (currentJobs.size() == 0)
+                break;
+        }
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
 }

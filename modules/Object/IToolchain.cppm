@@ -10,8 +10,9 @@ export namespace Lattice::Object {
     /**
      * @brief Represents a toolchain.
      *
-     * Contains information on paths, versions, flags and
-     * target ABI, Arch, and OS for the toolchain.
+     * A Lattice toolchain represents something a bit different
+     * from other systems like CMake. It provides means of access
+     * to concrete implementation of different objects and tooling.
      *
      */
     class IToolchain : public Object, public Capabilities::LanguageIdentifiable {
@@ -55,12 +56,6 @@ export namespace Lattice::Object {
             virtual auto GetImpl(const std::type_index &type) const -> std::optional<std::any> = 0;
 
             friend class IToolchainFactory;
-
-        private:
-            std::string m_targetOS;
-            std::string m_targetArchitecture;
-            std::string m_targetABI;
-            std::string m_targetVendor;
     };
 
     struct ToolchainDefault {
