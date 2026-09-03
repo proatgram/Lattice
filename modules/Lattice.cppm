@@ -29,15 +29,9 @@ export namespace Lattice {
              */
             auto LoadConfig(const std::filesystem::path configPath) -> void;
 
-            /**
-             * @brief Gets the build graph for the entire configuration.
-             *
-             * @return A shared pointer to the build graph.
-             */
-            auto GetBuildGraph() const -> std::shared_ptr<Object::BuildGraph>;
+            auto StartBuild(const std::optional<std::list<std::string>> &objects = {}, const std::optional<std::size_t> &numberJobs = {}) -> void;
 
         private:
             std::map<std::string, std::shared_ptr<Object::Object>> m_globalObjects;
-            std::shared_ptr<Object::BuildGraph> m_globalBuildGraph;
     };
 }  // export namespace Lattice

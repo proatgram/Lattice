@@ -28,35 +28,22 @@ export namespace Lattice::Object {
             friend auto operator<(const DependencyNode &lhs, const DependencyNode &rhs) -> bool {
                 return lhs.dependencyCount < rhs.dependencyCount;
             }
-            
+
             /**
              * @brief Default constructor.
              *
-             * Generates the build graph for the entire Lattice context.
-             */
-            BuildGraph(Constructable);
-
-            /**
-             * @brief Sub-graph constructor.
+             * Generates a build graph for the entire Lattice context, or
+             * a specific group of objects specified in objectResolvers.
              *
-             * Generates a graph consisting of a sub portion of the entire
-             * build graph, centered around a singular node.
+             * This will check the cache to see if anything for the specific
+             * target, or entire context needs to be rebuild.
              */
-            BuildGraph(Constructable, const BuildGraph &other, const std::shared_ptr<const Object> &object);
-
+            BuildGraph(Constructable, const std::optional<std::list<std::shared_ptr<Resolver>>> &objectResolvers = {});
+            
             /**
              * @brief Generates the entire build graph.
              */
-            static auto Generate() -> std::shared_ptr<BuildGraph>;
-
-            /**
-             * @brief Generates a sub section of the entire graph
-             * centered around a given object.
-             *
-             * @param[in] objectResolver The Resolver instance for
-             * the object.
-             */
-            auto SubGraph(const std::shared_ptr<Resolver> &objectResolver) -> std::shared_ptr<BuildGraph>;
+            static auto Generate(const std::optional<std::list<std::shared_ptr<Resolver>>> &objectResolvers = {}) -> std::shared_ptr<BuildGraph>;
 
             /**
              * @brief Gets the currently ready to be built object nodes.
@@ -64,6 +51,13 @@ export namespace Lattice::Object {
              * @return A list of shared pointers to `DependencyNode`'s.
              */
             auto GetReady() const -> std::list<std::shared_ptr<DependencyNode>>;
+
+            /**
+             * @brief Checks if the build graph has finished traversing.
+             *
+             * @return true if the build graph is done, false otherwise.
+             */
+            auto IsCompleted() const -> bool;
 
             /**
              * @brief Updates the build graph for a node.
@@ -80,6 +74,7 @@ export namespace Lattice::Object {
             auto UpdateBuilt(const std::shared_ptr<DependencyNode> &node) -> void;
 
         private:
+            auto RecursiveBuildGraph(const std::shared_ptr<Resolver> &objectResolver, std::map<std::string, std::shared_ptr<DependencyNode>> &currentGraph, const std::optional<std::shared_ptr<DependencyNode>> &dependee = {}) -> bool;
             std::map<std::string, std::shared_ptr<DependencyNode>> m_dependencyNodesMap;
             std::list<std::shared_ptr<DependencyNode>> m_dependencyNodesSorted;
     };

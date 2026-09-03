@@ -4,7 +4,7 @@ include:
 
 project:
   Lattice:
-    description: "Another build system for C++ based solely on configuration files."
+    description: "Another build engine written in C++ based solely on configuration files."
     homepage: "https://github.com/proatgram/Lattice"
     version: 0.1
     default_toolchain: g++
