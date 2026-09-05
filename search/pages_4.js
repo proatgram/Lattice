@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['examples_0',['Usage/Examples',['../d0/d30/md_README.html#autotoc_md1',1,'']]]
+  ['lattice_0',['Lattice',['../d0/d30/md_README.html',1,'']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['memgrp_5ftest_0',['Memgrp_Test',['../dc/df8/classMemgrp__Test.html',1,'']]],
-  ['mux_5fusing_5fwith_1',['mux_using_with',['../dd/d2d/classmux__using__with.html',1,'']]]
+  ['section_0',['Section',['../d7/d9f/classLattice_1_1Cache_1_1Serialization_1_1Cache_1_1Section.html',1,'Lattice::Cache::Serialization::Cache']]],
+  ['sectionarray_1',['SectionArray',['../dc/dcc/classLattice_1_1Cache_1_1Serialization_1_1Cache_1_1SectionArray.html',1,'Lattice::Cache::Serialization::Cache']]]
 ];

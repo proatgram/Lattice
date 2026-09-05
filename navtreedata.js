@@ -25,7 +25,6 @@
 var NAVTREE =
 [
   [ "Lattice", "index.html", [
-    [ "pag_example", "da/de8/pag_example.html", null ],
     [ "Lattice", "d0/d30/md_README.html", [
       [ "Usage/Examples", "d0/d30/md_README.html#autotoc_md1", [
         [ "Configuration", "d0/d30/md_README.html#autotoc_md2", null ],
@@ -36,17 +35,8 @@ var NAVTREE =
       ] ],
       [ "Authors", "d0/d30/md_README.html#autotoc_md6", null ]
     ] ],
-    [ "Bug List", "de/da5/bug.html", null ],
-    [ "Topics", "topics.html", "topics" ],
     [ "Modules", "modules.html", [
       [ "Modules List", "modules.html", "modules_dup" ]
-    ] ],
-    [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
-      [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ]
-      ] ]
     ] ],
     [ "Concepts", "concepts.html", "concepts" ],
     [ "Classes", "annotated.html", [
@@ -54,35 +44,20 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ],
-        [ "Enumerations", "functions_enum.html", null ],
-        [ "Enumerator", "functions_eval.html", null ],
-        [ "Related Symbols", "functions_rela.html", null ]
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ],
-      [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
-        [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", null ]
-      ] ]
-    ] ],
-    [ "Examples", "examples.html", "examples" ]
+      [ "File List", "files.html", "files_dup" ]
+    ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d6/de6/classLattice_1_1Cache_1_1CacheManager.html#a610386c5eac80a4ab344da1e8d930222",
-"dc/d24/classpyexample_1_1PyClass.html#a52fff5f5883084b3930be400ae4495a0"
+"d7/dc4/classLattice_1_1Object_1_1Capabilities_1_1ArtifactProvider.html"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';

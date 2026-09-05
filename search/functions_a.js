@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['javadoc_5ftest_0',['Javadoc_Test',['../d8/da6/classJavadoc__Test.html#a17313327932ae97596b0a455ba8342cc',1,'Javadoc_Test']]]
+  ['query_0',['Query',['../de/d26/classLattice_1_1Provider.html#adc7269905de29a86c1ec49f72d6c5524',1,'Lattice::Provider::Query()'],['../d7/d65/classLattice_1_1Registry.html#a8379ed767b0d59852e59bfd0e6be8dc2',1,'Lattice::Registry::Query()']]]
 ];
