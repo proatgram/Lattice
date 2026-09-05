@@ -5,6 +5,7 @@ target_sources(lattice_object
         "${PROJECT_SOURCE_DIR}/src/Object/Capabilities/LanguageIdentifiable.cpp"
         "${PROJECT_SOURCE_DIR}/src/Object/Capabilities/ProjectIdentifiable.cpp"
         "${PROJECT_SOURCE_DIR}/src/Object/Capabilities/Buildable.cpp"
+        "${PROJECT_SOURCE_DIR}/src/Object/Capabilities/Cacheable.cpp"
     PUBLIC FILE_SET CXX_MODULES
         BASE_DIRS "${PROJECT_SOURCE_DIR}/modules"
         FILES
@@ -17,4 +18,5 @@ target_sources(lattice_object
             "${PROJECT_SOURCE_DIR}/modules/Object/Capabilities/ProjectIdentifiable.cppm"
             "${PROJECT_SOURCE_DIR}/modules/Object/Capabilities/ArtifactProvider.cppm"
             "${PROJECT_SOURCE_DIR}/modules/Object/Capabilities/HasToolchain.cppm"
+            "${PROJECT_SOURCE_DIR}/modules/Object/Capabilities/Cacheable.cppm"
 )

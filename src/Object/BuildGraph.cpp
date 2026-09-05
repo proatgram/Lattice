@@ -1,6 +1,7 @@
 module Lattice.Object.BuildGraph;
 
 import Lattice.Object.Capabilities.HasDependencies;
+import Lattice.Object.Capabilities.Cacheable;
 import Lattice.Project;
 import Lattice.Registry;
 
@@ -29,7 +30,14 @@ auto BuildGraph::RecursiveBuildGraph(const std::shared_ptr<Resolver> &objectReso
         }
     }
 
-    if (dependencyNode->dependencyCount > 0 || true /* TODO: When Cache system implemented: check cache to see if this needs to be rebuilt */) {
+    bool cacheDirty{true};
+    if (auto cacheable = objectResolver->GetResolvedObject()->GetCapability<Capabilities::Cacheable>().value_or(nullptr); cacheable) {
+        if (auto objectCache = cacheable->GetCache().value_or(nullptr); objectCache) {
+            cacheDirty = objectCache->IsDirty();
+        }
+    }
+
+    if (dependencyNode->dependencyCount > 0 || cacheDirty) {
         if (dependee)
             dependencyNode->dependents.push_back(dependee.value());
 

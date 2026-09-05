@@ -11,8 +11,3 @@ target_sources(lattice_system
             "${PROJECT_SOURCE_DIR}/modules/System/Command.cppm"
             "${PROJECT_SOURCE_DIR}/modules/System/Process.cppm"
 )
-
-target_link_libraries(lattice_system
-    PRIVATE
-        atomic
-)

@@ -27,9 +27,10 @@ target_sources(lattice_object
 target_link_libraries(lattice_object
     PUBLIC
         lattice::IFactory
+        lattice::Cache::Serialization
     PRIVATE
         lattice::Registry
-
+        lattice::Cache::Manager
         yaml-cpp::yaml-cpp
 )
 
