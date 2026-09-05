@@ -1,17 +1,10 @@
 var searchData=
 [
-  ['pag_5fexample_0',['pag_example',['../da/de8/pag_example.html',1,'']]],
-  ['par_5ftest_1',['Par_Test',['../da/d1e/classPar__Test.html',1,'']]],
-  ['plugininstance_2',['PluginInstance',['../d4/db6/structLattice_1_1Plugins_1_1PluginInstance.html',1,'Lattice::Plugins']]],
-  ['pluginversionsupport_3',['PluginVersionSupport',['../d6/d1f/structLattice_1_1Plugins_1_1PluginVersionSupport.html',1,'Lattice::Plugins']]],
-  ['process_4',['Process',['../db/dfc/classLattice_1_1System_1_1Process.html',1,'Lattice::System']]],
-  ['project_5',['Project',['../d5/dd0/classLattice_1_1Object_1_1Project.html',1,'Lattice::Object::Project'],['../d5/dd0/classLattice_1_1Object_1_1Project.html#ab40535a4e8f2000c4f286ab64b91aa18',1,'Lattice::Object::Project::Project()']]],
-  ['projectfactory_6',['ProjectFactory',['../d4/d98/classLattice_1_1Object_1_1ProjectFactory.html',1,'Lattice::Object']]],
-  ['projectidentifiable_7',['ProjectIdentifiable',['../db/dc6/classLattice_1_1Object_1_1Capabilities_1_1ProjectIdentifiable.html',1,'Lattice::Object::Capabilities']]],
-  ['provider_8',['Provider',['../de/d26/classLattice_1_1Provider.html',1,'Lattice']]],
-  ['provides_9',['Provides',['../d3/d7f/classLattice_1_1Object_1_1IToolchain.html#a897ae77001db2257f7a668572bbefadc',1,'Lattice::Object::IToolchain']]],
-  ['publicvar_10',['publicVar',['../d8/da6/classJavadoc__Test.html#a44a516fbc3a4865e2dcae34649c9df6a',1,'Javadoc_Test::publicVar()'],['../de/d73/classQTstyle__Test.html#aabf7b2e9ed83ea44aca4d213baae06d3',1,'QTstyle_Test::publicVar()']]],
-  ['pyclass_11',['PyClass',['../d7/dfd/classdocstring_1_1PyClass.html',1,'docstring.PyClass'],['../dc/d24/classpyexample_1_1PyClass.html',1,'pyexample.PyClass']]],
-  ['pyexample_12',['pyexample',['../da/de4/namespacepyexample.html',1,'']]],
-  ['pymethod_13',['PyMethod',['../d7/dfd/classdocstring_1_1PyClass.html#af092e1eacc10334e0e8630531a3473b4',1,'docstring.PyClass.PyMethod()'],['../dc/d24/classpyexample_1_1PyClass.html#a654596774eb28a0c6d26eea565de3a9d',1,'pyexample.PyClass.PyMethod()']]]
+  ['object_0',['Object',['../d7/d62/classLattice_1_1Object_1_1Object.html',1,'Lattice::Object::Object'],['../de/de7/structObject.html',1,'Object'],['../d7/d62/classLattice_1_1Object_1_1Object.html#a4ea084aaad283f30aba73b788b01e021',1,'Lattice::Object::Object::Object()'],['../dc/dcc/manual_8c.html#ab1287b6141419421dc5c14b9f7756b0a',1,'Object:&#160;manual.c']]],
+  ['objref_1',['objRef',['../de/de7/structObject.html#a71225073d06a793b9a6ea9263ed37b12',1,'Object']]],
+  ['objunref_2',['objUnref',['../de/de7/structObject.html#a924ee0cecc906d148022b3f0d6325cfb',1,'Object']]],
+  ['open_3',['open',['../d3/dd6/structcmd_8h.html#a2c4414339f388561554c2deab11a1a07',1,'structcmd.h']]],
+  ['operator_2b_4',['operator+',['../dd/d00/classLattice_1_1Object_1_1Properties_1_1IProperty.html#ab988463d04766e5eff171be4f45f168b',1,'Lattice::Object::Properties::IProperty']]],
+  ['operator_5b_5d_5',['operator[]',['../d7/d9f/classLattice_1_1Cache_1_1Serialization_1_1Cache_1_1Section.html#afa431c97acd7cacf5f6aac674ff4abb5',1,'Lattice::Cache::Serialization::Cache::Section::operator[](const std::string &amp;key) const -&gt; std::string'],['../d7/d9f/classLattice_1_1Cache_1_1Serialization_1_1Cache_1_1Section.html#a4c58b16b87414d7e75e0cfa2fedb1d6b',1,'Lattice::Cache::Serialization::Cache::Section::operator[](const std::string &amp;key) -&gt; std::string &amp;'],['../dc/dcc/classLattice_1_1Cache_1_1Serialization_1_1Cache_1_1SectionArray.html#ab8e640149faf467e0b368ebfc78af4fe',1,'Lattice::Cache::Serialization::Cache::SectionArray::operator[](int index) const -&gt; const std::shared_ptr&lt; Section &gt;'],['../dc/dcc/classLattice_1_1Cache_1_1Serialization_1_1Cache_1_1SectionArray.html#ac19644354486475730798c3e27c58d0d',1,'Lattice::Cache::Serialization::Cache::SectionArray::operator[](int index) -&gt; std::shared_ptr&lt; Section &gt;'],['../da/d7e/classLattice_1_1Cache_1_1Serialization_1_1Cache.html#a3c484ba86bb92908171a1d0585c11a29',1,'Lattice::Cache::Serialization::Cache::operator[](const std::string &amp;sectionName) const -&gt; const std::shared_ptr&lt; ISection &gt;'],['../da/d7e/classLattice_1_1Cache_1_1Serialization_1_1Cache.html#a9e07fc0b52ba9696810f56bd030ac429',1,'Lattice::Cache::Serialization::Cache::operator[](const std::string &amp;sectionName) -&gt; std::shared_ptr&lt; ISection &gt;']]],
+  ['overload_5ftest_6',['Overload_Test',['../d0/db6/classOverload__Test.html',1,'']]]
 ];

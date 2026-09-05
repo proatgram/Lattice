@@ -11,5 +11,7 @@ var classLattice_1_1Object_1_1Project =
     [ "GetVersion", "d5/dd0/classLattice_1_1Object_1_1Project.html#a0d8acbafaeac7d72050bce31644bf261", null ],
     [ "SetDescription", "d5/dd0/classLattice_1_1Object_1_1Project.html#a1f766dc42053d1afe339bf9376b986f9", null ],
     [ "SetHomepageUrl", "d5/dd0/classLattice_1_1Object_1_1Project.html#abdf5ce246c6ab21f9a09c959f1fafee3", null ],
+    [ "SetToolchain", "d5/dd0/classLattice_1_1Object_1_1Project.html#abefc0fce32b7bb2369d59877f13230c1", null ],
+    [ "SetToolchainId", "d5/dd0/classLattice_1_1Object_1_1Project.html#a12014ee11ff60a4d2d18a5191dfa9200", null ],
     [ "SetVersion", "d5/dd0/classLattice_1_1Object_1_1Project.html#a38115665daa3e594907e92dc5c082cbe", null ]
 ];

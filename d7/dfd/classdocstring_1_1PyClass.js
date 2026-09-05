@@ -1,5 +1,5 @@
 var classdocstring_1_1PyClass =
 [
-    [ "__init__", "d7/dfd/classdocstring_1_1PyClass.html#a00dd800dc15e2b727e2a37c6f6c40e8b", null ],
-    [ "PyMethod", "d7/dfd/classdocstring_1_1PyClass.html#af092e1eacc10334e0e8630531a3473b4", null ]
+    [ "__init__", "d7/dfd/classdocstring_1_1PyClass.html#a03342ef04e3b83b2df9dec57a10f62c4", null ],
+    [ "PyMethod", "d7/dfd/classdocstring_1_1PyClass.html#a7229b3c16b9da8f8d8eb44d5876efc32", null ]
 ];

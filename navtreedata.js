@@ -37,7 +37,10 @@ var NAVTREE =
       [ "Authors", "d0/d30/md_README.html#autotoc_md6", null ]
     ] ],
     [ "Bug List", "de/da5/bug.html", null ],
-    [ "Modules", "modules.html", "modules" ],
+    [ "Topics", "topics.html", "topics" ],
+    [ "Modules", "modules.html", [
+      [ "Modules List", "modules.html", "modules_dup" ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -56,7 +59,7 @@ var NAVTREE =
         [ "Variables", "functions_vars.html", null ],
         [ "Enumerations", "functions_enum.html", null ],
         [ "Enumerator", "functions_eval.html", null ],
-        [ "Related Functions", "functions_rela.html", null ]
+        [ "Related Symbols", "functions_rela.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -78,8 +81,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"da/d7e/classLattice_1_1Cache_1_1Serialization_1_1Cache.html#aabf786977499c3992048ad1afd3c0e95"
+"d6/de6/classLattice_1_1Cache_1_1CacheManager.html#a610386c5eac80a4ab344da1e8d930222",
+"dc/d24/classpyexample_1_1PyClass.html#a52fff5f5883084b3930be400ae4495a0"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+const SYNCONMSG = 'click to disable panel synchronization';
+const SYNCOFFMSG = 'click to enable panel synchronization';
+const LISTOFALLMEMBERS = 'List of all members';

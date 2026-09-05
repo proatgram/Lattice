@@ -1,5 +1,5 @@
 var namespacepyexample =
 [
     [ "PyClass", "dc/d24/classpyexample_1_1PyClass.html", "dc/d24/classpyexample_1_1PyClass" ],
-    [ "func", "da/de4/namespacepyexample.html#a2daf35288bc9d0a1d4233ab18b553451", null ]
+    [ "func", "da/de4/namespacepyexample.html#a17c6e659a89c18fa9459ec5341063fb8", null ]
 ];

@@ -23,7 +23,7 @@ var hierarchy =
       [ "Lattice::Tooling::CompilerConfiguration", "d1/d93/classLattice_1_1Tooling_1_1CompilerConfiguration.html", null ],
       [ "Lattice::Tooling::LinkerConfiguration", "df/d7e/classLattice_1_1Tooling_1_1LinkerConfiguration.html", null ]
     ] ],
-    [ "Lattice::ISingletonFactory< Factory, T >::Constructable", "d8/dd5/structLattice_1_1ISingletonFactory_1_1Constructable.html", null ],
+    [ "Lattice::ISingletonFactory&lt; Factory, T &gt;::Constructable", "d8/dd5/structLattice_1_1ISingletonFactory_1_1Constructable.html", null ],
     [ "Lattice::Object::Object::Constructable", "de/dde/structLattice_1_1Object_1_1Object_1_1Constructable.html", null ],
     [ "Lattice::Tooling::Configuration::Constructable", "d6/d32/structLattice_1_1Tooling_1_1Configuration_1_1Constructable.html", null ],
     [ "Lattice::Object::Resolver::Context", "d1/d1b/structLattice_1_1Object_1_1Resolver_1_1Context.html", null ],
@@ -79,26 +79,32 @@ var hierarchy =
       ] ]
     ] ],
     [ "Lattice::Tooling::ICompiler", "d8/df1/classLattice_1_1Tooling_1_1ICompiler.html", null ],
-    [ "Lattice::IFactory< T >", "d3/d5a/classLattice_1_1IFactory.html", [
-      [ "Lattice::ISingletonFactory< Factory, IBinary >", "d2/dea/classLattice_1_1ISingletonFactory.html", [
-        [ "Lattice::Object::BinaryFactory< Factory >", "d5/d46/classLattice_1_1Object_1_1BinaryFactory.html", null ]
-      ] ],
-      [ "Lattice::ISingletonFactory< Factory, ILibrary >", "d2/dea/classLattice_1_1ISingletonFactory.html", [
-        [ "Lattice::Object::LibraryFactory< Factory >", "db/ddc/classLattice_1_1Object_1_1LibraryFactory.html", null ]
-      ] ],
-      [ "Lattice::ISingletonFactory< Factory, IToolchain >", "d2/dea/classLattice_1_1ISingletonFactory.html", [
-        [ "Lattice::Object::ToolchainFactory< Factory >", "d8/d64/classLattice_1_1Object_1_1ToolchainFactory.html", null ]
-      ] ],
-      [ "Lattice::ISingletonFactory< Factory, T >", "d2/dea/classLattice_1_1ISingletonFactory.html", [
+    [ "Lattice::IFactory&lt; T &gt;", "d3/d5a/classLattice_1_1IFactory.html", [
+      [ "Lattice::ISingletonFactory< Factory, Object >", "d2/dea/classLattice_1_1ISingletonFactory.html", [
         [ "Lattice::Object::IBinaryFactory", "d4/db3/classLattice_1_1Object_1_1IBinaryFactory.html", null ],
         [ "Lattice::Object::ILibraryFactory", "de/d14/classLattice_1_1Object_1_1ILibraryFactory.html", null ],
         [ "Lattice::Object::IToolchainFactory", "d7/d43/classLattice_1_1Object_1_1IToolchainFactory.html", null ],
         [ "Lattice::Object::ProjectFactory", "d4/d98/classLattice_1_1Object_1_1ProjectFactory.html", null ]
+      ] ],
+      [ "Lattice::ISingletonFactory< Factory, ICompiler >", "d2/dea/classLattice_1_1ISingletonFactory.html", null ],
+      [ "Lattice::ISingletonFactory< Factory, ILinker >", "d2/dea/classLattice_1_1ISingletonFactory.html", null ],
+      [ "Lattice::ISingletonFactory< Factory, T >", "d2/dea/classLattice_1_1ISingletonFactory.html", null ]
+    ] ],
+    [ "Lattice::IFactory&lt; IBinary &gt;", "d3/d5a/classLattice_1_1IFactory.html", [
+      [ "Lattice::ISingletonFactory< Factory, IBinary >", "d2/dea/classLattice_1_1ISingletonFactory.html", [
+        [ "Lattice::Object::BinaryFactory< Factory >", "d5/d46/classLattice_1_1Object_1_1BinaryFactory.html", null ]
       ] ]
     ] ],
-    [ "Lattice::IFactory< IBinary >", "d3/d5a/classLattice_1_1IFactory.html", null ],
-    [ "Lattice::IFactory< ILibrary >", "d3/d5a/classLattice_1_1IFactory.html", null ],
-    [ "Lattice::IFactory< IToolchain >", "d3/d5a/classLattice_1_1IFactory.html", null ],
+    [ "Lattice::IFactory&lt; ILibrary &gt;", "d3/d5a/classLattice_1_1IFactory.html", [
+      [ "Lattice::ISingletonFactory< Factory, ILibrary >", "d2/dea/classLattice_1_1ISingletonFactory.html", [
+        [ "Lattice::Object::LibraryFactory< Factory >", "db/ddc/classLattice_1_1Object_1_1LibraryFactory.html", null ]
+      ] ]
+    ] ],
+    [ "Lattice::IFactory&lt; IToolchain &gt;", "d3/d5a/classLattice_1_1IFactory.html", [
+      [ "Lattice::ISingletonFactory< Factory, IToolchain >", "d2/dea/classLattice_1_1ISingletonFactory.html", [
+        [ "Lattice::Object::ToolchainFactory< Factory >", "d8/d64/classLattice_1_1Object_1_1ToolchainFactory.html", null ]
+      ] ]
+    ] ],
     [ "Lattice::Tooling::ILinker", "d4/df1/classLattice_1_1Tooling_1_1ILinker.html", null ],
     [ "Include_Test", "d8/d04/classInclude__Test.html", null ],
     [ "Lattice::Object::Properties::IProperty", "dd/d00/classLattice_1_1Object_1_1Properties_1_1IProperty.html", null ],
@@ -129,8 +135,8 @@ var hierarchy =
     [ "Lattice::Object::Resolver", "df/d26/classLattice_1_1Object_1_1Resolver.html", null ],
     [ "SomeNiceClass", "d7/d23/classSomeNiceClass.html", null ],
     [ "String", "d3/dee/classString.html", null ],
-    [ "Test< T, i >", "df/da6/classTest.html", null ],
-    [ "Test< void *, 200 >", "d6/d8d/classTest_3_01void_01_5_00_01200_01_4.html", [
+    [ "Test&lt; T, i &gt;", "df/da6/classTest.html", null ],
+    [ "Test&lt; void *, 200 &gt;", "d6/d8d/classTest_3_01void_01_5_00_01200_01_4.html", [
       [ "Test< T * >", "de/d96/classTest_3_01T_01_5_01_4.html", null ]
     ] ],
     [ "Lattice::Object::ToolchainDefault", "d1/d46/structLattice_1_1Object_1_1ToolchainDefault.html", null ]

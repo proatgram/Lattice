@@ -26,7 +26,7 @@ var annotated_dup =
         [ "Properties", null, [
           [ "IProperty", "dd/d00/classLattice_1_1Object_1_1Properties_1_1IProperty.html", "dd/d00/classLattice_1_1Object_1_1Properties_1_1IProperty" ]
         ] ],
-        [ "BinaryFactory", "d5/d46/classLattice_1_1Object_1_1BinaryFactory.html", null ],
+        [ "BinaryFactory", "d5/d46/classLattice_1_1Object_1_1BinaryFactory.html", "d5/d46/classLattice_1_1Object_1_1BinaryFactory" ],
         [ "BuildGraph", "d7/d10/classLattice_1_1Object_1_1BuildGraph.html", "d7/d10/classLattice_1_1Object_1_1BuildGraph" ],
         [ "IBinary", "d8/d77/classLattice_1_1Object_1_1IBinary.html", null ],
         [ "IBinaryFactory", "d4/db3/classLattice_1_1Object_1_1IBinaryFactory.html", "d4/db3/classLattice_1_1Object_1_1IBinaryFactory" ],
@@ -34,13 +34,13 @@ var annotated_dup =
         [ "ILibraryFactory", "de/d14/classLattice_1_1Object_1_1ILibraryFactory.html", "de/d14/classLattice_1_1Object_1_1ILibraryFactory" ],
         [ "IToolchain", "d3/d7f/classLattice_1_1Object_1_1IToolchain.html", "d3/d7f/classLattice_1_1Object_1_1IToolchain" ],
         [ "IToolchainFactory", "d7/d43/classLattice_1_1Object_1_1IToolchainFactory.html", "d7/d43/classLattice_1_1Object_1_1IToolchainFactory" ],
-        [ "LibraryFactory", "db/ddc/classLattice_1_1Object_1_1LibraryFactory.html", null ],
+        [ "LibraryFactory", "db/ddc/classLattice_1_1Object_1_1LibraryFactory.html", "db/ddc/classLattice_1_1Object_1_1LibraryFactory" ],
         [ "Object", "d7/d62/classLattice_1_1Object_1_1Object.html", "d7/d62/classLattice_1_1Object_1_1Object" ],
         [ "Project", "d5/dd0/classLattice_1_1Object_1_1Project.html", "d5/dd0/classLattice_1_1Object_1_1Project" ],
         [ "ProjectFactory", "d4/d98/classLattice_1_1Object_1_1ProjectFactory.html", "d4/d98/classLattice_1_1Object_1_1ProjectFactory" ],
         [ "Resolver", "df/d26/classLattice_1_1Object_1_1Resolver.html", "df/d26/classLattice_1_1Object_1_1Resolver" ],
         [ "ToolchainDefault", "d1/d46/structLattice_1_1Object_1_1ToolchainDefault.html", null ],
-        [ "ToolchainFactory", "d8/d64/classLattice_1_1Object_1_1ToolchainFactory.html", null ]
+        [ "ToolchainFactory", "d8/d64/classLattice_1_1Object_1_1ToolchainFactory.html", "d8/d64/classLattice_1_1Object_1_1ToolchainFactory" ]
       ] ],
       [ "Plugins", null, [
         [ "Loader", "d2/da6/classLattice_1_1Plugins_1_1Loader.html", null ],
@@ -96,8 +96,8 @@ var annotated_dup =
     [ "String", "d3/dee/classString.html", "d3/dee/classString" ],
     [ "Tag", "db/dac/classTag.html", "db/dac/classTag" ],
     [ "Test", "df/da6/classTest.html", "df/da6/classTest" ],
-    [ "Test< T * >", "de/d96/classTest_3_01T_01_5_01_4.html", "de/d96/classTest_3_01T_01_5_01_4" ],
-    [ "Test< void *, 200 >", "d6/d8d/classTest_3_01void_01_5_00_01200_01_4.html", "d6/d8d/classTest_3_01void_01_5_00_01200_01_4" ],
+    [ "Test&lt; T * &gt;", "de/d96/classTest_3_01T_01_5_01_4.html", "de/d96/classTest_3_01T_01_5_01_4" ],
+    [ "Test&lt; void *, 200 &gt;", "d6/d8d/classTest_3_01void_01_5_00_01200_01_4.html", "d6/d8d/classTest_3_01void_01_5_00_01200_01_4" ],
     [ "Truck", "d7/d01/structTruck.html", "d7/d01/structTruck" ],
     [ "Vehicle", "d0/dba/structVehicle.html", "d0/dba/structVehicle" ]
 ];

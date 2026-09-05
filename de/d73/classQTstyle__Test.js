@@ -11,6 +11,6 @@ var classQTstyle__Test =
     [ "testMeToo", "de/d73/classQTstyle__Test.html#ad5b201f097a720d44bf976c2f27efbda", null ],
     [ "enumPtr", "de/d73/classQTstyle__Test.html#a973a4566c9a036f4eca508ba5fe80dcb", null ],
     [ "enumVar", "de/d73/classQTstyle__Test.html#a241fb54f66dc0b3b03eece3a1a1bf18b", null ],
-    [ "handler", "de/d73/classQTstyle__Test.html#a79dd4e5498f09057775a819d911349e2", null ],
+    [ "handler", "de/d73/classQTstyle__Test.html#a45c46b46d731cca73407af41d4c3f639", null ],
     [ "publicVar", "de/d73/classQTstyle__Test.html#aabf7b2e9ed83ea44aca4d213baae06d3", null ]
 ];

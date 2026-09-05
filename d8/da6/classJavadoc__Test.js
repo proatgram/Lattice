@@ -11,6 +11,6 @@ var classJavadoc__Test =
     [ "testMeToo", "d8/da6/classJavadoc__Test.html#ac2b39cabbe80957ae3e8bc2bd4e887f6", null ],
     [ "enumPtr", "d8/da6/classJavadoc__Test.html#abcb36df9d8af3e69290c239ba483d6df", null ],
     [ "enumVar", "d8/da6/classJavadoc__Test.html#afcc11e097968fb44080b82b75032e40b", null ],
-    [ "handler", "d8/da6/classJavadoc__Test.html#ace81a523a4eef44501a841a6d338832b", null ],
+    [ "handler", "d8/da6/classJavadoc__Test.html#a4624dd5faea839f9acdba4ae4265a02d", null ],
     [ "publicVar", "d8/da6/classJavadoc__Test.html#a44a516fbc3a4865e2dcae34649c9df6a", null ]
 ];
