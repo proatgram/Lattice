@@ -57,6 +57,17 @@ var hierarchy =
       ] ]
     ] ],
     [ "Lattice::Tooling::ICompiler", "d8/df1/classLattice_1_1Tooling_1_1ICompiler.html", null ],
+    [ "Lattice::Logger::EscapeSequences::IEscapeSequence", "d8/df8/classLattice_1_1Logger_1_1EscapeSequences_1_1IEscapeSequence.html", [
+      [ "Lattice::Logger::EscapeSequences::Clearing::Clear", "d3/dc0/classLattice_1_1Logger_1_1EscapeSequences_1_1Clearing_1_1Clear.html", null ],
+      [ "Lattice::Logger::EscapeSequences::Cursor::MoveDown", "dd/d90/classLattice_1_1Logger_1_1EscapeSequences_1_1Cursor_1_1MoveDown.html", null ],
+      [ "Lattice::Logger::EscapeSequences::Cursor::MoveLeft", "da/d7b/classLattice_1_1Logger_1_1EscapeSequences_1_1Cursor_1_1MoveLeft.html", null ],
+      [ "Lattice::Logger::EscapeSequences::Cursor::MoveRight", "dc/d6e/classLattice_1_1Logger_1_1EscapeSequences_1_1Cursor_1_1MoveRight.html", null ],
+      [ "Lattice::Logger::EscapeSequences::Cursor::MoveToColumn", "df/dc7/classLattice_1_1Logger_1_1EscapeSequences_1_1Cursor_1_1MoveToColumn.html", null ],
+      [ "Lattice::Logger::EscapeSequences::Cursor::MoveUp", "d2/dc4/classLattice_1_1Logger_1_1EscapeSequences_1_1Cursor_1_1MoveUp.html", null ],
+      [ "Lattice::Logger::EscapeSequences::Cursor::RestoreCursorPosition", "df/d8b/classLattice_1_1Logger_1_1EscapeSequences_1_1Cursor_1_1RestoreCursorPosition.html", null ],
+      [ "Lattice::Logger::EscapeSequences::Cursor::SaveCursorPosition", "da/dcf/classLattice_1_1Logger_1_1EscapeSequences_1_1Cursor_1_1SaveCursorPosition.html", null ],
+      [ "Lattice::Logger::EscapeSequences::TerminalStyle< Code >", "dc/d67/classLattice_1_1Logger_1_1EscapeSequences_1_1TerminalStyle.html", null ]
+    ] ],
     [ "Lattice::IFactory&lt; T &gt;", "d3/d5a/classLattice_1_1IFactory.html", [
       [ "Lattice::ISingletonFactory< Factory, Object >", "d2/dea/classLattice_1_1ISingletonFactory.html", [
         [ "Lattice::Object::IBinaryFactory", "d4/db3/classLattice_1_1Object_1_1IBinaryFactory.html", null ],
@@ -91,6 +102,7 @@ var hierarchy =
     ] ],
     [ "Lattice::Lattice", "d9/d76/classLattice_1_1Lattice.html", null ],
     [ "Lattice::Plugins::Loader", "d2/da6/classLattice_1_1Plugins_1_1Loader.html", null ],
+    [ "Lattice::Logger::Logger", "de/dc6/classLattice_1_1Logger_1_1Logger.html", null ],
     [ "Lattice::Plugins::PluginInstance", "d4/db6/structLattice_1_1Plugins_1_1PluginInstance.html", null ],
     [ "Lattice::Plugins::PluginVersionSupport", "d6/d1f/structLattice_1_1Plugins_1_1PluginVersionSupport.html", null ],
     [ "Lattice::System::Process", "db/dfc/classLattice_1_1System_1_1Process.html", null ],

@@ -114,48 +114,63 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d0/d30/md_READ
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
 <p>Another build system written in C++. This one is built to be:</p><ul>
-<li>Simple: Easy YAML configuration files.</li>
+<li>Simple: Easy YAML configuration files and basic by default.</li>
 <li>Fast: Heiarchical object system and caching</li>
 <li>Extendable: Native plugins</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+But, why?</h2>
+<p>It's simple: I wanted a project to build, and I got fed up with having to jump over to the CMake documentation every time I wanted to do a very simple thing. I though: It would be a lot simpler to just have a build system that I can just configure, instead of needing to learn a new language to use.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
 Usage/Examples</h1>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+Plugins</h2>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+Overview</h3>
+<p>By default, Lattice is just an engine and cannot do much. In order to use Lattice, Plugins can be made and installed that add capabilities to lattice.</p>
+<p>A plugin can:</p><ul>
+<li>Add a new language toolchain.</li>
+<li>Add a new provider.</li>
+<li>Add a new object type.</li>
+<li>Add new system tooling.</li>
+</ul>
+<p>The list might not seem big, but the things Lattice allows you to do with those is.</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+Using them</h3>
+<p>Using them is simple: You just install them, and Lattice handles the rest. The Plugin, if it behaves, should register all of it's types with Lattice, new toolchains, providers, language types, system tooling, should be made available and usable.</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+Making them</h3>
+<p>Making them is simple too: You simply inherit from types defined by Lattice in C++, implement your plugin specific stuff (e.g. the specifics of how a language library is build using a toolchain by calling tools), and register them with with Lattice.</p>
+<p>A very barebones example plugin that can get you started is located at <a href="https://github.com/proatgram/Lattice/tree/main/examples/plugin">examples/plugin</a>.</p>
+<p>Additionally, you can reference an official C/C++ Plugin <a href="https://github.com/proatgram/LatticeCxxPlugin">here</a>.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
 Configuration</h2>
 <p>Here's an example configuration file containing a lot of stuff you may use. Don't worry, it may seem like a lot, but it's actually really simple!</p>
 <div class="fragment"><div class="line">include:</div>
 <div class="line">  - &quot;someDir&quot;</div>
-<div class="line">  - &quot;someFile&quot;</div>
+<div class="line">  - someFile</div>
 <div class="line"> </div>
 <div class="line">project:</div>
-<div class="line">  lattice:</div>
-<div class="line">    description: &quot;Another build system for C++ based solely on configuration files.&quot;</div>
-<div class="line">    homepage: &quot;https://github.com/proatgram/lattice&quot;</div>
+<div class="line">  Lattice:</div>
+<div class="line">    description: &quot;Another build engine written in C++ based solely on configuration files.&quot;</div>
+<div class="line">    homepage: &quot;https://github.com/proatgram/Lattice&quot;</div>
 <div class="line">    version: 0.1</div>
+<div class="line">    default_toolchain: g++</div>
 <div class="line">    requires:</div>
 <div class="line">      - libcurl:</div>
 <div class="line">          version: &quot;&gt;=8&quot;</div>
 <div class="line">          provider: &quot;pkg-config&quot;</div>
 <div class="line">          optional: true</div>
 <div class="line"> </div>
-<div class="line">lattice:</div>
+<div class="line">Lattice:</div>
 <div class="line">  binary:</div>
-<div class="line">    Lattice:</div>
+<div class="line">    lattice:</div>
 <div class="line">      output_name: &quot;lattice&quot;</div>
 <div class="line">      sources: [&quot;src/main.cpp&quot;]</div>
 <div class="line">      dependencies:</div>
-<div class="line">        private: [libcurl@lattice, Plugins]</div>
+<div class="line">        private: [Utils@Lattice, Plugins@Lattice]</div>
 <div class="line">    SomeOtherBinary:</div>
 <div class="line">      sources: [&quot;src/other/main.cpp&quot;]</div>
-<div class="line">  module:</div>
-<div class="line">    Plugins:</div>
-<div class="line">      units:</div>
-<div class="line">        export:</div>
-<div class="line">          - &quot;modules/Plugins.cppm&quot;</div>
-<div class="line">      sources:</div>
-<div class="line">        - &quot;src/modules/Plugins.cpp&quot;</div>
-<div class="line">      dependencies:</div>
-<div class="line">        public: [lattice::Utils]</div>
 <div class="line">  library:</div>
 <div class="line">    Utils:</div>
 <div class="line">      type: static</div>
@@ -163,6 +178,15 @@ Configuration</h2>
 <div class="line">      headers:</div>
 <div class="line">        public:</div>
 <div class="line">          - &quot;include/Utils.hpp&quot;</div>
+<div class="line">    Plugins:</div>
+<div class="line">      export:</div>
+<div class="line">        - modules</div>
+<div class="line">      sources:</div>
+<div class="line">        - &quot;src/modules/Plugins.cpp&quot;</div>
+<div class="line">      modules:</div>
+<div class="line">        - &quot;modules/Plugins.cppm&quot;</div>
+<div class="line">      dependencies:</div>
+<div class="line">        public: [Utils@Lattice]</div>
 </div><!-- fragment --><p>For the basics, you first start off by defining a project by putting an entry in the <span class="tt">project:</span> section. You can define multiple projects in one configuration set. You can then define your project properties in that section. </p><div class="fragment"><div class="line">project:</div>
 <div class="line">    yourProject:</div>
 <div class="line">        # Any properties here?</div>
@@ -178,7 +202,7 @@ Configuration</h2>
 <div class="line">            # ...</div>
 <div class="line">        libraryTwo:</div>
 <div class="line">            # ...</div>
-</div><!-- fragment --> <h2 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+</div><!-- fragment --> <h2 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
 Building</h2>
 <p>Now that you have a basic configuration, you can build your project(s), which you can do by running one of these:</p><ul>
 <li><span class="tt">lattice build</span><ul>
@@ -189,18 +213,18 @@ Building</h2>
 <li>Builds just the specified project and all of it's targets unless it depends on others.</li>
 </ul>
 </li>
-<li><span class="tt">lattice build aProjectName::aBuildableObject</span><ul>
+<li><span class="tt">lattice build aBuildableObject@aProjectName</span><ul>
 <li>Builds just one target, unless it depends on others.</li>
 </ul>
 </li>
 </ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
 Caches</h3>
-<p>Lattice mostly works with caches to build things. When there is no cache present, the first time you run build, it will generate one, and use that cache for the build. If you wish to preload the cache, you can run <span class="tt">lattice cache init</span>.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
-Running</h2>
-<p>Running is simple too! If you've only defined one project and one binary, you can just do <span class="tt">lattice run</span>. If you've defined multiple projects, you can do <span class="tt">lattice run projectName</span>. If you define multiple binaries in a project, you must specifiy which one you want to run: <span class="tt">lattice run projectName:objectName</span>.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+<p>Lattice mostly works with caches to build things. This enables Lattice to easily do incremental builds by checking if a cache for an object is dirty or not. Additionally it speeds up parsing for consecutive runs. When there is no cache present, the first time you run build, it will generate one. If you wish to preload the cache, you can run <span class="tt">lattice cache init</span>.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+Running an executable</h2>
+<p>Running is simple too! If you've only defined one project and one executable object, you can just do <span class="tt">lattice run</span>. If you've defined multiple projects, you can do <span class="tt">lattice run projectName</span>. If you define multiple executable objects in a project, you must specifiy which one you want to run: <span class="tt">lattice run objectName@projectName</span>.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
 Authors</h1>
 <ul>
 <li><a href="https://www.github.com/proatgram">@thetimbrick</a> </li>

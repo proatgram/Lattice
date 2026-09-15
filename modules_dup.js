@@ -5,6 +5,8 @@ var modules_dup =
     [ "Lattice.Cache.Serialization", "db/daf/module__Lattice_8Cache_8Serialization.html", "db/daf/module__Lattice_8Cache_8Serialization" ],
     [ "Lattice.IFactory", "d7/d54/module__Lattice_8IFactory.html", "d7/d54/module__Lattice_8IFactory" ],
     [ "Lattice", "dd/d5f/module__Lattice.html", "dd/d5f/module__Lattice" ],
+    [ "Lattice.Logger.EscapeSequences", "da/d40/module__Lattice_8Logger_8EscapeSequences.html", "da/d40/module__Lattice_8Logger_8EscapeSequences" ],
+    [ "Lattice.Logger", "dd/ded/module__Lattice_8Logger.html", "dd/ded/module__Lattice_8Logger" ],
     [ "Lattice.Object.BuildGraph", "d3/d54/module__Lattice_8Object_8BuildGraph.html", "d3/d54/module__Lattice_8Object_8BuildGraph" ],
     [ "Lattice.Object.Capabilities.ArtifactProvider", "d6/d5b/module__Lattice_8Object_8Capabilities_8ArtifactProvider.html", "d6/d5b/module__Lattice_8Object_8Capabilities_8ArtifactProvider" ],
     [ "Lattice.Object.Capabilities.Buildable", "d8/d21/module__Lattice_8Object_8Capabilities_8Buildable.html", "d8/d21/module__Lattice_8Object_8Capabilities_8Buildable" ],

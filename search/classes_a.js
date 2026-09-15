@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['section_0',['Section',['../d7/d9f/classLattice_1_1Cache_1_1Serialization_1_1Cache_1_1Section.html',1,'Lattice::Cache::Serialization::Cache']]],
-  ['sectionarray_1',['SectionArray',['../dc/dcc/classLattice_1_1Cache_1_1Serialization_1_1Cache_1_1SectionArray.html',1,'Lattice::Cache::Serialization::Cache']]]
+  ['registry_0',['Registry',['../d7/d65/classLattice_1_1Registry.html',1,'Lattice']]],
+  ['resolver_1',['Resolver',['../df/d26/classLattice_1_1Object_1_1Resolver.html',1,'Lattice::Object']]],
+  ['restorecursorposition_2',['RestoreCursorPosition',['../df/d8b/classLattice_1_1Logger_1_1EscapeSequences_1_1Cursor_1_1RestoreCursorPosition.html',1,'Lattice::Logger::EscapeSequences::Cursor']]]
 ];

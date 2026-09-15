@@ -26,14 +26,20 @@ var NAVTREE =
 [
   [ "Lattice", "index.html", [
     [ "Lattice", "d0/d30/md_README.html", [
-      [ "Usage/Examples", "d0/d30/md_README.html#autotoc_md1", [
-        [ "Configuration", "d0/d30/md_README.html#autotoc_md2", null ],
-        [ "Building", "d0/d30/md_README.html#autotoc_md3", [
-          [ "Caches", "d0/d30/md_README.html#autotoc_md4", null ]
+      [ "Usage/Examples", "d0/d30/md_README.html#autotoc_md2", [
+        [ "But, why?", "d0/d30/md_README.html#autotoc_md1", null ],
+        [ "Plugins", "d0/d30/md_README.html#autotoc_md3", [
+          [ "Overview", "d0/d30/md_README.html#autotoc_md4", null ],
+          [ "Using them", "d0/d30/md_README.html#autotoc_md5", null ],
+          [ "Making them", "d0/d30/md_README.html#autotoc_md6", null ]
         ] ],
-        [ "Running", "d0/d30/md_README.html#autotoc_md5", null ]
+        [ "Configuration", "d0/d30/md_README.html#autotoc_md7", null ],
+        [ "Building", "d0/d30/md_README.html#autotoc_md8", [
+          [ "Caches", "d0/d30/md_README.html#autotoc_md9", null ]
+        ] ],
+        [ "Running an executable", "d0/d30/md_README.html#autotoc_md10", null ]
       ] ],
-      [ "Authors", "d0/d30/md_README.html#autotoc_md6", null ]
+      [ "Authors", "d0/d30/md_README.html#autotoc_md11", null ]
     ] ],
     [ "Modules", "modules.html", [
       [ "Modules List", "modules.html", "modules_dup" ]
@@ -57,7 +63,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d7/dc4/classLattice_1_1Object_1_1Capabilities_1_1ArtifactProvider.html"
+"d7/d9f/classLattice_1_1Cache_1_1Serialization_1_1Cache_1_1Section.html#a9e1aaecf9a52555e1416d765214594d8"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';

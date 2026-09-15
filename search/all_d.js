@@ -5,5 +5,6 @@ var searchData=
   ['registry_2',['Registry',['../d7/d65/classLattice_1_1Registry.html',1,'Lattice']]],
   ['requestcancel_3',['RequestCancel',['../db/dfc/classLattice_1_1System_1_1Process.html#a9f1212e4b80de6cdc9ed1b50c51549ae',1,'Lattice::System::Process']]],
   ['resolver_4',['Resolver',['../df/d26/classLattice_1_1Object_1_1Resolver.html',1,'Lattice::Object']]],
-  ['running_5',['Running',['../d0/d30/md_README.html#autotoc_md5',1,'']]]
+  ['restorecursorposition_5',['RestoreCursorPosition',['../df/d8b/classLattice_1_1Logger_1_1EscapeSequences_1_1Cursor_1_1RestoreCursorPosition.html',1,'Lattice::Logger::EscapeSequences::Cursor']]],
+  ['running_20an_20executable_6',['Running an executable',['../d0/d30/md_README.html#autotoc_md10',1,'']]]
 ];

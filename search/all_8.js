@@ -7,5 +7,6 @@ var searchData=
   ['linkable_4',['Linkable',['../da/df9/classLattice_1_1Object_1_1Capabilities_1_1Linkable.html',1,'Lattice::Object::Capabilities']]],
   ['linkerconfiguration_5',['LinkerConfiguration',['../df/d7e/classLattice_1_1Tooling_1_1LinkerConfiguration.html',1,'Lattice::Tooling']]],
   ['loadconfig_6',['LoadConfig',['../d9/d76/classLattice_1_1Lattice.html#a5c8795b13f2bd344c6cb6857f4b10dbb',1,'Lattice::Lattice']]],
-  ['loader_7',['Loader',['../d2/da6/classLattice_1_1Plugins_1_1Loader.html',1,'Lattice::Plugins']]]
+  ['loader_7',['Loader',['../d2/da6/classLattice_1_1Plugins_1_1Loader.html',1,'Lattice::Plugins']]],
+  ['logger_8',['Logger',['../de/dc6/classLattice_1_1Logger_1_1Logger.html',1,'Lattice::Logger']]]
 ];
