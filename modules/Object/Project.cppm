@@ -75,7 +75,7 @@ export namespace Lattice::Object {
              */
             auto GetHomepageUrl() const -> std::optional<std::string>;
 
-            auto Build() -> void final;
+            auto Configure() -> void final;
 
             /**
              * @brief Gets the objects owned by this project.

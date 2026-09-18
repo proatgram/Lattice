@@ -235,7 +235,7 @@ auto Lattice::Lattice::StartBuild(const std::optional<std::list<std::string>> &o
                 currentJobs[node->object->GetResolvedObject()->GetIdentifier()] = std::async(std::launch::async, [node, &buildGraph, &currentJobs, &finishedJobs, &jobsMutex]() -> void {
                     std::cout << "Building " << node->object->GetResolvedObject()->GetIdentifier() << "..." <<std::endl;
                     if (const std::shared_ptr<Object::Capabilities::Buildable> &buildable = node->object->GetResolvedObject()->GetCapability<Object::Capabilities::Buildable>().value_or(nullptr); buildable)
-                        buildable->Build();
+                        {}//buildable->Build();
 
 
                     std::lock_guard<std::mutex> lock(jobsMutex);

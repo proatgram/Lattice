@@ -45,7 +45,7 @@ auto Project::GetHomepageUrl() const -> std::optional<std::string> {
     return m_homepageUrl;
 }
 
-auto Project::Build() -> void {}
+auto Project::Configure() -> void {}
 
 auto Project::GetObjects() const -> std::map<std::string, std::shared_ptr<Object>> {
     return m_objects;
