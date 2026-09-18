@@ -147,8 +147,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:abdf5ce246c6ab21f9a09c959f1fafee3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the project homepage URL.  <br /></td></tr>
 <tr class="memitem:a0b73a63c6809dcb5b4e2971f59d10300" id="r_a0b73a63c6809dcb5b4e2971f59d10300"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#a0b73a63c6809dcb5b4e2971f59d10300">GetHomepageUrl</a> () const -&gt; std::optional&lt; std::string &gt;</td></tr>
 <tr class="memdesc:a0b73a63c6809dcb5b4e2971f59d10300"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the project homepage URL.  <br /></td></tr>
-<tr class="memitem:a1d0d2f4a9c22c2d87a242ea58c38d749" id="r_a1d0d2f4a9c22c2d87a242ea58c38d749"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#a1d0d2f4a9c22c2d87a242ea58c38d749">Build</a> () -&gt; void final</td></tr>
-<tr class="memdesc:a1d0d2f4a9c22c2d87a242ea58c38d749"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds the buildable object.  <br /></td></tr>
+<tr class="memitem:a54efca531bc52a722d19c856d6327b3d" id="r_a54efca531bc52a722d19c856d6327b3d"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#a54efca531bc52a722d19c856d6327b3d">Configure</a> () -&gt; void final</td></tr>
+<tr class="memdesc:a54efca531bc52a722d19c856d6327b3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the <span class="tt">Buildable</span> object.  <br /></td></tr>
 <tr class="memitem:acc8b7660d5e5e1a106a2065c12a12084" id="r_acc8b7660d5e5e1a106a2065c12a12084"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#acc8b7660d5e5e1a106a2065c12a12084">GetObjects</a> () const -&gt; std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="../../d7/d62/classLattice_1_1Object_1_1Object.html#a4ea084aaad283f30aba73b788b01e021">Object</a> &gt; &gt;</td></tr>
 <tr class="memdesc:acc8b7660d5e5e1a106a2065c12a12084"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the objects owned by this project.  <br /></td></tr>
 <tr class="memitem:ab180fad645ad6f058a98254debc49738" id="r_ab180fad645ad6f058a98254debc49738"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#ab180fad645ad6f058a98254debc49738">GetObject</a> (const std::string &amp;identifier) const -&gt; std::optional&lt; std::shared_ptr&lt; <a class="el" href="../../d7/d62/classLattice_1_1Object_1_1Object.html#a4ea084aaad283f30aba73b788b01e021">Object</a> &gt; &gt;</td></tr>
@@ -171,8 +171,14 @@ template&lt;typename T&gt; <br />
 requires std::is_base_of_v&lt;<a class="el" href="../../d7/d62/classLattice_1_1Object_1_1Object.html#a4ea084aaad283f30aba73b788b01e021">Object</a>, T&gt;</td></tr>
 <tr class="memitem:aaada92e8f825e2e960616ed087265181 pub_methods_classLattice_1_1Object_1_1Object template"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><b>As</b> () -&gt; std::optional&lt; std::shared_ptr&lt; T &gt; &gt;</td></tr>
 <tr class="inherit_header pub_methods_classLattice_1_1Object_1_1Capabilities_1_1Buildable"><td colspan="2">Public Member Functions inherited from <a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html">Lattice::Object::Capabilities::Buildable</a></td></tr>
-<tr class="memitem:a82e70b7c2f8b0e90fd4efba396d1a253 pub_methods_classLattice_1_1Object_1_1Capabilities_1_1Buildable" id="r_a82e70b7c2f8b0e90fd4efba396d1a253"><td class="memItemLeft">
-auto&#160;</td><td class="memItemRight"><b>IsBuilt</b> () const -&gt; bool</td></tr>
+<tr class="memitem:a01c30ed248a91f08768b30acf020d2ee pub_methods_classLattice_1_1Object_1_1Capabilities_1_1Buildable" id="r_a01c30ed248a91f08768b30acf020d2ee"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html#a01c30ed248a91f08768b30acf020d2ee">GetReadySteps</a> (std::size_t max=1) const -&gt; std::vector&lt; std::shared_ptr&lt; <a class="el" href="../../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html">BuildStep</a> &gt; &gt;</td></tr>
+<tr class="memdesc:a01c30ed248a91f08768b30acf020d2ee pub_methods_classLattice_1_1Object_1_1Capabilities_1_1Buildable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <span class="tt"><a class="el" href="../../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html" title="A class representing a step in the build process for a Buildable object.">BuildStep</a></span>'s that are currently ready to be ran.  <br /></td></tr>
+<tr class="memitem:a4af8641c9dd22de7156338a27656ad9c pub_methods_classLattice_1_1Object_1_1Capabilities_1_1Buildable" id="r_a4af8641c9dd22de7156338a27656ad9c"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html#a4af8641c9dd22de7156338a27656ad9c">GetTotalSteps</a> () const -&gt; std::size_t</td></tr>
+<tr class="memdesc:a4af8641c9dd22de7156338a27656ad9c pub_methods_classLattice_1_1Object_1_1Capabilities_1_1Buildable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the total number of steps this build has.  <br /></td></tr>
+<tr class="memitem:aed5384456bbdde5c6630a50b8c8419c8 pub_methods_classLattice_1_1Object_1_1Capabilities_1_1Buildable" id="r_aed5384456bbdde5c6630a50b8c8419c8"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html#aed5384456bbdde5c6630a50b8c8419c8">GetRemainingSteps</a> () const -&gt; std::size_t</td></tr>
+<tr class="memdesc:aed5384456bbdde5c6630a50b8c8419c8 pub_methods_classLattice_1_1Object_1_1Capabilities_1_1Buildable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the remaining steps that haven't ran.  <br /></td></tr>
+<tr class="memitem:a82e70b7c2f8b0e90fd4efba396d1a253 pub_methods_classLattice_1_1Object_1_1Capabilities_1_1Buildable" id="r_a82e70b7c2f8b0e90fd4efba396d1a253"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html#a82e70b7c2f8b0e90fd4efba396d1a253">IsBuilt</a> () const -&gt; bool</td></tr>
+<tr class="memdesc:a82e70b7c2f8b0e90fd4efba396d1a253 pub_methods_classLattice_1_1Object_1_1Capabilities_1_1Buildable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the <span class="tt"><a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html" title="Provides a base class for objects that can be built.">Buildable</a></span> object has been fully built.  <br /></td></tr>
 <tr class="inherit_header pub_methods_classLattice_1_1Object_1_1Capabilities_1_1HasToolchain"><td colspan="2">Public Member Functions inherited from <a class="el" href="../../d6/d22/classLattice_1_1Object_1_1Capabilities_1_1HasToolchain.html">Lattice::Object::Capabilities::HasToolchain</a></td></tr>
 <tr class="memitem:ae4802c1fa1026520fb420d76bce23b36 pub_methods_classLattice_1_1Object_1_1Capabilities_1_1HasToolchain" id="r_ae4802c1fa1026520fb420d76bce23b36"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="../../d6/d22/classLattice_1_1Object_1_1Capabilities_1_1HasToolchain.html#ae4802c1fa1026520fb420d76bce23b36">GetToolchain</a> () const -&gt; std::shared_ptr&lt; const <a class="el" href="../../d3/d7f/classLattice_1_1Object_1_1IToolchain.html">IToolchain</a> &gt;</td></tr>
 <tr class="memdesc:ae4802c1fa1026520fb420d76bce23b36 pub_methods_classLattice_1_1Object_1_1Capabilities_1_1HasToolchain"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the toolchain associated with this <a class="el" href="../../d7/d62/classLattice_1_1Object_1_1Object.html" title="Represents any object defined in a lattice config.">Object</a>.  <br /></td></tr>
@@ -191,8 +197,8 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a4ea084aaad283f30aba73b788b01e021 pro_methods_classLattice_1_1Object_1_1Object" id="r_a4ea084aaad283f30aba73b788b01e021"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="../../d7/d62/classLattice_1_1Object_1_1Object.html#a4ea084aaad283f30aba73b788b01e021">Object</a> (<a class="el" href="../../de/dde/structLattice_1_1Object_1_1Object_1_1Constructable.html">Constructable</a>, const std::string &amp;identifier)</td></tr>
 <tr class="memdesc:a4ea084aaad283f30aba73b788b01e021 pro_methods_classLattice_1_1Object_1_1Object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an object.  <br /></td></tr>
 <tr class="inherit_header pro_methods_classLattice_1_1Object_1_1Capabilities_1_1Buildable"><td colspan="2">Protected Member Functions inherited from <a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html">Lattice::Object::Capabilities::Buildable</a></td></tr>
-<tr class="memitem:aa765716b495b1e4152f6f54781a2fb32 pro_methods_classLattice_1_1Object_1_1Capabilities_1_1Buildable" id="r_aa765716b495b1e4152f6f54781a2fb32"><td class="memItemLeft">
-auto&#160;</td><td class="memItemRight"><b>SetBuilt</b> (bool build=true) -&gt; void</td></tr>
+<tr class="memitem:aec93971c211ec8e733ee6c7e7e422277 pro_methods_classLattice_1_1Object_1_1Capabilities_1_1Buildable" id="r_aec93971c211ec8e733ee6c7e7e422277"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html#aec93971c211ec8e733ee6c7e7e422277">AddStep</a> (const std::shared_ptr&lt; <a class="el" href="../../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html">BuildStep</a> &gt; &amp;step) -&gt; void</td></tr>
+<tr class="memdesc:aec93971c211ec8e733ee6c7e7e422277 pro_methods_classLattice_1_1Object_1_1Capabilities_1_1Buildable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a <span class="tt"><a class="el" href="../../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html" title="A class representing a step in the build process for a Buildable object.">BuildStep</a></span> to the <span class="tt"><a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html" title="Provides a base class for objects that can be built.">Buildable</a></span>.  <br /></td></tr>
 <tr class="inherit_header pro_methods_classLattice_1_1Object_1_1Capabilities_1_1HasToolchain"><td colspan="2">Protected Member Functions inherited from <a class="el" href="../../d6/d22/classLattice_1_1Object_1_1Capabilities_1_1HasToolchain.html">Lattice::Object::Capabilities::HasToolchain</a></td></tr>
 <tr class="memitem:abefc0fce32b7bb2369d59877f13230c1 pro_methods_classLattice_1_1Object_1_1Capabilities_1_1HasToolchain" id="r_abefc0fce32b7bb2369d59877f13230c1"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="../../d6/d22/classLattice_1_1Object_1_1Capabilities_1_1HasToolchain.html#abefc0fce32b7bb2369d59877f13230c1">SetToolchain</a> (const std::shared_ptr&lt; <a class="el" href="../../d3/d7f/classLattice_1_1Object_1_1IToolchain.html">IToolchain</a> &gt; &amp;toolchain) -&gt; void</td></tr>
 <tr class="memdesc:abefc0fce32b7bb2369d59877f13230c1 pro_methods_classLattice_1_1Object_1_1Capabilities_1_1HasToolchain"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the <a class="el" href="../../d3/d7f/classLattice_1_1Object_1_1IToolchain.html" title="Represents a toolchain.">IToolchain</a> for the associated <a class="el" href="../../d7/d62/classLattice_1_1Object_1_1Object.html" title="Represents any object defined in a lattice config.">Object</a>.  <br /></td></tr>
@@ -274,8 +280,8 @@ std::string&#160;</td><td class="memItemRight"><b>m_identifier</b></td></tr>
 
 </div>
 </div>
-<a id="a1d0d2f4a9c22c2d87a242ea58c38d749" name="a1d0d2f4a9c22c2d87a242ea58c38d749"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d0d2f4a9c22c2d87a242ea58c38d749">&#9670;&#160;</a></span>Build()</h2>
+<a id="a54efca531bc52a722d19c856d6327b3d" name="a54efca531bc52a722d19c856d6327b3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54efca531bc52a722d19c856d6327b3d">&#9670;&#160;</a></span>Configure()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -284,7 +290,7 @@ std::string&#160;</td><td class="memItemRight"><b>m_identifier</b></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto Project::Build </td>
+          <td class="memname">auto Project::Configure </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> -&gt;  void</td>
@@ -297,10 +303,10 @@ std::string&#160;</td><td class="memItemRight"><b>m_identifier</b></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Builds the buildable object. </p>
-<dl class="section return"><dt>Returns</dt><dd>Void. </dd></dl>
+<p>Configures the <span class="tt">Buildable</span> object. </p>
+<p>This function should be overridden in order to configure all neccessary things that this object needs in order to be ready to be built. E.g., setting up and adding build steps. </p>
 
-<p>Implements <a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html#ae280a9231ede7a9c017f9f813d35486e">Lattice::Object::Capabilities::Buildable</a>.</p>
+<p>Implements <a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html#a30a65bc04c2b6eac4f1e95921efc8ecd">Lattice::Object::Capabilities::Buildable</a>.</p>
 
 </div>
 </div>

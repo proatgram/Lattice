@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "Lattice::Object::Capabilities::Buildable::BuildStep", "d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html", null ],
     [ "Lattice::Cache::Serialization::Cache", "da/d7e/classLattice_1_1Cache_1_1Serialization_1_1Cache.html", null ],
     [ "Lattice::Cache::CacheManager", "d6/de6/classLattice_1_1Cache_1_1CacheManager.html", null ],
     [ "Lattice::System::Command", "d4/d72/classLattice_1_1System_1_1Command.html", null ],
@@ -109,5 +110,6 @@ var hierarchy =
     [ "Lattice::Provider", "de/d26/classLattice_1_1Provider.html", null ],
     [ "Lattice::Registry", "d7/d65/classLattice_1_1Registry.html", null ],
     [ "Lattice::Object::Resolver", "df/d26/classLattice_1_1Object_1_1Resolver.html", null ],
+    [ "Lattice::Object::Capabilities::Buildable::StepDescription", "d1/dcf/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1StepDescription.html", null ],
     [ "Lattice::Object::ToolchainDefault", "d1/d46/structLattice_1_1Object_1_1ToolchainDefault.html", null ]
 ];

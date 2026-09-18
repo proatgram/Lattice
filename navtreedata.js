@@ -51,7 +51,8 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ]
+        [ "Functions", "functions_func.html", null ],
+        [ "Enumerations", "functions_enum.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -63,7 +64,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d7/d9f/classLattice_1_1Cache_1_1Serialization_1_1Cache_1_1Section.html#a9e1aaecf9a52555e1416d765214594d8"
+"d7/d43/classLattice_1_1Object_1_1IToolchainFactory.html#a29a6945beff81d12c8e26f71f1bff8fa",
+"de/dc6/classLattice_1_1Logger_1_1Logger.html"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';

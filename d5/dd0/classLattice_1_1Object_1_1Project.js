@@ -2,7 +2,7 @@ var classLattice_1_1Object_1_1Project =
 [
     [ "Project", "d5/dd0/classLattice_1_1Object_1_1Project.html#ab40535a4e8f2000c4f286ab64b91aa18", null ],
     [ "AddObject", "d5/dd0/classLattice_1_1Object_1_1Project.html#a837b4863a41db14c76ec39016c983da1", null ],
-    [ "Build", "d5/dd0/classLattice_1_1Object_1_1Project.html#a1d0d2f4a9c22c2d87a242ea58c38d749", null ],
+    [ "Configure", "d5/dd0/classLattice_1_1Object_1_1Project.html#a54efca531bc52a722d19c856d6327b3d", null ],
     [ "GetDescription", "d5/dd0/classLattice_1_1Object_1_1Project.html#ae1d3cb2c240723e1ef6cc8504e952389", null ],
     [ "GetHomepageUrl", "d5/dd0/classLattice_1_1Object_1_1Project.html#a0b73a63c6809dcb5b4e2971f59d10300", null ],
     [ "GetIdentifier", "d5/dd0/classLattice_1_1Object_1_1Project.html#a768f6dcc6bbdf97c7e040976a8701c77", null ],

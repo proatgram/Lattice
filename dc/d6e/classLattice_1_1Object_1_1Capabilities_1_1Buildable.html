@@ -126,24 +126,37 @@ Inheritance diagram for Lattice::Object::Capabilities::Buildable:</div>
   </map>
 </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:StepDescription" id="r_StepDescription"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="../../d1/dcf/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1StepDescription.html">StepDescription</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a Build Steps description.  <a href="../../d1/dcf/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1StepDescription.html#details">More...</a><br /></td></tr>
+<tr class="memitem:BuildStep" id="r_BuildStep"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="../../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html">BuildStep</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class representing a step in the build process for a <span class="tt"><a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html" title="Provides a base class for objects that can be built.">Buildable</a></span> object.  <a href="../../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html#details">More...</a><br /></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae280a9231ede7a9c017f9f813d35486e" id="r_ae280a9231ede7a9c017f9f813d35486e"><td class="memItemLeft">virtual auto&#160;</td><td class="memItemRight"><a class="el" href="#ae280a9231ede7a9c017f9f813d35486e">Build</a> () -&gt; void=0</td></tr>
-<tr class="memdesc:ae280a9231ede7a9c017f9f813d35486e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds the buildable object.  <br /></td></tr>
-<tr class="memitem:a82e70b7c2f8b0e90fd4efba396d1a253" id="r_a82e70b7c2f8b0e90fd4efba396d1a253"><td class="memItemLeft"><a id="a82e70b7c2f8b0e90fd4efba396d1a253" name="a82e70b7c2f8b0e90fd4efba396d1a253"></a>
-auto&#160;</td><td class="memItemRight"><b>IsBuilt</b> () const -&gt; bool</td></tr>
+<tr class="memitem:a01c30ed248a91f08768b30acf020d2ee" id="r_a01c30ed248a91f08768b30acf020d2ee"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#a01c30ed248a91f08768b30acf020d2ee">GetReadySteps</a> (std::size_t max=1) const -&gt; std::vector&lt; std::shared_ptr&lt; <a class="el" href="../../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html">BuildStep</a> &gt; &gt;</td></tr>
+<tr class="memdesc:a01c30ed248a91f08768b30acf020d2ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <span class="tt"><a class="el" href="../../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html" title="A class representing a step in the build process for a Buildable object.">BuildStep</a></span>'s that are currently ready to be ran.  <br /></td></tr>
+<tr class="memitem:a4af8641c9dd22de7156338a27656ad9c" id="r_a4af8641c9dd22de7156338a27656ad9c"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#a4af8641c9dd22de7156338a27656ad9c">GetTotalSteps</a> () const -&gt; std::size_t</td></tr>
+<tr class="memdesc:a4af8641c9dd22de7156338a27656ad9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the total number of steps this build has.  <br /></td></tr>
+<tr class="memitem:aed5384456bbdde5c6630a50b8c8419c8" id="r_aed5384456bbdde5c6630a50b8c8419c8"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#aed5384456bbdde5c6630a50b8c8419c8">GetRemainingSteps</a> () const -&gt; std::size_t</td></tr>
+<tr class="memdesc:aed5384456bbdde5c6630a50b8c8419c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the remaining steps that haven't ran.  <br /></td></tr>
+<tr class="memitem:a82e70b7c2f8b0e90fd4efba396d1a253" id="r_a82e70b7c2f8b0e90fd4efba396d1a253"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#a82e70b7c2f8b0e90fd4efba396d1a253">IsBuilt</a> () const -&gt; bool</td></tr>
+<tr class="memdesc:a82e70b7c2f8b0e90fd4efba396d1a253"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the <span class="tt"><a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html" title="Provides a base class for objects that can be built.">Buildable</a></span> object has been fully built.  <br /></td></tr>
+<tr class="memitem:a30a65bc04c2b6eac4f1e95921efc8ecd" id="r_a30a65bc04c2b6eac4f1e95921efc8ecd"><td class="memItemLeft">virtual auto&#160;</td><td class="memItemRight"><a class="el" href="#a30a65bc04c2b6eac4f1e95921efc8ecd">Configure</a> () -&gt; void=0</td></tr>
+<tr class="memdesc:a30a65bc04c2b6eac4f1e95921efc8ecd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the <span class="tt"><a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html" title="Provides a base class for objects that can be built.">Buildable</a></span> object.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:aa765716b495b1e4152f6f54781a2fb32" id="r_aa765716b495b1e4152f6f54781a2fb32"><td class="memItemLeft"><a id="aa765716b495b1e4152f6f54781a2fb32" name="aa765716b495b1e4152f6f54781a2fb32"></a>
-auto&#160;</td><td class="memItemRight"><b>SetBuilt</b> (bool build=true) -&gt; void</td></tr>
+<tr class="memitem:aec93971c211ec8e733ee6c7e7e422277" id="r_aec93971c211ec8e733ee6c7e7e422277"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#aec93971c211ec8e733ee6c7e7e422277">AddStep</a> (const std::shared_ptr&lt; <a class="el" href="../../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html">BuildStep</a> &gt; &amp;step) -&gt; void</td></tr>
+<tr class="memdesc:aec93971c211ec8e733ee6c7e7e422277"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a <span class="tt"><a class="el" href="../../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html" title="A class representing a step in the build process for a Buildable object.">BuildStep</a></span> to the <span class="tt"><a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html" title="Provides a base class for objects that can be built.">Buildable</a></span>.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides a base class for objects that can be built. </p>
-<p>This class defines the <a class="el" href="#ae280a9231ede7a9c017f9f813d35486e" title="Builds the buildable object.">Build()</a> interface for objects that have a build process. </p>
+<p>This class defines methods and processes to create build steps for objects that can be built, a way to query which steps can be built, and a way to run said steps. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="ae280a9231ede7a9c017f9f813d35486e" name="ae280a9231ede7a9c017f9f813d35486e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae280a9231ede7a9c017f9f813d35486e">&#9670;&#160;</a></span>Build()</h2>
+<a id="aec93971c211ec8e733ee6c7e7e422277" name="aec93971c211ec8e733ee6c7e7e422277"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec93971c211ec8e733ee6c7e7e422277">&#9670;&#160;</a></span>AddStep()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -152,7 +165,40 @@ auto&#160;</td><td class="memItemRight"><b>SetBuilt</b> (bool build=true) -&gt; 
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual auto Lattice::Object::Capabilities::Buildable::Build </td>
+          <td class="memname">auto Buildable::AddStep </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="../../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html">BuildStep</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>step</em></span></td><td>)</td>
+          <td> -&gt; void</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a <span class="tt"><a class="el" href="../../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html" title="A class representing a step in the build process for a Buildable object.">BuildStep</a></span> to the <span class="tt"><a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html" title="Provides a base class for objects that can be built.">Buildable</a></span>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">step</td><td>The <span class="tt"><a class="el" href="../../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html" title="A class representing a step in the build process for a Buildable object.">BuildStep</a></span> to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a30a65bc04c2b6eac4f1e95921efc8ecd" name="a30a65bc04c2b6eac4f1e95921efc8ecd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30a65bc04c2b6eac4f1e95921efc8ecd">&#9670;&#160;</a></span>Configure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual auto Lattice::Object::Capabilities::Buildable::Configure </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> -&gt;  void</td>
@@ -165,10 +211,91 @@ auto&#160;</td><td class="memItemRight"><b>SetBuilt</b> (bool build=true) -&gt; 
 </table>
 </div><div class="memdoc">
 
-<p>Builds the buildable object. </p>
-<dl class="section return"><dt>Returns</dt><dd>Void. </dd></dl>
+<p>Configures the <span class="tt"><a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html" title="Provides a base class for objects that can be built.">Buildable</a></span> object. </p>
+<p>This function should be overridden in order to configure all neccessary things that this object needs in order to be ready to be built. E.g., setting up and adding build steps. </p>
 
-<p>Implemented in <a class="el" href="../../d5/dd0/classLattice_1_1Object_1_1Project.html#a1d0d2f4a9c22c2d87a242ea58c38d749">Lattice::Object::Project</a>.</p>
+<p>Implemented in <a class="el" href="../../d5/dd0/classLattice_1_1Object_1_1Project.html#a54efca531bc52a722d19c856d6327b3d">Lattice::Object::Project</a>.</p>
+
+</div>
+</div>
+<a id="a01c30ed248a91f08768b30acf020d2ee" name="a01c30ed248a91f08768b30acf020d2ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01c30ed248a91f08768b30acf020d2ee">&#9670;&#160;</a></span>GetReadySteps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto Buildable::GetReadySteps </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t</td>          <td class="paramname"><span class="paramname"><em>max</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1</span></td><td>)</td>
+          <td> const -&gt; std::vector&lt; std::shared_ptr&lt; <a class="el" href="../../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html">BuildStep</a> &gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the <span class="tt"><a class="el" href="../../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html" title="A class representing a step in the build process for a Buildable object.">BuildStep</a></span>'s that are currently ready to be ran. </p>
+<p>This function will get up to <span class="tt">max</span> <span class="tt"><a class="el" href="../../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html" title="A class representing a step in the build process for a Buildable object.">BuildStep</a></span>'s that are ready to be ran.</p>
+<dl class="section return"><dt>Returns</dt><dd>Up to <span class="tt">max</span> build steps that are ready. </dd></dl>
+
+</div>
+</div>
+<a id="aed5384456bbdde5c6630a50b8c8419c8" name="aed5384456bbdde5c6630a50b8c8419c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed5384456bbdde5c6630a50b8c8419c8">&#9670;&#160;</a></span>GetRemainingSteps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto Buildable::GetRemainingSteps </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const -&gt; std::size_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the remaining steps that haven't ran. </p>
+<dl class="section return"><dt>Returns</dt><dd>The remaining steps that haven't ran yet. </dd></dl>
+
+</div>
+</div>
+<a id="a4af8641c9dd22de7156338a27656ad9c" name="a4af8641c9dd22de7156338a27656ad9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4af8641c9dd22de7156338a27656ad9c">&#9670;&#160;</a></span>GetTotalSteps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto Buildable::GetTotalSteps </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const -&gt; std::size_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the total number of steps this build has. </p>
+<dl class="section return"><dt>Returns</dt><dd>The total build steps. </dd></dl>
+
+</div>
+</div>
+<a id="a82e70b7c2f8b0e90fd4efba396d1a253" name="a82e70b7c2f8b0e90fd4efba396d1a253"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82e70b7c2f8b0e90fd4efba396d1a253">&#9670;&#160;</a></span>IsBuilt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto Buildable::IsBuilt </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const -&gt; bool</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if the <span class="tt"><a class="el" href="../../dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html" title="Provides a base class for objects that can be built.">Buildable</a></span> object has been fully built. </p>
+<dl class="section return"><dt>Returns</dt><dd><span class="tt">true</span> if it's been fully built, otherwise <span class="tt">false</span>. </dd></dl>
 
 </div>
 </div>

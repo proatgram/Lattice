@@ -18,5 +18,6 @@ var searchData=
   ['settoolchainid_15',['SetToolchainId',['../d6/d22/classLattice_1_1Object_1_1Capabilities_1_1HasToolchain.html#a12014ee11ff60a4d2d18a5191dfa9200',1,'Lattice::Object::Capabilities::HasToolchain::SetToolchainId()'],['../d5/dd0/classLattice_1_1Object_1_1Project.html#a12014ee11ff60a4d2d18a5191dfa9200',1,'Lattice::Object::Project::SetToolchainId(const std::string &amp;toolchainId) -&gt; void']]],
   ['setversion_16',['SetVersion',['../d5/dd0/classLattice_1_1Object_1_1Project.html#a38115665daa3e594907e92dc5c082cbe',1,'Lattice::Object::Project']]],
   ['setworkingdirectory_17',['SetWorkingDirectory',['../d4/d72/classLattice_1_1System_1_1Command.html#af480aecb94077306375d57fd265d3cbb',1,'Lattice::System::Command']]],
-  ['spawn_18',['Spawn',['../db/dfc/classLattice_1_1System_1_1Process.html#a9c2c8d9fe212619603cdef81ba495421',1,'Lattice::System::Process']]]
+  ['spawn_18',['Spawn',['../db/dfc/classLattice_1_1System_1_1Process.html#a9c2c8d9fe212619603cdef81ba495421',1,'Lattice::System::Process']]],
+  ['stepdescription_19',['StepDescription',['../d1/dcf/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1StepDescription.html#af7045c1313304e2e0ed98707d0ebf34d',1,'Lattice::Object::Capabilities::Buildable::StepDescription']]]
 ];
