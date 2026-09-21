@@ -19,9 +19,10 @@ export namespace Lattice {
             struct Job {
                 std::shared_ptr<Object::Capabilities::Buildable::BuildStep> step;
                 std::shared_ptr<Object::BuildGraph::DependencyNode> node;
+                Object::Capabilities::Buildable::BuildStep::State result;
             };
 
-            auto ReloadJobs(std::queue<Job> &jobs) -> bool;
+            auto ReloadJobs(std::deque<Job> &jobs) -> bool;
 
             std::shared_ptr<Object::BuildGraph> m_buildGraph;
             std::vector<std::jthread> m_workerThreads;

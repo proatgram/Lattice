@@ -201,7 +201,7 @@ export namespace Lattice::Object::Capabilities {
              */
             auto GetRemainingSteps() const -> std::size_t;
 
-            auto UpdateBuiltStep(const std::shared_ptr<BuildStep> &buildStep) -> bool;
+            auto UpdateBuiltStep(const std::shared_ptr<BuildStep> &buildStep, BuildStep::State state) -> std::expected<void, BuildStep::State>;
 
             /**
              * @brief Checks if the `Buildable` object has been fully built.

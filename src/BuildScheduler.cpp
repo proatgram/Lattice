@@ -15,17 +15,28 @@ auto BuildScheduler::Create(const std::shared_ptr<Object::BuildGraph> &buildGrap
     return buildScheduler;
 }
 
-auto BuildScheduler::ReloadJobs(std::queue<Job> &jobs) -> bool {
+auto BuildScheduler::ReloadJobs(std::deque<Job> &jobs) -> bool {
     bool modified{false};
-    for (std::shared_ptr<Object::BuildGraph::DependencyNode> depNode : m_buildGraph->GetReady()) {
+    std::list<std::shared_ptr<Object::BuildGraph::DependencyNode>> ready = m_buildGraph->GetReady();
+    for (std::shared_ptr<Object::BuildGraph::DependencyNode> depNode : ready) {
         if (std::shared_ptr<Object::Capabilities::Buildable> buildable = depNode->object->GetResolvedObject()->GetCapability<Object::Capabilities::Buildable>().value_or(nullptr); buildable) {
+            if (buildable->IsBuilt()) {
+                depNode->status = Object::BuildGraph::DependencyNode::Status::Finished;
+                m_buildGraph->Update(depNode);
+                continue;
+            }
             for (std::shared_ptr<Object::Capabilities::Buildable::BuildStep> buildStep : buildable->GetReadySteps()) {
-                jobs.push({buildStep, depNode});
-                modified = true;
+                if (!std::ranges::any_of(jobs, [&buildStep](const Job &job) -> bool {
+                    return buildStep.get() == job.step.get();
+                })) {
+                    jobs.push_back({buildStep, depNode, buildStep->GetState()});
+                    modified = true;
+                }
             }
         } else {
             // The scheduler doesn't know how to handle non-buildable objects in the build graph.
             // TODO: Figure out what to do with these.
+            throw std::runtime_error("Object not buildable.");
         }
     }
 
@@ -41,8 +52,8 @@ auto BuildScheduler::Start() -> std::optional<std::future<bool>> {
         std::condition_variable workAvailable;
         std::condition_variable workFinished;
 
-        std::queue<BuildScheduler::Job> finishedJobs;
-        std::queue<BuildScheduler::Job> jobs;
+        std::deque<BuildScheduler::Job> finishedJobs;
+        std::deque<BuildScheduler::Job> jobs;
 
         auto workerFunction = [&stepsMutex, &workAvailable, &workFinished, &finishedJobs, &jobs](const std::stop_token &stopToken) -> void {
             while (true) {
@@ -58,46 +69,80 @@ auto BuildScheduler::Start() -> std::optional<std::future<bool>> {
                         return;
                     }
 
+                    if (auto err = jobs.front().step->GetParent().lock()->UpdateBuiltStep(jobs.front().step, Object::Capabilities::Buildable::BuildStep::State::Running); !err && err.error() == Object::Capabilities::Buildable::BuildStep::State::Running) {
+                        // TODO: Logging
+
+                        std::println("WARN: Worker thread encountered already running job for {}.", jobs.front().node->object->GetResolvedObject()->GetIdentifier());
+                        continue;
+                    } else if (!err) {
+                        throw std::runtime_error("ERROR: Failed to transition job to running.");
+                    }
+
                     job = std::move(jobs.front());
-                    jobs.pop();
+                    jobs.pop_front();
                 }
 
                 // Run task
-                job.step->Run();
-
-                // Finish task
+                job.result = job.step->Run();
+                
                 {
+                    // Finish task
                     std::unique_lock<std::mutex> lock(stepsMutex);
-                    finishedJobs.push(job);
-                    workFinished.notify_all();
+                    finishedJobs.push_back(job);
+                    workFinished.notify_one();
                 }
             }
         };
-
-        for (std::size_t i = 0; i < m_maxJobs; i++) {
-            m_workerThreads.emplace_back(workerFunction);
-        }
 
         {
             std::lock_guard<std::mutex> lock(stepsMutex);
 
             if (!ReloadJobs(jobs)) {
+                for (std::jthread &thread : m_workerThreads) {
+                    thread.request_stop();
+                    // TODO: Log
+                }
+                workAvailable.notify_all();
 
+                throw std::runtime_error("No jobs available to run.");
             }
 
-            workAvailable.notify_all();
+            for (std::size_t i = 0; i < m_maxJobs; i++) {
+                m_workerThreads.emplace_back(workerFunction);
+            }
+
         }
 
+        workAvailable.notify_all();
+
         while (true) {
-            std::queue<Job> finishedToProcess;
+            std::deque<Job> finishedToProcess;
 
             {
                 std::unique_lock<std::mutex> lock(stepsMutex);
-                workFinished.wait_for(lock, std::chrono::milliseconds(100), [&finishedJobs]() -> bool {
-                    return !finishedJobs.empty();
+                workFinished.wait_for(lock, std::chrono::milliseconds(10), [this, &finishedJobs]() -> bool {
+                    return !finishedJobs.empty() || m_buildGraph->IsCompleted();
                 });
 
+                if (m_buildGraph->IsCompleted())  {
+                    // Signal for all workers to stop
+                    for (std::jthread &thread : m_workerThreads) {
+                        thread.request_stop();
+                        // TODO: Log
+                    }
+                    lock.unlock();
+                    workAvailable.notify_all();
+                    for (std::jthread &thread : m_workerThreads) {
+                        if (thread.joinable())
+                            thread.join();
+                    }
+                    lock.lock();
+
+                    return true;
+                }
+
                 if (finishedJobs.empty()) {
+                    ReloadJobs(jobs);
                     if (!jobs.empty())
                         workAvailable.notify_all();
                     continue;
@@ -106,37 +151,46 @@ auto BuildScheduler::Start() -> std::optional<std::future<bool>> {
                 finishedToProcess.swap(finishedJobs);
             }
 
-            for (std::size_t i = 0; i < finishedToProcess.size(); i++) {
+            while (!finishedToProcess.empty()) {
                 auto job = std::move(finishedToProcess.front());
-                finishedToProcess.pop();
+                finishedToProcess.pop_front();
 
-                if (job.step->GetState() == Object::Capabilities::Buildable::BuildStep::State::Finished) {
+                if (job.result == Object::Capabilities::Buildable::BuildStep::State::Finished) {
                     auto buildable = job.node->object->GetResolvedObject()->GetCapability<Object::Capabilities::Buildable>().value_or(nullptr); 
                     if (!buildable) {
                         throw std::runtime_error("Non-buildable encountered in buildscheduler.");
                     }
-                    // First update dependents
-                    for (auto &dependent : job.step->GetDependents()) {
-                        buildable->UpdateBuiltStep(job.step);
+                    {
+                        std::unique_lock<std::mutex> lock(stepsMutex);
+
+                        // First update dependents
+                        if (auto err = buildable->UpdateBuiltStep(job.step, job.result); !err) {
+                            throw std::runtime_error("ERROR: Failed to process finished job and transition job to finished.");
+                        }
+
+                        // Then check if that made the buildable completely build
+                        if (buildable->IsBuilt()) {
+                            job.node->status = Object::BuildGraph::DependencyNode::Status::Finished;
+                            m_buildGraph->Update(job.node);
+                        }
                     }
-                    // Then check if that made the buildable completely build
-                    if (buildable->IsBuilt()) {
-                        job.node->status = Object::BuildGraph::DependencyNode::Status::Finished;
-                        m_buildGraph->Update(job.node);
-                    }
-                } else if (job.step->GetState() == Object::Capabilities::Buildable::BuildStep::State::Failed) {
+                } else if (job.result == Object::Capabilities::Buildable::BuildStep::State::Failed) {
                     // Signal for all workers to stop
                     for (std::jthread &thread : m_workerThreads) {
                         thread.request_stop();
                         // TODO: Log
                     }
+                    workAvailable.notify_all();
                     for (std::jthread &thread : m_workerThreads) {
                         if (thread.joinable())
                             thread.join();
                     }
                     // Update build graph for a failed node
-                    job.node->status = Object::BuildGraph::DependencyNode::Status::Failed;
-                    m_buildGraph->Update(job.node);
+                    {
+                        std::unique_lock<std::mutex> lock(stepsMutex);
+                        job.node->status = Object::BuildGraph::DependencyNode::Status::Failed;
+                        m_buildGraph->Update(job.node);
+                    }
 
                     return false;
                 } else {

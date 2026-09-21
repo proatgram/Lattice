@@ -16,7 +16,7 @@ auto BuildGraph::RecursiveBuildGraph(const std::shared_ptr<Resolver> &objectReso
     if (auto it = currentGraph.find(objectResolver->GetResolvedObject()->GetIdentifier()); it != currentGraph.end())
         dependencyNode = it->second;
     else
-        dependencyNode = std::make_shared<DependencyNode>(objectResolver, std::list<std::shared_ptr<DependencyNode>>{}, 0, DependencyNode::Status::Ready);
+        dependencyNode = std::make_shared<DependencyNode>(objectResolver, std::list<std::shared_ptr<DependencyNode>>{}, 0, DependencyNode::Status::Pending);
 
     if (auto hasDependencies = objectResolver->GetResolvedObject()->GetCapability<Capabilities::HasDependencies>().value_or(nullptr); hasDependencies) {
         if (!hasDependencies->GetAllDependencies().empty()) {
@@ -104,12 +104,11 @@ auto BuildGraph::Update(const std::shared_ptr<DependencyNode> &node) -> void {
         case DependencyNode::Status::Ready:
         case DependencyNode::Status::Building:
         case DependencyNode::Status::Failed:
+        case DependencyNode::Status::Pending:
         default:
             std::ranges::partition(m_dependencyNodesSorted, [](const std::shared_ptr<DependencyNode> &node) {
                 return node->status == DependencyNode::Status::Ready;
             });
-        case DependencyNode::Status::Pending:
-            // Unhandled
             return;
     }
 }

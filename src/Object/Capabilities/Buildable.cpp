@@ -1,6 +1,9 @@
 module Lattice.Object.Capabilities.Buildable;
 
+import Lattice.Object;
+
 using namespace Lattice::Object::Capabilities;
+
 
 Buildable::StepDescription::StepDescription(const std::string &action, const std::string &name) :
     m_action(action),
@@ -47,16 +50,10 @@ auto Buildable::BuildStep::GetDescription() const -> const StepDescription& {
 }
 
 auto Buildable::BuildStep::Run() -> State {
-    State expected = State::Ready;
-    if (!m_state.compare_exchange_strong(expected, State::Running))
-        return expected;
-    
     if (m_function()) {
-        m_state.store(State::Finished);
         return State::Finished;
     }
 
-    m_state.store(State::Failed);
     return State::Failed;
 }
 
@@ -96,26 +93,45 @@ auto Buildable::GetRemainingSteps() const -> std::size_t {
     return std::ranges::count_if(m_buildSteps, [](const std::shared_ptr<BuildStep> &buildStep) -> bool { return buildStep->GetState() != BuildStep::State::Finished; });
 }
 
-auto Buildable::UpdateBuiltStep(const std::shared_ptr<BuildStep> &buildStep) -> bool {
-    if (buildStep->GetState() != BuildStep::State::Finished) {
-        return std::ranges::any_of(m_buildSteps, [](const std::shared_ptr<BuildStep> &step) -> bool {
-            return step->GetState() == BuildStep::State::Ready;
-        });
+auto Buildable::UpdateBuiltStep(const std::shared_ptr<BuildStep> &buildStep, BuildStep::State state) -> std::expected<void, BuildStep::State> {
+    BuildStep::State expected;
+    switch (state) {
+        case BuildStep::State::Finished:
+            expected = BuildStep::State::Running;
+            if (buildStep->m_state.compare_exchange_strong(expected, state)) {
+                for (const std::shared_ptr<BuildStep> &dependent : buildStep->GetDependents()) {
+                    if (dependent->m_unfinishedDependencyCount.fetch_sub(1) == 1)
+                        if (auto err = UpdateBuiltStep(dependent, BuildStep::State::Ready); !err) {
+                            throw std::runtime_error("ERROR: Failed to change dependent to ready despite it's unfinished dependency count being 0.");
+                        }
+                }
+                return {};
+            }
+            return std::unexpected{expected};
+        case BuildStep::State::Failed:
+            expected = BuildStep::State::Running;
+            if (buildStep->m_state.compare_exchange_strong(expected, state))
+                return {};
+            return std::unexpected{expected};
+        case BuildStep::State::Ready:
+            expected = BuildStep::State::Pending;
+            if (buildStep->m_state.compare_exchange_strong(expected, state))
+                return {};
+            return std::unexpected{expected};
+        case BuildStep::State::Running:
+            expected = BuildStep::State::Ready;
+            if (buildStep->m_state.compare_exchange_strong(expected, state))
+                return {};
+            return std::unexpected{expected};
+        case BuildStep::State::Pending:
+        default:
+            return {};
     }
-
-    for (const std::shared_ptr<BuildStep> &dependent : buildStep->GetDependents()) {
-        if (dependent->m_unfinishedDependencyCount.fetch_sub(1) == 1)
-            dependent->m_state.store(BuildStep::State::Ready);
-    }
-
-    return std::ranges::any_of(m_buildSteps, [](const std::shared_ptr<BuildStep> &step) -> bool {
-        return step->GetState() == BuildStep::State::Ready;
-    });
 }
 
 auto Buildable::IsBuilt() const -> bool {
     return std::ranges::count_if(m_buildSteps, [](const std::shared_ptr<BuildStep> &buildStep) -> bool {
-        return buildStep->GetState() == BuildStep::State::Finished;
+        return buildStep->GetState() == BuildStep::State::Finished && buildStep->m_unfinishedDependencyCount.load() == 0;
     }) == m_buildSteps.size();
 }
 

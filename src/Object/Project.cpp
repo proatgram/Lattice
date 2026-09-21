@@ -91,5 +91,7 @@ auto ProjectFactory::Create(const std::string &identifier, const std::optional<s
     // Projects can have an optional default toolchain.
     project->SetToolchainId(config["default_toolchain"].as<std::string>(std::string{}));
 
+    project->Configure();
+
     return project;
 }

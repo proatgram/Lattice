@@ -212,7 +212,7 @@ auto Lattice::Lattice::StartBuild(const std::optional<std::list<std::string>> &o
         buildGraph = Object::BuildGraph::Generate();
     }
 
-    std::shared_ptr<BuildScheduler> buildScheduler = BuildScheduler::Create(buildGraph);
+    std::shared_ptr<BuildScheduler> buildScheduler = BuildScheduler::Create(buildGraph, numberJobs.value_or(1));
 
-    buildScheduler->Start()->wait();
+    buildScheduler->Start()->get();
 }
