@@ -29,6 +29,7 @@ target_link_libraries(lattice_lattice
         lattice::Registry
         lattice::Object
         lattice::Logger
+        lattice::BuildScheduler
         yaml-cpp::yaml-cpp
 )
 
@@ -52,6 +53,23 @@ target_sources(lattice_ifactory
         BASE_DIRS "${PROJECT_SOURCE_DIR}/modules"
         FILES
             "${PROJECT_SOURCE_DIR}/modules/IFactory.cppm"
+)
+
+add_library(lattice_buildscheduler SHARED)
+add_library(lattice::BuildScheduler ALIAS lattice_buildscheduler)
+
+target_sources(lattice_buildscheduler
+    PRIVATE
+        "${PROJECT_SOURCE_DIR}/src/BuildScheduler.cpp"
+    PUBLIC FILE_SET CXX_MODULES
+        BASE_DIRS "${PROJECT_SOURCE_DIR}/modules"
+        FILES
+            "${PROJECT_SOURCE_DIR}/modules/BuildScheduler.cppm"
+)
+
+target_link_libraries(lattice_buildscheduler
+    PUBLIC
+        lattice::Object
 )
 
 add_subdirectory(Object)

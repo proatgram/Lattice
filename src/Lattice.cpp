@@ -1,7 +1,5 @@
 module;
 
-#include <filesystem>
-#include <thread>
 #include <yaml-cpp/yaml.h>
 
 module Lattice;
@@ -16,6 +14,7 @@ import Lattice.Plugins.Loader;
 import Lattice.Object.BuildGraph;
 import Lattice.Logger.ILogger;
 import Lattice.Logger.ProgressLogger;
+import Lattice.BuildScheduler;
 
 Lattice::Lattice::Lattice(Lattice::Constructable) {
     auto ok = Registry::GetInstance()->Register<std::shared_ptr<Object::ProjectFactory::FactoryType>>("project", Object::ProjectFactory::GetInstance());
@@ -213,56 +212,7 @@ auto Lattice::Lattice::StartBuild(const std::optional<std::list<std::string>> &o
         buildGraph = Object::BuildGraph::Generate();
     }
 
-    std::map<std::string, std::future<void>> currentJobs;
-    std::map<std::string, std::future<void>> finishedJobs;
-    std::mutex jobsMutex;
-    while (true) {
-        {
-            std::lock_guard<std::mutex> lock(jobsMutex);
-            if (buildGraph->IsCompleted())
-                break;
-        }
-        std::size_t jobs;
-        {
-            std::lock_guard<std::mutex> lock(jobsMutex);
-            jobs = std::min(std::min(buildGraph->GetReady().size(), numberJobs.value_or(1)), numberJobs.value_or(1) - currentJobs.size());
-        }
-        for (int i = 0; i < jobs; i++) {
-            std::list<std::shared_ptr<Object::BuildGraph::DependencyNode>> readyNodes;
-            {
-                std::lock_guard<std::mutex> lock(jobsMutex);
-                readyNodes = buildGraph->GetReady();
-            }
-            for (const std::shared_ptr<Object::BuildGraph::DependencyNode> &node : readyNodes) {
-                {
-                    std::lock_guard<std::mutex> lock(jobsMutex);
-                    if (currentJobs.contains(node->object->GetResolvedObject()->GetIdentifier()) || finishedJobs.contains(node->object->GetResolvedObject()->GetIdentifier()))
-                        continue;
-                }
-                std::lock_guard<std::mutex> lock(jobsMutex);
-                currentJobs[node->object->GetResolvedObject()->GetIdentifier()] = std::async(std::launch::async, [node, &buildGraph, &currentJobs, &finishedJobs, &jobsMutex]() -> void {
-                    std::cout << "Building " << node->object->GetResolvedObject()->GetIdentifier() << "..." <<std::endl;
-                    if (const std::shared_ptr<Object::Capabilities::Buildable> &buildable = node->object->GetResolvedObject()->GetCapability<Object::Capabilities::Buildable>().value_or(nullptr); buildable)
-                        {}//buildable->Build();
+    std::shared_ptr<BuildScheduler> buildScheduler = BuildScheduler::Create(buildGraph);
 
-
-                    std::lock_guard<std::mutex> lock(jobsMutex);
-                    buildGraph->UpdateBuilt(node);
-                    finishedJobs.insert({node->object->GetResolvedObject()->GetIdentifier(), std::move(currentJobs.extract(node->object->GetResolvedObject()->GetIdentifier()).mapped())});
-                });
-
-                break;
-            }
-        }
-    }
-
-    while (true) {
-        {
-            std::lock_guard<std::mutex> lock(jobsMutex);
-            if (currentJobs.size() == 0)
-                break;
-        }
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    }
+    buildScheduler->Start()->wait();
 }

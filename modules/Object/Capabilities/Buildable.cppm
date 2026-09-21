@@ -174,6 +174,8 @@ export namespace Lattice::Object::Capabilities {
                     StepDescription m_description;
                     std::vector<std::shared_ptr<BuildStep>> m_dependents;
                     std::vector<std::shared_ptr<BuildStep>> m_dependencies;
+
+                    friend class Buildable;
             };
 
             virtual ~Buildable() = default;
@@ -198,6 +200,8 @@ export namespace Lattice::Object::Capabilities {
              * @return The remaining steps that haven't ran yet.
              */
             auto GetRemainingSteps() const -> std::size_t;
+
+            auto UpdateBuiltStep(const std::shared_ptr<BuildStep> &buildStep) -> bool;
 
             /**
              * @brief Checks if the `Buildable` object has been fully built.

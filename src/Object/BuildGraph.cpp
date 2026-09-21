@@ -16,12 +16,14 @@ auto BuildGraph::RecursiveBuildGraph(const std::shared_ptr<Resolver> &objectReso
     if (auto it = currentGraph.find(objectResolver->GetResolvedObject()->GetIdentifier()); it != currentGraph.end())
         dependencyNode = it->second;
     else
-        dependencyNode = std::make_shared<DependencyNode>(objectResolver, std::list<std::shared_ptr<DependencyNode>>{}, 0);
+        dependencyNode = std::make_shared<DependencyNode>(objectResolver, std::list<std::shared_ptr<DependencyNode>>{}, 0, DependencyNode::Status::Ready);
 
     if (auto hasDependencies = objectResolver->GetResolvedObject()->GetCapability<Capabilities::HasDependencies>().value_or(nullptr); hasDependencies) {
-        for (const Capabilities::HasDependencies::Dependency &dependency : hasDependencies->GetAllDependencies()) {
-            if (RecursiveBuildGraph(dependency.resolver, currentGraph, dependencyNode))
-                dependencyNode->dependencyCount++;
+        if (!hasDependencies->GetAllDependencies().empty()) {
+            for (const Capabilities::HasDependencies::Dependency &dependency : hasDependencies->GetAllDependencies()) {
+                if (RecursiveBuildGraph(dependency.resolver, currentGraph, dependencyNode))
+                    dependencyNode->dependencyCount++;
+            }
         }
     } else if (auto project = objectResolver->GetResolvedObject()->As<Project>().value_or(nullptr); project) {
         for (const auto &[id, object] : project->GetObjects()) {
@@ -40,6 +42,8 @@ auto BuildGraph::RecursiveBuildGraph(const std::shared_ptr<Resolver> &objectReso
     if (dependencyNode->dependencyCount > 0 || cacheDirty) {
         if (dependee)
             dependencyNode->dependents.push_back(dependee.value());
+        if (dependencyNode->dependencyCount == 0)
+            dependencyNode->status = DependencyNode::Status::Ready;
 
         currentGraph.insert({objectResolver->GetResolvedObject()->GetIdentifier(), dependencyNode});
 
@@ -67,8 +71,8 @@ BuildGraph::BuildGraph(Constructable, const std::optional<std::list<std::shared_
 
     m_dependencyNodesMap = tree;
     m_dependencyNodesSorted = std::ranges::to<std::list<std::shared_ptr<DependencyNode>>>(m_dependencyNodesMap | std::views::values);
-    m_dependencyNodesSorted.sort([](const std::shared_ptr<DependencyNode> &lhs, const std::shared_ptr<DependencyNode> &rhs) {
-        return *lhs < *rhs;
+    std::ranges::partition(m_dependencyNodesSorted, [](const std::shared_ptr<DependencyNode> &node) {
+        return node->status == DependencyNode::Status::Ready;
     });
 }
 
@@ -80,7 +84,7 @@ auto BuildGraph::GetReady() const -> std::list<std::shared_ptr<DependencyNode>> 
     std::list<std::shared_ptr<DependencyNode>> readyNodes;
 
     for (const std::shared_ptr<DependencyNode> &dependencyNode : m_dependencyNodesSorted) {
-        if (dependencyNode->dependencyCount != 0)
+        if (dependencyNode->status != DependencyNode::Status::Ready)
             break;
 
         readyNodes.push_back(dependencyNode);
@@ -89,21 +93,29 @@ auto BuildGraph::GetReady() const -> std::list<std::shared_ptr<DependencyNode>> 
     return readyNodes;
 }
 
-auto BuildGraph::UpdateBuilt(const std::shared_ptr<DependencyNode> &node) -> void {
-    for (const std::shared_ptr<DependencyNode> &dependent : node->dependents) {
-        dependent->dependencyCount--;
+auto BuildGraph::Update(const std::shared_ptr<DependencyNode> &node) -> void {
+    switch (node->status) {
+        case DependencyNode::Status::Finished:
+            for (const std::shared_ptr<DependencyNode> &dependent : node->dependents) {
+                dependent->dependencyCount--;
+                if (dependent->dependencyCount == 0)
+                    dependent->status = DependencyNode::Status::Ready;
+            }
+        case DependencyNode::Status::Ready:
+        case DependencyNode::Status::Building:
+        case DependencyNode::Status::Failed:
+        default:
+            std::ranges::partition(m_dependencyNodesSorted, [](const std::shared_ptr<DependencyNode> &node) {
+                return node->status == DependencyNode::Status::Ready;
+            });
+        case DependencyNode::Status::Pending:
+            // Unhandled
+            return;
     }
-    
-    m_dependencyNodesMap.erase(node->object->GetResolvedObject()->GetIdentifier());
-    m_dependencyNodesSorted.remove_if([&node](const std::shared_ptr<DependencyNode> &other) -> bool {
-        return node->object->GetResolvedObject()->GetIdentifier() == other->object->GetResolvedObject()->GetIdentifier();
-    });
-
-    m_dependencyNodesSorted.sort([](const std::shared_ptr<DependencyNode> &lhs, const std::shared_ptr<DependencyNode> &rhs) {
-        return *lhs < *rhs;
-    });
 }
 
 auto BuildGraph::IsCompleted() const -> bool {
-    return m_dependencyNodesSorted.size() == 0;
+    return std::ranges::count_if(m_dependencyNodesSorted, [](const std::shared_ptr<DependencyNode> &node) -> bool {
+        return node->status == DependencyNode::Status::Finished;
+    }) == m_dependencyNodesSorted.size();
 }

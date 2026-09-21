@@ -96,6 +96,23 @@ auto Buildable::GetRemainingSteps() const -> std::size_t {
     return std::ranges::count_if(m_buildSteps, [](const std::shared_ptr<BuildStep> &buildStep) -> bool { return buildStep->GetState() != BuildStep::State::Finished; });
 }
 
+auto Buildable::UpdateBuiltStep(const std::shared_ptr<BuildStep> &buildStep) -> bool {
+    if (buildStep->GetState() != BuildStep::State::Finished) {
+        return std::ranges::any_of(m_buildSteps, [](const std::shared_ptr<BuildStep> &step) -> bool {
+            return step->GetState() == BuildStep::State::Ready;
+        });
+    }
+
+    for (const std::shared_ptr<BuildStep> &dependent : buildStep->GetDependents()) {
+        if (dependent->m_unfinishedDependencyCount.fetch_sub(1) == 1)
+            dependent->m_state.store(BuildStep::State::Ready);
+    }
+
+    return std::ranges::any_of(m_buildSteps, [](const std::shared_ptr<BuildStep> &step) -> bool {
+        return step->GetState() == BuildStep::State::Ready;
+    });
+}
+
 auto Buildable::IsBuilt() const -> bool {
     return std::ranges::count_if(m_buildSteps, [](const std::shared_ptr<BuildStep> &buildStep) -> bool {
         return buildStep->GetState() == BuildStep::State::Finished;

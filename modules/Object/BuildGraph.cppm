@@ -19,10 +19,18 @@ export namespace Lattice::Object {
              * @brief A node on the build graph.
              */
             struct DependencyNode {
+                enum class Status {
+                    Pending,
+                    Ready,
+                    Building,
+                    Finished,
+                    Failed
+                };
                 std::shared_ptr<Resolver> object;
                 std::list<std::shared_ptr<DependencyNode>> dependents;
 
                 std::size_t dependencyCount;
+                Status status;
             };
 
             friend auto operator<(const DependencyNode &lhs, const DependencyNode &rhs) -> bool {
@@ -64,14 +72,9 @@ export namespace Lattice::Object {
              *
              * This updates the build graph for the node
              * that has been processed and built.
-             *
-             * The node will be removed from the internal list,
-             * and every node that depended on it will have their
-             * internal dependency count reduced by 1.
-             *
              * @param[in] node The node that has finished.
              */
-            auto UpdateBuilt(const std::shared_ptr<DependencyNode> &node) -> void;
+            auto Update(const std::shared_ptr<DependencyNode> &node) -> void;
 
         private:
             auto RecursiveBuildGraph(const std::shared_ptr<Resolver> &objectResolver, std::map<std::string, std::shared_ptr<DependencyNode>> &currentGraph, const std::optional<std::shared_ptr<DependencyNode>> &dependee = {}) -> bool;
