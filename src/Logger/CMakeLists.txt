@@ -15,3 +15,8 @@ target_sources(lattice_logger
             "${PROJECT_SOURCE_DIR}/modules/Logger/TextLogger.cppm"
             "${PROJECT_SOURCE_DIR}/modules/Logger/ProgressLogger.cppm"
 )
+
+target_link_libraries(lattice_logger
+    PRIVATE
+        lattice::Registry
+)

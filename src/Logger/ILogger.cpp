@@ -1,12 +1,24 @@
 module Lattice.Logger.ILogger;
 
+import Lattice.Registry;
+
 using namespace Lattice::Logger;
+
+ILogger::ILogger() {
+    s_canCreate = false;
+}
 
 ILogger::~ILogger() {
     if (m_loggingThread.joinable()) {
         m_loggingThread.request_stop();
         m_loggingThread.join();
     }
+
+    s_canCreate = true;
+}
+
+auto ILogger::GetDefault() -> std::shared_ptr<ILogger> {
+    return Registry::GetInstance()->Query<std::shared_ptr<ILogger>>("default").value_or(nullptr);
 }
 
 auto ILogger::StartLoggingThread() -> void {
@@ -16,6 +28,10 @@ auto ILogger::StartLoggingThread() -> void {
             std::this_thread::sleep_for(std::chrono::milliseconds(50));
         }
     });
+}
+
+auto ILogger::CanCreate() -> bool {
+    return s_canCreate;
 }
 
 auto ILogger::Info(const std::string &message) -> void {

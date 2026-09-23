@@ -5,7 +5,7 @@ import Lattice.Logger.EscapeSequences;
 using namespace Lattice::Logger;
 using namespace EscapeSequences::Colors;
 
-TextLogger::TextLogger() {StartLoggingThread();}
+TextLogger::TextLogger(ILogger::Constructable) {StartLoggingThread();}
 
 auto TextLogger::Log(Level level, const std::string &message) -> void {
     std::unique_lock lock(m_mutex);

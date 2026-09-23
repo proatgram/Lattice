@@ -14,6 +14,8 @@ import Lattice.Object.IBinary;
 import Lattice.Object.Resolver;
 import Lattice.Plugins.Loader;
 import Lattice.Object.BuildGraph;
+import Lattice.Logger.ILogger;
+import Lattice.Logger.ProgressLogger;
 
 Lattice::Lattice::Lattice(Lattice::Constructable) {
     auto ok = Registry::GetInstance()->Register<std::shared_ptr<Object::ProjectFactory::FactoryType>>("project", Object::ProjectFactory::GetInstance());
@@ -31,6 +33,12 @@ Lattice::Lattice::Lattice(Lattice::Constructable) {
     ok = Registry::GetInstance()->Register<std::shared_ptr<Object::IBinaryFactory::FactoryType>>("binary", Object::IBinaryFactory::GetInstance());
     if (!ok)
         throw std::runtime_error("Irrecoverable error: Built in object type \"binary\" failed to register. This is a bug.");
+
+    auto otherOk = Registry::GetInstance()->Register<std::shared_ptr<::Lattice::Logger::ILogger>>("progress-logger", ::Lattice::Logger::ILogger::Create<::Lattice::Logger::ProgressLogger>().value());
+
+    // TODO: Decide which logger to set as default.
+    otherOk = Registry::GetInstance()->Register<std::shared_ptr<::Lattice::Logger::ILogger>>("default",
+            Registry::GetInstance()->Query<std::shared_ptr<::Lattice::Logger::ILogger>>("progress-logger").value());
 
     Plugins::Loader::GetInstance()->LoadDirectory();
     Plugins::Loader::GetInstance()->InitializeAllLoaded();

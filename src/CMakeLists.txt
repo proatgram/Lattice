@@ -28,6 +28,7 @@ target_link_libraries(lattice_lattice
         lattice::Plugins
         lattice::Registry
         lattice::Object
+        lattice::Logger
         yaml-cpp::yaml-cpp
 )
 

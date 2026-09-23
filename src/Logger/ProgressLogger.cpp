@@ -1,3 +1,12 @@
+module;
+
+#ifdef __linux__
+
+#include <sys/ioctl.h>
+#include <unistd.h>
+
+#endif
+
 module Lattice.Logger.ProgressLogger;
 
 import Lattice.Logger.EscapeSequences;
@@ -93,20 +102,28 @@ auto BuildProgress::ApplyChanges() -> void {
     m_currentTransaction = m_temporaryTransaction;
 }
 
-auto BuildProgress::Generate(std::size_t requestedColumnWidth) -> BuildProgress::DrawDescription {
+auto BuildProgress::Generate(std::size_t requestedColumnWidth) -> std::optional<BuildProgress::DrawDescription> {
     std::unique_lock<std::mutex> lock(m_mutex);
 
+    if (m_currentTransaction.totalObjects == 0)
+        return {};
+
     std::stringstream outputStream;
+    std::stringstream descriptionStream;
 
     // Total lines should be the header + 1 + numObjects + totalSteps + newline at end
     // Do two things at once, count lines and work on headers
-    std::size_t lines = 3 + m_currentTransaction.objects.size();
-    outputStream << "\nBuilding: ";
+    outputStream << '\n';
+    std::string header = "Building: ";
     for (std::size_t i = 0; i < m_currentTransaction.objects.size(); i++) {
-        lines += m_currentTransaction.objects.at(i).Steps.size();
-        outputStream << m_currentTransaction.objects.at(i).Id;
+        header += m_currentTransaction.objects.at(i).Id;
         if (i + 1 < m_currentTransaction.objects.size())
-            outputStream << ", ";
+            header += ", ";
+
+        descriptionStream << std::format("{} ({}/{})\n", m_currentTransaction.objects.at(i).Id, m_currentTransaction.objects.at(i).CompletedSteps, m_currentTransaction.objects.at(i).TotalSteps);
+        for (const Step &step : m_currentTransaction.objects.at(i).Steps) {
+            descriptionStream << "  " << step.Description << '\n';
+        }
     }
 
     // Build progress bar
@@ -116,21 +133,42 @@ auto BuildProgress::Generate(std::size_t requestedColumnWidth) -> BuildProgress:
                  / static_cast<double>(m_currentTransaction.totalObjects);
         progress = std::clamp(progress, 0.0, 1.0);
     }
-
-    std::size_t filled = static_cast<std::size_t>(std::lround(50.0 * progress));
     unsigned short int percent = static_cast<unsigned short int>(std::lround(progress * 100.0));
 
-    outputStream << " [" << std::setw(50) << std::left << std::string(filled, '#') << std::right << ' '
-                 << std::setw(3) << percent
-                 << "%] " << m_currentTransaction.currentObjectsDone << '/'
-                 << m_currentTransaction.totalObjects << " objects\n\n";
-    
-    // Write detailed progress
-    for (const Object &object : m_currentTransaction.objects) {
-        outputStream << std::format("{} ({}/{})\n", object.Id, object.CompletedSteps, object.TotalSteps);
-        for (const Step &step : object.Steps) {
-            outputStream << "  " << step.Description << '\n';
+    std::stringstream tmp;
+    tmp << " [{} " << std::setw(3) << percent << "%] " << m_currentTransaction.currentObjectsDone << '/'
+        << m_currentTransaction.totalObjects << " objects";
+
+    header += tmp.str();
+
+    std::size_t progressBarSize{75};
+    if (requestedColumnWidth != 0) {
+        std::size_t fixedHeaderSize = header.size() - 2;
+        if (fixedHeaderSize >= requestedColumnWidth) {
+            progressBarSize = 1;
+        } else {
+            progressBarSize = requestedColumnWidth - fixedHeaderSize;
         }
+    }
+
+    std::size_t filled = static_cast<std::size_t>(std::lround(progress * progressBarSize));
+
+    std::string filledString = std::string(filled, '#'); 
+    filledString += std::string(std::lround(progressBarSize) - filled, ' ');
+
+    outputStream << std::vformat(header, std::make_format_args(filledString)) << "\n\n" << descriptionStream.str();
+
+    // Calculate line wrapping
+    std::size_t lines{0};
+    std::size_t columnCount{0};
+#ifdef __linux__
+    winsize size;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+    columnCount = size.ws_col;
+#endif
+    std::string outputLine;
+    while (std::getline(outputStream, outputLine)) {
+        lines += outputLine.empty() ? 1 : 1 + (outputLine.size() - 1) / columnCount;
     }
 
     DrawDescription description {
@@ -144,7 +182,7 @@ auto BuildProgress::Generate(std::size_t requestedColumnWidth) -> BuildProgress:
     return description;
 }
 
-ProgressLogger::ProgressLogger() :
+ProgressLogger::ProgressLogger(Constructable) :
     m_messagesQueue(),
     m_buildProgress(std::make_shared<BuildProgress>()) {StartLoggingThread();}
 
@@ -155,8 +193,16 @@ auto ProgressLogger::Log(Level level, const std::string &message) -> void {
 
 auto ProgressLogger::Update() -> void {
     std::unique_lock<std::mutex> lock(m_mutex);
-    BuildProgress::DrawDescription progressDescription = m_buildProgress->Generate();
-    std::cout << MoveToColumn(0) << MoveUp(progressDescription.previousLineCount) << Clear(Clear::Where::CursorToEndScreen);
+    std::size_t columnCount{0};
+#ifdef __linux__
+    winsize size;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+    columnCount = std::min<std::size_t>(size.ws_col, 75);
+#endif
+
+    std::optional<BuildProgress::DrawDescription> progressDescription = m_buildProgress->Generate(columnCount);
+    if (progressDescription)
+        std::cout << MoveToColumn(0) << MoveUp(progressDescription->previousLineCount) << Clear(Clear::Where::CursorToEndScreen);
 
     while (!m_messagesQueue.empty()) {
         Message msg = std::move(m_messagesQueue.front());
@@ -173,8 +219,8 @@ auto ProgressLogger::Update() -> void {
                 break;
         }
     }
-
-    std::cout << progressDescription.output;
+    if (progressDescription)
+        std::cout << progressDescription->output;
     std::cout.flush();
 }
 
