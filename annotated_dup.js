@@ -24,7 +24,10 @@ var annotated_dup =
           [ "IEscapeSequence", "d8/df8/classLattice_1_1Logger_1_1EscapeSequences_1_1IEscapeSequence.html", null ],
           [ "TerminalStyle", "dc/d67/classLattice_1_1Logger_1_1EscapeSequences_1_1TerminalStyle.html", null ]
         ] ],
-        [ "Logger", "de/dc6/classLattice_1_1Logger_1_1Logger.html", null ]
+        [ "BuildProgress", "d4/d14/classLattice_1_1Logger_1_1BuildProgress.html", "d4/d14/classLattice_1_1Logger_1_1BuildProgress" ],
+        [ "ILogger", "d2/d6c/classLattice_1_1Logger_1_1ILogger.html", "d2/d6c/classLattice_1_1Logger_1_1ILogger" ],
+        [ "ProgressLogger", "d7/d5a/classLattice_1_1Logger_1_1ProgressLogger.html", "d7/d5a/classLattice_1_1Logger_1_1ProgressLogger" ],
+        [ "TextLogger", "d5/dd2/classLattice_1_1Logger_1_1TextLogger.html", "d5/dd2/classLattice_1_1Logger_1_1TextLogger" ]
       ] ],
       [ "Object", null, [
         [ "Capabilities", null, [

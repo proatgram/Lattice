@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['query_0',['Query',['../de/d26/classLattice_1_1Provider.html#adc7269905de29a86c1ec49f72d6c5524',1,'Lattice::Provider::Query()'],['../d7/d65/classLattice_1_1Registry.html#a8379ed767b0d59852e59bfd0e6be8dc2',1,'Lattice::Registry::Query()']]]
+  ['project_0',['Project',['../d5/dd0/classLattice_1_1Object_1_1Project.html#ab40535a4e8f2000c4f286ab64b91aa18',1,'Lattice::Object::Project']]],
+  ['provides_1',['Provides',['../d3/d7f/classLattice_1_1Object_1_1IToolchain.html#a897ae77001db2257f7a668572bbefadc',1,'Lattice::Object::IToolchain']]]
 ];

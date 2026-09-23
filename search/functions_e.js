@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['unregister_0',['Unregister',['../d7/d65/classLattice_1_1Registry.html#a062959fbade7311beed67a55cc259bd0',1,'Lattice::Registry']]],
-  ['updatebuilt_1',['UpdateBuilt',['../d7/d10/classLattice_1_1Object_1_1BuildGraph.html#a02d2e13d6b0ed0ec401e15fe742e28f0',1,'Lattice::Object::BuildGraph']]]
+  ['tryresolve_0',['TryResolve',['../df/d26/classLattice_1_1Object_1_1Resolver.html#a8a8307618e3a20dfc758c527996412ed',1,'Lattice::Object::Resolver']]],
+  ['tryresolveall_1',['TryResolveAll',['../df/d26/classLattice_1_1Object_1_1Resolver.html#a10aba23c8a89973e01c6dc3e6e04c203',1,'Lattice::Object::Resolver']]]
 ];

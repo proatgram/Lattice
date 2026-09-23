@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['state_0',['State',['../d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html#ad4808fc227362841dbc0fe4158e86ed3',1,'Lattice::Object::Capabilities::Buildable::BuildStep']]]
+  ['level_0',['Level',['../d2/d6c/classLattice_1_1Logger_1_1ILogger.html#a00f6ba20e6ef5ab9741665a513a67704',1,'Lattice::Logger::ILogger']]]
 ];

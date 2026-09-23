@@ -7,6 +7,6 @@ var searchData=
   ['command_4',['Command',['../d4/d72/classLattice_1_1System_1_1Command.html',1,'Lattice::System']]],
   ['compilerconfiguration_5',['CompilerConfiguration',['../d1/d93/classLattice_1_1Tooling_1_1CompilerConfiguration.html',1,'Lattice::Tooling']]],
   ['configuration_6',['Configuration',['../d6/db3/classLattice_1_1Tooling_1_1Configuration.html',1,'Lattice::Tooling']]],
-  ['constructable_7',['Constructable',['../d8/dd5/structLattice_1_1ISingletonFactory_1_1Constructable.html',1,'Lattice::ISingletonFactory&lt; Factory, T &gt;::Constructable'],['../de/dde/structLattice_1_1Object_1_1Object_1_1Constructable.html',1,'Lattice::Object::Object::Constructable'],['../d6/d32/structLattice_1_1Tooling_1_1Configuration_1_1Constructable.html',1,'Lattice::Tooling::Configuration::Constructable']]],
+  ['constructable_7',['Constructable',['../d8/dd5/structLattice_1_1ISingletonFactory_1_1Constructable.html',1,'Lattice::ISingletonFactory&lt; Factory, T &gt;::Constructable'],['../da/d25/structLattice_1_1Logger_1_1ILogger_1_1Constructable.html',1,'Lattice::Logger::ILogger::Constructable'],['../de/dde/structLattice_1_1Object_1_1Object_1_1Constructable.html',1,'Lattice::Object::Object::Constructable'],['../d6/d32/structLattice_1_1Tooling_1_1Configuration_1_1Constructable.html',1,'Lattice::Tooling::Configuration::Constructable']]],
   ['context_8',['Context',['../d1/d1b/structLattice_1_1Object_1_1Resolver_1_1Context.html',1,'Lattice::Object::Resolver']]]
 ];
