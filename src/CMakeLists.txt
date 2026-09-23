@@ -9,6 +9,7 @@ target_link_libraries(lattice
     PUBLIC
         argparse::argparse
         lattice::Lattice
+        lattice::Logger
 )
 
 add_library(lattice_lattice)
@@ -29,7 +30,7 @@ target_link_libraries(lattice_lattice
         lattice::Registry
         lattice::Object
         lattice::Logger
-        lattice::BuildScheduler
+        lattice::Scheduler
         yaml-cpp::yaml-cpp
 )
 
@@ -55,19 +56,19 @@ target_sources(lattice_ifactory
             "${PROJECT_SOURCE_DIR}/modules/IFactory.cppm"
 )
 
-add_library(lattice_buildscheduler SHARED)
-add_library(lattice::BuildScheduler ALIAS lattice_buildscheduler)
+add_library(lattice_scheduler SHARED)
+add_library(lattice::Scheduler ALIAS lattice_scheduler)
 
-target_sources(lattice_buildscheduler
+target_sources(lattice_scheduler
     PRIVATE
-        "${PROJECT_SOURCE_DIR}/src/BuildScheduler.cpp"
+        "${PROJECT_SOURCE_DIR}/src/Scheduler.cpp"
     PUBLIC FILE_SET CXX_MODULES
         BASE_DIRS "${PROJECT_SOURCE_DIR}/modules"
         FILES
-            "${PROJECT_SOURCE_DIR}/modules/BuildScheduler.cppm"
+            "${PROJECT_SOURCE_DIR}/modules/Scheduler.cppm"
 )
 
-target_link_libraries(lattice_buildscheduler
+target_link_libraries(lattice_scheduler
     PUBLIC
         lattice::Object
     PRIVATE

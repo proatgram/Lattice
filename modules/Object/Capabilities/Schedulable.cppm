@@ -1,4 +1,4 @@
-export module Lattice.Object.Capabilities.Buildable;
+export module Lattice.Object.Capabilities.Schedulable;
 
 export import std;
 
@@ -6,17 +6,17 @@ import Lattice.Object.Capabilities.ICapability;
 
 export namespace Lattice::Object::Capabilities {
     /**
-     * @brief Provides a base class for objects that can be built.
+     * @brief Provides a base class for objects that can be ran using the scheduler.
      *
-     * This class defines methods and processes to create build steps
-     * for objects that can be built, a way to query which steps can
-     * be built, and a way to run said steps.
+     * This class defines methods and processes to create steps for
+     * objects that can be scheduled, a way to query which steps can
+     * be ran, and a way to run said steps.
      *
      */
-    class Buildable : public ICapability {
+    class Schedulable : public ICapability {
         public:
             /**
-             * @brief Represents a Build Steps description.
+             * @brief Represents a `Schedulable` `Step`'s description.
              *
              * Essentially, the action done onto name.
              */
@@ -56,15 +56,15 @@ export namespace Lattice::Object::Capabilities {
             };
 
             /**
-             * @brief A class representing a step in the build process for a `Buildable` object.
+             * @brief A class representing a step in the execution process for a `Schedulable` object.
              *
-             * A `Buildable` object can have any number of `BuildStep`'s. Each build step defined can
-             * depend on one or more other `BuildStep`'s in the `Buildable`.
+             * A `Schedulable` object can have any number of `Step`'s. Each step defined can
+             * depend on one or more other `Step`'s in the `Schedulable`.
              *
-             * Additionally, a `BuildStep` has a `State` associated with it describing it's current
+             * Additionally, a `Step` has a `State` associated with it describing it's current
              * progress or result.
              */
-            class BuildStep {
+            class Step {
                 struct Constructable{};
                 public:
                     /**
@@ -85,20 +85,20 @@ export namespace Lattice::Object::Capabilities {
                         Failed
                     };
 
-                    BuildStep(Constructable, const std::weak_ptr<Buildable> &parent, const std::function<bool(void)> &stepFunction, const std::string &stepId, const StepDescription &stepDescription, const std::vector<std::shared_ptr<BuildStep>> &dependencies = {});
+                    Step(Constructable, const std::weak_ptr<Schedulable> &parent, const std::function<bool(void)> &stepFunction, const std::string &stepId, const StepDescription &stepDescription, const std::vector<std::shared_ptr<Step>> &dependencies = {});
 
                     /**
-                     * @brief Creates a new `BuildStep`.
+                     * @brief Creates a new `Step`.
                      *
-                     * @param[in] parent The parent `Buildable` that owns the step.
+                     * @param[in] parent The parent `Schedulable` that owns the step.
                      * @param[in] stepFunction The function that will get run when this step gets ran.
                      * @param[in] stepId An identifier to refer to this step by.
                      * @param[in] stepDescription A `StepDescription` describing the step.
                      * @param[in] dependencies A set of dependencies that this step depends on before it can run.
                      *
-                     * @return A newly created `BuildStep` encased in a `std::shared_ptr`.
+                     * @return A newly created `Step` encased in a `std::shared_ptr`.
                      */
-                    static auto Create(const std::weak_ptr<Buildable> &parent, const std::function<bool(void)> &stepFunction, const std::string &stepId, const StepDescription &stepDescription, const std::vector<std::shared_ptr<BuildStep>> &dependencies = {}) -> std::shared_ptr<BuildStep>;
+                    static auto Create(const std::weak_ptr<Schedulable> &parent, const std::function<bool(void)> &stepFunction, const std::string &stepId, const StepDescription &stepDescription, const std::vector<std::shared_ptr<Step>> &dependencies = {}) -> std::shared_ptr<Step>;
 
                     /**
                      * @brief Gets the step ID.
@@ -138,13 +138,13 @@ export namespace Lattice::Object::Capabilities {
                      *
                      * @return A vector to the dependents of this step.
                      */
-                    auto GetDependents() const -> const std::vector<std::shared_ptr<BuildStep>>&;
+                    auto GetDependents() const -> const std::vector<std::shared_ptr<Step>>&;
                     /**
                      * @brief Gets the steps that this step depends on.
                      *
                      * @return The dependencies of this step.
                      */
-                    auto GetDependencies() const -> const std::vector<std::shared_ptr<BuildStep>>&;
+                    auto GetDependencies() const -> const std::vector<std::shared_ptr<Step>>&;
                     /**
                      * @brief Gets the current count of dependencies that haven't finished.
                      *
@@ -156,42 +156,42 @@ export namespace Lattice::Object::Capabilities {
                      */
                     auto GetUnfinishedDependencyCount() const -> std::size_t;
                     /**
-                     * @brief Gets the parent `Buildable` that owns this step.
+                     * @brief Gets the parent `Schedulable` that owns this step.
                      *
-                     * @return The parent `Buildable` that owns this step.
+                     * @return The parent `Schedulable` that owns this step.
                      */
-                    auto GetParent() const -> std::weak_ptr<Buildable>;
+                    auto GetParent() const -> std::weak_ptr<Schedulable>;
 
                 private:
                     std::atomic<State> m_state;
 
-                    std::weak_ptr<Buildable> m_parentBuildable;
+                    std::weak_ptr<Schedulable> m_parentSchedulable;
                     std::function<bool(void)> m_function;
                     std::string m_id;
 
                     std::atomic<std::size_t> m_unfinishedDependencyCount;
 
                     StepDescription m_description;
-                    std::vector<std::shared_ptr<BuildStep>> m_dependents;
-                    std::vector<std::shared_ptr<BuildStep>> m_dependencies;
+                    std::vector<std::shared_ptr<Step>> m_dependents;
+                    std::vector<std::shared_ptr<Step>> m_dependencies;
 
-                    friend class Buildable;
+                    friend class Schedulable;
             };
 
-            virtual ~Buildable() = default;
+            virtual ~Schedulable() = default;
 
             /**
-             * @brief Gets the `BuildStep`'s that are currently ready to be ran.
+             * @brief Gets the `Step`'s that are currently ready to be ran.
              *
-             * This function will get up to `max` `BuildStep`'s that are ready to be ran.
+             * This function will get up to `max` `Step`'s that are ready to be ran.
              *
-             * @return Up to `max` build steps that are ready.
+             * @return Up to `max` steps that are ready.
              */
-            auto GetReadySteps(std::size_t max = 1) const -> std::vector<std::shared_ptr<BuildStep>>;
+            auto GetReadySteps(std::size_t max = 1) const -> std::vector<std::shared_ptr<Step>>;
             /**
-             * @brief Gets the total number of steps this build has.
+             * @brief Gets the total number of steps this `Schedulable` has.
              *
-             * @return The total build steps.
+             * @return The total steps.
              */
             auto GetTotalSteps() const -> std::size_t;
             /**
@@ -201,33 +201,33 @@ export namespace Lattice::Object::Capabilities {
              */
             auto GetRemainingSteps() const -> std::size_t;
 
-            auto UpdateBuiltStep(const std::shared_ptr<BuildStep> &buildStep, BuildStep::State state) -> std::expected<void, BuildStep::State>;
+            auto UpdateStep(const std::shared_ptr<Step> &step, Step::State state) -> std::expected<void, Step::State>;
 
             /**
-             * @brief Checks if the `Buildable` object has been fully built.
+             * @brief Checks if the `Schedulable` object has been finished.
              *
-             * @return `true` if it's been fully built, otherwise `false`.
+             * @return `true` if it's been finished, otherwise `false`.
              */
-            auto IsBuilt() const -> bool;
+            auto IsComplete() const -> bool;
 
             /**
-             * @brief Configures the `Buildable` object.
+             * @brief Configures the `Schedulable` object.
              *
              * This function should be overridden in order to configure
              * all neccessary things that this object needs in order to
-             * be ready to be built. E.g., setting up and adding build steps.
+             * be ready to be ran. E.g., setting up and adding steps.
              */
             virtual auto Configure() -> void = 0;
 
         protected:
             /**
-             * @brief Adds a `BuildStep` to the `Buildable`.
+             * @brief Adds a `Step` to the `Schedulable`.
              *
-             * @param[in] step The `BuildStep` to add.
+             * @param[in] step The `Step` to add.
              */
-            auto AddStep(const std::shared_ptr<BuildStep> &step) -> void;
+            auto AddStep(const std::shared_ptr<Step> &step) -> void;
 
         private:
-            std::vector<std::shared_ptr<BuildStep>> m_buildSteps;
+            std::vector<std::shared_ptr<Step>> m_steps;
     };
 }  // export namespace Lattice::Object::Capabilities

@@ -1,9 +1,8 @@
 export module Lattice;
 export import std;
 
-export import Lattice.Project;
-export import Lattice.Object;
-export import Lattice.Object.BuildGraph;
+import Lattice.Project;
+import Lattice.Object;
 
 export namespace Lattice {
     /**

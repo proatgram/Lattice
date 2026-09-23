@@ -1,4 +1,4 @@
-export module Lattice.Object.BuildGraph;
+export module Lattice.Object.DependencyGraph;
 
 export import std;
 
@@ -6,23 +6,23 @@ export import Lattice.Object.Resolver;
 
 export namespace Lattice::Object {
     /**
-     * @brief Build Graph generator.
+     * @brief Dependency Graph generator.
      *
-     * This class allows you to generate a build graph for
+     * This class allows you to generate a dependency graph for
      * the entire Lattice context, and then generate a sub graph
      * for a specific node in the full graph.
      */
-    class BuildGraph : std::enable_shared_from_this<BuildGraph> {
+    class DependencyGraph : std::enable_shared_from_this<DependencyGraph> {
         struct Constructable{};
         public:
             /**
-             * @brief A node on the build graph.
+             * @brief A node on the dependency graph.
              */
             struct DependencyNode {
                 enum class Status {
                     Pending,
                     Ready,
-                    Building,
+                    Running,
                     Finished,
                     Failed
                 };
@@ -40,21 +40,21 @@ export namespace Lattice::Object {
             /**
              * @brief Default constructor.
              *
-             * Generates a build graph for the entire Lattice context, or
+             * Generates a dependency graph for the entire Lattice context, or
              * a specific group of objects specified in objectResolvers.
              *
              * This will check the cache to see if anything for the specific
-             * target, or entire context needs to be rebuild.
+             * target, or entire context needs to be re-scheduled.
              */
-            BuildGraph(Constructable, const std::optional<std::list<std::shared_ptr<Resolver>>> &objectResolvers = {});
+            DependencyGraph(Constructable, const std::optional<std::list<std::shared_ptr<Resolver>>> &objectResolvers = {});
             
             /**
-             * @brief Generates the entire build graph.
+             * @brief Generates the entire dependency graph.
              */
-            static auto Generate(const std::optional<std::list<std::shared_ptr<Resolver>>> &objectResolvers = {}) -> std::shared_ptr<BuildGraph>;
+            static auto Generate(const std::optional<std::list<std::shared_ptr<Resolver>>> &objectResolvers = {}) -> std::shared_ptr<DependencyGraph>;
 
             /**
-             * @brief Gets the currently ready to be built object nodes.
+             * @brief Gets the currently ready to be worked on object nodes.
              *
              * @return A list of shared pointers to `DependencyNode`'s.
              */
@@ -63,23 +63,23 @@ export namespace Lattice::Object {
             auto GetTotalObjects() const -> std::size_t;
 
             /**
-             * @brief Checks if the build graph has finished traversing.
+             * @brief Checks if the dependency graph has finished traversing.
              *
-             * @return true if the build graph is done, false otherwise.
+             * @return true if the dependency graph is done, false otherwise.
              */
             auto IsCompleted() const -> bool;
 
             /**
-             * @brief Updates the build graph for a node.
+             * @brief Updates the dependency graph for a node.
              *
-             * This updates the build graph for the node
-             * that has been processed and built.
+             * This updates the dependency graph for the node
+             * that has been processed and ran.
              * @param[in] node The node that has finished.
              */
             auto Update(const std::shared_ptr<DependencyNode> &node) -> void;
 
         private:
-            auto RecursiveBuildGraph(const std::shared_ptr<Resolver> &objectResolver, std::map<std::string, std::shared_ptr<DependencyNode>> &currentGraph, const std::optional<std::shared_ptr<DependencyNode>> &dependee = {}) -> bool;
+            auto RecursiveDependencyGraph(const std::shared_ptr<Resolver> &objectResolver, std::map<std::string, std::shared_ptr<DependencyNode>> &currentGraph, const std::optional<std::shared_ptr<DependencyNode>> &dependee = {}) -> bool;
             std::map<std::string, std::shared_ptr<DependencyNode>> m_dependencyNodesMap;
             std::list<std::shared_ptr<DependencyNode>> m_dependencyNodesSorted;
     };

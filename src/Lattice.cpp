@@ -11,10 +11,10 @@ import Lattice.Object.ILibrary;
 import Lattice.Object.IBinary;
 import Lattice.Object.Resolver;
 import Lattice.Plugins.Loader;
-import Lattice.Object.BuildGraph;
+import Lattice.Object.DependencyGraph;
 import Lattice.Logger.ILogger;
 import Lattice.Logger.ProgressLogger;
-import Lattice.BuildScheduler;
+import Lattice.Scheduler;
 
 Lattice::Lattice::Lattice(Lattice::Constructable) {
     auto ok = Registry::GetInstance()->Register<std::shared_ptr<Object::ProjectFactory::FactoryType>>("project", Object::ProjectFactory::GetInstance());
@@ -200,19 +200,19 @@ auto Lattice::Lattice::LoadConfig(const std::filesystem::path configPath) -> voi
 }
 
 auto Lattice::Lattice::StartBuild(const std::optional<std::list<std::string>> &objects, const std::optional<std::size_t> &numberJobs) -> void {
-    std::shared_ptr<Object::BuildGraph> buildGraph;
+    std::shared_ptr<Object::DependencyGraph> dependencyGraph;
     if (objects) {
         std::list<std::shared_ptr<Object::Resolver>> resolvers;
         for (const std::string &objectId : objects.value()) {
             resolvers.push_back(Object::Resolver::Create({.identifier = objectId, .dependee = {}}));
         }
 
-        buildGraph = Object::BuildGraph::Generate(resolvers);
+        dependencyGraph = Object::DependencyGraph::Generate(resolvers);
     } else {
-        buildGraph = Object::BuildGraph::Generate();
+        dependencyGraph = Object::DependencyGraph::Generate();
     }
 
-    std::shared_ptr<BuildScheduler> buildScheduler = BuildScheduler::Create(buildGraph, numberJobs.value_or(1));
+    std::shared_ptr<Scheduler> scheduler = Scheduler::Create(dependencyGraph, numberJobs.value_or(1));
 
-    buildScheduler->Start()->get();
+    scheduler->Start()->get();
 }

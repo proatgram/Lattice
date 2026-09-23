@@ -10,7 +10,7 @@ target_sources(lattice_object
         "${PROJECT_SOURCE_DIR}/src/Object/Project.cpp"
         "${PROJECT_SOURCE_DIR}/src/Object/IBinary.cpp"
         "${PROJECT_SOURCE_DIR}/src/Object/Resolver.cpp"
-        "${PROJECT_SOURCE_DIR}/src/Object/BuildGraph.cpp"
+        "${PROJECT_SOURCE_DIR}/src/Object/DependencyGraph.cpp"
     PUBLIC FILE_SET CXX_MODULES
         BASE_DIRS "${PROJECT_SOURCE_DIR}/modules"
         FILES
@@ -21,7 +21,7 @@ target_sources(lattice_object
             "${PROJECT_SOURCE_DIR}/modules/Object/Resolver.cppm"
             "${PROJECT_SOURCE_DIR}/modules/Object/Project.cppm"
             "${PROJECT_SOURCE_DIR}/modules/Object/IToolchain.cppm"
-            "${PROJECT_SOURCE_DIR}/modules/Object/BuildGraph.cppm"
+            "${PROJECT_SOURCE_DIR}/modules/Object/DependencyGraph.cppm"
 )
 
 target_link_libraries(lattice_object
@@ -30,6 +30,7 @@ target_link_libraries(lattice_object
         lattice::Cache::Serialization
     PRIVATE
         lattice::Registry
+        lattice::Logger
         lattice::Cache::Manager
         yaml-cpp::yaml-cpp
 )

@@ -26,7 +26,7 @@ auto TextLogger::Update() -> void {
                 std::println("{}", Foreground::Yellow(msg.text));
                 break;
             case ILogger::Level::Error:
-                std::println("{}", Foreground::Red(msg.text));
+                std::println(std::cerr, "{}", Foreground::Red(msg.text));
                 break;
         }
     }

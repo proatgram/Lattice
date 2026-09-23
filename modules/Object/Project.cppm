@@ -1,20 +1,16 @@
 export module Lattice.Project;
 
 export import Lattice.Object;
-export import Lattice.Object.Capabilities.Buildable;
+export import Lattice.Object.Capabilities.Schedulable;
 export import Lattice.Object.Capabilities.HasToolchain;
 export import Lattice.IFactory;
 import std;
 
 export namespace Lattice::Object {
     /**
-     * @brief Represents a software project in the lattice.
-     *
-     * This class inherits from Object, Buildable, and Parsable to provide
-     * a project configuration that can be built and parsed from YAML.
-     *
+     * @brief Represents a project.
      */
-    class Project final : public Object, public Capabilities::Buildable, public Capabilities::HasToolchain {
+    class Project final : public Object, public Capabilities::Schedulable, public Capabilities::HasToolchain {
         public:
             /**
              * @brief Creates a new Project with the given identifier.

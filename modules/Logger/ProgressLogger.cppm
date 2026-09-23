@@ -5,17 +5,17 @@ import Lattice.Logger.TextLogger;
 
 export namespace Lattice::Logger {
     /**
-     * @brief Logger implementation that can also log build progress.
+     * @brief Logger implementation that can also log scheduler and step progress.
      *
      * The progress portion of this logger is transactional.
      * That is, the changes you make to it aren't used in the
      * `Generate()` function unless you apply them. Applying
      * the changes is done through a thread-safe manner.
      */
-    class BuildProgress {
+    class SchedulableProgress {
         public:
             /**
-             * @brief Abstraction over a build step.
+             * @brief Abstraction over a schedulable step.
              */
             struct Step {
                 std::string Id;
@@ -169,14 +169,14 @@ export namespace Lattice::Logger {
             /**
              * @brief Gets the progress bar instance for this logger.
              *
-             * @return A shared pointer to the `BuildProgress` instance associated with this logger.
+             * @return A shared pointer to the `SchedulableProgress` instance associated with this logger.
              */
-            auto GetProgress() -> std::shared_ptr<BuildProgress>;
+            auto GetProgress() -> std::shared_ptr<SchedulableProgress>;
 
         private:
             auto Update() -> void final;
             std::condition_variable m_finish;
 
-            std::shared_ptr<BuildProgress> m_buildProgress;
+            std::shared_ptr<SchedulableProgress> m_schedulableProgress;
     };
 }

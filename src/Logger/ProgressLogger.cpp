@@ -16,27 +16,27 @@ using namespace Lattice::Logger::EscapeSequences::Colors;
 using namespace Lattice::Logger::EscapeSequences::Cursor;
 using namespace Lattice::Logger::EscapeSequences::Clearing;
 
-auto BuildProgress::GetTotalObjects() const -> std::size_t {
+auto SchedulableProgress::GetTotalObjects() const -> std::size_t {
     return m_temporaryTransaction.totalObjects;
 }
-auto BuildProgress::SetTotalObjects(std::size_t objectCount) -> void {
+auto SchedulableProgress::SetTotalObjects(std::size_t objectCount) -> void {
     m_temporaryTransaction.totalObjects = objectCount;
 }
-auto BuildProgress::GetObjectsDone() const -> std::size_t {
+auto SchedulableProgress::GetObjectsDone() const -> std::size_t {
     return m_temporaryTransaction.currentObjectsDone;
 }
-auto BuildProgress::SetObjectsDone(std::size_t objectCount) -> void {
+auto SchedulableProgress::SetObjectsDone(std::size_t objectCount) -> void {
     m_temporaryTransaction.currentObjectsDone = objectCount;
 }
 
-auto BuildProgress::AddObject(Object object) -> bool {
+auto SchedulableProgress::AddObject(Object object) -> bool {
     if (ContainsObject(object.Id))
         return false;
 
     m_temporaryTransaction.objects.push_back(object);
     return true;
 }
-auto BuildProgress::RemoveObject(const std::string &objectId) -> bool {
+auto SchedulableProgress::RemoveObject(const std::string &objectId) -> bool {
     if (!ContainsObject(objectId))
         return false;
 
@@ -46,12 +46,12 @@ auto BuildProgress::RemoveObject(const std::string &objectId) -> bool {
 
     return true;
 }
-auto BuildProgress::ContainsObject(const std::string &objectId) const -> bool {
+auto SchedulableProgress::ContainsObject(const std::string &objectId) const -> bool {
     return std::ranges::any_of(m_temporaryTransaction.objects, [&objectId](const Object &other) -> bool {
         return other.Id == objectId;
    });
 }
-auto BuildProgress::GetObject(const std::string &objectId) const -> std::optional<std::reference_wrapper<const Object>> {
+auto SchedulableProgress::GetObject(const std::string &objectId) const -> std::optional<std::reference_wrapper<const Object>> {
     if (!ContainsObject(objectId))
         return {};
 
@@ -59,7 +59,7 @@ auto BuildProgress::GetObject(const std::string &objectId) const -> std::optiona
         return object.Id == objectId;
     });
 }
-auto BuildProgress::GetObject(const std::string &objectId) -> std::optional<std::reference_wrapper<Object>> {
+auto SchedulableProgress::GetObject(const std::string &objectId) -> std::optional<std::reference_wrapper<Object>> {
     if (!ContainsObject(objectId))
         return {};
 
@@ -68,7 +68,7 @@ auto BuildProgress::GetObject(const std::string &objectId) -> std::optional<std:
     });
 }
 
-auto BuildProgress::RemoveStep(const std::string &objectId, const std::string &stepId) -> bool {
+auto SchedulableProgress::RemoveStep(const std::string &objectId, const std::string &stepId) -> bool {
     if (!ContainsObject(objectId))
         return false;
 
@@ -84,7 +84,7 @@ auto BuildProgress::RemoveStep(const std::string &objectId, const std::string &s
 
     return true;
 }
-auto BuildProgress::AddStep(const std::string &objectId, Step step) -> bool {
+auto SchedulableProgress::AddStep(const std::string &objectId, Step step) -> bool {
     if (!ContainsObject(objectId))
         return false;
 
@@ -97,12 +97,12 @@ auto BuildProgress::AddStep(const std::string &objectId, Step step) -> bool {
     object.Steps.push_back(step);
     return true;
 }
-auto BuildProgress::ApplyChanges() -> void {
+auto SchedulableProgress::ApplyChanges() -> void {
     std::unique_lock<std::mutex> lock(m_mutex);
     m_currentTransaction = m_temporaryTransaction;
 }
 
-auto BuildProgress::Generate(std::size_t requestedColumnWidth) -> std::optional<BuildProgress::DrawDescription> {
+auto SchedulableProgress::Generate(std::size_t requestedColumnWidth) -> std::optional<SchedulableProgress::DrawDescription> {
     std::unique_lock<std::mutex> lock(m_mutex);
 
     if (m_currentTransaction.totalObjects == 0)
@@ -184,7 +184,7 @@ auto BuildProgress::Generate(std::size_t requestedColumnWidth) -> std::optional<
 
 ProgressLogger::ProgressLogger(Constructable) :
     TextLogger(TextLogger::Constructable{}),
-    m_buildProgress(std::make_shared<BuildProgress>()) {}
+    m_schedulableProgress(std::make_shared<SchedulableProgress>()) {}
 
 ProgressLogger::~ProgressLogger() {
     std::unique_lock<std::mutex> lock(m_mutex);
@@ -200,7 +200,7 @@ auto ProgressLogger::Update() -> void {
     columnCount = std::min<std::size_t>(size.ws_col, 75);
 #endif
 
-    std::optional<BuildProgress::DrawDescription> progressDescription = m_buildProgress->Generate(columnCount);
+    std::optional<SchedulableProgress::DrawDescription> progressDescription = m_schedulableProgress->Generate(columnCount);
     if (progressDescription)
         std::cout << MoveToColumn(0) << MoveUp(progressDescription->previousLineCount) << Clear(Clear::Where::CursorToEndScreen);
 
@@ -225,7 +225,7 @@ auto ProgressLogger::Update() -> void {
     m_finish.notify_one();
 }
 
-auto ProgressLogger::GetProgress() -> std::shared_ptr<BuildProgress> {
+auto ProgressLogger::GetProgress() -> std::shared_ptr<SchedulableProgress> {
     EnsureLoggingThreadStarted();
-    return m_buildProgress;
+    return m_schedulableProgress;
 }

@@ -14,4 +14,5 @@ target_sources(lattice_plugins
 target_link_libraries(lattice_plugins
     PRIVATE
         lattice::Registry
+        lattice::Logger
 )

@@ -23,7 +23,6 @@ auto IToolchainFactory::Create(const std::string &identifier, const std::optiona
     if (!config["languages"])
         throw std::runtime_error(std::format("Failed to create toolchain {}: Required `languages` configuration entry doesn't exist.", identifier));
 
-    // TODO: Get toolchain implementation identifier from Plugins
     // First query plugins and see if there are any providing IToolchainFactory's.
     // Then query what languages each supports, and if we have a match we use it.
     // If there are multiple matches, we run through a try catch for each and see

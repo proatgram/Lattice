@@ -15,6 +15,9 @@ module;
 
 module Lattice.Plugins.Loader;
 
+import Lattice.Logger.ILogger;
+import Lattice.Logger.TextLogger;
+
 using namespace Lattice::Plugins;
 
 Loader::Loader(Loader::Constructable) {};
@@ -26,8 +29,9 @@ auto Loader::GetInstance() -> std::shared_ptr<Loader> {
 }
 
 auto Loader::LoadFile(const std::filesystem::path &file) -> PluginInstance {
-    if (!std::filesystem::exists(file) || !std::filesystem::is_regular_file(file))
+    if (!std::filesystem::exists(file) || !std::filesystem::is_regular_file(file)) {
         throw std::runtime_error(std::format("Failed to load plugin at {}: Not a regular file.", file.string()));
+    }
 
     GetPluginInstanceFunc_t loaderFunction{nullptr};
 
