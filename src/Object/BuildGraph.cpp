@@ -93,6 +93,10 @@ auto BuildGraph::GetReady() const -> std::list<std::shared_ptr<DependencyNode>> 
     return readyNodes;
 }
 
+auto BuildGraph::GetTotalObjects() const -> std::size_t {
+    return m_dependencyNodesSorted.size();
+}
+
 auto BuildGraph::Update(const std::shared_ptr<DependencyNode> &node) -> void {
     switch (node->status) {
         case DependencyNode::Status::Finished:

@@ -1,6 +1,7 @@
 export module Lattice.Logger.ProgressLogger;
 
 import Lattice.Logger.ILogger;
+import Lattice.Logger.TextLogger;
 
 export namespace Lattice::Logger {
     /**
@@ -160,27 +161,22 @@ export namespace Lattice::Logger {
             std::mutex m_mutex;
     };
 
-    class ProgressLogger final : public ILogger {
+    class ProgressLogger final : public TextLogger {
         public:
             ProgressLogger(Constructable);
-
-            auto Log(Level level, const std::string &message) -> void final;
+            virtual ~ProgressLogger();
 
             /**
              * @brief Gets the progress bar instance for this logger.
              *
              * @return A shared pointer to the `BuildProgress` instance associated with this logger.
              */
-            auto GetProgress() const -> std::shared_ptr<BuildProgress>;
+            auto GetProgress() -> std::shared_ptr<BuildProgress>;
 
         private:
             auto Update() -> void final;
+            std::condition_variable m_finish;
 
-            struct Message {
-                Level level;
-                std::string text;
-            };
-            std::queue<Message> m_messagesQueue;
             std::shared_ptr<BuildProgress> m_buildProgress;
     };
 }

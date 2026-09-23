@@ -60,6 +60,8 @@ export namespace Lattice::Object {
              */
             auto GetReady() const -> std::list<std::shared_ptr<DependencyNode>>;
 
+            auto GetTotalObjects() const -> std::size_t;
+
             /**
              * @brief Checks if the build graph has finished traversing.
              *

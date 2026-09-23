@@ -5,6 +5,7 @@ export import Lattice.Object.BuildGraph;
 export import std;
 
 import Lattice.Object.Capabilities.Buildable;
+import Lattice.Logger.ProgressLogger;
 
 export namespace Lattice {
     class BuildScheduler {
@@ -22,7 +23,7 @@ export namespace Lattice {
                 Object::Capabilities::Buildable::BuildStep::State result;
             };
 
-            auto ReloadJobs(std::deque<Job> &jobs) -> bool;
+            auto ReloadJobs(std::deque<Job> &jobs, const std::shared_ptr<Lattice::Logger::ProgressLogger> &progressLogger) -> bool;
 
             std::shared_ptr<Object::BuildGraph> m_buildGraph;
             std::vector<std::jthread> m_workerThreads;

@@ -183,12 +183,12 @@ auto BuildProgress::Generate(std::size_t requestedColumnWidth) -> std::optional<
 }
 
 ProgressLogger::ProgressLogger(Constructable) :
-    m_messagesQueue(),
-    m_buildProgress(std::make_shared<BuildProgress>()) {StartLoggingThread();}
+    TextLogger(TextLogger::Constructable{}),
+    m_buildProgress(std::make_shared<BuildProgress>()) {}
 
-auto ProgressLogger::Log(Level level, const std::string &message) -> void {
-    std::unique_lock lock(m_mutex);
-    m_messagesQueue.push({level, message});
+ProgressLogger::~ProgressLogger() {
+    std::unique_lock<std::mutex> lock(m_mutex);
+    m_finish.wait(lock);
 }
 
 auto ProgressLogger::Update() -> void {
@@ -222,8 +222,10 @@ auto ProgressLogger::Update() -> void {
     if (progressDescription)
         std::cout << progressDescription->output;
     std::cout.flush();
+    m_finish.notify_one();
 }
 
-auto ProgressLogger::GetProgress() const -> std::shared_ptr<BuildProgress> {
+auto ProgressLogger::GetProgress() -> std::shared_ptr<BuildProgress> {
+    EnsureLoggingThreadStarted();
     return m_buildProgress;
 }

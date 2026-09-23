@@ -21,12 +21,14 @@ auto ILogger::GetDefault() -> std::shared_ptr<ILogger> {
     return Registry::GetInstance()->Query<std::shared_ptr<ILogger>>("default").value_or(nullptr);
 }
 
-auto ILogger::StartLoggingThread() -> void {
-    m_loggingThread = std::jthread([this](const std::stop_token &stop) -> void {
-        while (!stop.stop_requested()) {
-            Update();
-            std::this_thread::sleep_for(std::chrono::milliseconds(50));
-        }
+auto ILogger::EnsureLoggingThreadStarted() -> void {
+    std::call_once(m_startFlag, [this] {
+        m_loggingThread = std::jthread([this](const std::stop_token &stop) {
+            while (!stop.stop_requested()) {
+                Update();
+                std::this_thread::sleep_for(std::chrono::milliseconds(50));
+            }
+        });
     });
 }
 

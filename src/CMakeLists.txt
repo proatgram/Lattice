@@ -70,6 +70,8 @@ target_sources(lattice_buildscheduler
 target_link_libraries(lattice_buildscheduler
     PUBLIC
         lattice::Object
+    PRIVATE
+        lattice::Logger
 )
 
 add_subdirectory(Object)

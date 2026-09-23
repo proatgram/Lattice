@@ -82,15 +82,9 @@ export namespace Lattice::Logger {
              */
             auto Error(const std::string &message) -> void;
         protected:
-            /**
-             * @brief Starts the logging thread.
-             * 
-             * Each implementing class must call this in order to start
-             * logging.
-             */
-            auto StartLoggingThread() -> void;
-
+            auto EnsureLoggingThreadStarted() -> void;
             std::mutex m_mutex;
+            std::once_flag m_startFlag;
 
         private:
             static auto CanCreate() -> bool;

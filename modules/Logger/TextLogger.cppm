@@ -6,14 +6,14 @@ export namespace Lattice::Logger {
     /**
      * @brief Logger implementation that only logs text to stdout.
      */
-    class TextLogger final : public ILogger {
+    class TextLogger : public ILogger {
         public:
             TextLogger(Constructable);
 
-            auto Log(Level level, const std::string &message) -> void final;
+            auto Log(Level level, const std::string &message) -> void override;
 
-        private:
-            auto Update() -> void final;
+        protected:
+            auto Update() -> void override;
 
             struct Message {
                 Level level;
