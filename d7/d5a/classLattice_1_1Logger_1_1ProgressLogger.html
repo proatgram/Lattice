@@ -118,6 +118,7 @@ Inheritance diagram for Lattice::Logger::ProgressLogger:</div>
  <div class="center">
   <img src="../../d7/d5a/classLattice_1_1Logger_1_1ProgressLogger.png" usemap="#Lattice_3A_3ALogger_3A_3AProgressLogger_map" alt=""/>
   <map id="Lattice_3A_3ALogger_3A_3AProgressLogger_map" name="Lattice_3A_3ALogger_3A_3AProgressLogger_map">
+<area href="../../d5/dd2/classLattice_1_1Logger_1_1TextLogger.html" title="Logger implementation that only logs text to stdout." alt="Lattice::Logger::TextLogger" shape="rect" coords="0,56,192,80"/>
 <area href="../../d2/d6c/classLattice_1_1Logger_1_1ILogger.html" title="Represents an abstract logger." alt="Lattice::Logger::ILogger" shape="rect" coords="0,0,192,24"/>
   </map>
 </div></div>
@@ -126,10 +127,13 @@ Inheritance diagram for Lattice::Logger::ProgressLogger:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a34a57b56838dbed1978d2f6fb64b869b" id="r_a34a57b56838dbed1978d2f6fb64b869b"><td class="memItemLeft"><a id="a34a57b56838dbed1978d2f6fb64b869b" name="a34a57b56838dbed1978d2f6fb64b869b"></a>
 &#160;</td><td class="memItemRight"><b>ProgressLogger</b> (<a class="el" href="../../da/d25/structLattice_1_1Logger_1_1ILogger_1_1Constructable.html">Constructable</a>)</td></tr>
-<tr class="memitem:a58077b8823a5a7b004ea978ff3afae4e" id="r_a58077b8823a5a7b004ea978ff3afae4e"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#a58077b8823a5a7b004ea978ff3afae4e">Log</a> (<a class="el" href="../../d2/d6c/classLattice_1_1Logger_1_1ILogger.html#a00f6ba20e6ef5ab9741665a513a67704">Level</a> level, const std::string &amp;message) -&gt; void final</td></tr>
-<tr class="memdesc:a58077b8823a5a7b004ea978ff3afae4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs the given message with the given level.  <br /></td></tr>
-<tr class="memitem:a4757dd65a73b3b6a2b314ccfdd625f9a" id="r_a4757dd65a73b3b6a2b314ccfdd625f9a"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#a4757dd65a73b3b6a2b314ccfdd625f9a">GetProgress</a> () const -&gt; std::shared_ptr&lt; <a class="el" href="../../d4/d14/classLattice_1_1Logger_1_1BuildProgress.html">BuildProgress</a> &gt;</td></tr>
-<tr class="memdesc:a4757dd65a73b3b6a2b314ccfdd625f9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the progress bar instance for this logger.  <br /></td></tr>
+<tr class="memitem:af26dd6590d5d8944619cd41b72cca4e8" id="r_af26dd6590d5d8944619cd41b72cca4e8"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#af26dd6590d5d8944619cd41b72cca4e8">GetProgress</a> () -&gt; std::shared_ptr&lt; <a class="el" href="../../d5/d28/classLattice_1_1Logger_1_1SchedulableProgress.html">SchedulableProgress</a> &gt;</td></tr>
+<tr class="memdesc:af26dd6590d5d8944619cd41b72cca4e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the progress bar instance for this logger.  <br /></td></tr>
+<tr class="inherit_header pub_methods_classLattice_1_1Logger_1_1TextLogger"><td colspan="2">Public Member Functions inherited from <a class="el" href="../../d5/dd2/classLattice_1_1Logger_1_1TextLogger.html">Lattice::Logger::TextLogger</a></td></tr>
+<tr class="memitem:a1293d47b85a0e433af9736af1ff8bbfd pub_methods_classLattice_1_1Logger_1_1TextLogger" id="r_a1293d47b85a0e433af9736af1ff8bbfd"><td class="memItemLeft">
+&#160;</td><td class="memItemRight"><b>TextLogger</b> (<a class="el" href="../../da/d25/structLattice_1_1Logger_1_1ILogger_1_1Constructable.html">Constructable</a>)</td></tr>
+<tr class="memitem:a246c7799ca1bf32a82594b2d39ae16bb pub_methods_classLattice_1_1Logger_1_1TextLogger" id="r_a246c7799ca1bf32a82594b2d39ae16bb"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="../../d5/dd2/classLattice_1_1Logger_1_1TextLogger.html#a246c7799ca1bf32a82594b2d39ae16bb">Log</a> (<a class="el" href="../../d2/d6c/classLattice_1_1Logger_1_1ILogger.html#a00f6ba20e6ef5ab9741665a513a67704">Level</a> level, const std::string &amp;message) -&gt; void override</td></tr>
+<tr class="memdesc:a246c7799ca1bf32a82594b2d39ae16bb pub_methods_classLattice_1_1Logger_1_1TextLogger"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs the given message with the given level.  <br /></td></tr>
 <tr class="inherit_header pub_methods_classLattice_1_1Logger_1_1ILogger"><td colspan="2">Public Member Functions inherited from <a class="el" href="../../d2/d6c/classLattice_1_1Logger_1_1ILogger.html">Lattice::Logger::ILogger</a></td></tr>
 <tr class="memitem:a0a2942844541a16200700280781e7f32 pub_methods_classLattice_1_1Logger_1_1ILogger" id="r_a0a2942844541a16200700280781e7f32"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="../../d2/d6c/classLattice_1_1Logger_1_1ILogger.html#a0a2942844541a16200700280781e7f32">Info</a> (const std::string &amp;message) -&gt; void</td></tr>
 <tr class="memdesc:a0a2942844541a16200700280781e7f32 pub_methods_classLattice_1_1Logger_1_1ILogger"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs the given message as <span class="tt">Level::Info</span>.  <br /></td></tr>
@@ -153,16 +157,23 @@ requires std::is_base_of_v&lt;ILogger, T&gt; &amp;&amp; std::is_constructible_v&
 <tr class="memdesc:a3a2120d139720aff07682911e514a1bd pub_static_methods_classLattice_1_1Logger_1_1ILogger"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new logger instance if it is possible.  <br /></td></tr>
 <tr class="memitem:a1c8febc44aa419c6eee32411b552aae8 pub_static_methods_classLattice_1_1Logger_1_1ILogger" id="r_a1c8febc44aa419c6eee32411b552aae8"><td class="memItemLeft">static auto&#160;</td><td class="memItemRight"><a class="el" href="../../d2/d6c/classLattice_1_1Logger_1_1ILogger.html#a1c8febc44aa419c6eee32411b552aae8">GetDefault</a> () -&gt; std::shared_ptr&lt; ILogger &gt;</td></tr>
 <tr class="memdesc:a1c8febc44aa419c6eee32411b552aae8 pub_static_methods_classLattice_1_1Logger_1_1ILogger"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the default logger in the registry.  <br /></td></tr>
+<tr class="inherit_header pro_methods_classLattice_1_1Logger_1_1TextLogger"><td colspan="2">Protected Member Functions inherited from <a class="el" href="../../d5/dd2/classLattice_1_1Logger_1_1TextLogger.html">Lattice::Logger::TextLogger</a></td></tr>
+<tr class="memitem:a0aaa3c7e9667f0cf4b96145ec4f8d0e9 pro_methods_classLattice_1_1Logger_1_1TextLogger" id="r_a0aaa3c7e9667f0cf4b96145ec4f8d0e9"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="../../d5/dd2/classLattice_1_1Logger_1_1TextLogger.html#a0aaa3c7e9667f0cf4b96145ec4f8d0e9">Update</a> () -&gt; void override</td></tr>
 <tr class="inherit_header pro_methods_classLattice_1_1Logger_1_1ILogger"><td colspan="2">Protected Member Functions inherited from <a class="el" href="../../d2/d6c/classLattice_1_1Logger_1_1ILogger.html">Lattice::Logger::ILogger</a></td></tr>
-<tr class="memitem:a7628f537da99a4a1e9dfa6739da876a1 pro_methods_classLattice_1_1Logger_1_1ILogger" id="r_a7628f537da99a4a1e9dfa6739da876a1"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="../../d2/d6c/classLattice_1_1Logger_1_1ILogger.html#a7628f537da99a4a1e9dfa6739da876a1">StartLoggingThread</a> () -&gt; void</td></tr>
-<tr class="memdesc:a7628f537da99a4a1e9dfa6739da876a1 pro_methods_classLattice_1_1Logger_1_1ILogger"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the logging thread.  <br /></td></tr>
+<tr class="memitem:a5b3cc71eb5ee3b1d02b8d6c18aa7c56b pro_methods_classLattice_1_1Logger_1_1ILogger" id="r_a5b3cc71eb5ee3b1d02b8d6c18aa7c56b"><td class="memItemLeft">
+auto&#160;</td><td class="memItemRight"><b>EnsureLoggingThreadStarted</b> () -&gt; void</td></tr>
+<tr class="inherit_header pro_attribs_classLattice_1_1Logger_1_1TextLogger"><td colspan="2">Protected Attributes inherited from <a class="el" href="../../d5/dd2/classLattice_1_1Logger_1_1TextLogger.html">Lattice::Logger::TextLogger</a></td></tr>
+<tr class="memitem:a6765af5a2a290c36bd44409585c48e92 pro_attribs_classLattice_1_1Logger_1_1TextLogger" id="r_a6765af5a2a290c36bd44409585c48e92"><td class="memItemLeft">
+std::queue&lt; <a class="el" href="../../dd/d78/structLattice_1_1Logger_1_1TextLogger_1_1Message.html">Message</a> &gt;&#160;</td><td class="memItemRight"><b>m_messagesQueue</b></td></tr>
 <tr class="inherit_header pro_attribs_classLattice_1_1Logger_1_1ILogger"><td colspan="2">Protected Attributes inherited from <a class="el" href="../../d2/d6c/classLattice_1_1Logger_1_1ILogger.html">Lattice::Logger::ILogger</a></td></tr>
 <tr class="memitem:a051633bb8868fcca5ec64b71935b26f6 pro_attribs_classLattice_1_1Logger_1_1ILogger" id="r_a051633bb8868fcca5ec64b71935b26f6"><td class="memItemLeft">
 std::mutex&#160;</td><td class="memItemRight"><b>m_mutex</b></td></tr>
+<tr class="memitem:ae532679ef70573814c2f5974e71f3141 pro_attribs_classLattice_1_1Logger_1_1ILogger" id="r_ae532679ef70573814c2f5974e71f3141"><td class="memItemLeft">
+std::once_flag&#160;</td><td class="memItemRight"><b>m_startFlag</b></td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a4757dd65a73b3b6a2b314ccfdd625f9a" name="a4757dd65a73b3b6a2b314ccfdd625f9a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4757dd65a73b3b6a2b314ccfdd625f9a">&#9670;&#160;</a></span>GetProgress()</h2>
+<a id="af26dd6590d5d8944619cd41b72cca4e8" name="af26dd6590d5d8944619cd41b72cca4e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af26dd6590d5d8944619cd41b72cca4e8">&#9670;&#160;</a></span>GetProgress()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -171,53 +182,13 @@ std::mutex&#160;</td><td class="memItemRight"><b>m_mutex</b></td></tr>
           <td class="memname">auto ProgressLogger::GetProgress </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const -&gt; std::shared_ptr&lt; <a class="el" href="../../d4/d14/classLattice_1_1Logger_1_1BuildProgress.html">BuildProgress</a> &gt;</td>
+          <td> -&gt; std::shared_ptr&lt; <a class="el" href="../../d5/d28/classLattice_1_1Logger_1_1SchedulableProgress.html">SchedulableProgress</a> &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Gets the progress bar instance for this logger. </p>
-<dl class="section return"><dt>Returns</dt><dd>A shared pointer to the <span class="tt"><a class="el" href="../../d4/d14/classLattice_1_1Logger_1_1BuildProgress.html" title="Logger implementation that can also log build progress.">BuildProgress</a></span> instance associated with this logger. </dd></dl>
-
-</div>
-</div>
-<a id="a58077b8823a5a7b004ea978ff3afae4e" name="a58077b8823a5a7b004ea978ff3afae4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58077b8823a5a7b004ea978ff3afae4e">&#9670;&#160;</a></span>Log()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto ProgressLogger::Log </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d2/d6c/classLattice_1_1Logger_1_1ILogger.html#a00f6ba20e6ef5ab9741665a513a67704">Level</a></td>          <td class="paramname"><span class="paramname"><em>level</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>message</em></span>&#160;) -&gt;  void</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel final">final</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Logs the given message with the given level. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">level</td><td>The level to log the message as. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">message</td><td>The message to log. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="../../d2/d6c/classLattice_1_1Logger_1_1ILogger.html#ae4c437e3c5db725f88ad0e7700cdd7c7">Lattice::Logger::ILogger</a>.</p>
+<dl class="section return"><dt>Returns</dt><dd>A shared pointer to the <span class="tt"><a class="el" href="../../d5/d28/classLattice_1_1Logger_1_1SchedulableProgress.html" title="Logger implementation that can also log scheduler and step progress.">SchedulableProgress</a></span> instance associated with this logger. </dd></dl>
 
 </div>
 </div>

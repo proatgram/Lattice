@@ -1,5 +1,4 @@
 var classLattice_1_1Logger_1_1ProgressLogger =
 [
-    [ "GetProgress", "d7/d5a/classLattice_1_1Logger_1_1ProgressLogger.html#a4757dd65a73b3b6a2b314ccfdd625f9a", null ],
-    [ "Log", "d7/d5a/classLattice_1_1Logger_1_1ProgressLogger.html#a58077b8823a5a7b004ea978ff3afae4e", null ]
+    [ "GetProgress", "d7/d5a/classLattice_1_1Logger_1_1ProgressLogger.html#af26dd6590d5d8944619cd41b72cca4e8", null ]
 ];

@@ -121,8 +121,8 @@ Inheritance diagram for Lattice::Logger::ILogger:</div>
  <div class="center">
   <img src="../../d2/d6c/classLattice_1_1Logger_1_1ILogger.png" usemap="#Lattice_3A_3ALogger_3A_3AILogger_map" alt=""/>
   <map id="Lattice_3A_3ALogger_3A_3AILogger_map" name="Lattice_3A_3ALogger_3A_3AILogger_map">
-<area href="../../d7/d5a/classLattice_1_1Logger_1_1ProgressLogger.html" alt="Lattice::Logger::ProgressLogger" shape="rect" coords="0,56,192,80"/>
-<area href="../../d5/dd2/classLattice_1_1Logger_1_1TextLogger.html" title="Logger implementation that only logs text to stdout." alt="Lattice::Logger::TextLogger" shape="rect" coords="202,56,394,80"/>
+<area href="../../d5/dd2/classLattice_1_1Logger_1_1TextLogger.html" title="Logger implementation that only logs text to stdout." alt="Lattice::Logger::TextLogger" shape="rect" coords="0,56,192,80"/>
+<area href="../../d7/d5a/classLattice_1_1Logger_1_1ProgressLogger.html" alt="Lattice::Logger::ProgressLogger" shape="rect" coords="0,112,192,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -160,13 +160,15 @@ requires std::is_base_of_v&lt;ILogger, T&gt; &amp;&amp; std::is_constructible_v&
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a7628f537da99a4a1e9dfa6739da876a1" id="r_a7628f537da99a4a1e9dfa6739da876a1"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#a7628f537da99a4a1e9dfa6739da876a1">StartLoggingThread</a> () -&gt; void</td></tr>
-<tr class="memdesc:a7628f537da99a4a1e9dfa6739da876a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the logging thread.  <br /></td></tr>
+<tr class="memitem:a5b3cc71eb5ee3b1d02b8d6c18aa7c56b" id="r_a5b3cc71eb5ee3b1d02b8d6c18aa7c56b"><td class="memItemLeft"><a id="a5b3cc71eb5ee3b1d02b8d6c18aa7c56b" name="a5b3cc71eb5ee3b1d02b8d6c18aa7c56b"></a>
+auto&#160;</td><td class="memItemRight"><b>EnsureLoggingThreadStarted</b> () -&gt; void</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a051633bb8868fcca5ec64b71935b26f6" id="r_a051633bb8868fcca5ec64b71935b26f6"><td class="memItemLeft"><a id="a051633bb8868fcca5ec64b71935b26f6" name="a051633bb8868fcca5ec64b71935b26f6"></a>
 std::mutex&#160;</td><td class="memItemRight"><b>m_mutex</b></td></tr>
+<tr class="memitem:ae532679ef70573814c2f5974e71f3141" id="r_ae532679ef70573814c2f5974e71f3141"><td class="memItemLeft"><a id="ae532679ef70573814c2f5974e71f3141" name="ae532679ef70573814c2f5974e71f3141"></a>
+std::once_flag&#160;</td><td class="memItemRight"><b>m_startFlag</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents an abstract logger. </p>
@@ -325,35 +327,7 @@ requires std::is_base_of_v&lt;ILogger, T&gt; &amp;&amp; std::is_constructible_v&
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="../../d7/d5a/classLattice_1_1Logger_1_1ProgressLogger.html#a58077b8823a5a7b004ea978ff3afae4e">Lattice::Logger::ProgressLogger</a>, and <a class="el" href="../../d5/dd2/classLattice_1_1Logger_1_1TextLogger.html#a05cbaf7b93c1deacee1ced3e962a126b">Lattice::Logger::TextLogger</a>.</p>
-
-</div>
-</div>
-<a id="a7628f537da99a4a1e9dfa6739da876a1" name="a7628f537da99a4a1e9dfa6739da876a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7628f537da99a4a1e9dfa6739da876a1">&#9670;&#160;</a></span>StartLoggingThread()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto ILogger::StartLoggingThread </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> -&gt; void</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Starts the logging thread. </p>
-<p>Each implementing class must call this in order to start logging. </p>
+<p>Implemented in <a class="el" href="../../d5/dd2/classLattice_1_1Logger_1_1TextLogger.html#a246c7799ca1bf32a82594b2d39ae16bb">Lattice::Logger::TextLogger</a>.</p>
 
 </div>
 </div>
@@ -383,7 +357,7 @@ requires std::is_base_of_v&lt;ILogger, T&gt; &amp;&amp; std::is_constructible_v&
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>modules/Logger/<b>ILogger.cppm</b></li>
+<li>modules/Logger/<a class="el" href="../../d4/d1e/ILogger_8cppm_source.html">ILogger.cppm</a></li>
 <li>src/Logger/<b>ILogger.cpp</b></li>
 </ul>
 </div><!-- contents -->

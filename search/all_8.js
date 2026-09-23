@@ -9,5 +9,5 @@ var searchData=
   ['linkerconfiguration_6',['LinkerConfiguration',['../df/d7e/classLattice_1_1Tooling_1_1LinkerConfiguration.html',1,'Lattice::Tooling']]],
   ['loadconfig_7',['LoadConfig',['../d9/d76/classLattice_1_1Lattice.html#a5c8795b13f2bd344c6cb6857f4b10dbb',1,'Lattice::Lattice']]],
   ['loader_8',['Loader',['../d2/da6/classLattice_1_1Plugins_1_1Loader.html',1,'Lattice::Plugins']]],
-  ['log_9',['Log',['../d2/d6c/classLattice_1_1Logger_1_1ILogger.html#ae4c437e3c5db725f88ad0e7700cdd7c7',1,'Lattice::Logger::ILogger::Log()'],['../d7/d5a/classLattice_1_1Logger_1_1ProgressLogger.html#a58077b8823a5a7b004ea978ff3afae4e',1,'Lattice::Logger::ProgressLogger::Log()'],['../d5/dd2/classLattice_1_1Logger_1_1TextLogger.html#a05cbaf7b93c1deacee1ced3e962a126b',1,'Lattice::Logger::TextLogger::Log()']]]
+  ['log_9',['Log',['../d2/d6c/classLattice_1_1Logger_1_1ILogger.html#ae4c437e3c5db725f88ad0e7700cdd7c7',1,'Lattice::Logger::ILogger::Log()'],['../d5/dd2/classLattice_1_1Logger_1_1TextLogger.html#a246c7799ca1bf32a82594b2d39ae16bb',1,'Lattice::Logger::TextLogger::Log()']]]
 ];

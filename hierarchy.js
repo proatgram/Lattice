@@ -1,7 +1,5 @@
 var hierarchy =
 [
-    [ "Lattice::Logger::BuildProgress", "d4/d14/classLattice_1_1Logger_1_1BuildProgress.html", null ],
-    [ "Lattice::Object::Capabilities::Buildable::BuildStep", "d4/d1b/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1BuildStep.html", null ],
     [ "Lattice::Cache::Serialization::Cache", "da/d7e/classLattice_1_1Cache_1_1Serialization_1_1Cache.html", null ],
     [ "Lattice::Cache::CacheManager", "d6/de6/classLattice_1_1Cache_1_1CacheManager.html", null ],
     [ "Lattice::System::Command", "d4/d72/classLattice_1_1System_1_1Command.html", null ],
@@ -15,12 +13,12 @@ var hierarchy =
     [ "Lattice::Tooling::Configuration::Constructable", "d6/d32/structLattice_1_1Tooling_1_1Configuration_1_1Constructable.html", null ],
     [ "Lattice::Object::Resolver::Context", "d1/d1b/structLattice_1_1Object_1_1Resolver_1_1Context.html", null ],
     [ "Lattice::Object::Capabilities::HasDependencies::Dependency", "da/d56/structLattice_1_1Object_1_1Capabilities_1_1HasDependencies_1_1Dependency.html", null ],
-    [ "Lattice::Object::BuildGraph::DependencyNode", "d2/dd8/structLattice_1_1Object_1_1BuildGraph_1_1DependencyNode.html", null ],
-    [ "Lattice::Logger::BuildProgress::DrawDescription", "d7/dd5/structLattice_1_1Logger_1_1BuildProgress_1_1DrawDescription.html", null ],
+    [ "Lattice::Object::DependencyGraph::DependencyNode", "d5/dcd/structLattice_1_1Object_1_1DependencyGraph_1_1DependencyNode.html", null ],
+    [ "Lattice::Logger::SchedulableProgress::DrawDescription", "d9/d14/structLattice_1_1Logger_1_1SchedulableProgress_1_1DrawDescription.html", null ],
     [ "std::enable_shared_from_this", null, [
       [ "Lattice::Cache::Serialization::Cache::Section", "d7/d9f/classLattice_1_1Cache_1_1Serialization_1_1Cache_1_1Section.html", null ],
       [ "Lattice::Cache::Serialization::Cache::SectionArray", "dc/dcc/classLattice_1_1Cache_1_1Serialization_1_1Cache_1_1SectionArray.html", null ],
-      [ "Lattice::Object::BuildGraph", "d7/d10/classLattice_1_1Object_1_1BuildGraph.html", null ],
+      [ "Lattice::Object::DependencyGraph", "d5/de9/classLattice_1_1Object_1_1DependencyGraph.html", null ],
       [ "Lattice::Object::Object", "d7/d62/classLattice_1_1Object_1_1Object.html", [
         [ "Lattice::Object::IBinary", "d8/d77/classLattice_1_1Object_1_1IBinary.html", null ],
         [ "Lattice::Object::ILibrary", "d0/d7d/classLattice_1_1Object_1_1ILibrary.html", null ],
@@ -30,9 +28,6 @@ var hierarchy =
     ] ],
     [ "Lattice::Object::Capabilities::ICapability", "d4/d8e/classLattice_1_1Object_1_1Capabilities_1_1ICapability.html", [
       [ "Lattice::Object::Capabilities::ArtifactProvider", "d7/dc4/classLattice_1_1Object_1_1Capabilities_1_1ArtifactProvider.html", null ],
-      [ "Lattice::Object::Capabilities::Buildable", "dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html", [
-        [ "Lattice::Object::Project", "d5/dd0/classLattice_1_1Object_1_1Project.html", null ]
-      ] ],
       [ "Lattice::Object::Capabilities::Cacheable", "dd/dff/classLattice_1_1Object_1_1Capabilities_1_1Cacheable.html", null ],
       [ "Lattice::Object::Capabilities::HasDependencies", "d1/d22/classLattice_1_1Object_1_1Capabilities_1_1HasDependencies.html", [
         [ "Lattice::Object::IBinary", "d8/d77/classLattice_1_1Object_1_1IBinary.html", null ],
@@ -58,6 +53,9 @@ var hierarchy =
       [ "Lattice::Object::Capabilities::ProjectIdentifiable", "db/dc6/classLattice_1_1Object_1_1Capabilities_1_1ProjectIdentifiable.html", [
         [ "Lattice::Object::IBinary", "d8/d77/classLattice_1_1Object_1_1IBinary.html", null ],
         [ "Lattice::Object::ILibrary", "d0/d7d/classLattice_1_1Object_1_1ILibrary.html", null ]
+      ] ],
+      [ "Lattice::Object::Capabilities::Schedulable", "d8/d69/classLattice_1_1Object_1_1Capabilities_1_1Schedulable.html", [
+        [ "Lattice::Object::Project", "d5/dd0/classLattice_1_1Object_1_1Project.html", null ]
       ] ]
     ] ],
     [ "Lattice::Tooling::ICompiler", "d8/df1/classLattice_1_1Tooling_1_1ICompiler.html", null ],
@@ -100,8 +98,9 @@ var hierarchy =
     ] ],
     [ "Lattice::Tooling::ILinker", "d4/df1/classLattice_1_1Tooling_1_1ILinker.html", null ],
     [ "Lattice::Logger::ILogger", "d2/d6c/classLattice_1_1Logger_1_1ILogger.html", [
-      [ "Lattice::Logger::ProgressLogger", "d7/d5a/classLattice_1_1Logger_1_1ProgressLogger.html", null ],
-      [ "Lattice::Logger::TextLogger", "d5/dd2/classLattice_1_1Logger_1_1TextLogger.html", null ]
+      [ "Lattice::Logger::TextLogger", "d5/dd2/classLattice_1_1Logger_1_1TextLogger.html", [
+        [ "Lattice::Logger::ProgressLogger", "d7/d5a/classLattice_1_1Logger_1_1ProgressLogger.html", null ]
+      ] ]
     ] ],
     [ "Lattice::Object::Properties::IProperty", "dd/d00/classLattice_1_1Object_1_1Properties_1_1IProperty.html", null ],
     [ "Lattice::Cache::Serialization::Cache::ISection", "de/d1f/classLattice_1_1Cache_1_1Serialization_1_1Cache_1_1ISection.html", [
@@ -110,14 +109,18 @@ var hierarchy =
     ] ],
     [ "Lattice::Lattice", "d9/d76/classLattice_1_1Lattice.html", null ],
     [ "Lattice::Plugins::Loader", "d2/da6/classLattice_1_1Plugins_1_1Loader.html", null ],
-    [ "Lattice::Logger::BuildProgress::Object", "d8/def/structLattice_1_1Logger_1_1BuildProgress_1_1Object.html", null ],
+    [ "Lattice::Logger::TextLogger::Message", "dd/d78/structLattice_1_1Logger_1_1TextLogger_1_1Message.html", null ],
+    [ "Lattice::Logger::SchedulableProgress::Object", "d3/db4/structLattice_1_1Logger_1_1SchedulableProgress_1_1Object.html", null ],
     [ "Lattice::Plugins::PluginInstance", "d4/db6/structLattice_1_1Plugins_1_1PluginInstance.html", null ],
     [ "Lattice::Plugins::PluginVersionSupport", "d6/d1f/structLattice_1_1Plugins_1_1PluginVersionSupport.html", null ],
     [ "Lattice::System::Process", "db/dfc/classLattice_1_1System_1_1Process.html", null ],
     [ "Lattice::Provider", "de/d26/classLattice_1_1Provider.html", null ],
     [ "Lattice::Registry", "d7/d65/classLattice_1_1Registry.html", null ],
     [ "Lattice::Object::Resolver", "df/d26/classLattice_1_1Object_1_1Resolver.html", null ],
-    [ "Lattice::Logger::BuildProgress::Step", "da/d35/structLattice_1_1Logger_1_1BuildProgress_1_1Step.html", null ],
-    [ "Lattice::Object::Capabilities::Buildable::StepDescription", "d1/dcf/classLattice_1_1Object_1_1Capabilities_1_1Buildable_1_1StepDescription.html", null ],
+    [ "Lattice::Logger::SchedulableProgress", "d5/d28/classLattice_1_1Logger_1_1SchedulableProgress.html", null ],
+    [ "Lattice::Scheduler", "d2/d23/classLattice_1_1Scheduler.html", null ],
+    [ "Lattice::Logger::SchedulableProgress::Step", "d0/d5e/structLattice_1_1Logger_1_1SchedulableProgress_1_1Step.html", null ],
+    [ "Lattice::Object::Capabilities::Schedulable::Step", "d7/d80/classLattice_1_1Object_1_1Capabilities_1_1Schedulable_1_1Step.html", null ],
+    [ "Lattice::Object::Capabilities::Schedulable::StepDescription", "d2/d49/classLattice_1_1Object_1_1Capabilities_1_1Schedulable_1_1StepDescription.html", null ],
     [ "Lattice::Object::ToolchainDefault", "d1/d46/structLattice_1_1Object_1_1ToolchainDefault.html", null ]
 ];

@@ -64,8 +64,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d6/d19/module__Lattice_8Plugins_8Plugin.html",
-"dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html#a82e70b7c2f8b0e90fd4efba396d1a253"
+"d6/d22/classLattice_1_1Object_1_1Capabilities_1_1HasToolchain.html#a11e2d96b02fdbff2e8ecb55fc6ca7343",
+"db/dfc/classLattice_1_1System_1_1Process.html#ae39fb9996e57f9805744294f6c2995c2"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';

@@ -24,15 +24,14 @@ var annotated_dup =
           [ "IEscapeSequence", "d8/df8/classLattice_1_1Logger_1_1EscapeSequences_1_1IEscapeSequence.html", null ],
           [ "TerminalStyle", "dc/d67/classLattice_1_1Logger_1_1EscapeSequences_1_1TerminalStyle.html", null ]
         ] ],
-        [ "BuildProgress", "d4/d14/classLattice_1_1Logger_1_1BuildProgress.html", "d4/d14/classLattice_1_1Logger_1_1BuildProgress" ],
         [ "ILogger", "d2/d6c/classLattice_1_1Logger_1_1ILogger.html", "d2/d6c/classLattice_1_1Logger_1_1ILogger" ],
         [ "ProgressLogger", "d7/d5a/classLattice_1_1Logger_1_1ProgressLogger.html", "d7/d5a/classLattice_1_1Logger_1_1ProgressLogger" ],
+        [ "SchedulableProgress", "d5/d28/classLattice_1_1Logger_1_1SchedulableProgress.html", "d5/d28/classLattice_1_1Logger_1_1SchedulableProgress" ],
         [ "TextLogger", "d5/dd2/classLattice_1_1Logger_1_1TextLogger.html", "d5/dd2/classLattice_1_1Logger_1_1TextLogger" ]
       ] ],
       [ "Object", null, [
         [ "Capabilities", null, [
           [ "ArtifactProvider", "d7/dc4/classLattice_1_1Object_1_1Capabilities_1_1ArtifactProvider.html", null ],
-          [ "Buildable", "dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable.html", "dc/d6e/classLattice_1_1Object_1_1Capabilities_1_1Buildable" ],
           [ "Cacheable", "dd/dff/classLattice_1_1Object_1_1Capabilities_1_1Cacheable.html", null ],
           [ "HasDependencies", "d1/d22/classLattice_1_1Object_1_1Capabilities_1_1HasDependencies.html", "d1/d22/classLattice_1_1Object_1_1Capabilities_1_1HasDependencies" ],
           [ "HasProperties", "db/db6/classLattice_1_1Object_1_1Capabilities_1_1HasProperties.html", "db/db6/classLattice_1_1Object_1_1Capabilities_1_1HasProperties" ],
@@ -40,13 +39,14 @@ var annotated_dup =
           [ "ICapability", "d4/d8e/classLattice_1_1Object_1_1Capabilities_1_1ICapability.html", null ],
           [ "LanguageIdentifiable", "d8/db6/classLattice_1_1Object_1_1Capabilities_1_1LanguageIdentifiable.html", "d8/db6/classLattice_1_1Object_1_1Capabilities_1_1LanguageIdentifiable" ],
           [ "Linkable", "da/df9/classLattice_1_1Object_1_1Capabilities_1_1Linkable.html", "da/df9/classLattice_1_1Object_1_1Capabilities_1_1Linkable" ],
-          [ "ProjectIdentifiable", "db/dc6/classLattice_1_1Object_1_1Capabilities_1_1ProjectIdentifiable.html", "db/dc6/classLattice_1_1Object_1_1Capabilities_1_1ProjectIdentifiable" ]
+          [ "ProjectIdentifiable", "db/dc6/classLattice_1_1Object_1_1Capabilities_1_1ProjectIdentifiable.html", "db/dc6/classLattice_1_1Object_1_1Capabilities_1_1ProjectIdentifiable" ],
+          [ "Schedulable", "d8/d69/classLattice_1_1Object_1_1Capabilities_1_1Schedulable.html", "d8/d69/classLattice_1_1Object_1_1Capabilities_1_1Schedulable" ]
         ] ],
         [ "Properties", null, [
           [ "IProperty", "dd/d00/classLattice_1_1Object_1_1Properties_1_1IProperty.html", "dd/d00/classLattice_1_1Object_1_1Properties_1_1IProperty" ]
         ] ],
         [ "BinaryFactory", "d5/d46/classLattice_1_1Object_1_1BinaryFactory.html", "d5/d46/classLattice_1_1Object_1_1BinaryFactory" ],
-        [ "BuildGraph", "d7/d10/classLattice_1_1Object_1_1BuildGraph.html", "d7/d10/classLattice_1_1Object_1_1BuildGraph" ],
+        [ "DependencyGraph", "d5/de9/classLattice_1_1Object_1_1DependencyGraph.html", "d5/de9/classLattice_1_1Object_1_1DependencyGraph" ],
         [ "IBinary", "d8/d77/classLattice_1_1Object_1_1IBinary.html", null ],
         [ "IBinaryFactory", "d4/db3/classLattice_1_1Object_1_1IBinaryFactory.html", "d4/db3/classLattice_1_1Object_1_1IBinaryFactory" ],
         [ "ILibrary", "d0/d7d/classLattice_1_1Object_1_1ILibrary.html", null ],
@@ -81,6 +81,7 @@ var annotated_dup =
       [ "ISingletonFactory", "d2/dea/classLattice_1_1ISingletonFactory.html", "d2/dea/classLattice_1_1ISingletonFactory" ],
       [ "Lattice", "d9/d76/classLattice_1_1Lattice.html", "d9/d76/classLattice_1_1Lattice" ],
       [ "Provider", "de/d26/classLattice_1_1Provider.html", "de/d26/classLattice_1_1Provider" ],
-      [ "Registry", "d7/d65/classLattice_1_1Registry.html", "d7/d65/classLattice_1_1Registry" ]
+      [ "Registry", "d7/d65/classLattice_1_1Registry.html", "d7/d65/classLattice_1_1Registry" ],
+      [ "Scheduler", "d2/d23/classLattice_1_1Scheduler.html", null ]
     ] ]
 ];
