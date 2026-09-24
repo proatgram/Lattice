@@ -34,29 +34,32 @@ auto SchedulableProgress::SetObjectsDone(std::size_t objectCount) -> void {
 }
 
 auto SchedulableProgress::AddObject(Object object) -> bool {
-    if (ContainsObject(object.Id))
+    std::unique_lock<std::mutex> lock(m_changesMutex);
+    if (ContainsObjectInternal(object.Id))
         return false;
 
-    std::unique_lock<std::mutex> lock(m_changesMutex);
     m_temporaryTransaction.objects.push_back(object);
     return true;
 }
 auto SchedulableProgress::RemoveObject(const std::string &objectId) -> bool {
-    if (!ContainsObject(objectId))
+    std::unique_lock<std::mutex> lock(m_changesMutex);
+    if (!ContainsObjectInternal(objectId))
         return false;
 
-    std::unique_lock<std::mutex> lock(m_changesMutex);
     std::erase_if(m_temporaryTransaction.objects, [&objectId](const Object &object) -> bool {
         return object.Id == objectId;
     });
 
     return true;
 }
-auto SchedulableProgress::ContainsObject(const std::string &objectId) const -> bool {
-    std::unique_lock<std::mutex> lock(m_changesMutex);
+auto SchedulableProgress::ContainsObjectInternal(const std::string &objectId) const -> bool {
     return std::ranges::any_of(m_temporaryTransaction.objects, [&objectId](const Object &other) -> bool {
         return other.Id == objectId;
    });
+}
+auto SchedulableProgress::ContainsObject(const std::string &objectId) const -> bool {
+    std::unique_lock<std::mutex> lock(m_changesMutex);
+    return ContainsObjectInternal(objectId);
 }
 auto SchedulableProgress::GetObjectInternal(const std::string &objectId) -> Object& {
     return *std::ranges::find_if(m_temporaryTransaction.objects, [&objectId](const Object &object) -> bool {
@@ -69,18 +72,18 @@ auto SchedulableProgress::GetObjectInternal(const std::string &objectId) const -
     });
 }
 auto SchedulableProgress::GetObject(const std::string &objectId) const -> std::optional<Object> {
-    if (!ContainsObject(objectId))
+    std::unique_lock<std::mutex> lock(m_changesMutex);
+    if (!ContainsObjectInternal(objectId))
         return {};
 
-    std::unique_lock<std::mutex> lock(m_changesMutex);
     return GetObjectInternal(objectId);
 }
 
 auto SchedulableProgress::RemoveStep(const std::string &objectId, const std::string &stepId) -> bool {
-    if (!ContainsObject(objectId))
+    std::unique_lock<std::mutex> lock(m_changesMutex);
+    if (!ContainsObjectInternal(objectId))
         return false;
 
-    std::unique_lock<std::mutex> lock(m_changesMutex);
     Object& object = GetObjectInternal(objectId);
     if (!std::ranges::any_of(object.Steps, [&stepId](const Step &step) -> bool {
         return step.Id == stepId;
@@ -94,10 +97,10 @@ auto SchedulableProgress::RemoveStep(const std::string &objectId, const std::str
     return true;
 }
 auto SchedulableProgress::AddStep(const std::string &objectId, Step step) -> bool {
-    if (!ContainsObject(objectId))
+    std::unique_lock<std::mutex> lock(m_changesMutex);
+    if (!ContainsObjectInternal(objectId))
         return false;
 
-    std::unique_lock<std::mutex> lock(m_changesMutex);
     Object& object = GetObjectInternal(objectId);
     if (std::ranges::any_of(object.Steps, [&step](const Step &curStep) -> bool {
         return step.Id == curStep.Id;
@@ -108,25 +111,25 @@ auto SchedulableProgress::AddStep(const std::string &objectId, Step step) -> boo
     return true;
 }
 auto SchedulableProgress::SetObjectTotalSteps(const std::string &objectId, std::size_t objectTotalSteps) -> bool {
-    if (!ContainsObject(objectId))
+    std::unique_lock<std::mutex> lock(m_changesMutex);
+    if (!ContainsObjectInternal(objectId))
         return false;
 
-    std::unique_lock<std::mutex> lock(m_changesMutex);
     GetObjectInternal(objectId).TotalSteps = objectTotalSteps;
 
     return true;
 }
 auto SchedulableProgress::IncrementCompletedSteps(const std::string &objectId) -> bool {
-    if (!ContainsObject(objectId))
+    std::unique_lock<std::mutex> lock(m_changesMutex);
+    if (!ContainsObjectInternal(objectId))
         return false;
 
-    std::unique_lock<std::mutex> lock(m_changesMutex);
     GetObjectInternal(objectId).CompletedSteps++;
 
     return true;
 }
 auto SchedulableProgress::ApplyChanges() -> void {
-    std::unique_lock<std::mutex> lock(m_transactionMutex);
+    std::scoped_lock lock(m_changesMutex, m_transactionMutex);
     m_currentTransaction = m_temporaryTransaction;
 }
 

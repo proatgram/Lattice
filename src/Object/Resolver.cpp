@@ -7,6 +7,8 @@ import Lattice.Object.Capabilities.HasDependencies;
 
 using namespace Lattice::Object;
 
+// TODO: (bug) If an object has the same name as a project, it freaks out.
+
 std::map<std::string, std::shared_ptr<Resolver>> Resolver::s_resolvers;
 
 Resolver::Resolver(Constructable, const Context &resolverContext) : m_resolverContext(resolverContext) {}

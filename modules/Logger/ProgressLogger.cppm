@@ -149,6 +149,7 @@ export namespace Lattice::Logger {
         private:
             auto GetObjectInternal(const std::string &objectId) -> Object&;
             auto GetObjectInternal(const std::string &objectId) const -> const Object&;
+            auto ContainsObjectInternal(const std::string &objectId) const -> bool;
 
             struct Transaction {
                 std::size_t totalObjects;
