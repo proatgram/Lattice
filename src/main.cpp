@@ -40,7 +40,7 @@ auto main(int argc, char *argv[]) -> int {
     try {
         std::shared_ptr<Lattice::Lattice> lattice = Lattice::Lattice::GetInstance();
 
-        lattice->LoadConfig(program.get<std::string>("--project"));
+        lattice->LoadConfig(program.get<std::filesystem::path>("--project"));
 
         if (program.is_subcommand_used(buildParser)) {
                 lattice->StartBuild(

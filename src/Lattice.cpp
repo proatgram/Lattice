@@ -52,14 +52,15 @@ auto LoadIncludes(const std::string &include, const std::filesystem::path &worki
     // Include can either be:
     //  - Directory
     //  - File (including or excluding .yaml)
-
     std::vector<YAML::Node> includeNodes;
     YAML::Node currentNode;
     std::filesystem::path includeWorkingDirectory;
+    std::string filename = "lattice.yaml";
     if (include.contains(".yaml") && std::filesystem::exists(workingDirectory / include) && std::filesystem::is_regular_file(workingDirectory / include)) {
         // First is easy, if it contains '.yaml', then it'll be a file.
         currentNode = YAML::LoadFile((workingDirectory / include).string());
         includeWorkingDirectory = (workingDirectory / include).parent_path();
+        filename = include;
     } else if (std::filesystem::exists(workingDirectory / include) && std::filesystem::is_directory(workingDirectory / include) && std::filesystem::exists(workingDirectory / include / "lattice.yaml")) {
         // Next we check if it's a directory, and if it is if it has a lattice.yaml in it
         currentNode = YAML::LoadFile((workingDirectory / include / "lattice.yaml").string());
@@ -70,13 +71,13 @@ auto LoadIncludes(const std::string &include, const std::filesystem::path &worki
         includeWorkingDirectory = (workingDirectory / std::string(include + ".yaml")).parent_path();
     } else {
         // If none of those exist, we can't resolve the include, so we fail.
-        throw std::runtime_error(std::format("Couldn't load configuration file {}.", include));
+        throw std::runtime_error(std::format("Couldn't load configuration file {}.", (workingDirectory / include / filename).string()));
     }
 
     includeNodes.push_back(currentNode);
 
-    if (currentNode["include"] && currentNode.IsSequence()) {
-        for (std::size_t i = 0;i < currentNode["include"].size(); i++) {
+    if (currentNode["include"]) {
+        for (std::size_t i = 0; i < currentNode["include"].size(); i++) {
             std::vector<YAML::Node> include = LoadIncludes(currentNode["include"][i].as<std::string>(), includeWorkingDirectory);
             includeNodes.insert(std::end(includeNodes), std::begin(include), std::end(include));
         }

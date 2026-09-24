@@ -31,18 +31,10 @@ auto Scheduler::ReloadJobs(std::deque<Job> &jobs, const std::shared_ptr<Progress
                 depNode->status = Object::DependencyGraph::DependencyNode::Status::Finished;
                 m_dependencyGraph->Update(depNode);
                 if (schedulableProgress) {
-                    if (schedulableProgress->ContainsObject(objectId)) {
-                        schedulableProgress->RemoveObject(objectId);
-                        schedulableProgress->ApplyChanges();
-                    }
                     schedulableProgress->SetObjectsDone(schedulableProgress->GetObjectsDone() + 1);
                 }
 
                 continue;
-            }
-            if (schedulableProgress && !schedulableProgress->ContainsObject(objectId)) {
-                schedulableProgress->AddObject({.Id = objectId, .Steps = {}, .TotalSteps = schedulable->GetTotalSteps(), .CompletedSteps = schedulable->GetTotalSteps() - schedulable->GetRemainingSteps()});
-                schedulableProgress->ApplyChanges();
             }
             for (std::shared_ptr<Object::Capabilities::Schedulable::Step> step : schedulable->GetReadySteps()) {
                 if (!std::ranges::any_of(jobs, [&step](const Job &job) -> bool {
@@ -83,7 +75,7 @@ auto Scheduler::Start() -> std::optional<std::future<bool>> {
         std::deque<Scheduler::Job> finishedJobs;
         std::deque<Scheduler::Job> jobs;
 
-        auto workerFunction = [&stepsMutex, &workAvailable, &workFinished, &finishedJobs, &jobs, textLogger](const std::stop_token &stopToken) -> void {
+        auto workerFunction = [&stepsMutex, &workAvailable, &workFinished, &finishedJobs, &jobs, textLogger, schedulableProgress](const std::stop_token &stopToken) -> void {
             while (true) {
                 // Prepare task
                 Job job;
@@ -108,6 +100,14 @@ auto Scheduler::Start() -> std::optional<std::future<bool>> {
 
                     job = std::move(jobs.front());
                     jobs.pop_front();
+
+                }
+                std::string objectId = job.node->object->GetResolvedObject()->GetIdentifier(); 
+                std::shared_ptr<Object::Capabilities::Schedulable> schedulable = job.node->object->GetResolvedObject()->GetCapability<Object::Capabilities::Schedulable>().value_or(nullptr);
+                if (schedulableProgress && !schedulableProgress->ContainsObject(objectId) && schedulable) {
+                    schedulableProgress->AddObject({.Id = objectId, .Steps = {}, .TotalSteps = schedulable->GetTotalSteps(), .CompletedSteps = schedulable->GetTotalSteps() - schedulable->GetRemainingSteps()});
+                    schedulableProgress->AddStep(objectId, {.Id = job.step->GetID(), .Description = job.step->GetDescription().GetFullDescription()});
+                    schedulableProgress->ApplyChanges();
                 }
 
                 // Run task
@@ -192,7 +192,7 @@ auto Scheduler::Start() -> std::optional<std::future<bool>> {
 
                         if (schedulableProgress && schedulableProgress->ContainsObject(schedulableObjectId)) {
                             schedulableProgress->RemoveStep(schedulableObjectId, job.step->GetID());
-                            schedulableProgress->GetObject(schedulableObjectId)->get().CompletedSteps++;
+                            schedulableProgress->IncrementCompletedSteps(schedulableObjectId);
                         }
                     }
                 } else if (job.result == Object::Capabilities::Schedulable::Step::State::Failed) {

@@ -98,17 +98,9 @@ export namespace Lattice::Logger {
              *
              * @param[in] objectId The ID of the object to obtain.
              *
-             * @return An optional reference wrapper to a const `Object` if the object exists, otherwise std::nullopt.
+             * @return An optional an `Object` if the object exists, otherwise std::nullopt.
              */
-            auto GetObject(const std::string &objectId) const -> std::optional<std::reference_wrapper<const Object>>;
-            /**
-             * @brief Gets an object by its ID.
-             *
-             * @param[in] objectId The ID of the object to obtain.
-             *
-             * @return An optional reference wrapper to an `Object` if the object exists, otherwise std::nullopt.
-             */
-            auto GetObject(const std::string &objectId) -> std::optional<std::reference_wrapper<Object>>;
+            auto GetObject(const std::string &objectId) const -> std::optional<Object>;
             
             /**
              * @brief Removes a step from an object.
@@ -119,6 +111,8 @@ export namespace Lattice::Logger {
              * @return `true` if the step was removed, `false` otherwise.
              */
             auto RemoveStep(const std::string &objectId, const std::string &stepId) -> bool;
+
+            auto GetStep(const std::string &objectId, const std::string &stepId) const -> std::optional<Step>;
             /**
              * @brief Adds a step to an object.
              *
@@ -128,6 +122,10 @@ export namespace Lattice::Logger {
              * @return `true` if the step was added, `false` otherwise.
              */
             auto AddStep(const std::string &objectId, Step step) -> bool;
+
+            auto SetObjectTotalSteps(const std::string &objectId, std::size_t objectTotalSteps) -> bool;
+
+            auto IncrementCompletedSteps(const std::string &objectId) -> bool;
 
             /**
              * @brief Applies the current changes to the generate function.
@@ -149,6 +147,9 @@ export namespace Lattice::Logger {
              */
             auto Generate(std::size_t requestedColumnWidth = 0) -> std::optional<DrawDescription>;
         private:
+            auto GetObjectInternal(const std::string &objectId) -> Object&;
+            auto GetObjectInternal(const std::string &objectId) const -> const Object&;
+
             struct Transaction {
                 std::size_t totalObjects;
                 std::size_t currentObjectsDone;
@@ -158,7 +159,8 @@ export namespace Lattice::Logger {
             std::size_t m_currentLineCount{};
             Transaction m_currentTransaction;
             Transaction m_temporaryTransaction;
-            std::mutex m_mutex;
+            mutable std::mutex m_changesMutex;
+            std::mutex m_transactionMutex;
     };
 
     class ProgressLogger final : public TextLogger {
