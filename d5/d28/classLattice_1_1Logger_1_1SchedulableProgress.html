@@ -141,14 +141,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:afac3a2dc49bfacb0bd02d86d5bc783f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes an object from the progress bar.  <br /></td></tr>
 <tr class="memitem:a86777ccc7316b609653bb111ebc6c715" id="r_a86777ccc7316b609653bb111ebc6c715"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#a86777ccc7316b609653bb111ebc6c715">ContainsObject</a> (const std::string &amp;objectId) const -&gt; bool</td></tr>
 <tr class="memdesc:a86777ccc7316b609653bb111ebc6c715"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the progress bar has an object.  <br /></td></tr>
-<tr class="memitem:a6474737ea6588d6611c9338d8d59bbb4" id="r_a6474737ea6588d6611c9338d8d59bbb4"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#a6474737ea6588d6611c9338d8d59bbb4">GetObject</a> (const std::string &amp;objectId) const -&gt; std::optional&lt; std::reference_wrapper&lt; const <a class="el" href="../../d3/db4/structLattice_1_1Logger_1_1SchedulableProgress_1_1Object.html">Object</a> &gt; &gt;</td></tr>
-<tr class="memdesc:a6474737ea6588d6611c9338d8d59bbb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an object by its ID.  <br /></td></tr>
-<tr class="memitem:a7ae85dd772401be3ffdbd24e485d1de1" id="r_a7ae85dd772401be3ffdbd24e485d1de1"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#a7ae85dd772401be3ffdbd24e485d1de1">GetObject</a> (const std::string &amp;objectId) -&gt; std::optional&lt; std::reference_wrapper&lt; <a class="el" href="../../d3/db4/structLattice_1_1Logger_1_1SchedulableProgress_1_1Object.html">Object</a> &gt; &gt;</td></tr>
-<tr class="memdesc:a7ae85dd772401be3ffdbd24e485d1de1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an object by its ID.  <br /></td></tr>
+<tr class="memitem:ab1275b511b6321f404fabd969da1b9e3" id="r_ab1275b511b6321f404fabd969da1b9e3"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#ab1275b511b6321f404fabd969da1b9e3">GetObject</a> (const std::string &amp;objectId) const -&gt; std::optional&lt; <a class="el" href="../../d3/db4/structLattice_1_1Logger_1_1SchedulableProgress_1_1Object.html">Object</a> &gt;</td></tr>
+<tr class="memdesc:ab1275b511b6321f404fabd969da1b9e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an object by its ID.  <br /></td></tr>
 <tr class="memitem:a2e86b18b0d8eb921ec53c5690a7ae910" id="r_a2e86b18b0d8eb921ec53c5690a7ae910"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#a2e86b18b0d8eb921ec53c5690a7ae910">RemoveStep</a> (const std::string &amp;objectId, const std::string &amp;stepId) -&gt; bool</td></tr>
 <tr class="memdesc:a2e86b18b0d8eb921ec53c5690a7ae910"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a step from an object.  <br /></td></tr>
+<tr class="memitem:adec77f732a6c98763240774cccef14ef" id="r_adec77f732a6c98763240774cccef14ef"><td class="memItemLeft"><a id="adec77f732a6c98763240774cccef14ef" name="adec77f732a6c98763240774cccef14ef"></a>
+auto&#160;</td><td class="memItemRight"><b>GetStep</b> (const std::string &amp;objectId, const std::string &amp;stepId) const -&gt; std::optional&lt; <a class="el" href="../../d0/d5e/structLattice_1_1Logger_1_1SchedulableProgress_1_1Step.html">Step</a> &gt;</td></tr>
 <tr class="memitem:a25482bef5f14a2b55a254f1c1dac1b5a" id="r_a25482bef5f14a2b55a254f1c1dac1b5a"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#a25482bef5f14a2b55a254f1c1dac1b5a">AddStep</a> (const std::string &amp;objectId, <a class="el" href="../../d0/d5e/structLattice_1_1Logger_1_1SchedulableProgress_1_1Step.html">Step</a> step) -&gt; bool</td></tr>
 <tr class="memdesc:a25482bef5f14a2b55a254f1c1dac1b5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a step to an object.  <br /></td></tr>
+<tr class="memitem:a1c6c542f43fd0ba5d64619d1cb0e7afa" id="r_a1c6c542f43fd0ba5d64619d1cb0e7afa"><td class="memItemLeft"><a id="a1c6c542f43fd0ba5d64619d1cb0e7afa" name="a1c6c542f43fd0ba5d64619d1cb0e7afa"></a>
+auto&#160;</td><td class="memItemRight"><b>SetObjectTotalSteps</b> (const std::string &amp;objectId, std::size_t objectTotalSteps) -&gt; bool</td></tr>
+<tr class="memitem:aa504e368a34fa5e26174fa98dbc09ce8" id="r_aa504e368a34fa5e26174fa98dbc09ce8"><td class="memItemLeft"><a id="aa504e368a34fa5e26174fa98dbc09ce8" name="aa504e368a34fa5e26174fa98dbc09ce8"></a>
+auto&#160;</td><td class="memItemRight"><b>IncrementCompletedSteps</b> (const std::string &amp;objectId) -&gt; bool</td></tr>
 <tr class="memitem:ae70ba3dd48d8d79f2b902672dc310bd3" id="r_ae70ba3dd48d8d79f2b902672dc310bd3"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#ae70ba3dd48d8d79f2b902672dc310bd3">ApplyChanges</a> () -&gt; void</td></tr>
 <tr class="memdesc:ae70ba3dd48d8d79f2b902672dc310bd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies the current changes to the generate function.  <br /></td></tr>
 <tr class="memitem:ae639c70a685f58d79b755f3c3df45144" id="r_ae639c70a685f58d79b755f3c3df45144"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#ae639c70a685f58d79b755f3c3df45144">Generate</a> (std::size_t requestedColumnWidth=0) -&gt; std::optional&lt; <a class="el" href="../../d9/d14/structLattice_1_1Logger_1_1SchedulableProgress_1_1DrawDescription.html">DrawDescription</a> &gt;</td></tr>
@@ -286,8 +290,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a7ae85dd772401be3ffdbd24e485d1de1" name="a7ae85dd772401be3ffdbd24e485d1de1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ae85dd772401be3ffdbd24e485d1de1">&#9670;&#160;</a></span>GetObject() <span class="overload">[1/2]</span></h2>
+<a id="ab1275b511b6321f404fabd969da1b9e3" name="ab1275b511b6321f404fabd969da1b9e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1275b511b6321f404fabd969da1b9e3">&#9670;&#160;</a></span>GetObject()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -296,7 +300,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">auto SchedulableProgress::GetObject </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>objectId</em></span></td><td>)</td>
-          <td> -&gt; std::optional&lt; std::reference_wrapper&lt; <a class="el" href="../../d3/db4/structLattice_1_1Logger_1_1SchedulableProgress_1_1Object.html">Object</a> &gt; &gt;</td>
+          <td> const -&gt; std::optional&lt; <a class="el" href="../../d3/db4/structLattice_1_1Logger_1_1SchedulableProgress_1_1Object.html">Object</a> &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -308,33 +312,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An optional reference wrapper to an <span class="tt"><a class="el" href="../../d3/db4/structLattice_1_1Logger_1_1SchedulableProgress_1_1Object.html" title="Abstraction over an object.">Object</a></span> if the object exists, otherwise std::nullopt. </dd></dl>
-
-</div>
-</div>
-<a id="a6474737ea6588d6611c9338d8d59bbb4" name="a6474737ea6588d6611c9338d8d59bbb4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6474737ea6588d6611c9338d8d59bbb4">&#9670;&#160;</a></span>GetObject() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto SchedulableProgress::GetObject </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>objectId</em></span></td><td>)</td>
-          <td> const -&gt; std::optional&lt; std::reference_wrapper&lt; const <a class="el" href="../../d3/db4/structLattice_1_1Logger_1_1SchedulableProgress_1_1Object.html">Object</a> &gt; &gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets an object by its ID. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">objectId</td><td>The ID of the object to obtain.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>An optional reference wrapper to a const <span class="tt"><a class="el" href="../../d3/db4/structLattice_1_1Logger_1_1SchedulableProgress_1_1Object.html" title="Abstraction over an object.">Object</a></span> if the object exists, otherwise std::nullopt. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An optional an <span class="tt"><a class="el" href="../../d3/db4/structLattice_1_1Logger_1_1SchedulableProgress_1_1Object.html" title="Abstraction over an object.">Object</a></span> if the object exists, otherwise std::nullopt. </dd></dl>
 
 </div>
 </div>
