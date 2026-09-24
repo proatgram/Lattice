@@ -1,0 +1,13 @@
+Lattice:
+  library:
+    Plugins:
+      type: shared
+      sources:
+        - "src/Plugins/Loader.cpp"
+      modules:
+        public:
+          - "modules/Plugins/Plugin.cppm"
+          - "modules/Plugins/Loader.cppm"
+      dependencies:
+        - Registry@Lattice
+        - Logger@Lattice

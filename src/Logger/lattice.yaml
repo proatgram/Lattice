@@ -1,0 +1,18 @@
+Lattice:
+  library:
+    Logger:
+      type: shared
+      sources:
+        - "src/Logger/ILogger.cpp"
+        - "src/Logger/EscapeSequences.cpp"
+        - "src/Logger/TextLogger.cpp"
+        - "src/Logger/ProgressLogger.cpp"
+      modules:
+        public:
+          - "modules/Logger/ILogger.cppm"
+          - "modules/Logger/EscapeSequences.cppm"
+          - "modules/Logger/TextLogger.cppm"
+          - "modules/Logger/ProgressLogger.cppm"
+      dependencies:
+        private:
+          - Registry@Lattice

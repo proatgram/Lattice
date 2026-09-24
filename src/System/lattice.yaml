@@ -1,0 +1,11 @@
+Lattice:
+  library:
+    System:
+      type: shared
+      sources:
+        - "src/System/Command.cpp"
+        - "src/System/Process.cpp"
+      modules:
+        public:
+          - "modules/System/Command.cppm"
+          - "modules/System/Process.cppm"

@@ -1,0 +1,17 @@
+Lattice:
+  library:
+    Cache::Serialization:
+      type: shared
+      sources:
+        - "src/Cache/Serialization.cpp"
+      modules:
+        public:
+          - "modules/Cache/Serialization.cppm"
+
+    Cache::Manager:
+      type: shared
+      sources:
+        - "src/Cache/CacheManager.cpp"
+      modules:
+        public:
+          - "modules/Cache/CacheManager.cppm"

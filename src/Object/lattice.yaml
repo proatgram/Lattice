@@ -1,0 +1,56 @@
+Lattice:
+  library:
+    Object:
+      type: shared
+      sources:
+        # Objects
+        - "src/Object/Object.cpp"
+        - "src/Object/ILibrary.cpp"
+        - "src/Object/Provider.cpp"
+        - "src/Object/IToolchain.cpp"
+        - "src/Object/Project.cpp"
+        - "src/Object/IBinary.cpp"
+        - "src/Object/Resolver.cpp"
+        - "src/Object/DependencyGraph.cpp"
+        # Capabilities
+        - "src/Object/Capabilities/HasToolchain.cpp"
+        - "src/Object/Capabilities/HasDependencies.cpp"
+        - "src/Object/Capabilities/LanguageIdentifiable.cpp"
+        - "src/Object/Capabilities/ProjectIdentifiable.cpp"
+        - "src/Object/Capabilities/Schedulable.cpp"
+        - "src/Object/Capabilities/Cacheable.cpp"
+        # Properties
+        - "src/Object/Properties/IProperty.cpp"
+      modules:
+        public:
+          # Object
+          - "modules/Object/Object.cppm"
+          - "modules/Object/ILibrary.cppm"
+          - "modules/Object/Provider.cppm"
+          - "modules/Object/IBinary.cppm"
+          - "modules/Object/Resolver.cppm"
+          - "modules/Object/Project.cppm"
+          - "modules/Object/IToolchain.cppm"
+          - "modules/Object/DependencyGraph.cppm"
+          # Capabilities
+          - "modules/Object/Capabilities/LanguageIdentifiable.cppm"
+          - "modules/Object/Capabilities/ICapability.cppm"
+          - "modules/Object/Capabilities/HasProperties.cppm"
+          - "modules/Object/Capabilities/Schedulable.cppm"
+          - "modules/Object/Capabilities/HasDependencies.cppm"
+          - "modules/Object/Capabilities/Linkable.cppm"
+          - "modules/Object/Capabilities/ProjectIdentifiable.cppm"
+          - "modules/Object/Capabilities/ArtifactProvider.cppm"
+          - "modules/Object/Capabilities/HasToolchain.cppm"
+          - "modules/Object/Capabilities/Cacheable.cppm"
+          # Properties
+          - "modules/Object/Properties/IProperty.cppm"
+      dependencies:
+        public:
+          - IFactory@Lattice
+          - Cache::Serialization@Lattice
+        private:
+          - Registry@Lattice
+          - Logger@Lattice
+          - Cache::Manager@Lattice
+          # - yaml-cpp@pkg-config

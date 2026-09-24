@@ -1,0 +1,14 @@
+include: ["src/"]
+
+project:
+  Lattice:
+    description: "Another build engine written in C++ based solely on configuration files."
+    homepage: "https://github.com/proatgram/Lattice"
+    version: 0.1
+    requires:
+      - argparse:
+          version: ">=3"
+          provider: "pkg-config"
+      - yaml-cpp:
+          version: ">=0.9"
+          provider: "pkg-config"

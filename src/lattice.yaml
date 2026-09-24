@@ -1,0 +1,53 @@
+include:
+  - "Object/"
+  - "Tooling/"
+  - "System/"
+  - "Plugins/"
+  - "Cache/"
+  - "Logger/"
+
+Lattice:
+  binary:
+    lattice:
+      output_name: "lattice"
+      sources: ["src/main.cpp"]
+      dependencies:
+        private:
+          - LatticeLib@Lattice
+          - Logger@Lattice
+          # - argparse@pkg-config
+  library:
+    LatticeLib:
+      type: static
+      sources: ["src/Lattice.cpp"]
+      modules:
+        public:
+          - "modules/Lattice.cppm"
+
+      dependencies:
+        private:
+          - Plugins@Lattice
+          - Registry@Lattice
+          - Object@Lattice
+          - Logger@Lattice
+          - Scheduler@Lattice
+          # - yaml-cpp@pkg-config
+
+    Registry:
+      type: shared
+      sources:
+        - "src/Registry.cpp"
+      modules:
+        public:
+          - "modules/Registry.cppm"
+
+    IFactory:
+      type: shared
+      modules:
+        public: ["src/IFactory.cpp"]
+
+    Scheduler:
+      type: shared
+      sources: ["src/Scheduler.cpp"]
+      modules:
+        public: ["modules/Scheduler.cppm"]

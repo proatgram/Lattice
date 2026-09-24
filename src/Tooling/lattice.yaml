@@ -1,0 +1,17 @@
+Lattice:
+  library:
+    Tooling:
+      type: shared
+      sources:
+        - "src/Tooling/ICompiler.cpp"
+        - "src/Tooling/ILinker.cpp"
+        - "src/Tooling/Configuration.cpp"
+      modules:
+        public:
+          - "modules/Tooling/ICompiler.cppm"
+          - "modules/Tooling/ILinker.cppm"
+          - "modules/Tooling/Configuration.cppm"
+      dependencies:
+        - Object@Lattice
+        - IFactory@Lattice
+        - System@Lattice
