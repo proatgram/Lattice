@@ -204,7 +204,7 @@ export namespace Lattice::Tooling {
      */
     class ICompiler {
         public:
-            virtual ~ICompiler() = default;
+            virtual ~ICompiler();
 
             /**
              * @brief Returns a default configuration for the compiler.
@@ -221,7 +221,7 @@ export namespace Lattice::Tooling {
              *
              * @return A default `CompilerConfiguration` instance for this compiler.
              */
-            virtual auto CreateConfiguration(const std::optional<std::shared_ptr<Lattice::Object::Object>> &obj = std::nullopt) const -> CompilerConfiguration;
+            virtual auto CreateConfiguration(const std::optional<std::shared_ptr<Lattice::Object::Object>> &obj = std::nullopt) const -> CompilerConfiguration = 0;
 
             /**
              * @brief Returns a `Command` instance tailored for this compiler.
@@ -237,7 +237,7 @@ export namespace Lattice::Tooling {
              *
              * @return A tailored `Command` instance for this compiler and the configuration given.
              */
-            virtual auto CreateCommand(const CompilerConfiguration &configuration) const -> System::Command;
+            virtual auto CreateCommand(const CompilerConfiguration &configuration) const -> System::Command = 0;
     };
 
     template <typename Factory>

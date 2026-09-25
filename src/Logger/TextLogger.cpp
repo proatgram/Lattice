@@ -20,13 +20,13 @@ auto TextLogger::Update() -> void {
         m_messagesQueue.pop();
         switch (msg.level) {
             case ILogger::Level::Info:
-                std::println("{}", Foreground::White(msg.text));
+                std::cout << Foreground::White(msg.text) << std::endl;
                 break;
             case ILogger::Level::Warn:
-                std::println("{}", Foreground::Yellow(msg.text));
+                std::cout << Foreground::Yellow(msg.text) << std::endl;
                 break;
             case ILogger::Level::Error:
-                std::println(std::cerr, "{}", Foreground::Red(msg.text));
+                std::cerr << Foreground::Red(msg.text) << std::endl;
                 break;
         }
     }

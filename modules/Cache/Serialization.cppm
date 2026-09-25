@@ -17,14 +17,14 @@ export namespace Lattice::Cache::Serialization {
      */
     class Cache {
         public:
-            virtual ~Cache() = default;
+            virtual ~Cache();
 
             /**
              * @brief Represents any kind of section
              */
             class ISection {
                 public:
-                    virtual ~ISection() = default;
+                    virtual ~ISection();
 
                     /**
                      * @brief Returns if this section is an array.

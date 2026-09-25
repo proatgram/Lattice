@@ -105,7 +105,7 @@ export namespace Lattice::Tooling {
      */
     class ILinker {
         public:
-            virtual ~ILinker() = default;
+            virtual ~ILinker();
 
             /**
              * @brief Returns a default configuration for the linker.
@@ -122,7 +122,7 @@ export namespace Lattice::Tooling {
              *
              * @return A default `LinkerConfiguration` instance for this linker.
              */
-            virtual auto CreateConfiguration(const std::optional<std::shared_ptr<::Lattice::Object::Object>> &obj = std::nullopt) const -> LinkerConfiguration; 
+            virtual auto CreateConfiguration(const std::optional<std::shared_ptr<::Lattice::Object::Object>> &obj = std::nullopt) const -> LinkerConfiguration = 0; 
 
             /**
              * @brief Returns a `Command` instance tailored for this linker.
@@ -138,7 +138,7 @@ export namespace Lattice::Tooling {
              *
              * @return A tailored `Command` instance for this linker and the configuration given.
              */
-            virtual auto CreateCommand(const LinkerConfiguration &config) -> System::Command;
+            virtual auto CreateCommand(const LinkerConfiguration &config) -> System::Command = 0;
     };
 
     template <typename Factory>

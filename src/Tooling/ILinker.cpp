@@ -20,3 +20,5 @@ auto LinkerConfiguration::AddLinkableFile(const std::filesystem::path &file) -> 
 
     return *this;
 }
+
+ILinker::~ILinker() = default;

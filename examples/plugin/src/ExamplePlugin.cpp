@@ -17,7 +17,7 @@ auto GetPluginVersionSupport() -> Lattice::Plugins::PluginVersionSupport {
 }
 
 extern "C" {
-    export auto GetPluginInstance() -> Lattice::Plugins::PluginInstance {
+    auto GetPluginInstance() -> Lattice::Plugins::PluginInstance {
         return {
             .Initialize = &Initialize,
             .GetID = &GetID,

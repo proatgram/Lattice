@@ -67,7 +67,7 @@ auto LoadIncludes(const std::string &include, const std::filesystem::path &worki
         includeWorkingDirectory = workingDirectory / include;
     } else if (std::filesystem::exists(workingDirectory / std::string(include + ".yaml")) && std::filesystem::is_regular_file(workingDirectory / include)) {
         // Next, we check if there exists a file with that include with the ".yaml" extention
-        currentNode = YAML::LoadFile((workingDirectory / std::string(include + ".yaml")));
+        currentNode = YAML::LoadFile((workingDirectory / std::string(include + ".yaml")).string());
         includeWorkingDirectory = (workingDirectory / std::string(include + ".yaml")).parent_path();
     } else {
         // If none of those exist, we can't resolve the include, so we fail.

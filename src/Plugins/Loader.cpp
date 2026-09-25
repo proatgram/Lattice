@@ -42,9 +42,9 @@ auto Loader::LoadFile(const std::filesystem::path &file) -> PluginInstance {
 
     if (!handle)
         throw std::runtime_error(std::format("Failed to load plugin at {}: Failed to dlopen file.", file.string()));
-#endif
 
     loaderFunction = (GetPluginInstanceFunc_t)dlsym(handle, "GetPluginInstance");  
+#endif
     if (!loaderFunction)
         throw std::runtime_error(std::format("Failed to load plugin at {}: Failed to find symbol void(GetPluginInstance(void)).", file.string()));
 

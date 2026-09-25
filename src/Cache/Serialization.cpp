@@ -2,6 +2,10 @@ module Lattice.Cache.Serialization;
 
 using namespace Lattice::Cache::Serialization;
 
+Cache::Cache::~Cache() = default;
+
+Cache::ISection::~ISection() = default;
+
 auto Cache::ISection::GetName() const -> std::string {
     return m_sectionName;
 }

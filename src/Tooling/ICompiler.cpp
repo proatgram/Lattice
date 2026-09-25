@@ -64,3 +64,5 @@ auto CompilerConfiguration::AddSource(const std::filesystem::path &source) -> Co
 
     return *this;
 }
+
+ICompiler::~ICompiler() = default;
