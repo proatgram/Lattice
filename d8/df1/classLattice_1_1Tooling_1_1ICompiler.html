@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d8/df1/classLa
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Lattice::Tooling::ICompiler Class Reference<span class="mlabels"><span class="mlabel export">export</span></span><div class="ingroups">module <a class="el" href="../../d3/db3/module__Lattice_8Tooling_8Compiler.html">Lattice.Tooling.Compiler</a></div></div></div>
+  <div class="headertitle"><div class="title">Lattice::Tooling::ICompiler Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span><span class="mlabel export">export</span></span><div class="ingroups">module <a class="el" href="../../d3/db3/module__Lattice_8Tooling_8Compiler.html">Lattice.Tooling.Compiler</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -118,18 +118,18 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d8/df1/classLa
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5552be68eeabb5715ce345976223e4f7" id="r_a5552be68eeabb5715ce345976223e4f7"><td class="memItemLeft">virtual auto&#160;</td><td class="memItemRight"><a class="el" href="#a5552be68eeabb5715ce345976223e4f7">CreateConfiguration</a> (const std::optional&lt; std::shared_ptr&lt; <a class="el" href="../../d7/d62/classLattice_1_1Object_1_1Object.html">Lattice::Object::Object</a> &gt; &gt; &amp;obj=std::nullopt) const -&gt; <a class="el" href="../../d1/d93/classLattice_1_1Tooling_1_1CompilerConfiguration.html">CompilerConfiguration</a></td></tr>
-<tr class="memdesc:a5552be68eeabb5715ce345976223e4f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a default configuration for the compiler.  <br /></td></tr>
-<tr class="memitem:a1fd803309ba5268cb7039e8e61493ff9" id="r_a1fd803309ba5268cb7039e8e61493ff9"><td class="memItemLeft">virtual auto&#160;</td><td class="memItemRight"><a class="el" href="#a1fd803309ba5268cb7039e8e61493ff9">CreateCommand</a> (const <a class="el" href="../../d1/d93/classLattice_1_1Tooling_1_1CompilerConfiguration.html">CompilerConfiguration</a> &amp;configuration) const -&gt; <a class="el" href="../../d4/d72/classLattice_1_1System_1_1Command.html">System::Command</a></td></tr>
-<tr class="memdesc:a1fd803309ba5268cb7039e8e61493ff9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <span class="tt">Command</span> instance tailored for this compiler.  <br /></td></tr>
+<tr class="memitem:a74d30d8e2b5274d2bf758933e912ce3c" id="r_a74d30d8e2b5274d2bf758933e912ce3c"><td class="memItemLeft">virtual auto&#160;</td><td class="memItemRight"><a class="el" href="#a74d30d8e2b5274d2bf758933e912ce3c">CreateConfiguration</a> (const std::optional&lt; std::shared_ptr&lt; <a class="el" href="../../d7/d62/classLattice_1_1Object_1_1Object.html">Lattice::Object::Object</a> &gt; &gt; &amp;obj=std::nullopt) const -&gt; <a class="el" href="../../d1/d93/classLattice_1_1Tooling_1_1CompilerConfiguration.html">CompilerConfiguration</a>=0</td></tr>
+<tr class="memdesc:a74d30d8e2b5274d2bf758933e912ce3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a default configuration for the compiler.  <br /></td></tr>
+<tr class="memitem:a7f1a75b5daa2a8ccb7c22ff850321862" id="r_a7f1a75b5daa2a8ccb7c22ff850321862"><td class="memItemLeft">virtual auto&#160;</td><td class="memItemRight"><a class="el" href="#a7f1a75b5daa2a8ccb7c22ff850321862">CreateCommand</a> (const <a class="el" href="../../d1/d93/classLattice_1_1Tooling_1_1CompilerConfiguration.html">CompilerConfiguration</a> &amp;configuration) const -&gt; <a class="el" href="../../d4/d72/classLattice_1_1System_1_1Command.html">System::Command</a>=0</td></tr>
+<tr class="memdesc:a7f1a75b5daa2a8ccb7c22ff850321862"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <span class="tt">Command</span> instance tailored for this compiler.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract Compiler interface. </p>
 <p>This class can be extended to add different compilers to <a class="el" href="../../d9/d76/classLattice_1_1Lattice.html" title="The Lattice singleton manages projects and their configurations.">Lattice</a>.</p>
-<p>Compilers are configured based on how they are called in the command line and how they are configured in <a class="el" href="../../d9/d76/classLattice_1_1Lattice.html" title="The Lattice singleton manages projects and their configurations.">Lattice</a> configs and in source. To add a new compiler, inherit from this class, and implement the <span class="tt"><a class="el" href="#a1fd803309ba5268cb7039e8e61493ff9" title="Returns a Command instance tailored for this compiler.">CreateCommand</a>(..)</span> method and the <span class="tt">CreateConfiguration(...)</span> methods to create a method of obtaining your specific compilers command calls and configurations. </p>
+<p>Compilers are configured based on how they are called in the command line and how they are configured in <a class="el" href="../../d9/d76/classLattice_1_1Lattice.html" title="The Lattice singleton manages projects and their configurations.">Lattice</a> configs and in source. To add a new compiler, inherit from this class, and implement the <span class="tt"><a class="el" href="#a7f1a75b5daa2a8ccb7c22ff850321862" title="Returns a Command instance tailored for this compiler.">CreateCommand</a>(..)</span> method and the <span class="tt">CreateConfiguration(...)</span> methods to create a method of obtaining your specific compilers command calls and configurations. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a1fd803309ba5268cb7039e8e61493ff9" name="a1fd803309ba5268cb7039e8e61493ff9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1fd803309ba5268cb7039e8e61493ff9">&#9670;&#160;</a></span>CreateCommand()</h2>
+<a id="a7f1a75b5daa2a8ccb7c22ff850321862" name="a7f1a75b5daa2a8ccb7c22ff850321862"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f1a75b5daa2a8ccb7c22ff850321862">&#9670;&#160;</a></span>CreateCommand()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -146,7 +146,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -164,8 +164,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5552be68eeabb5715ce345976223e4f7" name="a5552be68eeabb5715ce345976223e4f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5552be68eeabb5715ce345976223e4f7">&#9670;&#160;</a></span>CreateConfiguration()</h2>
+<a id="a74d30d8e2b5274d2bf758933e912ce3c" name="a74d30d8e2b5274d2bf758933e912ce3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74d30d8e2b5274d2bf758933e912ce3c">&#9670;&#160;</a></span>CreateConfiguration()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -182,7 +182,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -201,8 +201,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>modules/Tooling/<b>ICompiler.cppm</b></li>
+<li>src/Tooling/<b>ICompiler.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

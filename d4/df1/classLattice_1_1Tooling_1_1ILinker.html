@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d4/df1/classLa
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Lattice::Tooling::ILinker Class Reference<span class="mlabels"><span class="mlabel export">export</span></span><div class="ingroups">module <a class="el" href="../../d0/d6b/module__Lattice_8Tooling_8ILinker.html">Lattice.Tooling.ILinker</a></div></div></div>
+  <div class="headertitle"><div class="title">Lattice::Tooling::ILinker Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span><span class="mlabel export">export</span></span><div class="ingroups">module <a class="el" href="../../d0/d6b/module__Lattice_8Tooling_8ILinker.html">Lattice.Tooling.ILinker</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -118,18 +118,18 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('d4/df1/classLa
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4032003d244dc92acc94b41bcbd614d5" id="r_a4032003d244dc92acc94b41bcbd614d5"><td class="memItemLeft">virtual auto&#160;</td><td class="memItemRight"><a class="el" href="#a4032003d244dc92acc94b41bcbd614d5">CreateConfiguration</a> (const std::optional&lt; std::shared_ptr&lt;<a class="el" href="../../d7/d62/classLattice_1_1Object_1_1Object.html">::Lattice::Object::Object</a> &gt; &gt; &amp;obj=std::nullopt) const -&gt; <a class="el" href="../../df/d7e/classLattice_1_1Tooling_1_1LinkerConfiguration.html">LinkerConfiguration</a></td></tr>
-<tr class="memdesc:a4032003d244dc92acc94b41bcbd614d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a default configuration for the linker.  <br /></td></tr>
-<tr class="memitem:a310aa08b1cac0692ac3ac95a78802143" id="r_a310aa08b1cac0692ac3ac95a78802143"><td class="memItemLeft">virtual auto&#160;</td><td class="memItemRight"><a class="el" href="#a310aa08b1cac0692ac3ac95a78802143">CreateCommand</a> (const <a class="el" href="../../df/d7e/classLattice_1_1Tooling_1_1LinkerConfiguration.html">LinkerConfiguration</a> &amp;config) -&gt; <a class="el" href="../../d4/d72/classLattice_1_1System_1_1Command.html">System::Command</a></td></tr>
-<tr class="memdesc:a310aa08b1cac0692ac3ac95a78802143"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <span class="tt">Command</span> instance tailored for this linker.  <br /></td></tr>
+<tr class="memitem:ae43bd8a33a6e3867a6cd4e2c7061e05a" id="r_ae43bd8a33a6e3867a6cd4e2c7061e05a"><td class="memItemLeft">virtual auto&#160;</td><td class="memItemRight"><a class="el" href="#ae43bd8a33a6e3867a6cd4e2c7061e05a">CreateConfiguration</a> (const std::optional&lt; std::shared_ptr&lt;<a class="el" href="../../d7/d62/classLattice_1_1Object_1_1Object.html">::Lattice::Object::Object</a> &gt; &gt; &amp;obj=std::nullopt) const -&gt; <a class="el" href="../../df/d7e/classLattice_1_1Tooling_1_1LinkerConfiguration.html">LinkerConfiguration</a>=0</td></tr>
+<tr class="memdesc:ae43bd8a33a6e3867a6cd4e2c7061e05a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a default configuration for the linker.  <br /></td></tr>
+<tr class="memitem:a4208b22102601080808a9937135fbd55" id="r_a4208b22102601080808a9937135fbd55"><td class="memItemLeft">virtual auto&#160;</td><td class="memItemRight"><a class="el" href="#a4208b22102601080808a9937135fbd55">CreateCommand</a> (const <a class="el" href="../../df/d7e/classLattice_1_1Tooling_1_1LinkerConfiguration.html">LinkerConfiguration</a> &amp;config) -&gt; <a class="el" href="../../d4/d72/classLattice_1_1System_1_1Command.html">System::Command</a>=0</td></tr>
+<tr class="memdesc:a4208b22102601080808a9937135fbd55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a <span class="tt">Command</span> instance tailored for this linker.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract Linker interface. </p>
 <p>This class can be extended to add different linkers to <a class="el" href="../../d9/d76/classLattice_1_1Lattice.html" title="The Lattice singleton manages projects and their configurations.">Lattice</a>.</p>
-<p>Linkers are configured based on how they are called in the command line and how they are configured in <a class="el" href="../../d9/d76/classLattice_1_1Lattice.html" title="The Lattice singleton manages projects and their configurations.">Lattice</a> configs and in source. To add a new linker, inherit from this class, and implement the <span class="tt"><a class="el" href="#a310aa08b1cac0692ac3ac95a78802143" title="Returns a Command instance tailored for this linker.">CreateCommand</a>(..)</span> method and the <span class="tt">CreateConfiguration(...)</span> methods to create a method of obtaining your specific linker command calls and configurations. </p>
+<p>Linkers are configured based on how they are called in the command line and how they are configured in <a class="el" href="../../d9/d76/classLattice_1_1Lattice.html" title="The Lattice singleton manages projects and their configurations.">Lattice</a> configs and in source. To add a new linker, inherit from this class, and implement the <span class="tt"><a class="el" href="#a4208b22102601080808a9937135fbd55" title="Returns a Command instance tailored for this linker.">CreateCommand</a>(..)</span> method and the <span class="tt">CreateConfiguration(...)</span> methods to create a method of obtaining your specific linker command calls and configurations. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a310aa08b1cac0692ac3ac95a78802143" name="a310aa08b1cac0692ac3ac95a78802143"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a310aa08b1cac0692ac3ac95a78802143">&#9670;&#160;</a></span>CreateCommand()</h2>
+<a id="a4208b22102601080808a9937135fbd55" name="a4208b22102601080808a9937135fbd55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4208b22102601080808a9937135fbd55">&#9670;&#160;</a></span>CreateCommand()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -146,7 +146,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -164,8 +164,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4032003d244dc92acc94b41bcbd614d5" name="a4032003d244dc92acc94b41bcbd614d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4032003d244dc92acc94b41bcbd614d5">&#9670;&#160;</a></span>CreateConfiguration()</h2>
+<a id="ae43bd8a33a6e3867a6cd4e2c7061e05a" name="ae43bd8a33a6e3867a6cd4e2c7061e05a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae43bd8a33a6e3867a6cd4e2c7061e05a">&#9670;&#160;</a></span>CreateConfiguration()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -182,7 +182,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -201,8 +201,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>modules/Tooling/<b>ILinker.cppm</b></li>
+<li>src/Tooling/<b>ILinker.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
